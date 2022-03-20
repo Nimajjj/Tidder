@@ -2,17 +2,24 @@ package main
 
 import (
   Main "github.com/Nimajjj/Tidder/go"
-  Global "github.com/Nimajjj/Tidder/go/global"
+  Server "github.com/Nimajjj/Tidder/go/server"
 
   "fmt"
 )
 
+/*
+  Must stay as clean as possible ! (jvous regarde vous deux et vos codes jamais formatés (-_-) )
+*/
+
 func main()  {
-  fmt.Println("\nTidder Inc © 2022. Tous droits réservés")
-  fmt.Println("Starting server : http://localhost:80\n")
+  checkImport()
+  Server.Run()
+}
 
+/*
+  Exemple func to show how import works with mutliple directories project 
+*/
+func checkImport()  {
   Main.TestFunction()
-  Global.TestFunction()
-
   fmt.Println()
 }
