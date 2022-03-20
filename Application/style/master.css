@@ -39,13 +39,13 @@ body > div {
 	align-items: center;
 }
 
-#header #profile_picture {
-	height: 85px;	/* photo de profile légérement + petite que le logo */
-}
-
 #header img {
 	height: 95px;
 	margin-right: 1vw;
+}
+
+#header #profile_picture {
+	height: 85px;	/* photo de profile légérement + petite que le logo */
 }
 
 #header a {

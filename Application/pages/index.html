@@ -4,14 +4,67 @@
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="/style/master.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/components/search_bar.css">
 
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="icon" type="image/x-icon" href="/images/global/favicon.ico">
     <title>Tidder</title>
   </head>
+
   <body>
 
-    <h1>Test test test</h1>
-    <div id="test_div"></div>
+    <div id="header">
+      <a class="container" href="/">
+        <img id="tidder_logo" src="/images/global/logo.png" alt="tidder logo">
+        <h1 id="tidder_title">Tidder</h1>
+      </a>
+
+      <form class="container" action="" method="GET">
+        <input id="searchTerm" type="text" placeholder="What are you looking for ?">
+        <button id="searchButton" type="submit" >
+          <i class='fa-solid fa-magnifying-glass'></i>
+        </button>
+      </form>
+
+      <a class="container" href="#">
+        <img id="profile_picture" src="/images/global/empty_profile_picture.png" alt="profile picture">
+        <h3 id="pseudonym">Nimajjj</h3>
+      </a>
+    </div>
+
+    <div id="main">
+
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p>Tidder :</p>
+        <ul>
+          <li> <a href="#">Report a problem</a> </li>
+          <li> <a href="#">Privacy policy</a> </li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <p>Authors :</p>
+        <ul>
+          <li> <a href="#" target="_blank">JEHAM Laurie</a> </li>
+          <li> <a href="https://github.com/MaxYnovobry" target="_blank">OBRY Maxime</a> </li>
+          <li> <a href="https://github.com/Nimajjj" target="_blank">BORELLO Benjamin</a> </li>
+        </ul>
+      </div>
+
+      <div class="container last">
+        <a href="/">
+          <img id="tidder_logo" src="/images/global/logo.png" alt="tidder logo">
+        </a>
+        <a href=""> <!-- On mettera le lien vers les CGU ici aussi -->
+          <p>Tidder Inc © 2022. Tous droits réservés</p>
+        </a>
+      </div>
+    </div>
 
   </body>
 </html>
