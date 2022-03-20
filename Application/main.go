@@ -8,7 +8,19 @@ import (
 )
 
 /*
-  Must stay as clean as possible ! (jvous regarde vous deux et vos codes jamais formatés (-_-) )
+  Tidder Inc © 2022. Tous droits réservés
+
+  Ynov Aix - 2021/2022
+  Created : 20/03/2022
+  Authors :
+    JEHAM   Laurie
+    OBRY    Maxime
+    BORELLO Benjamin
+*/
+
+/*
+  /!\ MUST STAY AS CLEAN AS POSSIBLE /!\ (jvous vois vous deux et vos codes jamais formatés (-_-) )
+  /!\ All func must be commented (cf. "/go/server/server.go") /!\
 */
 
 func main()  {
@@ -17,7 +29,7 @@ func main()  {
 }
 
 /*
-  Exemple func, to remove
+  Exemple func, to remove :O
 */
 func checkImport()  {
   Main.TestFunction()
