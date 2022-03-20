@@ -1,4 +1,5 @@
-/* Normalize CSS */
+/* ----------Normalize CSS---------- */
+
 * {
 	margin: 0;
 	padding: 0;
@@ -7,14 +8,78 @@
 	font-family: "Noto Sans", sans-serif;
 }
 
-/* ---------- TEST ---------- */
-h1 {
-  font-size: 64px;
+/* --------------------------------- */
+
+/* ----------BODY---------- */
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-#test_div {
-  width: 50vw;
-  height: 50vh;
-  background-color: red;
+body > div {
+	width: 100vw;
 }
-/* ---------- TEST ---------- */
+
+/* ------------------------ */
+
+
+/* ----------HEADER---------- */
+
+#header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid black;
+	padding: 1vh 1vw;
+}
+
+#header .container {
+	display: flex;
+	align-items: center;
+}
+
+#header img {
+	height: 95px;
+	margin-right: 1vw;
+}
+
+#header #profile_picture {
+	height: 85px;	/* photo de profile légérement + petite que le logo */
+}
+
+#header a {
+	color: black;
+	text-decoration: none;
+}
+
+#header h1 {
+	font-size: 48px;
+}
+
+#header h3 {
+	font-size: 32px;
+}
+
+/* -------------------------- */
+
+
+/* ----------MAIN---------- */
+
+#main {
+	height: 500px;
+	background-color: green;
+}
+
+/* ------------------------ */
+
+
+/* ----------FOOTER---------- */
+
+#footer {
+	height: 150px;
+	background-color: red;
+}
+
+/* -------------------------- */
