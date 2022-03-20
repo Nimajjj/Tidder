@@ -7,19 +7,32 @@ import (
 )
 
 /*
+  /go/server/server.go
+
   All files path must be relative to the main.go script position.
   Only functions starting with a CAPITAL LETTER can be access from the main.go script
 */
 
+
+/*
+  Run()
+
+  ONLY function which can be accessed from the main.go script
+  Entry door for the go web server.
+*/
 func Run()  {
   fmt.Println("\nTidder Inc © 2022. Tous droits réservés")
   fmt.Println("Starting server : http://localhost:80")
 
   initStaticFolders()
-  server()
+  launchServer()
 }
 
+/*
+  initStaticFolders()
 
+  All statics folders which will be used in html/css/js files must be declared here.
+*/
 func initStaticFolders() {
   cssFolder := http.FileServer(http.Dir("./style"))
   imgFolder := http.FileServer(http.Dir("./images"))
@@ -27,8 +40,16 @@ func initStaticFolders() {
   http.Handle("/images/", http.StripPrefix("/images/", imgFolder))
 }
 
+/*
+  launchServer()
 
-func server() {
+  Main function which run the server
+  For the moment the template & the http.ListenAndServe(":80", nil) are here.
+
+  To do :
+    -create an individual function for each template.
+*/
+func launchServer() {
   indexTpl := template.Must(template.ParseFiles("./pages/index.html"))
 
   http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

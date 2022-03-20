@@ -17,7 +17,7 @@ func main()  {
 }
 
 /*
-  Exemple func to show how import works with mutliple directories project 
+  Exemple func, to remove
 */
 func checkImport()  {
   Main.TestFunction()
