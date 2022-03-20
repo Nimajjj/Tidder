@@ -1,3 +1,4 @@
+/* Normalize CSS */
 * {
 	margin: 0;
 	padding: 0;
@@ -6,6 +7,7 @@
 	font-family: "Noto Sans", sans-serif;
 }
 
+/* ---------- TEST ---------- */
 h1 {
   font-size: 64px;
 }
@@ -15,3 +17,4 @@ h1 {
   height: 50vh;
   background-color: red;
 }
+/* ---------- TEST ---------- */
