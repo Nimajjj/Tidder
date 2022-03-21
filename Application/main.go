@@ -1,10 +1,9 @@
 package main
 
 import (
-  Main "github.com/Nimajjj/Tidder/go"
   Server "github.com/Nimajjj/Tidder/go/server"
 
-  "fmt"
+  _ "github.com/go-sql-driver/mysql"
 )
 
 /*
@@ -23,15 +22,6 @@ import (
   /!\ All func must be commented (cf. "/go/server/server.go") /!\
 */
 
-func main()  {
-  checkImport()
+func main() {
   Server.Run()
-}
-
-/*
-  Exemple func, to remove :O
-*/
-func checkImport()  {
-  Main.TestFunction()
-  fmt.Println()
 }

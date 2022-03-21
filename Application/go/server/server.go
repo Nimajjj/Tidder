@@ -4,6 +4,8 @@ import (
   "fmt"
   "html/template"
 	"net/http"
+
+  SQL "github.com/Nimajjj/Tidder/go/sql"
 )
 
 /*
@@ -50,10 +52,14 @@ func initStaticFolders() {
     -create an individual function for each template.
 */
 func launchServer() {
-  indexTpl := template.Must(template.ParseFiles("./pages/index.html"))
+  var myDb SQL.SqlServer
+  myDb.Connect()
+  defer myDb.Close()
+  account := myDb.GetAccountById(1)
 
+  indexTpl := template.Must(template.ParseFiles("./pages/index.html"))
   http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		indexTpl.Execute(w, nil)
+		indexTpl.Execute(w, account)
 	})
 
   fmt.Println("Server successfully launched.\n")
