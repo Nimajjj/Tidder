@@ -52,10 +52,10 @@ func initStaticFolders() {
     -create an individual function for each template.
 */
 func launchServer() {
-  var myDb SQL.SqlServer
-  myDb.Connect()
-  defer myDb.Close()
-  account := myDb.GetAccountById(1)
+  var db SQL.SqlServer
+  db.Connect()
+  defer db.Close()
+  account := db.GetAccountById(1)
 
   indexTpl := template.Must(template.ParseFiles("./pages/index.html"))
   http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
