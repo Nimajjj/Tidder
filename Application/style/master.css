@@ -56,6 +56,7 @@ a {
 
 #header #profile_picture {
 	height: 45px;	/* photo de profile légérement + petite que le logo */
+	border-radius: 50%;
 }
 
 #header a {

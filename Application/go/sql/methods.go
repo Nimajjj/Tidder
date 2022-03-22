@@ -19,6 +19,7 @@ import(
 */
 func (sqlServ SqlServer) GetAccountById(id int) Accounts {
   fmt.Println("Requesting account", strconv.Itoa(id), "from Accounts table.")
+
   var account Accounts
   query := "SELECT * FROM accounts WHERE id_account = " + strconv.Itoa(id)
   err := sqlServ.db.QueryRow(query).Scan(
@@ -32,6 +33,13 @@ func (sqlServ SqlServer) GetAccountById(id int) Accounts {
     &account.ProfilePicture,
   )
   if err != nil { panic(err.Error()) }
+
   fmt.Println("Request completed.")
   return account
+}
+
+
+func (sqlServ SqlServer) executeQuery(query string) {
+  _, err := sqlServ.db.Query(query)
+  if err != nil{ panic(err) }
 }
