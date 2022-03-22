@@ -46,12 +46,13 @@
 }
 
 .post_upper img {
-  margin-right: 1.5%;
+  margin-right: 2.5%;
   height: 32px;
 }
 
 .post_upper > a {
   display: flex;
+  align-items: center;
 }
 
 .post_upper > .subreddit_name ~ *, .post_upper > .subreddit_name ~ * > * {
