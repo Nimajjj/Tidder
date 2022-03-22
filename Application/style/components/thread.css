@@ -1,0 +1,89 @@
+/*----------GENERAL----------*/
+
+.post {
+  height: fit-content;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 75vw;
+  padding: 1%;
+  margin-bottom: 1vh;
+  transition: .5s ease-out;
+}
+
+.post:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.post ul {
+  list-style-type: none;
+}
+
+.post_icon {
+  height: 32px;
+}
+
+.post a {
+  text-decoration: none;
+}
+
+.post a:hover {
+  text-decoration: underline;
+}
+
+/*---------------------------*/
+
+/*----------TOP----------*/
+
+.post_upper {
+  display: flex;
+  align-items: center;
+}
+
+.post_upper > * {
+  margin-right: 0.75%;
+}
+
+.post_upper img {
+  margin-right: 1.5%;
+  height: 32px;
+}
+
+.post_upper > a {
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.post_upper > .subreddit_name ~ *, .post_upper > .subreddit_name ~ * > * {
+  color: gray;
+  font-size: 12px;
+}
+
+/*-----------------------*/
+
+/*----------MID----------*/
+.post_content{
+    display: flex;
+    justify-content: center;
+}
+
+.post_content > img {
+  height: 660px;
+}
+
+/*-----------------------*/
+
+/*----------BOT----------*/
+
+.post_share, .post_bottom {
+  display: flex;
+  align-items: center;
+}
+
+.post_bottom > * {
+  margin: 1vh 1% 0 1%;
+  color: black;
+}
+
+/*-----------------------*/

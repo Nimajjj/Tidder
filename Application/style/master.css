@@ -17,6 +17,7 @@ body {
 		display: flex;
 		flex-direction: column;
 		height: 100vh;
+		overflow-x: hidden;
 }
 
 body > div {
@@ -34,6 +35,7 @@ body > div {
 	align-items: center;
 	border-bottom: 1px solid black;
 	padding: 1vh 1vw;
+	margin-bottom: 1vh;
 }
 
 #header .container {
@@ -42,12 +44,12 @@ body > div {
 }
 
 #header img {
-	height: 95px;
+	height: 85px;
 	margin-right: 1vw;
 }
 
 #header #profile_picture {
-	height: 85px;	/* photo de profile légérement + petite que le logo */
+	height: 75px;	/* photo de profile légérement + petite que le logo */
 }
 
 #header a {
@@ -69,6 +71,9 @@ body > div {
 /* ----------MAIN---------- */
 
 #main {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 	flex: 1 1 auto;
 }
 
