@@ -18,10 +18,16 @@ body {
 		flex-direction: column;
 		height: 100vh;
 		overflow-x: hidden;
+		background-color: #1A1A1A;
+		color: #F2F2F2;
 }
 
 body > div {
 	width: 100vw;
+}
+
+a {
+	color: #F2F2F2;
 }
 
 /* ------------------------ */
@@ -33,9 +39,9 @@ body > div {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border-bottom: 1px solid black;
 	padding: 1vh 1vw;
 	margin-bottom: 1vh;
+	background-color: #262626;
 }
 
 #header .container {
@@ -44,16 +50,15 @@ body > div {
 }
 
 #header img {
-	height: 85px;
+	height: 65px;
 	margin-right: 1vw;
 }
 
 #header #profile_picture {
-	height: 75px;	/* photo de profile légérement + petite que le logo */
+	height: 45px;	/* photo de profile légérement + petite que le logo */
 }
 
 #header a {
-	color: black;
 	text-decoration: none;
 }
 
@@ -61,7 +66,7 @@ body > div {
 	font-size: 48px;
 }
 
-#header h3 {
+#header #pseudonym {
 	font-size: 32px;
 }
 
@@ -85,15 +90,15 @@ body > div {
 #footer {
 	bottom: 0%;
 	padding: 1vh 1vw;
-	border-top: 1px solid black;
 	display: flex;
 	align-items: center;
+	background-color: #262626;
 }
 
 #footer .container {
 	height: 100%;
 	width: 20vw;
-	border-right: 1px solid black;
+	border-right: 1px solid #1A1A1A;
 	padding: 1vh 1vw;
 }
 
@@ -111,7 +116,6 @@ body > div {
 }
 
 #footer a {
-	color: black;
 	text-decoration: none;
 }
 

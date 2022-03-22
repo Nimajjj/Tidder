@@ -2,16 +2,17 @@
 
 .post {
   height: fit-content;
-  border: 1px solid lightgray;
+  border: 1px solid #262626;
   border-radius: 5px;
   width: 75vw;
   padding: 1%;
   margin-bottom: 1vh;
   transition: .5s ease-out;
+  background-color: #262626;
 }
 
 .post:hover {
-  border: 1px solid black;
+  border: 1px solid #F2F2F2;
   cursor: pointer;
 }
 
@@ -51,12 +52,10 @@
 
 .post_upper > a {
   display: flex;
-  align-items: center;
-  color: black;
 }
 
 .post_upper > .subreddit_name ~ *, .post_upper > .subreddit_name ~ * > * {
-  color: gray;
+  color: #666666;
   font-size: 12px;
 }
 
@@ -83,7 +82,6 @@
 
 .post_bottom > * {
   margin: 1vh 1% 0 1%;
-  color: black;
 }
 
 /*-----------------------*/
