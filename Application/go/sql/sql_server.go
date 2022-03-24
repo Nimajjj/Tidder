@@ -1,9 +1,9 @@
 package mySQL
 
 import (
-  "fmt"
-  "database/sql"
-    _ "github.com/go-sql-driver/mysql"
+	"database/sql"
+	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 /*
@@ -27,7 +27,7 @@ import (
 */
 
 type SqlServer struct {
-  db *sql.DB
+	db *sql.DB
 }
 
 /*
@@ -37,11 +37,13 @@ type SqlServer struct {
   First method to use SqlServer
 */
 func (sqlServ *SqlServer) Connect() {
-  fmt.Println("Connecting to @tcp(127.0.0.1:3306)/tidder ...")
-  db, err := sql.Open("mysql", "root:Tidder123reddit@tcp(127.0.0.1:3306)/tidder")
-  if err != nil { panic(err.Error()) }
-  sqlServ.db = db
-  fmt.Println("Connection completed.")
+	fmt.Println("Connecting to @tcp(10.13.34.114:3306)/tidder ...")
+	db, err := sql.Open("mysql", "root:Tidder123reddit@tcp(10.13.34.114:3306)/tidder")
+	if err != nil {
+		panic(err.Error())
+	}
+	sqlServ.db = db
+	fmt.Println("Connection completed.")
 }
 
 /*
@@ -51,8 +53,8 @@ func (sqlServ *SqlServer) Connect() {
   Second method to use : MUST USE `defer`
 */
 func (sqlServ SqlServer) Close() {
-  fmt.Println("Closing @tcp(127.0.0.1:3306)/tidder connection.")
-  sqlServ.db.Close()
+	fmt.Println("Closing @tcp(127.0.0.1:3306)/tidder connection.")
+	sqlServ.db.Close()
 }
 
 /*
@@ -61,5 +63,5 @@ func (sqlServ SqlServer) Close() {
   Function allowing to get the db var from the sql library
 */
 func (sqlServ SqlServer) GetDB() *sql.DB {
-  return sqlServ.db
+	return sqlServ.db
 }

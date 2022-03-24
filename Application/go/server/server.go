@@ -35,10 +35,13 @@ func Run() {
   All statics folders which will be used in html/css/js files must be declared here.
 */
 func initStaticFolders() {
+
 	cssFolder := http.FileServer(http.Dir("./style"))
 	imgFolder := http.FileServer(http.Dir("./images"))
+	jsFolder := http.FileServer(http.Dir("./scripts"))
 	http.Handle("/style/", http.StripPrefix("/style/", cssFolder))
 	http.Handle("/images/", http.StripPrefix("/images/", imgFolder))
+	http.Handle("/scripts/", http.StripPrefix("/scripts/", jsFolder))
 }
 
 /*
@@ -55,10 +58,18 @@ func launchServer() {
 	db.Connect()
 	defer db.Close()
 	account := db.GetAccountById(1)
-
 	indexTpl := template.Must(template.ParseFiles("./pages/index.html"))
 	indexTpl1 := template.Must(template.ParseFiles("./test/index2.html"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.FormValue("name") != "" {
+			subTidderName := r.FormValue("name")
+			subTidderNsfw := false
+			if r.FormValue("nsfw") == "1" {
+				subTidderNsfw = true
+			}
+			db.CreateSub(subTidderName, 2, subTidderNsfw)
+		}
+
 		indexTpl.Execute(w, account)
 	})
 
@@ -67,9 +78,10 @@ func launchServer() {
 		if r.Method == http.MethodPost {
 			pseudo := r.FormValue("pseudo_input")
 			email := r.FormValue("email_input")
-			db.CreateAccount(pseudo, email)
+			password := r.FormValue("password_input")
+			birthdate := r.FormValue("birthdate_input")
+			db.CreateAccount(pseudo, email, password, birthdate)
 		}
 	})
-	fmt.Println("Server successfully launched.\n")
 	http.ListenAndServe(":80", nil)
 }

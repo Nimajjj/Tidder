@@ -2,7 +2,9 @@ package mySQL
 
 import (
 	"fmt"
+	"golang.org/x/crypto/bcrypt"
 	"strconv"
+	"time"
 )
 
 /*
@@ -54,8 +56,44 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 }
 
 func (sqlServ SqlServer) executeQuery(query string) {
+	fmt.Println("Executing following query :")
+	fmt.Println(query)
 	_, err := sqlServ.db.Query(query)
 	if err != nil {
 		panic(err)
+		return
 	}
+	fmt.Println("Query successfully executed.")
+}
+
+func hashPassword(password string) (string, error) {
+	// Convert password string to byte slice
+	var passwordBytes = []byte(password)
+
+	hashedPasswordBytes, err := bcrypt.GenerateFromPassword(passwordBytes, bcrypt.MinCost)
+
+	return string(hashedPasswordBytes), err
+}
+
+func HashPassword(password string) string {
+
+	var passwordres, err = hashPassword(password)
+	if err != nil {
+		println(fmt.Println("Error hashing password"))
+		return passwordres
+	}
+	fmt.Println("Password Hash:", passwordres)
+	return passwordres
+}
+func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string) {
+
+	currentTime := time.Now()
+	query := "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("
+	query += "\"" + name + "\","
+	query += "\"" + email + "\","
+	query += "\"" + HashPassword(Password) + "\","
+	query += "\"" + Birthdate + "\","
+	query += "\"" + currentTime.Format("2006-01-02") + "\","
+	query += " 0, \"Default.png\" )"
+	sqlServ.executeQuery(query)
 }
