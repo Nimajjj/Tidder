@@ -7,6 +7,12 @@ import (
     "log"
 )
 
+/*
+  /go/utility/log.go
+
+  Script contianing all log utilities functions.
+*/
+
 
 /*
   Log(text string)

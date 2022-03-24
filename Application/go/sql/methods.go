@@ -8,7 +8,7 @@ import(
 /*
   /go/sql/methods.go
 
-  Scripts only containing utility methods of SqlServer struct.
+  Script only containing utility methods of SqlServer struct.
 */
 
 
