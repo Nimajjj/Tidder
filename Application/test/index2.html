@@ -11,7 +11,7 @@
     <title>Tidder</title>
   </head>
   <body>
-    <form action="" method="post">
+    <form action="/test" method="post">
       Pseudo : <input type="text" name="pseudo_input"/>
       <br/>
       Date de naissance : <input type="date" name="birthdate_input"/>
@@ -22,6 +22,6 @@
       <br/>
       <input type="submit" value="Submit"/>
     </form>
-
+    {{.Error}}
   </body>
 </html>

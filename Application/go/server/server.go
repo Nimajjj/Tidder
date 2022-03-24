@@ -62,16 +62,24 @@ func launchServer(DatabaseIp string) {
 	IndexHandler(&db)
 	SubtidderHandler(&db)
 
-  testTpl := template.Must(template.ParseFiles("./test/index2.html"))
+	testTpl := template.Must(template.ParseFiles("./test/index2.html"))
 	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
+		type Error struct {
+			Error string
+		}
+		err := Error{""}
 		if r.Method == http.MethodPost {
 			pseudo := r.FormValue("pseudo_input")
 			email := r.FormValue("email_input")
 			password := r.FormValue("password_input")
 			birthdate := r.FormValue("birthdate_input")
-			db.CreateAccount(pseudo, email, password, birthdate)
+			if pseudo != "" && email != "" && password != "" && birthdate != "" {
+				db.CreateAccount(pseudo, email, password, birthdate)
+			} else {
+				err.Error = "Rentrez des informations valide"
+			}
 		}
-		testTpl.Execute(w, nil)
+		testTpl.Execute(w, err)
 	})
 
 	http.ListenAndServe(":80", nil)

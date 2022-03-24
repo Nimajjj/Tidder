@@ -108,21 +108,67 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 	return result
 }
 
+func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
+	Util.Log("Executing following query :")
+	query := "SELECT * FROM accounts "
+	if conditions != "" {
+		query += "WHERE " + conditions
+	}
+	Util.Log(query)
+	rows, err := sqlServ.db.Query(query)
+	if err != nil {
+		Util.Error(err)
+	}
 
-func HashPassword(password string) string {
-  var passwordBytes = []byte(password)
-  hashedPasswordBytes, err := bcrypt.GenerateFromPassword(passwordBytes, bcrypt.MinCost)
+	result := []Accounts{}
+	for rows.Next() {
+		var id int
+		var name string
+		var email string
+		var hashed_password string
+		var birth_date string
+		var creation_date string
+		var karma int
+		var profile_picture string
+		if err2 := rows.Scan(
+			&id,
+			&name,
+			&email,
+			&hashed_password,
+			&birth_date,
+			&creation_date,
+			&karma,
+			&profile_picture,
+		); err2 != nil {
+			Util.Error(err2)
+		}
+		sub := Accounts{id, name, email, hashed_password, birth_date, creation_date, karma, profile_picture}
+		result = append(result, sub)
+	}
 
-	if err != nil { Util.Log.Error(err) }
-	Util.Log("Password Hash : " + hashedPasswordBytes)
-
-	return hashedPasswordBytes
+	return result
 }
 
+func HashPassword(password string) string {
+	var passwordBytes = []byte(password)
+	hashedPasswordBytes, err := bcrypt.GenerateFromPassword(passwordBytes, bcrypt.MinCost)
+	hashedPassword := string(hashedPasswordBytes)
+	if err != nil {
+		Util.Error(err)
+	}
+	Util.Log("Password Hash : " + hashedPassword)
+	return hashedPassword
+}
 
 func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string) {
 	currentTime := time.Now()
-	query := "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("
+	query := "name=\"" + name + "\" OR "
+	query += "\"" + email + "\""
+	if len(sqlServ.GetSubs(query)) != 0 {
+		Util.Log("Creating sub failed : sub name <" + name + "> already taken.")
+		return
+	}
+	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("
 	query += "\"" + name + "\","
 	query += "\"" + email + "\","
 	query += "\"" + HashPassword(Password) + "\","
