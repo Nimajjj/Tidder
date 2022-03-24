@@ -18,10 +18,10 @@ import(
   Get Accounts from an id into the database.
 */
 func (sqlServ SqlServer) GetAccountById(id int) Accounts {
-  fmt.Println("Requesting account", strconv.Itoa(id), "from Accounts table.")
-
   var account Accounts
   query := "SELECT * FROM accounts WHERE id_account = " + strconv.Itoa(id)
+  fmt.Println("Executing following query :")
+  fmt.Println("\t", query)
   err := sqlServ.db.QueryRow(query).Scan(
     &account.Id,
     &account.Name,
@@ -34,32 +34,72 @@ func (sqlServ SqlServer) GetAccountById(id int) Accounts {
   )
   if err != nil { panic(err.Error()) }
 
-  fmt.Println("Request completed.")
+  fmt.Println("Query successfully executed.")
   return account
 }
 
-// /!\ Not finished yet /!\ //
-// INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("Dank Meme", "default.png", 1, 0)
+
+/*
+  (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool)
+
+  Provide a name, an id and a bool to create a new subtidder
+
+  to do :
+    check nsfw
+*/
 func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) {
   if len(subName) >= 25 || ownerId < 1 { return }
 
   nsfw := 0
   if nsfwInput { nsfw = 1 }
 
-  query := "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("
+  // test if sub name is already taken
+  query := "name=\"" + subName + "\""
+  if len(sqlServ.GetSubs(query)) != 0 {
+    fmt.Println("This subject name is already taken.")
+    return
+  }
+
+  query = "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("
   query += "\"" + subName + "\", \"default.png\", "
   query += strconv.Itoa(ownerId) + ", " + strconv.Itoa(nsfw) + ")"
   sqlServ.executeQuery(query)
 }
 
 
-func (sqlServ SqlServer) executeQuery(query string) {
+func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
   fmt.Println("Executing following query :")
-  fmt.Println(query)
-  _, err := sqlServ.db.Query(query)
+  query := "SELECT * FROM subjects "
+  if conditions != "" {
+    query += "WHERE " + conditions
+  }
+  fmt.Println("\t", query)
+  rows, err := sqlServ.db.Query(query)
   if err != nil{
     panic(err)
-    return
+    return []Subject{}
   }
+
+  result := []Subject{}
+  for rows.Next() {
+    var id int
+    var name string
+    var pp string
+    var nsfw bool
+    var id_owner int
+    if err2:= rows.Scan(
+      &id,
+      &name,
+      &pp,
+      &id_owner,
+      &nsfw,
+      ); err2 != nil {
+			panic(err2)
+		}
+    sub := Subject{id, name, pp, nsfw, id_owner}
+    result = append(result, sub)
+  }
+
   fmt.Println("Query successfully executed.")
+  return result
 }

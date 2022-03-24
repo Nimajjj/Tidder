@@ -63,3 +63,21 @@ func (sqlServ SqlServer) Close() {
 func (sqlServ SqlServer) GetDB() *sql.DB {
   return sqlServ.db
 }
+
+/*
+  (sqlServ SqlServer) executeQuery(query string)
+
+  Execute brut query
+  Private SqlServer method
+  To use ONLY if you already made all verifications to avoid SQL error
+*/
+func (sqlServ SqlServer) executeQuery(query string) {
+  fmt.Println("Executing following query :")
+  fmt.Println("\t", query)
+  _, err := sqlServ.db.Query(query)
+  if err != nil{
+    panic(err)
+    return
+  }
+  fmt.Println("Query successfully executed.")
+}
