@@ -1,28 +1,28 @@
 #searchTerm {
   width: 20vw;
-  border: 1px solid black;
+  border: 1px solid #1A1A1A;
   border-right: none;
   padding: 5px;
   height: 4vh;
   border-radius: 5px 0 0 5px;
   font-size: 16px;
   outline: none;
-  color: darkgray;
+  color: #666666;
 }
 
 #searchTerm:focus{
-  color: gray;
+  color: #262626
 }
 
 #searchButton {
   width: 2vw;
   height: 4vh;
-  border-top: 1px solid #000;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
-  background: gray;
+  border-top: 1px solid #1A1A1A;
+  border-right: 1px solid #1A1A1A;
+  border-bottom: 1px solid #1A1A1A;
+  background: #1A1A1A;
   text-align: center;
-  color: #fff;
+  color: #F2F2F2;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
