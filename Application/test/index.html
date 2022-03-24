@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../style/master.css">
     <link rel="stylesheet" href="../style/components/search_bar.css">
     <link rel="stylesheet" href="../style/components/thread.css">
+    <link rel="stylesheet" href="../style/create_sub.css">
 
     <script type="text/javascript" src="../scripts/master.js" defer></script>
 
@@ -38,6 +39,54 @@
     </div>
 
     <div id="main">
+      <form id="create_sub_popup" method="post">
+        <ul>
+
+          <li>
+            <div id="title_container">
+              <h2>Create a subtidder</h2>
+              <a href="#" class="close" id="popup_sub_close" onclick="hide_popup()"></a>
+            </div>
+          </li>
+
+          <li class="input_container">
+            <label for="name">Subtidder name :</label>
+            <div style="display: flex;">
+              <p>t/</p><input type="text" name="name">
+            </div>
+          </li>
+
+          <li class="input_container">
+            <label for="logo">Subtidder logo :</label>
+            <input type="file" name="logo" accept="image/jpeg, image/x-png">
+          </li>
+
+          <li class="img_container">
+            <img id="logo_img" src="../images/global/no-image.jpg" alt="logo subtidder">
+          </li>
+
+          <li class="input_container">
+            <label for="banner">Subtidder banner :</label>
+            <input type="file" name="banner" accept="image/jpeg, image/x-png">
+          </li>
+
+          <li class="img_container">
+            <img id="banner_img" src="../images/global/no-image.jpg" alt="banner subtidder">
+          </li>
+
+          <li>
+            <label for="nsfw" style="font-weight: bold;">NSFW :</label>
+            <input type="checkbox" name="nsfw">
+          </li>
+
+          <li class="img_container">
+            <input id="submit_bt" type="submit" value="Submit">
+          </li>
+
+        </ul>
+      </form>
+
+
       <div class="post">
         <ul>
           <li class="post_upper">
