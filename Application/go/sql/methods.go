@@ -19,7 +19,7 @@ import(
 */
 func (sqlServ SqlServer) GetAccountById(id int) Accounts {
   var account Accounts
-  query := "SELECT * FROM accounts WHERE id_accountt = " + strconv.Itoa(id)
+  query := "SELECT * FROM accounts WHERE id_account = " + strconv.Itoa(id)
   Util.Log("Executing following query :")
   Util.Log(query)
   err := sqlServ.db.QueryRow(query).Scan(
@@ -75,8 +75,7 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
   Util.Log(query)
   rows, err := sqlServ.db.Query(query)
   if err != nil{
-    panic(err)
-    return []Subject{}
+    Util.Error(err)
   }
 
   result := []Subject{}
@@ -93,7 +92,7 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
       &id_owner,
       &nsfw,
       ); err2 != nil {
-			panic(err2)
+			Util.Error(err2)
 		}
     sub := Subject{id, name, pp, nsfw, id_owner}
     result = append(result, sub)

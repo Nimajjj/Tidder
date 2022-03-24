@@ -40,7 +40,7 @@ type SqlServer struct {
 func (sqlServ *SqlServer) Connect() {
   Util.Log("Connecting to @tcp(127.0.0.1:3306)/tidder ...")
   db, err := sql.Open("mysql", "root:Tidder123reddit@tcp(127.0.0.1:3306)/tidder")
-  if err != nil { panic(err.Error()) }
+  if err != nil { Util.Error(err) }
   sqlServ.db = db
   Util.Log("Connection completed.")
 }
