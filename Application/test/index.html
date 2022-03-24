@@ -32,14 +32,18 @@
         </button>
       </form>
 
-      <a class="container" href="#">
+      <div class="container" onclick="show_popup()">
+        <div id="create_sub_container">
+          <img src="../images/global/cross.png" alt="create subtidder">
+          <p>Create subtidder</p>
+        </div>
         <img id="profile_picture" src="../images/global/empty_profile_picture.png" alt="profile picture">
         <p id="pseudonym">Nimajjj</p>
-      </a>
+      </div>
     </div>
 
     <div id="main">
-      <form id="create_sub_popup" method="post">
+      <form id="create_sub_popup" method="post" style="display: none;">
         <ul>
 
           <li>

@@ -75,6 +75,18 @@ a {
 	font-size: 32px;
 }
 
+#header #create_sub_container {
+	display: flex;
+	align-items: center;
+	margin-right: 2vw;
+	cursor: pointer;
+}
+
+#header #create_sub_container img {
+	height: 16px;
+	margin-right: 0.5vw;
+}
+
 /* -------------------------- */
 
 
