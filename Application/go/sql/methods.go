@@ -84,9 +84,7 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 	}
 	Util.Log(query)
 	rows, err := sqlServ.db.Query(query)
-	if err != nil {
-		Util.Error(err)
-	}
+	if err != nil {	Util.Error(err)	}
 
 	result := []Subject{}
 	for rows.Next() {
