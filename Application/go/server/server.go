@@ -38,8 +38,10 @@ func Run()  {
 func initStaticFolders() {
   cssFolder := http.FileServer(http.Dir("./style"))
   imgFolder := http.FileServer(http.Dir("./images"))
+  jsFolder := http.FileServer(http.Dir("./scripts"))
   http.Handle("/style/", http.StripPrefix("/style/", cssFolder))
   http.Handle("/images/", http.StripPrefix("/images/", imgFolder))
+  http.Handle("/scripts/", http.StripPrefix("/scripts/", jsFolder))
 }
 
 /*
@@ -59,9 +61,16 @@ func launchServer() {
 
   indexTpl := template.Must(template.ParseFiles("./pages/index.html"))
   http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+    if r.FormValue("name") != "" {
+      subTidderName := r.FormValue("name")
+      subTidderNsfw := false
+      if r.FormValue("nsfw") == "1" {
+        subTidderNsfw = true
+      }
+      db.CreateSub(subTidderName, 2, subTidderNsfw)
+    }
+
 		indexTpl.Execute(w, account)
 	})
-
-  fmt.Println("Server successfully launched.\n")
   http.ListenAndServe(":80", nil)
 }

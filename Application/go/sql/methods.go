@@ -48,12 +48,18 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 
   query := "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("
   query += "\"" + subName + "\", \"default.png\", "
-  query += strconv.Itoa(ownerId) + ", " + strconv.Itoa(nsfw)
+  query += strconv.Itoa(ownerId) + ", " + strconv.Itoa(nsfw) + ")"
   sqlServ.executeQuery(query)
 }
 
 
 func (sqlServ SqlServer) executeQuery(query string) {
+  fmt.Println("Executing following query :")
+  fmt.Println(query)
   _, err := sqlServ.db.Query(query)
-  if err != nil{ panic(err) }
+  if err != nil{
+    panic(err)
+    return
+  }
+  fmt.Println("Query successfully executed.")
 }
