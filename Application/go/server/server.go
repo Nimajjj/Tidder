@@ -21,12 +21,12 @@ import (
   ONLY function which can be accessed from the main.go script
   Entry door for the go web server.
 */
-func Run()  {
+func Run(DatabaseIp string)  {
   Util.Log("Tidder Inc © 2022. Tous droits réservés")
   Util.Log("Starting server : http://localhost:80")
 
   initStaticFolders()
-  launchServer()
+  launchServer(DatabaseIp)
 }
 
 /*
@@ -52,9 +52,9 @@ func initStaticFolders() {
   To do :
     -create an individual function for each template.
 */
-func launchServer() {
+func launchServer(DatabaseIp string) {
   var db SQL.SqlServer
-  db.Connect()
+  db.Connect(DatabaseIp)
   defer db.Close()
 
   IndexHandler(&db)

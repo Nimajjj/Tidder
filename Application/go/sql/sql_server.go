@@ -37,9 +37,9 @@ type SqlServer struct {
   Connect structure to the distant mySql database.
   First method to use SqlServer
 */
-func (sqlServ *SqlServer) Connect() {
-  Util.Log("Connecting to @tcp(127.0.0.1:3306)/tidder ...")
-  db, err := sql.Open("mysql", "root:Tidder123reddit@tcp(127.0.0.1:3306)/tidder")
+func (sqlServ *SqlServer) Connect(ip string) {
+  Util.Log("Connecting to @tcp(" + ip + ")/tidder ...")
+  db, err := sql.Open("mysql", "root:Tidder123reddit@tcp(" + ip + ")/tidder")
   if err != nil { Util.Error(err) }
   sqlServ.db = db
   Util.Log("Connection completed.")
