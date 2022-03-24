@@ -1,11 +1,11 @@
 package server
 
 import (
-  "fmt"
   "html/template"
 	"net/http"
 
   SQL "github.com/Nimajjj/Tidder/go/sql"
+  Util "github.com/Nimajjj/Tidder/go/utility"
 )
 
 /*
@@ -23,8 +23,8 @@ import (
   Entry door for the go web server.
 */
 func Run()  {
-  fmt.Println("\nTidder Inc © 2022. Tous droits réservés")
-  fmt.Println("Starting server : http://localhost:80")
+  Util.Log("Tidder Inc © 2022. Tous droits réservés")
+  Util.Log("Starting server : http://localhost:80")
 
   initStaticFolders()
   launchServer()

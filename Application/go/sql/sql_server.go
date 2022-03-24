@@ -3,7 +3,8 @@ package mySQL
 import (
   "fmt"
   "database/sql"
-    _ "github.com/go-sql-driver/mysql"
+  _ "github.com/go-sql-driver/mysql"
+  Util "github.com/Nimajjj/Tidder/go/utility"
 )
 
 /*
@@ -37,11 +38,11 @@ type SqlServer struct {
   First method to use SqlServer
 */
 func (sqlServ *SqlServer) Connect() {
-  fmt.Println("Connecting to @tcp(127.0.0.1:3306)/tidder ...")
+  Util.Log("Connecting to @tcp(127.0.0.1:3306)/tidder ...")
   db, err := sql.Open("mysql", "root:Tidder123reddit@tcp(127.0.0.1:3306)/tidder")
   if err != nil { panic(err.Error()) }
   sqlServ.db = db
-  fmt.Println("Connection completed.")
+  Util.Log("Connection completed.")
 }
 
 /*
@@ -72,12 +73,12 @@ func (sqlServ SqlServer) GetDB() *sql.DB {
   To use ONLY if you already made all verifications to avoid SQL error
 */
 func (sqlServ SqlServer) executeQuery(query string) {
-  fmt.Println("Executing following query :")
-  fmt.Println("\t", query)
+  Util.Log("Executing following query :")
+  Util.Log(query)
   _, err := sqlServ.db.Query(query)
   if err != nil{
-    panic(err)
+    Util.Error(err)
     return
   }
-  fmt.Println("Query successfully executed.")
+  Util.Log("Query successfully executed.")
 }

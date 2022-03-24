@@ -1,8 +1,8 @@
 package mySQL
 
 import(
-  "fmt"
   "strconv"
+  Util "github.com/Nimajjj/Tidder/go/utility"
 )
 
 /*
@@ -19,9 +19,9 @@ import(
 */
 func (sqlServ SqlServer) GetAccountById(id int) Accounts {
   var account Accounts
-  query := "SELECT * FROM accounts WHERE id_account = " + strconv.Itoa(id)
-  fmt.Println("Executing following query :")
-  fmt.Println("\t", query)
+  query := "SELECT * FROM accounts WHERE id_accountt = " + strconv.Itoa(id)
+  Util.Log("Executing following query :")
+  Util.Log(query)
   err := sqlServ.db.QueryRow(query).Scan(
     &account.Id,
     &account.Name,
@@ -32,9 +32,8 @@ func (sqlServ SqlServer) GetAccountById(id int) Accounts {
     &account.Karma,
     &account.ProfilePicture,
   )
-  if err != nil { panic(err.Error()) }
-
-  fmt.Println("Query successfully executed.")
+  if err != nil { Util.Error(err) }
+  Util.Log("Query successfully executed.")
   return account
 }
 
@@ -56,7 +55,7 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
   // test if sub name is already taken
   query := "name=\"" + subName + "\""
   if len(sqlServ.GetSubs(query)) != 0 {
-    fmt.Println("This subject name is already taken.")
+    Util.Log("Creating sub failed : sub name <" + subName + "> already taken.")
     return
   }
 
@@ -68,12 +67,12 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 
 
 func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
-  fmt.Println("Executing following query :")
+  Util.Log("Executing following query :")
   query := "SELECT * FROM subjects "
   if conditions != "" {
     query += "WHERE " + conditions
   }
-  fmt.Println("\t", query)
+  Util.Log(query)
   rows, err := sqlServ.db.Query(query)
   if err != nil{
     panic(err)
@@ -100,6 +99,6 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
     result = append(result, sub)
   }
 
-  fmt.Println("Query successfully executed.")
+  Util.Log("Query successfully executed.")
   return result
 }
