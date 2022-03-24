@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../style/master.css">
+    <link rel="stylesheet" href="../style/components/search_bar.css">
+    <link rel="stylesheet" href="../style/creat_post.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="icon" type="image/x-icon" href="../images/global/favicon.ico">
+    <title>Tidder - Subtidder creation</title>
+</head>
+
+<body>
+
+<div id="header">
+    <a class="container" href="/">
+        <img id="tidder_logo" src="../images/global/logo.png" alt="tidder logo">
+        <h1 id="tidder_title">Tidder</h1>
+    </a>
+
+    <form class="container" action="" method="GET">
+        <input id="searchTerm" type="text" placeholder="What are you looking for ?">
+        <button id="searchButton" type="submit" >
+            <i class='fa-solid fa-magnifying-glass'></i>
+        </button>
+    </form>
+
+    <a class="container" href="#">
+        <img id="profile_picture" src="../images/global/empty_profile_picture.png" alt="profile picture">
+        <p id="pseudonym">Nimajjj</p>
+    </a>
+</div>
+
+<div id="main">
+    <form id="create_sub_popup" method="post">
+        <ul>
+
+            <li>
+                <div id="title_container">
+                    <h2>Create a post</h2>
+                    <a href="#" class="close"></a>
+                </div>
+            </li>
+
+            <li class="input_container">
+                <div class="bloc">
+                    <div class="select">
+                        <select>
+                            <option>Which Subtidder ?</option>
+                            <option value="1">r/Je sais pas comment on fait</option>
+                            <option value="2">r/Pareil x2</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+
+            <li class="input_container">
+                <div class="advice_post">
+                    <p>1) Check our FAQ before posting. 2) Anything past the anime timeline is considered a spoiler. Make sure you correctly hide your text and images with a spoiler tag. 3) Spoilers on title will result in the post's removal. 4) No ALL CAPS titles.</p>
+                </div>
+            </li>
+
+            <li class="txt_container">
+                <div class="button_txt">
+                    <a class="button_post"><img class="picto" src="../images/global/imgtext.png"> <p class="option_txt">Post</p></a>
+                </div>
+                <div class="txt_post">
+                    <ul class="BBcode">
+                        <li id="list_picto">
+                          <img class="picto_BB" src="../images/global/icon_bold.png">
+                        </li>
+                        <li id="list_picto">
+                            <img class="picto_BB" src="../images/global/icon_italic.png">
+                        </li>
+                        <li id="list_picto">
+                            <img class="picto_BB" src="../images/global/icon_underline.png">
+                        </li>
+                        <li id="list_picto">
+                            <img class="picto_BB" src="../images/global/icon_link.png">
+                        </li>
+                    </ul>
+                    <form method="post" action="txt_traitement">
+                        <p>
+                        <textarea>
+                        </textarea>
+                        </p>
+                    </form>
+                </div>
+                <div class="media_post">
+
+                </div>
+
+            </li>
+    </form>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p>Tidder :</p>
+        <ul>
+            <li> <a href="#">Report a problem</a> </li>
+            <li> <a href="#">Privacy policy</a> </li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <p>Authors :</p>
+        <ul>
+            <li> <a href="https://github.com/Lunasphys" target="_blank">JEHAM Laurie</a> </li>
+            <li> <a href="https://github.com/MaxYnovobry" target="_blank">OBRY Maxime</a> </li>
+            <li> <a href="https://github.com/Nimajjj" target="_blank">BORELLO Benjamin</a> </li>
+        </ul>
+    </div>
+
+    <div class="container last">
+        <a href="/">
+            <img id="tidder_logo" src="../images/global/logo.png" alt="tidder logo">
+        </a>
+        <a href=""> <!-- On mettra le lien vers les CGU ici aussi -->
+            <p>Tidder Inc © 2022. Tous droits réservés</p>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
