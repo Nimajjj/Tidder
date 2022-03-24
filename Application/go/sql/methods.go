@@ -37,7 +37,6 @@ func (sqlServ SqlServer) GetAccountById(id int) Accounts {
 	if err != nil {
 		Util.Error(err)
 	}
-	Util.Log("Query successfully executed.")
 	return account
 }
 
@@ -109,31 +108,22 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 		result = append(result, sub)
 	}
 
-	Util.Log("Query successfully executed.")
 	return result
 }
 
-func hashPassword(password string) (string, error) {
-	// Convert password string to byte slice
-	var passwordBytes = []byte(password)
-
-	hashedPasswordBytes, err := bcrypt.GenerateFromPassword(passwordBytes, bcrypt.MinCost)
-
-	return string(hashedPasswordBytes), err
-}
 
 func HashPassword(password string) string {
+  var passwordBytes = []byte(password)
+  hashedPasswordBytes, err := bcrypt.GenerateFromPassword(passwordBytes, bcrypt.MinCost)
 
-	var passwordres, err = hashPassword(password)
-	if err != nil {
-		println(fmt.Println("Error hashing password"))
-		return passwordres
-	}
-	fmt.Println("Password Hash:", passwordres)
-	return passwordres
+	if err != nil { Util.Log.Error(err) }
+	Util.Log("Password Hash : " + hashedPasswordBytes)
+
+	return hashedPasswordBytes
 }
-func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string) {
 
+
+func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string) {
 	currentTime := time.Now()
 	query := "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("
 	query += "\"" + name + "\","

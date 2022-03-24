@@ -55,13 +55,13 @@ func initStaticFolders() {
 */
 
 func launchServer(DatabaseIp string) {
-
-	indexTpl1 := template.Must(template.ParseFiles("./test/index2.html"))
 	var db SQL.SqlServer
 	db.Connect(DatabaseIp)
 	defer db.Close()
 
 	IndexHandler(&db)
+
+  testTpl := template.Must(template.ParseFiles("./test/index2.html"))
 	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
 			pseudo := r.FormValue("pseudo_input")
@@ -70,7 +70,8 @@ func launchServer(DatabaseIp string) {
 			birthdate := r.FormValue("birthdate_input")
 			db.CreateAccount(pseudo, email, password, birthdate)
 		}
-		indexTpl1.Execute(w, nil)
+		testTpl.Execute(w, nil)
 	})
+  
 	http.ListenAndServe(":80", nil)
 }
