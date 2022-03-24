@@ -1,11 +1,12 @@
 package utility
 
 import (
-	"fmt"
-	"log"
-	"os"
-	"time"
+    "fmt"
+    "os"
+    "time"
+    "log"
 )
+
 
 /*
   Log(text string)
@@ -16,9 +17,9 @@ import (
 
 */
 func Log(text string) {
-	logs := time.Now().Format("01-02-2006 15:04:05") + " \t" + text
-	addToLogs(logs, false)
-	fmt.Println(logs)
+  logs := time.Now().Format("01-02-2006 15:04:05") + " \t" + text
+  addToLogs(logs, false)
+  fmt.Println(logs)
 }
 
 /*
@@ -28,9 +29,10 @@ func Log(text string) {
   Kill program
 */
 func Error(err error) {
-	addToLogs(err.Error(), true)
-	log.Fatal(err)
+  addToLogs(err.Error(), true)
+  log.Fatal(err)
 }
+
 
 /*
   addToLogs(text string, isErr bool)
@@ -38,22 +40,17 @@ func Error(err error) {
   Print text in ./logs/master.log
 */
 func addToLogs(text string, isErr bool) {
-	file, err := os.OpenFile("./logs/master.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		panic(err)
-	}
-	defer file.Close()
+  file, err := os.OpenFile("./logs/master.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+  if err != nil { panic(err) }
+  defer file.Close()
 
-	if isErr {
-		_, err2 := file.WriteString("\n" + time.Now().Format("01-02-2006 15:04:05") + " \t" + text)
-		if err2 != nil {
-			panic(err2)
-		}
-	} else {
-		_, err2 := file.WriteString("\n" + text)
-		if err2 != nil {
-			panic(err2)
-		}
-	}
+  if isErr {
+    _, err2 := file.WriteString("\n" + time.Now().Format("01-02-2006 15:04:05") + " \t" + text)
+    if err2 != nil { panic(err2) }
+  } else {
+    _, err2 := file.WriteString("\n" + text)
+    if err2 != nil { panic(err2) }
+  }
+
 
 }
