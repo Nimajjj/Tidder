@@ -1,9 +1,10 @@
 package mySQL
 
 import (
-  "fmt"
-  "database/sql"
-    _ "github.com/go-sql-driver/mysql"
+	"database/sql"
+	"fmt"
+	Util "github.com/Nimajjj/Tidder/go/utility"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 /*
@@ -27,7 +28,7 @@ import (
 */
 
 type SqlServer struct {
-  db *sql.DB
+	db *sql.DB
 }
 
 /*
@@ -36,12 +37,14 @@ type SqlServer struct {
   Connect structure to the distant mySql database.
   First method to use SqlServer
 */
-func (sqlServ *SqlServer) Connect() {
-  fmt.Println("Connecting to @tcp(127.0.0.1:3306)/tidder ...")
-  db, err := sql.Open("mysql", "root:Tidder123reddit@tcp(127.0.0.1:3306)/tidder")
-  if err != nil { panic(err.Error()) }
-  sqlServ.db = db
-  fmt.Println("Connection completed.")
+func (sqlServ *SqlServer) Connect(ip string) {
+	Util.Log("Connecting to @tcp(" + ip + ")/tidder ...")
+	db, err := sql.Open("mysql", "root:Tidder123reddit@tcp("+ip+")/tidder")
+	if err != nil {
+		Util.Error(err)
+	}
+	sqlServ.db = db
+	Util.Log("Connection completed.")
 }
 
 /*
@@ -51,8 +54,8 @@ func (sqlServ *SqlServer) Connect() {
   Second method to use : MUST USE `defer`
 */
 func (sqlServ SqlServer) Close() {
-  fmt.Println("Closing @tcp(127.0.0.1:3306)/tidder connection.")
-  sqlServ.db.Close()
+	fmt.Println("Closing @tcp(127.0.0.1:3306)/tidder connection.")
+	sqlServ.db.Close()
 }
 
 /*
@@ -61,5 +64,23 @@ func (sqlServ SqlServer) Close() {
   Function allowing to get the db var from the sql library
 */
 func (sqlServ SqlServer) GetDB() *sql.DB {
-  return sqlServ.db
+	return sqlServ.db
+}
+
+/*
+  (sqlServ SqlServer) executeQuery(query string)
+
+  Execute brut query
+  Private SqlServer method
+  To use ONLY if you already made all verifications to avoid SQL error
+*/
+func (sqlServ SqlServer) executeQuery(query string) {
+	Util.Log("Executing following query :")
+	Util.Log(query)
+	_, err := sqlServ.db.Query(query)
+	if err != nil {
+		Util.Error(err)
+		return
+	}
+	Util.Log("Query successfully executed.")
 }
