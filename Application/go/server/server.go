@@ -1,11 +1,10 @@
 package server
 
 import (
-	"fmt"
+	SQL "github.com/Nimajjj/Tidder/go/sql"
+	Util "github.com/Nimajjj/Tidder/go/utility"
 	"html/template"
 	"net/http"
-
-	SQL "github.com/Nimajjj/Tidder/go/sql"
 )
 
 /*
@@ -21,12 +20,13 @@ import (
   ONLY function which can be accessed from the main.go script
   Entry door for the go web server.
 */
-func Run() {
-	fmt.Println("\nTidder Inc © 2022. Tous droits réservés")
-	fmt.Println("Starting server : http://localhost:80")
+
+func Run(DatabaseIp string) {
+	Util.Log("Tidder Inc © 2022. Tous droits réservés")
+	Util.Log("Starting server : http://localhost:80")
 
 	initStaticFolders()
-	launchServer()
+	launchServer(DatabaseIp)
 }
 
 /*
@@ -53,28 +53,16 @@ func initStaticFolders() {
   To do :
     -create an individual function for each template.
 */
-func launchServer() {
-	var db SQL.SqlServer
-	db.Connect()
-	defer db.Close()
-	account := db.GetAccountById(1)
-	indexTpl := template.Must(template.ParseFiles("./pages/index.html"))
+
+func launchServer(DatabaseIp string) {
+
 	indexTpl1 := template.Must(template.ParseFiles("./test/index2.html"))
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		if r.FormValue("name") != "" {
-			subTidderName := r.FormValue("name")
-			subTidderNsfw := false
-			if r.FormValue("nsfw") == "1" {
-				subTidderNsfw = true
-			}
-			db.CreateSub(subTidderName, 2, subTidderNsfw)
-		}
+	var db SQL.SqlServer
+	db.Connect(DatabaseIp)
+	defer db.Close()
 
-		indexTpl.Execute(w, account)
-	})
-
+	IndexHandler(&db)
 	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
-		indexTpl1.Execute(w, account)
 		if r.Method == http.MethodPost {
 			pseudo := r.FormValue("pseudo_input")
 			email := r.FormValue("email_input")
@@ -82,6 +70,7 @@ func launchServer() {
 			birthdate := r.FormValue("birthdate_input")
 			db.CreateAccount(pseudo, email, password, birthdate)
 		}
+		indexTpl1.Execute(w, nil)
 	})
 	http.ListenAndServe(":80", nil)
 }

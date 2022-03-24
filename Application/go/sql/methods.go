@@ -2,6 +2,7 @@ package mySQL
 
 import (
 	"fmt"
+	Util "github.com/Nimajjj/Tidder/go/utility"
 	"golang.org/x/crypto/bcrypt"
 	"strconv"
 	"time"
@@ -19,9 +20,10 @@ import (
   Get Accounts from an id into the database.
 */
 func (sqlServ SqlServer) GetAccountById(id int) Accounts {
-	fmt.Println("Requesting account", strconv.Itoa(id), "from Accounts table.")
 	var account Accounts
 	query := "SELECT * FROM accounts WHERE id_account = " + strconv.Itoa(id)
+	Util.Log("Executing following query :")
+	Util.Log(query)
 	err := sqlServ.db.QueryRow(query).Scan(
 		&account.Id,
 		&account.Name,
@@ -33,37 +35,82 @@ func (sqlServ SqlServer) GetAccountById(id int) Accounts {
 		&account.ProfilePicture,
 	)
 	if err != nil {
-		panic(err.Error())
+		Util.Error(err)
 	}
-	fmt.Println("Request completed.")
+	Util.Log("Query successfully executed.")
 	return account
 }
 
-// /!\ Not finished yet /!\ //
-// INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("Dank Meme", "default.png", 1, 0)
+/*
+  (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool)
+
+  Provide a name, an id and a bool to create a new subtidder
+
+  to do :
+    check nsfw
+*/
 func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) {
 	if len(subName) >= 25 || ownerId < 1 {
 		return
 	}
+
 	nsfw := 0
 	if nsfwInput {
 		nsfw = 1
 	}
-	query := "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("
+
+	// test if sub name is already taken
+	query := "name=\"" + subName + "\""
+	if len(sqlServ.GetSubs(query)) != 0 {
+		Util.Log("Creating sub failed : sub name <" + subName + "> already taken.")
+		return
+	}
+
+	query = "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("
 	query += "\"" + subName + "\", \"default.png\", "
-	query += strconv.Itoa(ownerId) + ", " + strconv.Itoa(nsfw)
+	query += strconv.Itoa(ownerId) + ", " + strconv.Itoa(nsfw) + ")"
 	sqlServ.executeQuery(query)
 }
 
-func (sqlServ SqlServer) executeQuery(query string) {
-	fmt.Println("Executing following query :")
-	fmt.Println(query)
-	_, err := sqlServ.db.Query(query)
-	if err != nil {
-		panic(err)
-		return
+/*
+  (sqlServ SqlServer) GetSubs(conditions string) []Subject
+
+  Function returning a list a all sub (responding to certain conditions)
+*/
+func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
+	Util.Log("Executing following query :")
+	query := "SELECT * FROM subjects "
+	if conditions != "" {
+		query += "WHERE " + conditions
 	}
-	fmt.Println("Query successfully executed.")
+	Util.Log(query)
+	rows, err := sqlServ.db.Query(query)
+	if err != nil {
+		Util.Error(err)
+	}
+
+	result := []Subject{}
+	for rows.Next() {
+		var id int
+		var name string
+		var pp string
+		var nsfw bool
+		var id_owner int
+		if err2 := rows.Scan(
+			&id,
+			&name,
+			&pp,
+			&id_owner,
+			&nsfw,
+		); err2 != nil {
+			Util.Error(err2)
+		}
+		sub := Subject{id, name, pp, nsfw, id_owner}
+		result = append(result, sub)
+	}
+
+	Util.Log("Query successfully executed.")
+	return result
 }
 
 func hashPassword(password string) (string, error) {

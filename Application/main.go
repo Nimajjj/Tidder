@@ -1,9 +1,10 @@
 package main
 
 import (
-  Server "github.com/Nimajjj/Tidder/go/server"
-
+  "os"
   _ "github.com/go-sql-driver/mysql"
+
+  Server "github.com/Nimajjj/Tidder/go/server"
 )
 
 /*
@@ -22,6 +23,12 @@ import (
   /!\ All func must be commented (cf. "/go/server/server.go") /!\
 */
 
+
+
 func main() {
-  Server.Run()
+  DatabaseIp := "127.0.0.1"
+  if len(os.Args) > 1 {
+    DatabaseIp = os.Args[1]
+  }
+  Server.Run(DatabaseIp)
 }

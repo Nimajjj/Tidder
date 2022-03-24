@@ -3,6 +3,7 @@ package mySQL
 import (
 	"database/sql"
 	"fmt"
+	Util "github.com/Nimajjj/Tidder/go/utility"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -36,14 +37,14 @@ type SqlServer struct {
   Connect structure to the distant mySql database.
   First method to use SqlServer
 */
-func (sqlServ *SqlServer) Connect() {
-	fmt.Println("Connecting to @tcp(10.13.34.114:3306)/tidder ...")
-	db, err := sql.Open("mysql", "root:Tidder123reddit@tcp(10.13.34.114:3306)/tidder")
+func (sqlServ *SqlServer) Connect(ip string) {
+	Util.Log("Connecting to @tcp(" + ip + ")/tidder ...")
+	db, err := sql.Open("mysql", "root:Tidder123reddit@tcp("+ip+")/tidder")
 	if err != nil {
-		panic(err.Error())
+		Util.Error(err)
 	}
 	sqlServ.db = db
-	fmt.Println("Connection completed.")
+	Util.Log("Connection completed.")
 }
 
 /*
@@ -64,4 +65,22 @@ func (sqlServ SqlServer) Close() {
 */
 func (sqlServ SqlServer) GetDB() *sql.DB {
 	return sqlServ.db
+}
+
+/*
+  (sqlServ SqlServer) executeQuery(query string)
+
+  Execute brut query
+  Private SqlServer method
+  To use ONLY if you already made all verifications to avoid SQL error
+*/
+func (sqlServ SqlServer) executeQuery(query string) {
+	Util.Log("Executing following query :")
+	Util.Log(query)
+	_, err := sqlServ.db.Query(query)
+	if err != nil {
+		Util.Error(err)
+		return
+	}
+	Util.Log("Query successfully executed.")
 }
