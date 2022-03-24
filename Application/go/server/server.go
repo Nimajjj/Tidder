@@ -60,6 +60,7 @@ func launchServer(DatabaseIp string) {
 	defer db.Close()
 
 	IndexHandler(&db)
+	SubtidderHandler(&db)
 
   testTpl := template.Must(template.ParseFiles("./test/index2.html"))
 	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
@@ -72,6 +73,6 @@ func launchServer(DatabaseIp string) {
 		}
 		testTpl.Execute(w, nil)
 	})
-  
+
 	http.ListenAndServe(":80", nil)
 }

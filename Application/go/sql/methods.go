@@ -1,7 +1,6 @@
 package mySQL
 
 import (
-	"fmt"
 	Util "github.com/Nimajjj/Tidder/go/utility"
 	"golang.org/x/crypto/bcrypt"
 	"strconv"

@@ -1,5 +1,7 @@
 package mySQL
 
+// SQL STRUCTURES //
+
 type Accounts struct {
   Id int                  `json:"id_account"`
   Name string             `json:"name"`
@@ -93,4 +95,13 @@ type Subject struct {
 type SubscribeToSubject struct {
   IdAccount int         `json:"id_account"`
   IdSubject string      `json:"id_subject"`
+}
+
+
+// ViewData
+
+type Subtidder struct {
+  Sub Subject
+  Author Accounts
+  Posts []Posts
 }
