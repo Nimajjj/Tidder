@@ -105,30 +105,31 @@
         <div class="sub_tab">Infos</div>
         <div class="sub_tab" style="display: block;">Administration</div>
       </div>
-
-      <div class="post">
-        <ul>
-          <li class="post_upper">
-            <a class="subreddit_name" href=""><img class="sub_logo" src="../images/global/logo.png" alt="subreddit logo">r/subreddit_name</a>
-            <p>Published by <a href="">u/Author</a> 2022-01-12 </p>
-          </li>
-          <li class="post_title">
-            <h2>Post title goes right here. bla bla bla</h2>
-          </li>
-          <li class="post_content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra purus in ipsum eleifend elementum. Cras iaculis, lorem at maximus  dictum, nibh ipsum pretium justo, ac hendrerit erat tellus non erat.  Vivamus commodo sapien a dapibus luctus. In hac habitasse platea  dictumst. Nulla sit amet venenatis metus. In hac habitasse platea  dictumst. Donec interdum enim a lectus luctus mollis. Integer libero  mauris.</p>
-          </li>
-          <li class="post_bottom">
-            <img class="post_icon" src="../images/global/upvote.png" alt="upvote">
-            <img class="post_icon" src="../images/global/empty_downvote.png" alt="downvote">
-            <a href="">123 Comments</a>
-            <a class="post_share" href="">
-              <img class="post_icon" src="../images/global/share.png" alt="share">
-              <p style="margin-left: 1vh;">Share</p>
-            </a>
-          </li>
-        </ul>
-      </div>
+      {{range .Posts}}
+        <div class="post">
+          <ul>
+            <li class="post_upper">
+              <a class="subreddit_name" href=""><img class="sub_logo" src="../images/global/logo.png" alt="subreddit logo">r/subreddit_name</a>
+              <p>Published by <a href="">u/Author</a> {{.CreationDate}} </p>
+            </li>
+            <li class="post_title">
+              <h2>{{.Title}}</h2>
+            </li>
+            <li class="post_content">
+              <p>{{.Content}}</p>
+            </li>
+            <li class="post_bottom">
+              <img class="post_icon" src="../images/global/upvote.png" alt="upvote">
+              <img class="post_icon" src="../images/global/empty_downvote.png" alt="downvote">
+              <a href="">123 Comments</a>
+              <a class="post_share" href="">
+                <img class="post_icon" src="../images/global/share.png" alt="share">
+                <p style="margin-left: 1vh;">Share</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      {{end}}
     </div>
 
     <div id="footer">
