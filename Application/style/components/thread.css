@@ -46,13 +46,25 @@
 }
 
 .post_upper img {
-  margin-right: 2.5%;
+  border-radius: 50%;
+  margin-right: 1%;
   height: 32px;
 }
 
 .post_upper > a {
-  display: flex;
-  align-items: center;
+  display: contents;
+}
+
+.post_upper a:hover {
+  text-decoration: underline;
+}
+
+.post_upper > a p:hover {
+  text-decoration: underline;
+}
+
+.post_upper > p {
+  margin-left: 1vw;
 }
 
 .post_upper > .subreddit_name ~ *, .post_upper > .subreddit_name ~ * > * {

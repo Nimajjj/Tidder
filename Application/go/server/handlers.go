@@ -50,8 +50,13 @@ func SubtidderHandler(db *SQL.SqlServer) {
       }
     }
 
+    subtidder.Posts = map[SQL.Posts]SQL.Accounts{}
     subtidder.Sub = db.GetSubs("name=\"" + formated_id + "\"")[0]  // ca c'est sale -> a refaire
-    subtidder.Posts = db.GetPosts("id_subject=" + strconv.Itoa(subtidder.Sub.Id))
+    posts := db.GetPosts("id_subject=" + strconv.Itoa(subtidder.Sub.Id))
+
+    for _, post := range posts {
+      subtidder.Posts[post] = db.GetAccountById(post.IdAuthor)
+    }
 
     tpl.Execute(w, subtidder)
   })

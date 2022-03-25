@@ -105,18 +105,21 @@
         <div class="sub_tab">Infos</div>
         <div class="sub_tab" style="display: block;">Administration</div>
       </div>
-      {{range .Posts}}
+      {{ range $post, $author := .Posts }}
         <div class="post">
           <ul>
             <li class="post_upper">
-              <a class="subreddit_name" href=""><img class="sub_logo" src="../images/global/logo.png" alt="subreddit logo">r/subreddit_name</a>
-              <p>Published by <a href="">u/Author</a> {{.CreationDate}} </p>
+              <a class="subreddit_name" href="/t/{{$.Sub.Name}}">
+                <img class="sub_logo" src="/images/profiles/{{$.Sub.ProfilePicture}}" alt="subreddit logo">
+                <p>t/{{$.Sub.Name}}</p>
+              </a>
+              <p>Published by <a href="">u/{{$author.Name}}</a> {{$post.CreationDate}} </p>
             </li>
             <li class="post_title">
-              <h2>{{.Title}}</h2>
+              <h2>{{$post.Title}}</h2>
             </li>
             <li class="post_content">
-              <p>{{.Content}}</p>
+              <p>{{$post.Content}}</p>
             </li>
             <li class="post_bottom">
               <img class="post_icon" src="../images/global/upvote.png" alt="upvote">
