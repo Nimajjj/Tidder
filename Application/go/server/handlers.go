@@ -40,7 +40,17 @@ func SubtidderHandler(db *SQL.SqlServer) {
   http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
     id := strings.ReplaceAll(r.URL.Path, "localhost/t/", "")
 		id = strings.ReplaceAll(r.URL.Path, "/t/", "")
-    subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0]  // ca c'est sale -> a refaire
+
+    formated_id := ""
+    for _, char := range id {
+      if char == '+' {
+        formated_id += " "
+      } else {
+        formated_id += string(char)
+      }
+    }
+
+    subtidder.Sub = db.GetSubs("name=\"" + formated_id + "\"")[0]  // ca c'est sale -> a refaire
     subtidder.Posts = db.GetPosts("id_subject=" + strconv.Itoa(subtidder.Sub.Id))
 
     tpl.Execute(w, subtidder)
