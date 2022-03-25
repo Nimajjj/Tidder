@@ -9,7 +9,6 @@ import (
 
 
 func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
-	Util.Log("Executing following query :")
 	query := "SELECT * FROM accounts "
 	if conditions != "" {
 		query += "WHERE " + conditions
@@ -57,7 +56,6 @@ func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
 func (sqlServ SqlServer) GetAccountById(id int) Accounts {
 	var account Accounts
 	query := "SELECT * FROM accounts WHERE id_account = " + strconv.Itoa(id)
-	Util.Log("Executing following query :")
 	Util.Log(query)
 	err := sqlServ.db.QueryRow(query).Scan(
 		&account.Id,

@@ -20,7 +20,6 @@ import (
   Function returning a list a all posts (responding to certain conditions)
 */
 func (sqlServ SqlServer) GetPosts(conditions string) []Posts {
-	Util.Log("Executing following query :")
 	query := "SELECT * FROM posts "
 	if conditions != "" {
 		query += "WHERE " + conditions

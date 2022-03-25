@@ -2,7 +2,6 @@ package mySQL
 
 import (
 	"database/sql"
-	"fmt"
 	Util "github.com/Nimajjj/Tidder/go/utility"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -54,7 +53,7 @@ func (sqlServ *SqlServer) Connect(ip string) {
   Second method to use : MUST USE `defer`
 */
 func (sqlServ SqlServer) Close() {
-	fmt.Println("Closing @tcp(127.0.0.1:3306)/tidder connection.")
+	Util.Log("Closing @tcp(127.0.0.1:3306)/tidder connection.")
 	sqlServ.db.Close()
 }
 
@@ -75,12 +74,10 @@ func (sqlServ SqlServer) GetDB() *sql.DB {
   To use ONLY if you already made all verifications to avoid SQL error
 */
 func (sqlServ SqlServer) executeQuery(query string) {
-	Util.Log("Executing following query :")
 	Util.Log(query)
 	_, err := sqlServ.db.Query(query)
 	if err != nil {
 		Util.Error(err)
 		return
 	}
-	Util.Log("Query successfully executed.")
 }

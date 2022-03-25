@@ -43,7 +43,6 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
   Function returning a list a all subjects (responding to certain conditions)
 */
 func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
-	Util.Log("Executing following query :")
 	query := "SELECT * FROM subjects "
 	if conditions != "" {
 		query += "WHERE " + conditions
