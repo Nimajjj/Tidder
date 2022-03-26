@@ -106,34 +106,34 @@
         <div class="sub_tab" style="display: block;">Administration</div>
       </div>
       {{ range .Posts}}
-      {{ range $post, $author := . }}
-        <div class="post">
-          <ul>
-            <li class="post_upper">
-              <a class="subreddit_name" href="/t/{{$.Sub.Name}}">
-                <img class="sub_logo" src="/images/subtidder/{{$.Sub.ProfilePicture}}" alt="subreddit logo">
-                <p>t/{{$.Sub.Name}}</p>
-              </a>
-              <p>Published by <a href="">u/{{$author.Name}}</a> {{$post.CreationDate}} </p>
-            </li>
-            <li class="post_title">
-              <h2>{{$post.Title}}</h2>
-            </li>
-            <li class="post_content">
-              <p>{{$post.Content}}</p>
-            </li>
-            <li class="post_bottom">
-              <img class="post_icon" src="../images/global/upvote.png" alt="upvote">
-              <img class="post_icon" src="../images/global/empty_downvote.png" alt="downvote">
-              <a href="">123 Comments</a>
-              <a class="post_share" href="">
-                <img class="post_icon" src="../images/global/share.png" alt="share">
-                <p style="margin-left: 1vh;">Share</p>
-              </a>
-            </li>
-          </ul>
-        </div>
-      {{end}}
+        {{ range $post, $author := . }}
+          <div class="post">
+            <ul>
+              <li class="post_upper">
+                <a class="subreddit_name" href="/t/{{$.Sub.Name}}">
+                  <img class="sub_logo" src="/images/subtidder/{{$.Sub.ProfilePicture}}" alt="subreddit logo">
+                  <p>t/{{$.Sub.Name}}</p>
+                </a>
+                <p>Published by <a href="">u/{{$author.Name}}</a> {{$post.CreationDate}} </p>
+              </li>
+              <li class="post_title">
+                <h2>{{$post.Title}}</h2>
+              </li>
+              <li class="post_content">
+                <p>{{$post.Content}}</p>
+              </li>
+              <li class="post_bottom">
+                <img class="post_icon" src="../images/global/upvote.png" alt="upvote">
+                <img class="post_icon" src="../images/global/empty_downvote.png" alt="downvote">
+                <a href="">123 Comments</a>
+                <a class="post_share" href="">
+                  <img class="post_icon" src="../images/global/share.png" alt="share">
+                  <p style="margin-left: 1vh;">Share</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        {{end}}
       {{end}}
     </div>
 
