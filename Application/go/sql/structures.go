@@ -100,13 +100,6 @@ type SubscribeToSubject struct {
 
 // ViewData
 
-
-type Subtidder struct {
-  Sub Subject
-	Posts map[Posts]Accounts
-}
-
-
 type SubtidderViewData struct {
 	Sub Subject
 	Posts []map[Posts]Accounts

@@ -120,7 +120,11 @@
                 <h2>{{$post.Title}}</h2>
               </li>
               <li class="post_content">
-                <p>{{$post.Content}}</p>
+                {{if (eq $post.MediaUrl "")}}
+                  <p>{{$post.Content}}</p>
+                {{else}}
+                  <img src="/images/posts/{{$post.MediaUrl}}" alt="post content">
+                {{end}}
               </li>
               <li class="post_bottom">
                 <img class="post_icon" src="../images/global/upvote.png" alt="upvote">
