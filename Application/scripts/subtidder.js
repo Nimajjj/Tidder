@@ -7,7 +7,7 @@ const infos = document.getElementById("infos");
 
 
 function show_posts() {
-  posts_tab.style.borderBottom = "0.5vh solid #F2F2F2"
+  posts_tab.style.borderBottom = "1vh solid #1A1A1A"
   infos_tab.style.borderBottom = "0"
   admin_tab.style.borderBottom = "0"
 
@@ -17,7 +17,7 @@ function show_posts() {
 
 function show_infos() {
   posts_tab.style.borderBottom = "0"
-  infos_tab.style.borderBottom = "0.5vh solid #F2F2F2"
+  infos_tab.style.borderBottom = "1vh solid #1A1A1A"
   admin_tab.style.borderBottom = "0"
 
   posts.style.display = "none"
