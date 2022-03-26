@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../style/pages/subtidder.css">
 
     <script type="text/javascript" src="../scripts/master.js" defer></script>
+    <script type="text/javascript" src="../scripts/subtidder.js" defer></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -101,44 +102,55 @@
         </div>
       </div>
       <div id="sub_bot_container">
-        <div class="sub_tab">Posts</div>
-        <div class="sub_tab">Infos</div>
-        <div class="sub_tab" style="display: block;">Administration</div>
+        <div id="posts_tab" class="sub_tab" onclick="show_posts()">Posts</div>
+        <div id="infos_tab" class="sub_tab" onclick="show_infos()">Infos</div>
+        <div id="admin_tab" class="sub_tab" style="display: block;">Administration</div>
       </div>
-      {{ range .Posts}}
-        {{ range $post, $author := . }}
-          <div class="post">
-            <ul>
-              <li class="post_upper">
-                <a class="subreddit_name" href="/t/{{$.Sub.Name}}">
-                  <img class="sub_logo" src="/images/subtidder/{{$.Sub.ProfilePicture}}" alt="subreddit logo">
-                  <p>t/{{$.Sub.Name}}</p>
-                </a>
-                <p>Published by <a href="">u/{{$author.Name}}</a> {{$post.CreationDate}} </p>
-              </li>
-              <li class="post_title">
-                <h2>{{$post.Title}}</h2>
-              </li>
-              <li class="post_content">
-                {{if (eq $post.MediaUrl "")}}
-                  <p>{{$post.Content}}</p>
-                {{else}}
-                  <img src="/images/posts/{{$post.MediaUrl}}" alt="post content">
-                {{end}}
-              </li>
-              <li class="post_bottom">
-                <img class="post_icon" src="../images/global/upvote.png" alt="upvote">
-                <img class="post_icon" src="../images/global/empty_downvote.png" alt="downvote">
-                <a href="">123 Comments</a>
-                <a class="post_share" href="">
-                  <img class="post_icon" src="../images/global/share.png" alt="share">
-                  <p style="margin-left: 1vh;">Share</p>
-                </a>
-              </li>
-            </ul>
-          </div>
+
+      <div id="infos">
+        <div class="post infos">
+          <h3>{{.Sub.Name}}'s infos :</h3><br>
+          <p>{{.Sub.Infos}}</p>
+        </div>
+      </div>
+
+      <div id="posts">
+        {{ range .Posts}}
+          {{ range $post, $author := . }}
+            <div class="post">
+              <ul>
+                <li class="post_upper">
+                  <a class="subreddit_name" href="/t/{{$.Sub.Name}}">
+                    <img class="sub_logo" src="/images/subtidder/{{$.Sub.ProfilePicture}}" alt="subreddit logo">
+                    <p>t/{{$.Sub.Name}}</p>
+                  </a>
+                  <p>Published by <a href="">u/{{$author.Name}}</a> {{$post.CreationDate}} </p>
+                </li>
+                <li class="post_title">
+                  <h2>{{$post.Title}}</h2>
+                </li>
+                <li class="post_content">
+                  {{if (eq $post.MediaUrl "")}}
+                    <p>{{$post.Content}}</p>
+                  {{else}}
+                    <img src="/images/posts/{{$post.MediaUrl}}" alt="post content">
+                  {{end}}
+                </li>
+                <li class="post_bottom">
+                  <img class="post_icon" src="../images/global/upvote.png" alt="upvote">
+                  <img class="post_icon" src="../images/global/empty_downvote.png" alt="downvote">
+                  <a href="">123 Comments</a>
+                  <a class="post_share" href="">
+                    <img class="post_icon" src="../images/global/share.png" alt="share">
+                    <p style="margin-left: 1vh;">Share</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          {{end}}
         {{end}}
-      {{end}}
+      </div>
+
     </div>
 
     <div id="footer">

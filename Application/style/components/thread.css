@@ -11,7 +11,7 @@
   background-color: #262626;
 }
 
-.post:hover {
+.post:hover:not(.infos) {
   border: 1px solid #F2F2F2;
   cursor: pointer;
 }
