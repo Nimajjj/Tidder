@@ -65,6 +65,8 @@ type Posts struct {
 	Pinned       bool   `json:"pinned"`
 	IdSubject    int    `json:"id_subject"`
 	IdAuthor     int    `json:"id_author"`
+
+	Score int
 }
 
 type SubjectAccess struct {

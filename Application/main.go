@@ -23,8 +23,6 @@ import (
   /!\ All func must be commented (cf. "/go/server/server.go") /!\
 */
 
-
-
 func main() {
   DatabaseIp := "127.0.0.1"
   if len(os.Args) > 1 {

@@ -58,7 +58,7 @@ func (sqlServ SqlServer) GetPosts(conditions string) []Posts {
 		); err2 != nil {
 			Util.Error(err2)
 		}
-		post := Posts{id, title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author}
+		post := Posts{id, title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author, upvotes-downvotes}
 		result = append(result, post)
 	}
 

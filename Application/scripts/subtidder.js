@@ -24,5 +24,8 @@ function show_infos() {
   infos.style.display = "block"
 }
 
+function main() {
+  show_posts()
+}
 
-show_posts()
+main()

@@ -105,6 +105,7 @@ a {
 /* ----------FOOTER---------- */
 
 #footer {
+	margin-top: 1vh;
 	bottom: 0%;
 	padding: 1vh 1vw;
 	display: flex;
