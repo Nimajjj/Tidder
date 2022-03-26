@@ -90,6 +90,8 @@ type Subject struct {
 	ProfilePicture string `json:"profile_picture"`
 	Nsfw           bool   `json:"nsfw"`
 	IdOwner        int    `json:"id_owner"`
+	Infos					 string `json:"infos"`
+	Banner				 string `json:"banner"`
 }
 
 type SubscribeToSubject struct {

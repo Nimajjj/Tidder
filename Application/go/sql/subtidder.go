@@ -59,16 +59,20 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 		var pp string
 		var nsfw bool
 		var id_owner int
+		var infos string
+		var banner string
 		if err2 := rows.Scan(
 			&id,
 			&name,
 			&pp,
 			&id_owner,
 			&nsfw,
+			&banner,
+			&infos,
 		); err2 != nil {
 			Util.Error(err2)
 		}
-		sub := Subject{id, name, pp, nsfw, id_owner}
+		sub := Subject{id, name, pp, nsfw, id_owner, infos, banner}
 		result = append(result, sub)
 	}
 
