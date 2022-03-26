@@ -13,7 +13,7 @@ func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
 	if conditions != "" {
 		query += "WHERE " + conditions
 	}
-	Util.Log(query)
+	Util.Query(query)
 	rows, err := sqlServ.db.Query(query)
 	if err != nil {
 		Util.Error(err)
@@ -56,7 +56,7 @@ func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
 func (sqlServ SqlServer) GetAccountById(id int) Accounts {
 	var account Accounts
 	query := "SELECT * FROM accounts WHERE id_account = " + strconv.Itoa(id)
-	Util.Log(query)
+	Util.Query(query)
 	err := sqlServ.db.QueryRow(query).Scan(
 		&account.Id,
 		&account.Name,
@@ -91,7 +91,7 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 	query := "name=\"" + name + "\" OR "
 	query += "\"" + email + "\""
 	if len(sqlServ.GetSubs(query)) != 0 {
-		Util.Log("Creating sub failed : sub name <" + name + "> already taken.")
+		Util.Warning("Creating sub failed : sub name <" + name + "> already taken.")
 		return
 	}
 	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("
@@ -101,5 +101,6 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 	query += "\"" + Birthdate + "\","
 	query += "\"" + currentTime.Format("2006-01-02") + "\","
 	query += " 0, \"Default.png\" )"
+	Util.Query(query)
 	sqlServ.executeQuery(query)
 }

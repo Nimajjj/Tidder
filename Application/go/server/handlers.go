@@ -22,7 +22,7 @@ func IndexHandler(db *SQL.SqlServer) {
     if r.FormValue("name") != "" {
       subTidderName := r.FormValue("name")
       subTidderNsfw := false
-      if r.FormValue("nsfw") == "1" {
+      if r.FormValue("nsfw") == "0" {
         subTidderNsfw = true
       }
       db.CreateSub(subTidderName, 2, subTidderNsfw)

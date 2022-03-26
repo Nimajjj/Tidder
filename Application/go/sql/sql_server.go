@@ -74,7 +74,7 @@ func (sqlServ SqlServer) GetDB() *sql.DB {
   To use ONLY if you already made all verifications to avoid SQL error
 */
 func (sqlServ SqlServer) executeQuery(query string) {
-	Util.Log(query)
+	Util.Query(query)
 	_, err := sqlServ.db.Query(query)
 	if err != nil {
 		Util.Error(err)

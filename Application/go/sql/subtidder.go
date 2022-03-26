@@ -26,13 +26,14 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 	// test if sub name is already taken
 	query := "name=\"" + subName + "\""
 	if len(sqlServ.GetSubs(query)) != 0 {
-		Util.Log("Creating sub failed : sub name <" + subName + "> already taken.")
+		Util.Warning("Creating sub failed : sub name <" + subName + "> already taken.")
 		return
 	}
 
 	query = "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("
 	query += "\"" + subName + "\", \"default.png\", "
 	query += strconv.Itoa(ownerId) + ", " + strconv.Itoa(nsfw) + ")"
+	Util.Query(query)
 	sqlServ.executeQuery(query)
 }
 
@@ -47,7 +48,7 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 	if conditions != "" {
 		query += "WHERE " + conditions
 	}
-	Util.Log(query)
+	Util.Query(query)
 	rows, err := sqlServ.db.Query(query)
 	if err != nil {	Util.Error(err)	}
 

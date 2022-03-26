@@ -24,7 +24,7 @@ func (sqlServ SqlServer) GetPosts(conditions string) []Posts {
 	if conditions != "" {
 		query += "WHERE " + conditions
 	}
-	Util.Log(query)
+	Util.Query(query)
 	rows, err := sqlServ.db.Query(query)
 	if err != nil {	Util.Error(err)	}
 
