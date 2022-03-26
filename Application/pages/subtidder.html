@@ -105,7 +105,8 @@
         <div class="sub_tab">Infos</div>
         <div class="sub_tab" style="display: block;">Administration</div>
       </div>
-      {{ range $post, $author := .Posts }}
+      {{ range .Posts}}
+      {{ range $post, $author := . }}
         <div class="post">
           <ul>
             <li class="post_upper">
@@ -132,6 +133,7 @@
             </li>
           </ul>
         </div>
+      {{end}}
       {{end}}
     </div>
 

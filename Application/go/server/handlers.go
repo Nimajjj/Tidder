@@ -34,7 +34,7 @@ func IndexHandler(db *SQL.SqlServer) {
 
 
 func SubtidderHandler(db *SQL.SqlServer) {
-  var subtidder SQL.Subtidder
+  var subtidder SQL.SubtidderViewData
 
   tpl := template.Must(template.ParseFiles("./pages/subtidder.html"))
   http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
@@ -50,12 +50,18 @@ func SubtidderHandler(db *SQL.SqlServer) {
       }
     }
 
-    subtidder.Posts = map[SQL.Posts]SQL.Accounts{}
+    subtidder.Posts = []map[SQL.Posts]SQL.Accounts{}
     subtidder.Sub = db.GetSubs("name=\"" + formated_id + "\"")[0]  // ca c'est sale -> a refaire
-    posts := db.GetPosts("id_subject=" + strconv.Itoa(subtidder.Sub.Id))
 
-    for _, post := range posts {
-      subtidder.Posts[post] = db.GetAccountById(post.IdAuthor)
+    posts := db.GetPosts("id_subject=" + strconv.Itoa(subtidder.Sub.Id) + " ORDER BY creation_date DESC")
+
+    for _, post := range posts {  // svp me demandez pas d'expliquer ce bout de code franchement c chaud
+      subtidder.Posts = append(
+        subtidder.Posts,
+        map[SQL.Posts]SQL.Accounts{
+          post: db.GetAccountById(post.IdAuthor),
+        },
+      )
     }
 
     tpl.Execute(w, subtidder)

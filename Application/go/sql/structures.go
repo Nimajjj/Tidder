@@ -100,13 +100,14 @@ type SubscribeToSubject struct {
 
 // ViewData
 
-type Feed struct {
-	Subtidders []Subject
-	Posts []Posts
-	Authors []Accounts
-}
 
 type Subtidder struct {
   Sub Subject
 	Posts map[Posts]Accounts
+}
+
+
+type SubtidderViewData struct {
+	Sub Subject
+	Posts []map[Posts]Accounts
 }
