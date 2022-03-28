@@ -3,10 +3,9 @@ package mySQL
 import (
 	Util "github.com/Nimajjj/Tidder/go/utility"
 	"golang.org/x/crypto/bcrypt"
+	"strconv"
 	"time"
-  "strconv"
 )
-
 
 func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
 	query := "SELECT * FROM accounts "
@@ -76,7 +75,6 @@ func (sqlServ SqlServer) GetAccountById(id int) Accounts {
 	return account
 }
 
-
 func HashPassword(password string) string {
 	var passwordBytes = []byte(password)
 	hashedPasswordBytes, err := bcrypt.GenerateFromPassword(passwordBytes, bcrypt.MinCost)
@@ -88,13 +86,12 @@ func HashPassword(password string) string {
 	return hashedPassword
 }
 
-
-func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) 
-	studentId = "S0000000000D"
+func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) {
 	currentTime := time.Now()
 	query := "name=\"" + name + "\" OR "
-	query += "\"" + email + "\""
-	if len(sqlServ.GetSubs(query)) != 0 {
+	query += "\"" + email + "\" OR "
+	query += "\"" + studentId + "\""
+	if len(sqlServ.GetAccount(query)) != 0 {
 		Util.Warning("Creating sub failed : sub name <" + name + "> already taken.")
 		return
 	}
