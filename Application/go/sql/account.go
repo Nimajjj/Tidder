@@ -29,6 +29,7 @@ func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
 		var creation_date string
 		var karma int
 		var profile_picture string
+		var student_id string
 		if err2 := rows.Scan(
 			&id,
 			&name,
@@ -38,11 +39,12 @@ func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
 			&creation_date,
 			&karma,
 			&profile_picture,
+			&student_id,
 		); err2 != nil {
 			Util.Error(err2)
 		}
-		sub := Accounts{id, name, email, hashed_password, birth_date, creation_date, karma, profile_picture}
-		result = append(result, sub)
+		account := Accounts{id, name, email, hashed_password, birth_date, creation_date, karma, profile_picture, student_id}
+		result = append(result, account)
 	}
 
 	return result
@@ -66,6 +68,7 @@ func (sqlServ SqlServer) GetAccountById(id int) Accounts {
 		&account.CreationDate,
 		&account.Karma,
 		&account.ProfilePicture,
+		&account.StudentId,
 	)
 	if err != nil {
 		Util.Error(err)
@@ -86,7 +89,8 @@ func HashPassword(password string) string {
 }
 
 
-func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string) {
+func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) 
+	studentId = "S0000000000D"
 	currentTime := time.Now()
 	query := "name=\"" + name + "\" OR "
 	query += "\"" + email + "\""
@@ -94,13 +98,14 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 		Util.Warning("Creating sub failed : sub name <" + name + "> already taken.")
 		return
 	}
-	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("
+	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture, student_id) VALUES ("
 	query += "\"" + name + "\","
 	query += "\"" + email + "\","
 	query += "\"" + HashPassword(Password) + "\","
 	query += "\"" + Birthdate + "\","
 	query += "\"" + currentTime.Format("2006-01-02") + "\","
-	query += " 0, \"Default.png\" )"
+	query += " 0, \"Default.png\","
+	query += "\"" + studentId + "\")"
 	Util.Query(query)
 	sqlServ.executeQuery(query)
 }
