@@ -89,7 +89,7 @@ func HashPassword(password string) string {
 }
 
 
-func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) 
+func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) {
 	studentId = "S0000000000D"
 	currentTime := time.Now()
 	query := "name=\"" + name + "\" OR "
