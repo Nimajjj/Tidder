@@ -39,6 +39,8 @@ type Comments struct {
 	IdAuthor     int    `json:"id_author"`
 	ResponseToId int    `json:"response_to_id"`
 	IdPost       int    `json:"id_post"`
+
+	Score int
 }
 
 type HasSubjectRole struct {
@@ -67,6 +69,7 @@ type Posts struct {
 	IdAuthor     int    `json:"id_author"`
 
 	Score int
+	NumberOfComments int
 }
 
 type SubjectAccess struct {
@@ -92,8 +95,8 @@ type Subject struct {
 	ProfilePicture string `json:"profile_picture"`
 	Nsfw           bool   `json:"nsfw"`
 	IdOwner        int    `json:"id_owner"`
-	Infos					 string `json:"infos"`
-	Banner				 string `json:"banner"`
+	Infos		   string `json:"infos"`
+	Banner		   string `json:"banner"`
 }
 
 type SubscribeToSubject struct {

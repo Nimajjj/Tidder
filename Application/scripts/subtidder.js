@@ -60,10 +60,6 @@ document.querySelectorAll('.downvote_bt').forEach(item => {
 })
 
 
-
-
-
-
 function main() {
   show_posts()
 }
