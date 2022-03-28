@@ -11,7 +11,9 @@ type Accounts struct {
 	CreationDate   string `json:"creation_date"`
 	Karma          int    `json:"karma"`
 	ProfilePicture string `json:"profile_picture"`
+	StudentId	   string `json:"student_id"`
 }
+
 
 type GlobalRoles struct {
 	Id   int    `json:"id_global_role"`

@@ -19,7 +19,7 @@ func IndexHandler(db *SQL.SqlServer) {
 
   tpl := template.Must(template.ParseFiles("./pages/index.html"))
   http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-    if r.FormValue("name") != "" {
+    if r.FormValue("name") != "" {        // create subtidder
       subTidderName := r.FormValue("name")
       subTidderNsfw := false
       if r.FormValue("nsfw") == "0" {
@@ -38,6 +38,16 @@ func SubtidderHandler(db *SQL.SqlServer) {
 
   tpl := template.Must(template.ParseFiles("./pages/subtidder.html"))
   http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
+    if r.FormValue("name") != "" {        // create subtidder
+      subTidderName := r.FormValue("name")
+      subTidderNsfw := false
+      if r.FormValue("nsfw") == "0" {
+        subTidderNsfw = true
+      }
+      db.CreateSub(subTidderName, 2, subTidderNsfw)
+    }
+
+    
     id := strings.ReplaceAll(r.URL.Path, "localhost/t/", "")
 		id = strings.ReplaceAll(r.URL.Path, "/t/", "")
 

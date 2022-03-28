@@ -31,7 +31,7 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 	}
 
 	query = "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("
-	query += "\"" + subName + "\", \"default.png\", "
+	query += "\"" + subName + "\", \"default_pp.png\", "
 	query += strconv.Itoa(ownerId) + ", " + strconv.Itoa(nsfw) + ")"
 	Util.Query(query)
 	sqlServ.executeQuery(query)
