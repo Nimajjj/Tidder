@@ -89,8 +89,8 @@ func HashPassword(password string) string {
 func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) {
 	currentTime := time.Now()
 	query := "name=\"" + name + "\" OR "
-	query += "\"" + email + "\" OR "
-	query += "\"" + studentId + "\""
+	query += "email=\"" + email + "\" OR "
+	query += "student_id=\"" + studentId + "\""
 	if len(sqlServ.GetAccount(query)) != 0 {
 		Util.Warning("Creating sub failed : sub name <" + name + "> already taken.")
 		return
