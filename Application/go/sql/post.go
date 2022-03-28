@@ -11,9 +11,6 @@ import (
 */
 
 
-
-
-
 /*
   (sqlServ SqlServer) GetPosts(conditions string) []Posts
 
