@@ -6,6 +6,7 @@ import (
   "html/template"
   "net/http"
 
+
   SQL "github.com/Nimajjj/Tidder/go/sql"
 )
 
@@ -75,5 +76,21 @@ func SubtidderHandler(db *SQL.SqlServer) {
     }
 
     tpl.Execute(w, subtidder)
+  })
+}
+
+
+func SearchHandler(db *SQL.SqlServer) {
+  results := SQL.SearchViewData{}
+  tpl := template.Must(template.ParseFiles("./pages/search/search.html"))
+  http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
+    search := ""
+    if r.FormValue("search") != "" {
+      search = r.FormValue("search")
+    }
+
+    results.Subjects = db.GetSubs("name LIKE \"%" + search + "%\"")
+    
+    tpl.Execute(w, results)
   })
 }

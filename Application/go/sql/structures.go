@@ -113,3 +113,8 @@ type SubtidderViewData struct {
 	Sub Subject
 	Posts []map[Posts]Accounts
 }
+
+
+type SearchViewData struct {
+	Subjects []Subject
+}

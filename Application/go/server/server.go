@@ -61,6 +61,7 @@ func launchServer(DatabaseIp string) {
 
 	IndexHandler(&db)
 	SubtidderHandler(&db)
+	SearchHandler(&db)
 
 	testTpl := template.Must(template.ParseFiles("./test/index2.html"))
 	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {

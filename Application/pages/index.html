@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
 
-    <link rel="stylesheet" href="/style/master.css">
-    <link rel="stylesheet" href="/style/components/search_bar.css">
-    <link rel="stylesheet" href="/style/components/thread.css">
-    <link rel="stylesheet" href="/style/create_sub.css">
+    <link rel="stylesheet" href="../style/master.css">
+    <link rel="stylesheet" href="../style/components/search_bar.css">
+    <link rel="stylesheet" href="../style/components/thread.css">
+    <link rel="stylesheet" href="../style/components/create_sub.css">
+    <link rel="stylesheet" href="../style/pages/search.css">
 
     <script type="text/javascript" src="/scripts/master.js" defer></script>
 
@@ -25,9 +26,9 @@
         <h1 id="tidder_title">Tidder</h1>
       </a>
 
-      <form class="container" action="" method="GET">
-        <input id="searchTerm" type="text" placeholder="What are you looking for ?">
-        <button id="searchButton" type="submit" >
+      <form class="container" action="/s/" method="GET">
+        <input id="searchTerm" name="search" type="text" placeholder="What are you looking for ?" required>
+        <button id="searchButton" type="submit">
           <i class='fa-solid fa-magnifying-glass'></i>
         </button>
       </form>
