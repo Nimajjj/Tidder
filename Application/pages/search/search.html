@@ -98,23 +98,27 @@
       </form>
 
       <div id="search_results">
-        {{range .Subjects}}
-          <div class="post search_result" onclick="location.href='/t/{{.Name}}'">
-            <div>
-              <img class="sub_logo" src="../images/subtidder/{{.ProfilePicture}}" alt="subtidder logo">
+        {{if .Subjects}}
+          {{range .Subjects}}
+            <div class="post search_result" onclick="location.href='/t/{{.Name}}'">
               <div>
-                <div class="sub_name_container">
-                  <h2>{{.Name}}</h2>
-                  <p>347 subscribers</p>
+                <img class="sub_logo" src="../images/subtidder/{{.ProfilePicture}}" alt="subtidder logo">
+                <div>
+                  <div class="sub_name_container">
+                    <h2>{{.Name}}</h2>
+                    <p>347 subscribers</p>
+                  </div>
+                  <p>{{.Infos}}</p>
                 </div>
-                <p>{{.Infos}}</p>
+              </div>
+              <div class="subscribe_bt">
+                <p>Subscribe</p>
               </div>
             </div>
-            <div class="subscribe_bt">
-              <p>Subscribe</p>
-            </div>
-          </div>
-        {{end}}
+          {{end}}
+        {{else}}
+          <h2>Wow ! Such empty...</h2>
+        {{end}}        
       </div>
 
     </div>
