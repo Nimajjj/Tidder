@@ -75,16 +75,21 @@ a {
 	font-size: 32px;
 }
 
-#header #create_sub_container {
+#header #create_sub_container, #new_post_container {
 	display: flex;
 	align-items: center;
 	margin-right: 2vw;
 	cursor: pointer;
+	opacity: 0.75;
 }
 
-#header #create_sub_container img {
+#header #create_sub_container img, #new_post_container img {
 	height: 16px;
 	margin-right: 0.5vw;
+}
+
+#header #create_sub_container:hover, #new_post_container:hover {
+	opacity: 1;
 }
 
 /* -------------------------- */
