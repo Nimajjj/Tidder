@@ -8,3 +8,9 @@ function show_popup() {
   popup.style.display = "block"
 }
 
+
+if (document.getElementById("create_subtidder_error").innerHTML != "") {
+  show_popup()
+} else {
+  hide_popup()
+}
