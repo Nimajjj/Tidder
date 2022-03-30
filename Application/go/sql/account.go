@@ -86,14 +86,16 @@ func HashPassword(password string) string {
 	return hashedPassword
 }
 
-func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) {
+func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) string {
+	error := ""
 	currentTime := time.Now()
 	query := "name=\"" + name + "\" OR "
 	query += "email=\"" + email + "\" OR "
 	query += "student_id=\"" + studentId + "\""
 	if len(sqlServ.GetAccount(query)) != 0 {
+		error += "rentrez des "
 		Util.Warning("Creating sub failed : sub name <" + name + "> already taken.")
-		return
+		return error
 	}
 	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture, student_id) VALUES ("
 	query += "\"" + name + "\","
@@ -105,4 +107,5 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 	query += "\"" + studentId + "\")"
 	Util.Query(query)
 	sqlServ.executeQuery(query)
+	return error
 }
