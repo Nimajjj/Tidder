@@ -84,13 +84,15 @@ func SearchHandler(db *SQL.SqlServer) {
   results := SQL.SearchViewData{}
   tpl := template.Must(template.ParseFiles("./pages/search/search.html"))
   http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
+    results.Subjects = map[SQL.Subject]int{}
     search := ""
     if r.FormValue("search") != "" {
       search = r.FormValue("search")
     }
 
-    results.Subjects = db.GetSubs("name LIKE \"%" + search + "%\"")
-    
+    for _, subject := range db.GetSubs("name LIKE \"%" + search + "%\"") {
+      results.Subjects[subject] = db.GetNumberOfSubscriber(subject.Id)
+    }
     tpl.Execute(w, results)
   })
 }

@@ -86,3 +86,16 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 
 	return result
 }
+
+
+func (sqlServ SqlServer) GetNumberOfSubscriber(subject_id int) int {
+	query := "SELECT * FROM subscribe_to_subject WHERE id_subject=" + strconv.Itoa(subject_id)
+	Util.Query(query)
+	rows, err := sqlServ.db.Query(query)
+	if err != nil {	Util.Error(err)	}
+	result := 0
+	for rows.Next() {
+		result += 1
+	} 
+	return result
+}

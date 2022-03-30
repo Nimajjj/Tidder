@@ -116,5 +116,5 @@ type SubtidderViewData struct {
 
 
 type SearchViewData struct {
-	Subjects []Subject
+	Subjects map[Subject]int
 }
