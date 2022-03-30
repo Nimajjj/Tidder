@@ -86,6 +86,7 @@ func HashPassword(password string) string {
 	return hashedPassword
 }
 
+
 func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) string {
 	error := ""
 	currentTime := time.Now()
@@ -108,4 +109,29 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 	Util.Query(query)
 	sqlServ.executeQuery(query)
 	return error
+}
+
+
+func (sqlServ SqlServer) SubscribeToSubject(idAccount int, idSubject int) {
+	alreadySubscribed := false
+
+	query := "SELECT * FROM subscribe_to_subject WHERE id_account = " + strconv.Itoa(idAccount) + " AND id_subject = " + strconv.Itoa(idSubject)
+	Util.Query(query)
+	rows, err := sqlServ.db.Query(query)
+	if err != nil {	Util.Error(err)	}
+	for rows.Next() {
+		alreadySubscribed = true
+		break
+	} 
+
+	if !alreadySubscribed {
+		query = "INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES ("
+		query += strconv.Itoa(idAccount) + ","
+		query += strconv.Itoa(idSubject) + ")"
+		Util.Query(query)
+		sqlServ.executeQuery(query)
+		Util.Log("User id " + strconv.Itoa(IdUser)) +  " Subscribed to subject : " + strconv.Itoa(idSubject))
+	} else {
+
+	}
 }
