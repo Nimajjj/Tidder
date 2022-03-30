@@ -109,9 +109,15 @@ type SubscribeToSubject struct {
 
 // ViewData
 
+type MasterVD struct {
+	SubtidderVD 	SubtidderViewData
+	SearchVD		SearchViewData
+	Error string
+}
+
 type SubtidderViewData struct {
-	Sub Subject
-	Posts []map[Posts]Accounts
+	Sub 	Subject
+	Posts 	[]map[Posts]Accounts
 }
 
 

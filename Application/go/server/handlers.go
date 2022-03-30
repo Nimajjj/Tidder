@@ -16,7 +16,7 @@ import (
   Function handling the index.html template
 */
 func IndexHandler(db *SQL.SqlServer) {
-  account := db.GetAccountById(1)
+  viewData := SQL.MasterVD{}
 
   tpl := template.Must(template.ParseFiles("./pages/index.html"))
   http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -26,10 +26,10 @@ func IndexHandler(db *SQL.SqlServer) {
       if r.FormValue("nsfw") == "0" {
         subTidderNsfw = true
       }
-      db.CreateSub(subTidderName, 2, subTidderNsfw)
+      viewData.Error = db.CreateSub(subTidderName, 2, subTidderNsfw)
     }
 
-    tpl.Execute(w, account)
+    tpl.Execute(w, viewData)
   })
 }
 
@@ -86,9 +86,7 @@ func SearchHandler(db *SQL.SqlServer) {
   http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
     results.Subjects = map[SQL.Subject]int{}
     search := ""
-    if r.FormValue("search") != "" {
-      search = r.FormValue("search")
-    }
+    if r.FormValue("search") != "" { search = r.FormValue("search") }
 
     for _, subject := range db.GetSubs("name LIKE \"%" + search + "%\"") {
       results.Subjects[subject] = db.GetNumberOfSubscriber(subject.Id)

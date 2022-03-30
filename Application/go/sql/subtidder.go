@@ -13,17 +13,17 @@ import (
   to do :
     check nsfw
 */
-func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) {
+func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) string {
 	if len(subName) >= 25 || ownerId < 1 {
 		Util.Warning("Creating sub failed : sub name <" + subName + "> is longer than 24 characters.")
-		return
+		return "Creating sub failed : sub name <" + subName + "> is longer than 24 characters."
 	}
 	forbiddenChar := []string{" ", "'", "\"", "`", ";", ",", ".", ":", "!", "?", "\\", "/", "|", "=", "*", "&", "%", "$", "#", "@", "~", "^", "(", ")", "[", "]", "{", "}", "<", ">"}
 	for _, char := range subName {
 		for _, forbidden := range forbiddenChar {
 			if string(char) == forbidden {
 				Util.Warning("Creating sub failed : sub name <" + subName + "> contains forbidden characters.")
-				return
+				return "Creating sub failed : sub name <" + subName + "> contains forbidden characters."
 			}
 		}
 	}
@@ -35,7 +35,7 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 	query := "name=\"" + subName + "\""
 	if len(sqlServ.GetSubs(query)) != 0 {
 		Util.Warning("Creating sub failed : sub name <" + subName + "> already taken.")
-		return
+		return "Creating sub failed : sub name <" + subName + "> already taken."
 	}
 
 	query = "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("
@@ -43,6 +43,7 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 	query += strconv.Itoa(ownerId) + ", " + strconv.Itoa(nsfw) + ")"
 	Util.Query(query)
 	sqlServ.executeQuery(query)
+	return ""
 }
 
 

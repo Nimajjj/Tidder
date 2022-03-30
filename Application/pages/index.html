@@ -43,12 +43,12 @@
           <p>Create subtidder</p>
         </div>
         <img id="profile_picture" src="/images/global/empty_profile_picture.png" alt="profile picture">
-        <p id="pseudonym">{{.Name}} - {{.Karma}}</p>
+        <p id="pseudonym">TEST</p>
       </div>
     </div>
 
     <div id="main">
-      <form id="create_sub_popup" method="post" style="display: none;">
+      <form id="create_sub_popup" method="post">
         <ul>
 
           <li>
@@ -86,6 +86,10 @@
           <li>
             <label for="nsfw" style="font-weight: bold;">NSFW :</label>
             <input type="checkbox" name="nsfw" value='0'>
+          </li>
+
+          <li>
+            <p id="create_subtidder_error">{{.Error}}</p>
           </li>
 
           <li class="img_container">
