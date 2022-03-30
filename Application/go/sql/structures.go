@@ -115,6 +115,7 @@ type MasterVD struct {
 	Error string
 }
 
+
 type SubtidderViewData struct {
 	Sub 	Subject
 	Posts 	[]map[Posts]Accounts

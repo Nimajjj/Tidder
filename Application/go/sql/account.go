@@ -86,47 +86,52 @@ func HashPassword(password string) string {
 	return hashedPassword
 }
 
-func (sqlServ SqlServer) CreateAccount(name string, email string, password string, birthDate string, studentId string, verifPassword string) string {
+
+func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) string {
 	error := ""
-
-	if verifPassword != password {
-		error += "Les Mots de passes ne sont pas identiques"
-		Util.Warning("Les mots de passes : " + password + "et" + verifPassword + "ne sont pas identiques")
-		return error
-	}
-
 	currentTime := time.Now()
-
-	query := "name=\"" + name + "\""
+	query := "name=\"" + name + "\" OR "
+	query += "email=\"" + email + "\" OR "
+	query += "student_id=\"" + studentId + "\""
 	if len(sqlServ.GetAccount(query)) != 0 {
-		error += "Rentrez un pseudo non utilisé"
-		Util.Warning("Creating account failed : name :  <" + name + "> already taken.")
+		error += "rentrez des "
+		Util.Warning("Creating sub failed : sub name <" + name + "> already taken.")
 		return error
 	}
-
-	query = "email=\"" + email + "\""
-	if len(sqlServ.GetAccount(query)) != 0 {
-		error += "Rentrez un email non utilisé"
-		Util.Warning("Creating account failed : email : <" + email + "> already taken.")
-		return error
-	}
-
-	query = "student_id=\"" + studentId + "\""
-	if len(sqlServ.GetAccount(query)) != 0 {
-		error += "Rentrez un identifiant ynov non utilisé"
-		Util.Warning("Creating account failed : studenId : <" + studentId + "> already taken.")
-		return error
-	}
-
 	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture, student_id) VALUES ("
 	query += "\"" + name + "\","
 	query += "\"" + email + "\","
-	query += "\"" + HashPassword(password) + "\","
-	query += "\"" + birthDate + "\","
+	query += "\"" + HashPassword(Password) + "\","
+	query += "\"" + Birthdate + "\","
 	query += "\"" + currentTime.Format("2006-01-02") + "\","
 	query += " 0, \"Default.png\","
 	query += "\"" + studentId + "\")"
 	Util.Query(query)
 	sqlServ.executeQuery(query)
 	return error
+}
+
+
+func (sqlServ SqlServer) SubscribeToSubject(idAccount int, idSubject int) {
+	alreadySubscribed := false
+
+	query := "SELECT * FROM subscribe_to_subject WHERE id_account = " + strconv.Itoa(idAccount) + " AND id_subject = " + strconv.Itoa(idSubject)
+	Util.Query(query)
+	rows, err := sqlServ.db.Query(query)
+	if err != nil {	Util.Error(err)	}
+	for rows.Next() {
+		alreadySubscribed = true
+		break
+	} 
+
+	if !alreadySubscribed {
+		query = "INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES ("
+		query += strconv.Itoa(idAccount) + ","
+		query += strconv.Itoa(idSubject) + ")"
+		Util.Query(query)
+		sqlServ.executeQuery(query)
+		Util.Log("User id " + strconv.Itoa(IdUser)) +  " Subscribed to subject : " + strconv.Itoa(idSubject))
+	} else {
+
+	}
 }
