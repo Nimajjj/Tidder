@@ -74,10 +74,10 @@ func launchServer(DatabaseIp string) {
 			password := r.FormValue("password_input")
 			birthdate := r.FormValue("birthdate_input")
 			studentId := r.FormValue("id_input")
-			if pseudo != "" && email != "" && password != "" && birthdate != "" {
-				db.CreateAccount(pseudo, email, password, birthdate, studentId)
+			if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
+				err.Error = db.CreateAccount(pseudo, email, password, birthdate, studentId)
 			} else {
-				err.Error = "Rentrez des informations valide"
+				err.Error = "Rentrez des informations valides"
 			}
 		}
 		testTpl.Execute(w, err)
