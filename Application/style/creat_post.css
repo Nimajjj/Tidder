@@ -4,6 +4,9 @@ ul {
     list-style-type: none;
 }
 
+p{
+    color: gray;
+}
 
 
 /*---------------------------*/
@@ -185,6 +188,7 @@ textarea {
     background-color: #1A1A1B;
     color: #555555;
     font-size: 15px;
+    resize : none;
 }
 
 .txt_container {
@@ -216,7 +220,7 @@ textarea {
     align-self: center;
 }
 
-.BBcode {
+.bbcode {
     display: inline-flex;
     width: 100%;
     border-bottom: 1px solid #F2F2F2;
@@ -230,7 +234,7 @@ textarea {
 }
 
 
-#list_picto {
+.list_picto {
     border-right: 1px solid #666666;
     text-align-last: center;
     padding-top: 1vh;

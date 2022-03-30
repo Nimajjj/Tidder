@@ -7,3 +7,4 @@ function hide_popup() {
 function show_popup() {
   popup.style.display = "block"
 }
+
