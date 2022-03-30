@@ -58,6 +58,7 @@ func launchServer(DatabaseIp string) {
 	var db SQL.SqlServer
 	db.Connect(DatabaseIp)
 	defer db.Close()
+	var IsConnected bool = false
 
 	IndexHandler(&db)
 	SubtidderHandler(&db)
@@ -73,10 +74,12 @@ func launchServer(DatabaseIp string) {
 			pseudo := r.FormValue("pseudo_input")
 			email := r.FormValue("email_input")
 			password := r.FormValue("password_input")
+			verifpassword := r.FormValue("passwordverif_input")
 			birthdate := r.FormValue("birthdate_input")
 			studentId := r.FormValue("id_input")
 			if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
-				err.Error = db.CreateAccount(pseudo, email, password, birthdate, studentId)
+				err.Error = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
+				IsConnected = true
 			} else {
 				err.Error = "Rentrez des informations valides"
 			}

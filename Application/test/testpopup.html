@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../style/components/sign_in_popup.css">
+    <script type="text/javascript" src="../scripts/popuptest.js" defer></script>
+</head>
+<body>
+    <div class="popup" onclick="myFunction()"> Click me!
+        <div class="popuptext" id="myPopup">
+            <form action="/test" method="post">
+
+                <ul>
+                    <li  class="title">Inscription </li>
+                    <li>Pseudo : <input type="text" name="pseudo_input"/> </li>
+                    <li>Adresse email : <input type="text" name="email_input"/></li>
+                    <li>Date de naissance : <input type="date" name="birthdate_input"/></li>
+                    <li>Identifiant : <input type="text" name="id_input"/></li>
+                    <li>Mot de Passe : <input type="text" name="password_input"/></li>
+                    <li>Mot de Passe vérification : <input type="text" name="passwordverif_input"/></li>
+                </ul>
+                <input type="submit" value="Submit"/>
+            </form>
+            <p>{{.Error}}</p>
+        </div>
+    </div>
+</body>
+</html>

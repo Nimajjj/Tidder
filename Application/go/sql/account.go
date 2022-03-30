@@ -86,22 +86,43 @@ func HashPassword(password string) string {
 	return hashedPassword
 }
 
-func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) string {
+func (sqlServ SqlServer) CreateAccount(name string, email string, password string, birthDate string, studentId string, verifPassword string) string {
 	error := ""
-	currentTime := time.Now()
-	query := "name=\"" + name + "\" OR "
-	query += "email=\"" + email + "\" OR "
-	query += "student_id=\"" + studentId + "\""
-	if len(sqlServ.GetAccount(query)) != 0 {
-		error += "rentrez des "
-		Util.Warning("Creating sub failed : sub name <" + name + "> already taken.")
+
+	if verifPassword != password {
+		error += "Les Mots de passes ne sont pas identiques"
+		Util.Warning("Les mots de passes : " + password + "et" + verifPassword + "ne sont pas identiques")
 		return error
 	}
+
+	currentTime := time.Now()
+
+	query := "name=\"" + name + "\""
+	if len(sqlServ.GetAccount(query)) != 0 {
+		error += "Rentrez un pseudo non utilisé"
+		Util.Warning("Creating account failed : name :  <" + name + "> already taken.")
+		return error
+	}
+
+	query = "email=\"" + email + "\""
+	if len(sqlServ.GetAccount(query)) != 0 {
+		error += "Rentrez un email non utilisé"
+		Util.Warning("Creating account failed : email : <" + email + "> already taken.")
+		return error
+	}
+
+	query = "student_id=\"" + studentId + "\""
+	if len(sqlServ.GetAccount(query)) != 0 {
+		error += "Rentrez un identifiant ynov non utilisé"
+		Util.Warning("Creating account failed : studenId : <" + studentId + "> already taken.")
+		return error
+	}
+
 	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture, student_id) VALUES ("
 	query += "\"" + name + "\","
 	query += "\"" + email + "\","
-	query += "\"" + HashPassword(Password) + "\","
-	query += "\"" + Birthdate + "\","
+	query += "\"" + HashPassword(password) + "\","
+	query += "\"" + birthDate + "\","
 	query += "\"" + currentTime.Format("2006-01-02") + "\","
 	query += " 0, \"Default.png\","
 	query += "\"" + studentId + "\")"

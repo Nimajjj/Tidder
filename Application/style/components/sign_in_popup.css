@@ -1,0 +1,46 @@
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-top:25px;
+}
+
+body{
+    height:100%;
+    width: 100%;
+}
+
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    z-index: 1;
+    margin-left: 8vw;
+    width: 75vw;
+    height: 70vh;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+    visibility: visible;
+}
+
+li {
+    list-style:none;
+    text-align:left;
+    margin-bottom:5vh
+}
+
+.title{
+    margin-bottom:5vh;
+}
