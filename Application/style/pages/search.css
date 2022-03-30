@@ -1,0 +1,37 @@
+.sub_logo {
+    border-radius: 50%;
+    height: 90px;
+}
+
+.search_result, .search_result > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search_result > div > div {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 1vw;
+}
+
+.sub_name_container {
+    display: flex;
+    align-items: center;
+}
+
+.sub_name_container > p {
+    margin-left: 0.5vw;
+    margin-top: 2%;
+}
+
+.subscribe_bt {
+    background-color: #1A1A1A;
+    padding: 1vh 1vw;
+    border-radius: 6px;
+    opacity: 0.75;
+}
+
+.subscribe_bt:hover {
+    opacity: 1;
+}

@@ -15,13 +15,21 @@ import (
 */
 func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) {
 	if len(subName) >= 25 || ownerId < 1 {
+		Util.Warning("Creating sub failed : sub name <" + subName + "> is longer than 24 characters.")
 		return
+	}
+	forbiddenChar := []string{" ", "'", "\"", "`", ";", ",", ".", ":", "!", "?", "\\", "/", "|", "=", "*", "&", "%", "$", "#", "@", "~", "^", "(", ")", "[", "]", "{", "}", "<", ">"}
+	for _, char := range subName {
+		for _, forbidden := range forbiddenChar {
+			if string(char) == forbidden {
+				Util.Warning("Creating sub failed : sub name <" + subName + "> contains forbidden characters.")
+				return
+			}
+		}
 	}
 
 	nsfw := 0
-	if nsfwInput {
-		nsfw = 1
-	}
+	if nsfwInput { nsfw = 1 }
 
 	// test if sub name is already taken
 	query := "name=\"" + subName + "\""

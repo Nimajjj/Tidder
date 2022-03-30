@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../style/components/thread.css">
     <link rel="stylesheet" href="../style/components/create_sub.css">
     <link rel="stylesheet" href="../style/pages/search.css">
-    <link rel="stylesheet" href="../style/pages/subtidder.css">
+    
 
     <script type="text/javascript" src="../scripts/master.js" defer></script>
     <script type="text/javascript" src="../scripts/subtidder.js" defer></script>
@@ -97,64 +97,28 @@
         </ul>
       </form>
 
-      <img id="banner" src="/images/subtidder/{{.Sub.Banner}}" alt="banner">
-
-      <div id="sub_header">
-        <img src="../images/subtidder/{{.Sub.ProfilePicture}}" alt="sub logo">
-        <div id="sub_top_container">
-          <h2>t/{{.Sub.Name}}</h2>
-          <div id="subscribe_bt">Subscribe</div>
-        </div>
-      </div>
-      <div id="sub_bot_container">
-        <div id="posts_tab" class="sub_tab" onclick="show_posts()">Posts</div>
-        <div id="infos_tab" class="sub_tab" onclick="show_infos()">Infos</div>
-        <div id="admin_tab" class="sub_tab" style="display: block;">Administration</div>
-      </div>
-
-      <div id="infos">
-        <div class="post infos">
-          <h3>{{.Sub.Name}}'s infos :</h3><br>
-          <p>{{.Sub.Infos}}</p>
-        </div>
-      </div>
-
-      <div id="posts">
-        {{ range .Posts}}
-          {{ range $post, $author := . }}
-            <div class="post">
-              <ul>
-                <li class="post_upper">
-                  <a class="subreddit_name" href="/t/{{$.Sub.Name}}">
-                    <img class="sub_logo" src="/images/subtidder/{{$.Sub.ProfilePicture}}" alt="subreddit logo">
-                    <p>t/{{$.Sub.Name}}</p>
-                  </a>
-                  <p>Published by <a href="">u/{{$author.Name}}</a> {{$post.CreationDate}} </p>
-                </li>
-                <li class="post_title">
-                  <h2>{{$post.Title}}</h2>
-                </li>
-                <li class="post_content">
-                  {{if (eq $post.MediaUrl "")}}
-                    <p>{{$post.Content}}</p>
-                  {{else}}
-                    <img src="/images/posts/{{$post.MediaUrl}}" alt="post content">
-                  {{end}}
-                </li>
-                <li class="post_bottom">
-                  <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="upvote">
-                  <p>{{$post.Score}}</p>
-                  <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="downvote">
-                  <a href="">{{$post.NumberOfComments}} Comments</a>
-                  <a class="post_share" href="">
-                    <img class="post_icon" src="../images/global/share.png" alt="share">
-                    <p style="margin-left: 1vh;">Share</p>
-                  </a>
-                </li>
-              </ul>
+      <div id="search_results">
+        {{if .Subjects}}
+          {{range .Subjects}}
+            <div class="post search_result" onclick="location.href='/t/{{.Name}}'">
+              <div>
+                <img class="sub_logo" src="../images/subtidder/{{.ProfilePicture}}" alt="subtidder logo">
+                <div>
+                  <div class="sub_name_container">
+                    <h2>{{.Name}}</h2>
+                    <p>347 subscribers</p>
+                  </div>
+                  <p>{{.Infos}}</p>
+                </div>
+              </div>
+              <div class="subscribe_bt">
+                <p>Subscribe</p>
+              </div>
             </div>
           {{end}}
-        {{end}}
+        {{else}}
+          <h2>Wow ! Such empty...</h2>
+        {{end}}        
       </div>
 
     </div>
