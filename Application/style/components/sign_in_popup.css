@@ -21,8 +21,8 @@ body{
     padding: 8px 0;
     z-index: 1;
     margin-left: 8vw;
-    width: 75vw;
-    height: 70vh;
+    width: 65vw;
+    height: 80vh;
 }
 
 /* Popup arrow */
@@ -38,9 +38,64 @@ body{
 li {
     list-style:none;
     text-align:left;
-    margin-bottom:5vh
+    margin-bottom:2.8vh;
+    display: flex;
 }
 
-.title{
-    margin-bottom:5vh;
+
+.liste{
+    width: 9vw;
+    margin: 0;
+    margin-top: 0.6vw;
+    font-size:1.1vw
+}
+
+.listedate{
+    width: 9vw;
+    margin: 0;
+    font-size:1.1vw;
+}
+
+
+.listeverif{
+    width: 9vw;
+    margin: 0;
+    margin-top: 0.2vw;
+    font-size:1.1vw;
+}
+
+.input_pseudo{
+    height: 3.5vh;
+    margin-left: 3vw;
+    width: 17vw;
+}
+
+.input_mail{
+    height: 3.5vh;
+    margin-left: 3vw;
+    width: 17vw;
+}
+
+.input_birthdate{
+    height: 3.5vh;
+    margin-left: 3vw;
+    width: 17vw;
+}
+
+.input_id{
+    height: 3.5vh;
+    margin-left: 3vw;
+    width: 17vw;
+}
+
+.input_password{
+    height: 3.5vh;
+    margin-left: 3vw;
+    width: 17vw;
+}
+
+.input_password_verif{
+    height: 3.5vh;
+    margin-left: 3vw;
+    width: 17vw;
 }

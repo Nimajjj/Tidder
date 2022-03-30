@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../style/components/sign_in_popup.css">
+    <link rel="stylesheet" href="../style/master.css">
+    <link rel="stylesheet" href="../style/components/search_bar.css">
+    <link rel="stylesheet" href="../style/create_sub.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script type="text/javascript" src="../scripts/popuptest.js" defer></script>
 </head>
 <body>
-    <div class="popup" onclick="myFunction()"> Click me!
-        <div class="popuptext" id="myPopup">
-            <form action="/test" method="post">
+<div id="main">
+    <form id="create_sub_popup" method="post">
+        <ul>
+            <li>
+                <div id="title_container">
+                    <h2>Inscription</h2>
+                    <a href="#" class="close"></a>
+                </div>
+            </li>
 
-                <ul>
-                    <li  class="title">Inscription </li>
-                    <li>Pseudo : <input type="text" name="pseudo_input"/> </li>
-                    <li>Adresse email : <input type="text" name="email_input"/></li>
-                    <li>Date de naissance : <input type="date" name="birthdate_input"/></li>
-                    <li>Identifiant : <input type="text" name="id_input"/></li>
-                    <li>Mot de Passe : <input type="text" name="password_input"/></li>
-                    <li>Mot de Passe vérification : <input type="text" name="passwordverif_input"/></li>
-                </ul>
-                <input type="submit" value="Submit"/>
-            </form>
-            <p>{{.Error}}</p>
-        </div>
-    </div>
+            <li class="input_container">
+                <label for="name">Pseudo :</label>
+                <div>
+                    <input type="text" name="pseudo_input">
+                </div>
+            </li>
+
+            <li class="img_container">
+                <input id="submit_bt" type="submit" value="Submit">
+            </li>
+
+        </ul>
+    </form>
+</div>
 </body>
 </html>
