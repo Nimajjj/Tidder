@@ -7,7 +7,6 @@ import (
   "html/template"
   "net/http"
 
-  Util "github.com/Nimajjj/Tidder/go/utility"
   SQL "github.com/Nimajjj/Tidder/go/sql"
 )
 
@@ -48,7 +47,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
       if r.FormValue("nsfw") == "0" {
         subTidderNsfw = true
       }
-      db.CreateSub(subTidderName, 2, subTidderNsfw)
+      db.CreateSub(subTidderName, 1, subTidderNsfw)
     }
 
     // END CREATE SUBTIDDER COMPONENT //////////////////////////////////////////////
