@@ -3,37 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../style/components/sign_in_popup.css">
+    <link rel="stylesheet" href="../style/components/create_sub.css">
     <link rel="stylesheet" href="../style/master.css">
-    <link rel="stylesheet" href="../style/components/search_bar.css">
-    <link rel="stylesheet" href="../style/create_sub.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script type="text/javascript" src="../scripts/popuptest.js" defer></script>
 </head>
 <body>
-<div id="main">
-    <form id="create_sub_popup" method="post">
-        <ul>
-            <li>
-                <div id="title_container">
-                    <h2>Inscription</h2>
-                    <a href="#" class="close"></a>
-                </div>
-            </li>
+    <div class="popup" onclick="myFunction()"> Click me!
+        <div class="popuptext" id="myPopup">
+            <form action="/test" method="post">
+                <ul>
+                    <li class="containerli">
+                        <div id="title_container">
+                            <h2>Create an account</h2>
+                            <a href="#" class="close" id="popup_sub_close" onclick="hide_popup()"></a>
+                        </div>
+                    </li>
+                    <div class="mailPseudoAndImg">
+                    <div class="mailAndPseudo">
+                    <li class="containerli">
+                        <p class="liste">Pseudo : </p>
+                        <input class="input_pseudo" type="text" name="pseudo_input"/>
+                    </li>
+                    <li class="containerli">
+                        <p class="liste">Adresse email : </p>
+                        <input class="input_mail" type="text" name="email_input"/>
+                    </li>
+                    </div>
+                        <div class="imgandsheet">
+                            <li class="img_cont">
+                                <img id="id_logo" src="../images/global/no-image.jpg" alt="logo subtidder">
+                            </li>
+                            <li class="input_container">
+                                <label for="logo"></label>
+                                <input type="file" name="logo" accept="image/jpeg, image/x-png">
+                            </li>
+                        </div>
+                    </div>
+                    <div class="password">
+                    <li class="containerli">
+                        <p class="liste"> Je suis : </p>
+                        <select class="sexe_input" id="sexe-select" name="sexe">
+                            <option value="">--Please choose an option--</option>
+                            <option value="Homme">Homme</option>
+                            <option value="Femme">Femme</option>
+                            <option value="Aucun des deux">Aucun des deux</option>
+                        </select>
+                    </li>
+                    <li class="containerli">
+                        <p class="listespef"> Code étudiant : </p>
+                        <input class="input_id"type="text" name="id_input"/>
+                    </li>
+                    </div>
+                    <li class="containerli">
+                        <p class="listedate"> Date de naissance : </p>
+                        <input class="input_birthdate" type="date" name="birthdate_input"/>
+                    </li>
+                    <div class="password">
+                        <li class="containerli">
+                            <p class="liste"> Mot de Passe : </p>
+                            <input class="input_password" type="text" name="password_input"/>
+                        </li>
+                        <li>
+                            <p class="listespefdouble">Mot de Passe vérification : </p>
+                            <input class="input_password_verif" type="text" name="passwordverif_input"/>
+                        </li>
+                    </div>
+                    <li class="img_container">
+                        <input id="submit_bt" type="submit" value="Submit">
+                    </li>
+                    <li class="error">
+                        <p>{{.Error}}</p>
+                    </li>
+                </ul>
+            </form>
 
-            <li class="input_container">
-                <label for="name">Pseudo :</label>
-                <div>
-                    <input type="text" name="pseudo_input">
-                </div>
-            </li>
-
-            <li class="img_container">
-                <input id="submit_bt" type="submit" value="Submit">
-            </li>
-
-        </ul>
-    </form>
-</div>
+        </div>
+    </div>
 </body>
 </html>

@@ -14,17 +14,29 @@ body{
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
     z-index: 1;
-    margin-left: 8vw;
-    width: 65vw;
-    height: 80vh;
+    position: fixed;
+    border: 1px solid #666666;
+    padding: 1%;
+    border-radius: 10px;
+    background-color: #262626;
+    width: 55%;
+    height: 80%;
+    left:25vw
 }
 
+#submit_bt {
+    height: 5vh;
+    width: 10vw;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 1vh;
+}
+
+
+.password {
+    display:flex;
+}
 /* Popup arrow */
 .popup .popuptext::after {
     content: "";
@@ -38,16 +50,37 @@ body{
 li {
     list-style:none;
     text-align:left;
-    margin-bottom:2.8vh;
+    margin-bottom:4.5vh;
     display: flex;
 }
 
+.error{
+    display: flex;
+    justify-content: center;
+}
 
+.mailAndPseudo{
+    display:flex;
+    flex-direction:column
+}
+.mailPseudoAndImg{
+    display:flex;
+}
+
+#id_logo{
+    width: 8vw;
+    border-radius: 50%;
+}
+
+.imgandsheet{
+    display:flex;
+    margin-left:4vw;
+}
 .liste{
     width: 9vw;
     margin: 0;
-    margin-top: 0.6vw;
-    font-size:1.1vw
+    margin-top: 0.4vw;
+    font-size:1.1vw;
 }
 
 .listedate{
@@ -64,38 +97,58 @@ li {
     font-size:1.1vw;
 }
 
+.listespef{
+    margin-left:4vw;
+    width: 9vw;
+    font-size:1.1vw
+}
+
+.listespefdouble{
+    width: 9vw;
+    margin-left:4vw;
+}
+
 .input_pseudo{
     height: 3.5vh;
-    margin-left: 3vw;
-    width: 17vw;
+    width: 12vw;
 }
 
 .input_mail{
     height: 3.5vh;
-    margin-left: 3vw;
-    width: 17vw;
+    width: 12vw;
 }
 
 .input_birthdate{
     height: 3.5vh;
-    margin-left: 3vw;
-    width: 17vw;
+    width: 12vw;
 }
 
+.input_container{
+    display:flex;
+    position:relative;
+    top:2.5vw;
+    margin-left:1vw
+}
 .input_id{
     height: 3.5vh;
-    margin-left: 3vw;
-    width: 17vw;
+    width: 12vw;
+    margin-left:2vw
 }
 
 .input_password{
     height: 3.5vh;
-    margin-left: 3vw;
-    width: 17vw;
+    width: 12vw;
 }
 
 .input_password_verif{
     height: 3.5vh;
-    margin-left: 3vw;
-    width: 17vw;
+    width: 12vw;
+    margin-left:2vw
 }
+
+.input_sexe{
+    height: 3.5vh;
+    width: 12vw;
+}
+
+
