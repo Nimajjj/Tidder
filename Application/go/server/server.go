@@ -35,6 +35,7 @@ func Run(DatabaseIp string) {
   All statics folders which will be used in html/css/js files must be declared here.
 */
 func initStaticFolders() {
+
 	cssFolder := http.FileServer(http.Dir("./style"))
 	imgFolder := http.FileServer(http.Dir("./images"))
 	jsFolder := http.FileServer(http.Dir("./scripts"))
