@@ -130,8 +130,12 @@ func (sqlServ SqlServer) SubscribeToSubject(idAccount int, idSubject int) {
 		query += strconv.Itoa(idSubject) + ")"
 		Util.Query(query)
 		sqlServ.executeQuery(query)
-		Util.Log("User id " + strconv.Itoa(IdUser)) +  " Subscribed to subject : " + strconv.Itoa(idSubject))
+		Util.Log("User id " + strconv.Itoa(idAccount) +  " subscribed to subject id " + strconv.Itoa(idSubject))
 	} else {
-
+		query = "DELETE FROM subscribe_to_subject WHERE id_account ="
+		query += strconv.Itoa(idAccount) + " AND id_subject = " + strconv.Itoa(idSubject)
+		Util.Query(query)
+		sqlServ.executeQuery(query)
+		Util.Log("User id " + strconv.Itoa(idAccount) +  " unsubscribed from subject id " + strconv.Itoa(idSubject))
 	}
 }
