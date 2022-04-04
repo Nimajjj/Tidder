@@ -11,7 +11,9 @@ func (sqlServ SqlServer) GetComments(conditions string) []Comments {
 	}
 	Util.Query(query)
 	rows, err := sqlServ.db.Query(query)
-	if err != nil {	Util.Error(err)	}
+	if err != nil {
+		Util.Error(err)
+	}
 
 	result := []Comments{}
 	for rows.Next() {
@@ -37,9 +39,13 @@ func (sqlServ SqlServer) GetComments(conditions string) []Comments {
 		); err2 != nil {
 			Util.Error(err2)
 		}
-		comment := Comments{id, content, creation_date, upvotes, downvotes, redacted, id_author, response_to_id, id_post, upvotes-downvotes}
+		comment := Comments{id, content, creation_date, upvotes, downvotes, redacted, id_author, response_to_id, id_post, upvotes - downvotes}
 		result = append(result, comment)
 	}
 
 	return result
+}
+
+func (sqlServ SqlServer) Creatingcomment() {
+
 }
