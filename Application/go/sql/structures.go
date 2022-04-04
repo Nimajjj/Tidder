@@ -113,6 +113,7 @@ type MasterVD struct {
 	SubtidderVD 	SubtidderViewData
 	SearchVD		SearchViewData
 	Error string
+	SignUpError string
 	Connected bool
 }
 
