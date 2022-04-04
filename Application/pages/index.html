@@ -41,7 +41,7 @@
 
       {{if .Connected}}
         <div class="container">
-          <div id="new_post_container" onclick="show_popup()">
+          <div id="new_post_container" onclick="show_post_popup()">
             <img src="../images/global/cross.png" alt="new post">
             <p>New post</p>
           </div>
@@ -113,6 +113,37 @@
             <input id="submit_bt" type="submit" value="Submit">
           </li>
 
+        </ul>
+      </form>
+
+      <form id="create_post_popup" method="get">
+        <ul>
+            <li>
+                <div id="title_container">
+                    <h2>Create a post</h2>
+                    <a class="close" onclick="hide_post_popup()"></a>
+                </div>
+            </li>
+            <li class="input_container">
+                <div class="bloc">
+                    <div class="select">
+                        <select name="post_subtidder">
+                            <option value="none">Which Subtidder ?</option>
+                            <option value="subtidder_ID">r/Je sais pas comment on fait</option>
+                            <option value="subtidder_ID">r/Pareil x2</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+
+            <li class="input_container">
+                <div class="advice_post">
+                    <p>1) Check our FAQ before posting. 2) Anything past the anime timeline is considered a spoiler. Make sure you correctly hide your text and images with a spoiler tag. 3) Spoilers on title will result in the post's removal. 4) No ALL CAPS titles.</p>
+                </div>
+            </li>
+            <textarea class="txt_container" name="post_content" rows="12" cols="35"></textarea><br>
+            <input type="submit" name="submitInfo" value="Envoyer">
+            <p id="create_post_error"></p>
         </ul>
       </form>
 

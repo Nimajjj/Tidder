@@ -15,6 +15,23 @@ if (document.getElementById("create_subtidder_error").innerHTML != "") {
 }
 
 
+const createpost_popup = document.getElementById("create_post_popup");
+
+function hide_post_popup() {
+  createpost_popup.style.display = "none"
+}
+
+function show_post_popup() {
+  createpost_popup.style.display = "block"
+}
+
+if (document.getElementById("create_post_error").innerHTML != "") {
+  show_post_popup()
+} else {
+  hide_post_popup()
+}
+
+
 const signup_popup = document.getElementById("signup_popup");
 
 function hide_signup_popup() {

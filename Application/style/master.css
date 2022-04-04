@@ -12,6 +12,15 @@ h2 {
   font-size: 32px;
 }
 
+ul {
+    list-style-type: none;
+}
+
+p, a {
+    color: #F2F2F2;
+}
+
+
 /* --------------------------------- */
 
 
@@ -30,9 +39,6 @@ body > div {
 	width: 100vw;
 }
 
-a {
-	color: #F2F2F2;
-}
 
 /* ------------------------ */
 

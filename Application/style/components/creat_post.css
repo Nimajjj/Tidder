@@ -1,16 +1,3 @@
-/*----------GENERAL----------*/
-
-ul {
-    list-style-type: none;
-}
-
-p{
-    color: gray;
-}
-
-
-/*---------------------------*/
-
 
 /*----------POPUP----------*/
 
@@ -123,7 +110,7 @@ select {
 
 select option {
     background: #1A1A1B;
-    color: white;
+    color: #F2F2F2;
 }
 
 
@@ -143,7 +130,7 @@ select {
     height: 100%;
     margin: 0;
     padding-left: 15px;
-    color: #555555;
+    color: #666666;
     cursor: pointer;
 }
 
@@ -164,17 +151,18 @@ select {
 
 
 .select:hover::after {
-    color: #FA6141;
+    color: #148AA6;
 }
 
 .advice_post {
     width: 62vw;
     background-color: #1A1A1B;
-    color: #555555;
+    color: #F2F2F2;
     font-size: 15px;
     border-radius: 5px;
     border: 1px solid #CED4DA;
     margin-top: 2%;
+    padding: 1%;
 }
 
 /*--------------------------*/
@@ -186,19 +174,20 @@ textarea {
     width: 61.8vw;
     height: 25.7vh;
     background-color: #1A1A1B;
-    color: #555555;
+    color: #F2F2F2;
     font-size: 15px;
     resize : none;
 }
 
 .txt_container {
+    padding: 1%;
     width: 62vw;
     height: 40vh;
     background-color: #1A1A1B;
-    color: gray;
+    color: #F2F2F2;
     font-size: 15px;
     border-radius: 5px 5px 0px 0px;
-    border: 1px solid #CED4DA;
+    border: 1px solid #F2F2F2;
     margin-top: 2%;
 }
 
