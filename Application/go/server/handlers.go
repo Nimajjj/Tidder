@@ -1,8 +1,7 @@
 package server
 
 import (
-  "strconv"
-  "strings"
+	"encoding/json"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -18,7 +17,7 @@ import (
 */
 func IndexHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
-	viewData.Connected = false
+	viewData.Connected = true
 
 	tpl := template.Must(template.ParseFiles("./pages/index.html"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -31,7 +30,7 @@ func IndexHandler(db *SQL.SqlServer) {
 			viewData.Error = db.CreateSub(subTidderName, 2, subTidderNsfw)
 		}
 
-    tpl.Execute(w, account)
+    tpl.Execute(w, viewData)
 	})
 }
 

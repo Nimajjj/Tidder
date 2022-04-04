@@ -5,7 +5,7 @@
 
     <link rel="stylesheet" href="../style/master.css">
     <link rel="stylesheet" href="../style/components/search_bar.css">
-    <link rel="stylesheet" href="../style/creat_post.css">
+    <link rel="stylesheet" href="../style/components/creat_post.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -38,7 +38,7 @@
     </div>
 
     <div id="main">
-        <form>
+        <form id="create_post_popup">
             <ul>
                 <li>
                     <div id="title_container">
@@ -50,48 +50,26 @@
                     <div class="bloc">
                         <div class="select">
                             <select>
-                                    <option>Which Subtidder ?</option>
-                                    <option value="1">r/Je sais pas comment on fait</option>
-                                    <option value="2">r/Pareil x2</option>
-                                </select>
-                            </div>
+                                <option>Which Subtidder ?</option>
+                                <option value="1">r/Je sais pas comment on fait</option>
+                                <option value="2">r/Pareil x2</option>
+                            </select>
                         </div>
-                    </li>
+                    </div>
+                </li>
 
-                    <li class="input_container">
-                        <div class="advice_post">
-                            <p>1) Check our FAQ before posting. 2) Anything past the anime timeline is considered a spoiler. Make sure you correctly hide your text and images with a spoiler tag. 3) Spoilers on title will result in the post's removal. 4) No ALL CAPS titles.</p>
-                        </div>
-                    </li>
+                <li class="input_container">
+                    <div class="advice_post">
+                        <p>1) Check our FAQ before posting. 2) Anything past the anime timeline is considered a spoiler. Make sure you correctly hide your text and images with a spoiler tag. 3) Spoilers on title will result in the post's removal. 4) No ALL CAPS titles.</p>
+                    </div>
+                </li>
 
-                    <li class="txt_container">
-                        <div class="button_txt">
-                            <a class="button_post"><img class="picto" src="../images/global/imgtext.png"> <p class="option_txt">Post</p></a>
-                        </div>
-                        <div class="txt_post">
-                            <div id="summernote"></div>
-                            <script>
-                                $('#summernote').summernote({
-                                    placeholder: 'Write something there',
-                                    tabsize: 2,
-                                    height: 120,
-                                    toolbar: [
-                                        ['style', ['style']],
-                                        ['font', ['bold', 'underline', 'clear']],
-                                        ['color', ['color']],
-                                        ['para', ['ul', 'ol', 'paragraph']],
-                                        ['table', ['table']],
-                                        ['insert', ['link', 'picture', 'video']],
-                                        ['view', ['fullscreen', 'codeview', 'help']]
-                                    ]
-                                });
-                            </script>
-                        </div>
-                        <div class="media_post">
-
-                        </div>
-
-                    </li>
+                <li class="txt_container">
+                    <input type="text" >
+                </li>
+                <li>
+                    <input type="submit" name="submit" value="SUBMIT">
+                </li>
             </ul>
         </form>
     </div>
