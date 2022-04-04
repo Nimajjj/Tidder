@@ -63,3 +63,27 @@ func (sqlServ SqlServer) GetPosts(conditions string) []Posts {
 
 	return result
 }
+
+func (sqlServ SqlServer) CreatePost(postName string, ownerId int) {
+	if len(postName) >= 125 || ownerId < 1 {
+		Util.Warning("Creating post failed : post name <" + postName + "> is longer than 125 characters.")
+		return
+	}
+	forbiddenChar := []string{"`", "|", "*", "&", "@", "~", "^", "{", "}"}
+	for _, char := range postName {
+		for _, forbidden := range forbiddenChar {
+			if string(char) == forbidden {
+				Util.Warning("Creating sub failed : sub name <" + postName + "> contains forbidden characters.")
+				return
+			}
+		}
+	}
+
+	// test if sub name is already taken
+	query := "name=\"" + postName + "\""
+	query = "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("
+	query += "\"" + postName + "\", \"default_pp.png\", "
+	query += strconv.Itoa(ownerId) + ", " + ")"
+	Util.Query(query)
+	sqlServ.executeQuery(query)
+}

@@ -14,7 +14,7 @@ p{
 
 /*----------POPUP----------*/
 
-#create_sub_popup {
+#create_post_popup {
     position: fixed;
     border: 1px solid #666666;
     padding: 1%;
@@ -229,7 +229,7 @@ textarea {
     width: 9%;
 }
 
-.picto_BB {
+.picto_bb {
     width: 37%;
 }
 

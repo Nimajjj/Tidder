@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../style/components/thread.css">
     <link rel="stylesheet" href="../style/components/create_sub.css">
     <link rel="stylesheet" href="../style/components/signup_popup.css">
+    <link rel="stylesheet" href="../style/components/creat_post.css">
     <link rel="stylesheet" href="../style/pages/search.css">
 
     <script type="text/javascript" src="/scripts/master.js" defer></script>
@@ -16,6 +17,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="icon" type="image/x-icon" href="/images/global/favicon.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <title>Tidder</title>
   </head>
 
@@ -61,7 +65,7 @@
     </div>
 
     <div id="main">
-      <form id="create_sub_popup" method="post">
+      <form id="create_sub_popup" method="post" style="display: none;">
         <ul>
 
           <li>
@@ -117,7 +121,7 @@
             <h2>Create an account</h2>
             <a href="#" class="close" id="popup_sub_close" onclick="hide_signup_popup()"></a>
         </div>
-        <div id="main_part">   
+        <div id="main_part">
             <div id="left_part">
                 <ul>
                     <li class="">
@@ -147,7 +151,7 @@
                     </li>
                 </ul>
             </div>
-    
+
             <div id="right_part">
                 <ul>
                     <li id="pp_title">
