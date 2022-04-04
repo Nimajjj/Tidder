@@ -29,7 +29,9 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 	}
 
 	nsfw := 0
-	if nsfwInput { nsfw = 1 }
+	if nsfwInput {
+		nsfw = 1
+	}
 
 	// test if sub name is already taken
 	query := "name=\"" + subName + "\""
@@ -45,7 +47,6 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 	sqlServ.executeQuery(query)
 }
 
-
 /*
   (sqlServ SqlServer) GetSubs(conditions string) []Subject
 
@@ -58,7 +59,9 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 	}
 	Util.Query(query)
 	rows, err := sqlServ.db.Query(query)
-	if err != nil {	Util.Error(err)	}
+	if err != nil {
+		Util.Error(err)
+	}
 
 	result := []Subject{}
 	for rows.Next() {

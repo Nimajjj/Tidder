@@ -38,61 +38,59 @@
     </div>
 
     <div id="main">
-        <form>
-            <ul>
-                <li>
-                    <div id="title_container">
-                        <h2>Create a post</h2>
-                        <a href="#" class="close"></a>
+        <ul>
+            <li>
+                <div id="title_container">
+                    <h2>Create a post</h2>
+                    <a href="#" class="close"></a>
+                </div>
+            </li>
+            <li class="input_container">
+                <div class="bloc">
+                    <div class="select">
+                        <select>
+                                <option>Which Subtidder ?</option>
+                                <option value="1">r/Je sais pas comment on fait</option>
+                                <option value="2">r/Pareil x2</option>
+                            </select>
+                        </div>
                     </div>
                 </li>
+
                 <li class="input_container">
-                    <div class="bloc">
-                        <div class="select">
-                            <select>
-                                    <option>Which Subtidder ?</option>
-                                    <option value="1">r/Je sais pas comment on fait</option>
-                                    <option value="2">r/Pareil x2</option>
-                                </select>
-                            </div>
-                        </div>
-                    </li>
+                    <div class="advice_post">
+                        <p>1) Check our FAQ before posting. 2) Anything past the anime timeline is considered a spoiler. Make sure you correctly hide your text and images with a spoiler tag. 3) Spoilers on title will result in the post's removal. 4) No ALL CAPS titles.</p>
+                    </div>
+                </li>
 
-                    <li class="input_container">
-                        <div class="advice_post">
-                            <p>1) Check our FAQ before posting. 2) Anything past the anime timeline is considered a spoiler. Make sure you correctly hide your text and images with a spoiler tag. 3) Spoilers on title will result in the post's removal. 4) No ALL CAPS titles.</p>
-                        </div>
-                    </li>
+                <li class="txt_container">
+                    <div class="button_txt">
+                        <a class="button_post"><img class="picto" src="../images/global/imgtext.png"> <p class="option_txt">Post</p></a>
+                    </div>
+                    <div class="txt_post">
+                        <div id="summernote"></div>
+                        <script>
+                            $('#summernote').summernote({
+                                placeholder: 'Write something there',
+                                tabsize: 2,
+                                height: 120,
+                                toolbar: [
+                                    ['style', ['style']],
+                                    ['font', ['bold', 'underline', 'clear']],
+                                    ['color', ['color']],
+                                    ['para', ['ul', 'ol', 'paragraph']],
+                                    ['table', ['table']],
+                                    ['insert', ['link', 'picture', 'video']],
+                                    ['view', ['fullscreen', 'codeview', 'help']]
+                                ]
+                            });
+                        </script>
+                    </div>
+                    <div class="media_post">
 
-                    <li class="txt_container">
-                        <div class="button_txt">
-                            <a class="button_post"><img class="picto" src="../images/global/imgtext.png"> <p class="option_txt">Post</p></a>
-                        </div>
-                        <div class="txt_post">
-                            <div id="summernote"></div>
-                            <script>
-                                $('#summernote').summernote({
-                                    placeholder: 'Write something there',
-                                    tabsize: 2,
-                                    height: 120,
-                                    toolbar: [
-                                        ['style', ['style']],
-                                        ['font', ['bold', 'underline', 'clear']],
-                                        ['color', ['color']],
-                                        ['para', ['ul', 'ol', 'paragraph']],
-                                        ['table', ['table']],
-                                        ['insert', ['link', 'picture', 'video']],
-                                        ['view', ['fullscreen', 'codeview', 'help']]
-                                    ]
-                                });
-                            </script>
-                        </div>
-                        <div class="media_post">
+                    </div>
 
-                        </div>
-
-                    </li>
-            </ul>
+                </li>
         </form>
     </div>
 
