@@ -30,6 +30,20 @@ func IndexHandler(db *SQL.SqlServer) {
 			viewData.Error = db.CreateSub(subTidderName, 2, subTidderNsfw)
 		}
 
+		if r.Method == http.MethodPost {
+			pseudo := r.FormValue("pseudo_input")
+			email := r.FormValue("email_input")
+			password := r.FormValue("password_input")
+			verifpassword := r.FormValue("passwordverif_input")
+			birthdate := r.FormValue("birthdate_input")
+			studentId := r.FormValue("id_input")
+			if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
+				viewData.Error = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
+			} else {
+				viewData.Error = "Rentrez des informations valides"
+			}
+		}
+
 		tpl.Execute(w, viewData)
 	})
 }
@@ -111,29 +125,5 @@ func SearchHandler(db *SQL.SqlServer) {
 			results.Subjects[subject] = db.GetNumberOfSubscriber(subject.Id)
 		}
 		tpl.Execute(w, results)
-	})
-}
-
-func CreatingHandler(db *SQL.SqlServer) {
-	testTpl := template.Must(template.ParseFiles("./test/index2.html"))
-	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
-		type Error struct {
-			Error string
-		}
-		err := Error{""}
-		if r.Method == http.MethodPost {
-			pseudo := r.FormValue("pseudo_input")
-			email := r.FormValue("email_input")
-			password := r.FormValue("password_input")
-			verifpassword := r.FormValue("passwordverif_input")
-			birthdate := r.FormValue("birthdate_input")
-			studentId := r.FormValue("id_input")
-			if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
-				err.Error = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
-			} else {
-				err.Error = "Rentrez des informations valides"
-			}
-		}
-		testTpl.Execute(w, err)
 	})
 }
