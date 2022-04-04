@@ -3,7 +3,6 @@ package server
 import (
 	SQL "github.com/Nimajjj/Tidder/go/sql"
 	Util "github.com/Nimajjj/Tidder/go/utility"
-	"html/template"
 	"net/http"
 )
 
@@ -62,27 +61,7 @@ func launchServer(DatabaseIp string) {
 	IndexHandler(&db)
 	SubtidderHandler(&db)
 	SearchHandler(&db)
-
-	testTpl := template.Must(template.ParseFiles("./test/index2.html"))
-	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
-		type Error struct {
-			Error string
-		}
-		err := Error{""}
-		if r.Method == http.MethodPost {
-			pseudo := r.FormValue("pseudo_input")
-			email := r.FormValue("email_input")
-			password := r.FormValue("password_input")
-			birthdate := r.FormValue("birthdate_input")
-			studentId := r.FormValue("id_input")
-			if pseudo != "" && email != "" && password != "" && birthdate != "" {
-				db.CreateAccount(pseudo, email, password, birthdate, studentId)
-			} else {
-				err.Error = "Rentrez des informations valide"
-			}
-		}
-		testTpl.Execute(w, err)
-	})
+	CreatingHandler(&db)
 
 	http.ListenAndServe(":80", nil)
 }

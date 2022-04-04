@@ -86,14 +86,31 @@ func HashPassword(password string) string {
 	return hashedPassword
 }
 
-func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string) {
+func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string, Verif_password string) string {
+	error := ""
+	if Verif_password != Password {
+		error += "Les Mots de passes ne sont pas identiques"
+		Util.Warning("Les mots de passes : " + Password + "et" + Verif_password + "ne sont pas identiques")
+		return error
+	}
 	currentTime := time.Now()
-	query := "name=\"" + name + "\" OR "
-	query += "email=\"" + email + "\" OR "
-	query += "student_id=\"" + studentId + "\""
+	query := "name=\"" + name + "\""
 	if len(sqlServ.GetAccount(query)) != 0 {
-		Util.Warning("Creating sub failed : sub name <" + name + "> already taken.")
-		return
+		error += "Rentrez un pseudo non utilisé"
+		Util.Warning("Creating account failed : name :  <" + name + "> already taken.")
+		return error
+	}
+	query = "email=\"" + email + "\""
+	if len(sqlServ.GetAccount(query)) != 0 {
+		error += "Rentrez un email non utilisé"
+		Util.Warning("Creating account failed : email : <" + email + "> already taken.")
+		return error
+	}
+	query = "student_id=\"" + studentId + "\""
+	if len(sqlServ.GetAccount(query)) != 0 {
+		error += "Rentrez un identifiant ynov non utilisé"
+		Util.Warning("Creating account failed : studenId : <" + studentId + "> already taken.")
+		return error
 	}
 	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture, student_id) VALUES ("
 	query += "\"" + name + "\","
@@ -105,4 +122,35 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 	query += "\"" + studentId + "\")"
 	Util.Query(query)
 	sqlServ.executeQuery(query)
+	return error
+}
+
+func (sqlServ SqlServer) SubscribeToSubject(idAccount int, idSubject int) {
+	alreadySubscribed := false
+
+	query := "SELECT * FROM subscribe_to_subject WHERE id_account = " + strconv.Itoa(idAccount) + " AND id_subject = " + strconv.Itoa(idSubject)
+	Util.Query(query)
+	rows, err := sqlServ.db.Query(query)
+	if err != nil {
+		Util.Error(err)
+	}
+	for rows.Next() {
+		alreadySubscribed = true
+		break
+	}
+
+	if !alreadySubscribed {
+		query = "INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES ("
+		query += strconv.Itoa(idAccount) + ","
+		query += strconv.Itoa(idSubject) + ")"
+		Util.Query(query)
+		sqlServ.executeQuery(query)
+		Util.Log("User id " + strconv.Itoa(idAccount) + " subscribed to subject id " + strconv.Itoa(idSubject))
+	} else {
+		query = "DELETE FROM subscribe_to_subject WHERE id_account ="
+		query += strconv.Itoa(idAccount) + " AND id_subject = " + strconv.Itoa(idSubject)
+		Util.Query(query)
+		sqlServ.executeQuery(query)
+		Util.Log("User id " + strconv.Itoa(idAccount) + " unsubscribed from subject id " + strconv.Itoa(idSubject))
+	}
 }

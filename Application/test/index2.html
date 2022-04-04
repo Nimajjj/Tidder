@@ -12,17 +12,16 @@
   </head>
   <body>
     <form action="/test" method="post">
-      Pseudo : <input type="text" name="pseudo_input"/>
-      <br/>
-      Date de naissance : <input type="date" name="birthdate_input"/>
-      <br/>
-      Mot de Passe : <input type="text" name="password_input"/>
-      <br/>
-      adresse email : <input type="text" name="email_input"/>
-      <br/>
-      identifiant : <input type="text" name="id_input"/>
+      <ul>
+        <li> Pseudo : <input type="text" name="pseudo_input"/> </li>
+        <li>adresse email : <input type="text" name="email_input"/></li>
+        <li>Date de naissance : <input type="date" name="birthdate_input"/></li>
+        <li>identifiant : <input type="text" name="id_input"/></li>
+        <li>Mot de Passe : <input type="text" name="password_input"/></li>
+        <li>Mot de Passe vérification : <input type="text" name="passwordverif_input"/></li>
+      </ul>
       <input type="submit" value="Submit"/>
     </form>
-    {{.Error}}
+   <p>{{.Error}}</p>
   </body>
 </html>

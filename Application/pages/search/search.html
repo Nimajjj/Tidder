@@ -56,7 +56,7 @@
           <li>
             <div id="title_container">
               <h2>Create a subtidder</h2>
-              <a href="#" class="close" id="popup_sub_close" onclick="hide_popup()"></a>
+              <a class="close" id="popup_sub_close" onclick="hide_popup()"></a>
             </div>
           </li>
 
@@ -99,20 +99,17 @@
 
       <div id="search_results">
         {{if .Subjects}}
-          {{range .Subjects}}
-            <div class="post search_result" onclick="location.href='/t/{{.Name}}'">
+          {{range $sub, $n := .Subjects}}
+            <div class="post search_result" onclick="location.href='/t/{{$sub.Name}}'">
               <div>
-                <img class="sub_logo" src="../images/subtidder/{{.ProfilePicture}}" alt="subtidder logo">
+                <img class="sub_logo" src="../images/subtidder/{{$sub.ProfilePicture}}" alt="subtidder logo">
                 <div>
                   <div class="sub_name_container">
-                    <h2>{{.Name}}</h2>
-                    <p>347 subscribers</p>
+                    <h2>{{$sub.Name}}</h2>
+                    <p>{{$n}} subscribers</p>
                   </div>
-                  <p>{{.Infos}}</p>
+                  <p>{{$sub.Infos}}</p>
                 </div>
-              </div>
-              <div class="subscribe_bt">
-                <p>Subscribe</p>
               </div>
             </div>
           {{end}}

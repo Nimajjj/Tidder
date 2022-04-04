@@ -1,8 +1,8 @@
 package mySQL
 
 import (
-	Util "github.com/Nimajjj/Tidder/go/utility"
 	"strconv"
+	Util "github.com/Nimajjj/Tidder/go/utility"
 )
 
 /*
@@ -10,6 +10,7 @@ import (
 
   Script only containing post related methods of SqlServer struct.
 */
+
 
 /*
   (sqlServ SqlServer) GetPosts(conditions string) []Posts
@@ -23,9 +24,7 @@ func (sqlServ SqlServer) GetPosts(conditions string) []Posts {
 	}
 	Util.Query(query)
 	rows, err := sqlServ.db.Query(query)
-	if err != nil {
-		Util.Error(err)
-	}
+	if err != nil {	Util.Error(err)	}
 
 	result := []Posts{}
 	for rows.Next() {
@@ -58,7 +57,7 @@ func (sqlServ SqlServer) GetPosts(conditions string) []Posts {
 			Util.Error(err2)
 		}
 		numberOfComments := len(sqlServ.GetComments("id_post = " + strconv.Itoa(id) + " ORDER BY creation_date DESC"))
-		post := Posts{id, title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author, upvotes - downvotes, numberOfComments}
+		post := Posts{id, title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author, upvotes-downvotes, numberOfComments}
 		result = append(result, post)
 	}
 
