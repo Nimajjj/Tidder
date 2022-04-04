@@ -17,6 +17,7 @@ import (
 */
 func IndexHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
+	viewData.Connected = false
 
 	tpl := template.Must(template.ParseFiles("./pages/index.html"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../style/master.css">
+    <link rel="stylesheet" href="../style/components/sign_in_popup.css">
+    <link rel="stylesheet" href="../style/components/create_sub.css">
+    
+    <script type="text/javascript" src="../scripts/popuptest.js" defer></script>
+</head>
+<body>
+    
+    <form id="signup_popup" action="/test" method="post">
+        <div id="title_container">
+            <h2>Create an account</h2>
+            <a href="#" class="close" id="popup_sub_close" onclick="hide_popup()"></a>
+        </div>
+        <div id="main_part">   
+            <div id="left_part">
+                <ul>
+                    <li class="">
+                        <p class="liste">Pseudo : </p>
+                        <input class="input_pseudo" type="text" name="pseudo_input"/>
+                    </li>
+                    <li class="">
+                        <p class="liste">Mail address : </p>
+                        <input class="input_mail" type="text" name="email_input"/>
+                    </li>
+                    <li class="">
+                        <p class="liste">Genre : </p>
+                        <select class="sexe_input" id="sexe-select" name="sexe">
+                            <option value="">--Please choose an option--</option>
+                            <option value="Man">Man</option>
+                            <option value="Woman">Woman</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </li>
+                    <li class="">
+                        <p class="listedate">Birthdate : </p>
+                        <input class="input_birthdate" type="date" name="birthdate_input"/>
+                    </li>
+                    <li class="">
+                        <p class="liste">Password : </p>
+                        <input class="input_password" type="text" name="password_input"/>
+                    </li>
+                </ul>
+            </div>
+    
+            <div id="right_part">
+                <ul>
+                    <li id="pp_title">
+                        <label for="logo">Profile picture :</label>
+                    </li>
+                    <li id="pp_container">
+                        <img id="id_logo" src="../images/global/no-image.jpg" alt="logo subtidder">
+                        <input type="file" name="logo" accept="image/jpeg, image/x-png">
+                    </li>
+                    <li class="">
+                        <p class="listespef">Student ID : </p>
+                        <input class="input_id"type="text" name="id_input"/>
+                    </li>
+                    <li>
+                        <p class="listespefdouble">Password verification : </p>
+                        <input class="input_password_verif" type="text" name="passwordverif_input"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Error}}</p>
+    </form>
+
+</body>
+</html>

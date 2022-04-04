@@ -1,0 +1,61 @@
+#signup_popup {
+    z-index: 1;
+    position: fixed;
+    border: 1px solid #666666;
+    padding: 1%;
+    border-radius: 10px;
+    background-color: #262626;
+    width: 55%;
+    left:25vw;
+}
+
+#main_part {
+    height: 85%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+#main_part ul {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+#main_part li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 3vh 0;
+}
+
+#main_part input {
+    height: 3.5vh;
+    width: 12vw;
+    margin-left: 2.5vw;
+}
+
+#submit_bt {
+    height: 5vh;
+    width: 10vw;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 1vh;
+}
+
+#id_logo {
+    width: 8vw;
+    border-radius: 50%;
+}
+
+#pp_container {
+    align-items: center;
+}
+
+#pp_title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -9,76 +9,72 @@
     <script type="text/javascript" src="../scripts/popuptest.js" defer></script>
 </head>
 <body>
-    <div class="popup" onclick="myFunction()"> Click me!
-        <div class="popuptext" id="myPopup">
-            <form action="/test" method="post">
-                <ul>
-                    <li class="containerli">
-                        <div id="title_container">
-                            <h2>Create an account</h2>
-                            <a href="#" class="close" id="popup_sub_close" onclick="hide_popup()"></a>
-                        </div>
-                    </li>
-                    <div class="mailPseudoAndImg">
-                    <div class="mailAndPseudo">
+    <form id="signup_popup" action="/test" method="post">
+        <ul>
+            <li class="containerli">
+                <div id="title_container">
+                    <h2>Create an account</h2>
+                    <a href="#" class="close" id="popup_sub_close" onclick="hide_popup()"></a>
+                </div>
+            </li>
+            <div class="mailPseudoAndImg">
+                <div class="mailAndPseudo">
                     <li class="containerli">
                         <p class="liste">Pseudo : </p>
                         <input class="input_pseudo" type="text" name="pseudo_input"/>
                     </li>
                     <li class="containerli">
-                        <p class="liste">Adresse email : </p>
+                        <p class="liste">Mail adress : </p>
                         <input class="input_mail" type="text" name="email_input"/>
                     </li>
-                    </div>
-                        <div class="imgandsheet">
-                            <li class="img_cont">
-                                <img id="id_logo" src="../images/global/no-image.jpg" alt="logo subtidder">
-                            </li>
-                            <li class="input_container">
-                                <label for="logo"></label>
-                                <input type="file" name="logo" accept="image/jpeg, image/x-png">
-                            </li>
-                        </div>
-                    </div>
-                    <div class="password">
-                    <li class="containerli">
-                        <p class="liste"> Je suis : </p>
-                        <select class="sexe_input" id="sexe-select" name="sexe">
-                            <option value="">--Please choose an option--</option>
-                            <option value="Homme">Homme</option>
-                            <option value="Femme">Femme</option>
-                            <option value="Aucun des deux">Aucun des deux</option>
-                        </select>
+                </div>
+                <div class="imgandsheet">
+                    <li class="img_cont">
+                        <img id="id_logo" src="../images/global/no-image.jpg" alt="logo subtidder">
                     </li>
-                    <li class="containerli">
-                        <p class="listespef"> Code étudiant : </p>
-                        <input class="input_id"type="text" name="id_input"/>
+                    <li class="input_container">
+                        <label for="logo"></label>
+                        <input type="file" name="logo" accept="image/jpeg, image/x-png">
                     </li>
-                    </div>
-                    <li class="containerli">
-                        <p class="listedate"> Date de naissance : </p>
-                        <input class="input_birthdate" type="date" name="birthdate_input"/>
-                    </li>
-                    <div class="password">
-                        <li class="containerli">
-                            <p class="liste"> Mot de Passe : </p>
-                            <input class="input_password" type="text" name="password_input"/>
-                        </li>
-                        <li>
-                            <p class="listespefdouble">Mot de Passe vérification : </p>
-                            <input class="input_password_verif" type="text" name="passwordverif_input"/>
-                        </li>
-                    </div>
-                    <li class="img_container">
-                        <input id="submit_bt" type="submit" value="Submit">
-                    </li>
-                    <li class="error">
-                        <p>{{.Error}}</p>
-                    </li>
-                </ul>
-            </form>
+                </div>
+            </div>
+            <div class="password">
+                <li class="containerli">
+                    <p class="liste">I am : </p>
+                    <select class="sexe_input" id="sexe-select" name="sexe">
+                        <option value="">--Please choose an option--</option>
+                        <option value="Man">Man</option>
+                        <option value="Woman">Woman</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </li>
+                <li class="containerli">
+                    <p class="listespef">Student ID : </p>
+                    <input class="input_id"type="text" name="id_input"/>
+                </li>
+            </div>
+            <li class="containerli">
+                <p class="listedate">Birth date : </p>
+                <input class="input_birthdate" type="date" name="birthdate_input"/>
+            </li>
+            <div class="password">
+                <li class="containerli">
+                    <p class="liste">Password : </p>
+                    <input class="input_password" type="text" name="password_input"/>
+                </li>
+                <li>
+                    <p class="listespefdouble">Password again : </p>
+                    <input class="input_password_verif" type="text" name="passwordverif_input"/>
+                </li>
+            </div>
+            <li class="img_container">
+                <input id="submit_bt" type="submit" value="Submit">
+            </li>
+            <li class="error">
+                <p>{{.Error}}</p>
+            </li>
+        </ul>
+    </form>
 
-        </div>
-    </div>
 </body>
 </html>
