@@ -107,14 +107,22 @@ type SubscribeToSubject struct {
 }
 
 
+type Errors struct {
+	Signup string
+	Signin string
+	CreateSubtidder string
+	CreatePost string
+}
+
+
 // ViewData
 
 type MasterVD struct {
 	SubtidderVD 	SubtidderViewData
 	SearchVD		SearchViewData
-	Error string
-	SignUpError string
-	Connected bool
+	Errors 			Errors
+
+	Connected 		bool
 }
 
 

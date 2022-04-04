@@ -27,7 +27,7 @@ func IndexHandler(db *SQL.SqlServer) {
 			if r.FormValue("nsfw") == "0" {
 				subTidderNsfw = true
 			}
-			viewData.Error = db.CreateSub(subTidderName, 2, subTidderNsfw)
+			viewData.Errors.CreateSubtidder = db.CreateSub(subTidderName, 2, subTidderNsfw)
 		}
 
 		if r.Method == http.MethodPost {
@@ -38,9 +38,7 @@ func IndexHandler(db *SQL.SqlServer) {
 			birthdate := r.FormValue("birthdate_input")
 			studentId := r.FormValue("id_input")
 			if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
-				viewData.Error = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
-			} else {
-				viewData.Error = "Rentrez des informations valides"
+				viewData.Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
 			}
 		}
 
@@ -112,19 +110,21 @@ func SubtidderHandler(db *SQL.SqlServer) {
 }
 
 func SearchHandler(db *SQL.SqlServer) {
-	results := SQL.SearchViewData{}
+	viewData := SQL.MasterVD{}
+	viewData.Connected = false
+
 	tpl := template.Must(template.ParseFiles("./pages/search/search.html"))
 	http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
-		results.Subjects = map[SQL.Subject]int{}
+		viewData.SearchVD.Subjects = map[SQL.Subject]int{}
 		search := ""
 		if r.FormValue("search") != "" {
 			search = r.FormValue("search")
 		}
 
 		for _, subject := range db.GetSubs("name LIKE \"%" + search + "%\"") {
-			results.Subjects[subject] = db.GetNumberOfSubscriber(subject.Id)
+			viewData.SearchVD.Subjects[subject] = db.GetNumberOfSubscriber(subject.Id)
 		}
-		tpl.Execute(w, results)
+		tpl.Execute(w, viewData)
 	})
 }
 
