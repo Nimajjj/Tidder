@@ -1,19 +1,36 @@
-const popup = document.getElementById("create_sub_popup");
+const createsub_popup = document.getElementById("create_sub_popup");
 
 function hide_popup() {
-  popup.style.display = "none"
+  createsub_popup.style.display = "none"
 }
 
 function show_popup() {
-  popup.style.display = "block"
+  createsub_popup.style.display = "block"
 }
-
 
 if (document.getElementById("create_subtidder_error").innerHTML != "") {
   show_popup()
 } else {
   hide_popup()
 }
+
+
+const signup_popup = document.getElementById("signup_popup");
+
+function hide_signup_popup() {
+  signup_popup.style.display = "none"
+}
+
+function show_signup_popup() {
+  signup_popup.style.display = "block"
+}
+
+if (document.getElementById("signup_error").innerHTML != "") {
+  show_signup_popup()
+} else {
+  hide_signup_popup()
+}
+
 
 
 function SubscribeTo(id_account, id_subject) {
