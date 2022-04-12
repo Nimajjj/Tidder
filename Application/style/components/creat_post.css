@@ -191,6 +191,17 @@ textarea {
     margin-top: 2%;
 }
 
+.title_container {
+    padding: 1%;
+    width: 62vw;
+    background-color: #1A1A1B;
+    color: #F2F2F2;
+    font-size: 15px;
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #F2F2F2;
+    margin-top: 2%;
+}
+
 .button_txt {
     display: inline-flex;
     gap: 15px;
