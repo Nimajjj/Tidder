@@ -120,6 +120,7 @@ type Errors struct {
 type MasterVD struct {
 	SubtidderVD 	SubtidderViewData
 	SearchVD		SearchViewData
+	CreatePostsVD	CreatePostsVD
 	Errors 			Errors
 
 	Connected 		bool
@@ -134,4 +135,8 @@ type SubtidderViewData struct {
 
 type SearchViewData struct {
 	Subjects map[Subject]int
+}
+
+type CreatePostsVD struct {
+	SubscribedSubjects []Subject
 }

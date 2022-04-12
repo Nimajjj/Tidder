@@ -18,6 +18,11 @@ import (
 func IndexHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
 	viewData.Connected = true
+	viewData.CreatePostsVD = SQL.CreatePostsVD{}
+
+	IAM := 1
+
+	viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
 
 	tpl := template.Must(template.ParseFiles("./pages/index.html"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -33,14 +38,26 @@ func IndexHandler(db *SQL.SqlServer) {
 
 		// SIGN UP COMPONENT //
 		if r.Method == http.MethodPost {
-			pseudo := r.FormValue("pseudo_input")
-			email := r.FormValue("email_input")
-			password := r.FormValue("password_input")
-			verifpassword := r.FormValue("passwordverif_input")
-			birthdate := r.FormValue("birthdate_input")
-			studentId := r.FormValue("id_input")
-			if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
-				viewData.Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
+			
+			if (r.FormValue("submit_post") == "Envoyer") {
+				title := r.FormValue("post_title")
+				media_url := ""
+				content := r.FormValue("post_content")
+				nsfw := false
+				id_subject := r.FormValue("post_subtidder")
+				id_author := IAM
+
+				db.CreatePost(title, media_url, content, nsfw, id_subject, id_author)
+			} else {
+				pseudo := r.FormValue("pseudo_input")
+				email := r.FormValue("email_input")
+				password := r.FormValue("password_input")
+				verifpassword := r.FormValue("passwordverif_input")
+				birthdate := r.FormValue("birthdate_input")
+				studentId := r.FormValue("id_input")
+				if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
+					viewData.Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
+				}
 			}
 		}
 
@@ -113,7 +130,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 
 func SearchHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
-	viewData.Connected = false
+	viewData.Connected = true
 
 	tpl := template.Must(template.ParseFiles("./pages/search/search.html"))
 	http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
