@@ -149,26 +149,17 @@ func SearchHandler(db *SQL.SqlServer) {
 	})
 }
 
-func CreatingHandler(db *SQL.SqlServer) {
-	testTpl := template.Must(template.ParseFiles("./test/index2.html"))
-	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
-		type Error struct {
-			Error string
-		}
-		err := Error{""}
+func ConnectionHandler(db *SQL.SqlServer) {
+
+	Testc := SQL.MasterVD{}
+	tpltest := template.Must(template.ParseFiles("./test/connectiontest.html"))
+	http.HandleFunc("/testco/", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
 			pseudo := r.FormValue("pseudo_input")
-			email := r.FormValue("email_input")
 			password := r.FormValue("password_input")
-			verifpassword := r.FormValue("passwordverif_input")
-			birthdate := r.FormValue("birthdate_input")
-			studentId := r.FormValue("id_input")
-			if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
-				err.Error = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
-			} else {
-				err.Error = "Rentrez des informations valides"
-			}
+
+			db.Connection(Testc.Account.Id, pseudo, password, Testc.Connected)
 		}
-		testTpl.Execute(w, err)
+		tpltest.Execute(w, Testc)
 	})
 }

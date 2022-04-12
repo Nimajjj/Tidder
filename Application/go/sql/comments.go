@@ -46,6 +46,6 @@ func (sqlServ SqlServer) GetComments(conditions string) []Comments {
 	return result
 }
 
-func (sqlServ SqlServer) Creatingcomment() {
+func (sqlServ SqlServer) CreatingComment() {
 
 }

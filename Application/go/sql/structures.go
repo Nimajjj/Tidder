@@ -11,9 +11,8 @@ type Accounts struct {
 	CreationDate   string `json:"creation_date"`
 	Karma          int    `json:"karma"`
 	ProfilePicture string `json:"profile_picture"`
-	StudentId	   string `json:"student_id"`
+	StudentId      string `json:"student_id"`
 }
-
 
 type GlobalRoles struct {
 	Id   int    `json:"id_global_role"`
@@ -70,7 +69,7 @@ type Posts struct {
 	IdSubject    int    `json:"id_subject"`
 	IdAuthor     int    `json:"id_author"`
 
-	Score int
+	Score            int
 	NumberOfComments int
 }
 
@@ -97,8 +96,8 @@ type Subject struct {
 	ProfilePicture string `json:"profile_picture"`
 	Nsfw           bool   `json:"nsfw"`
 	IdOwner        int    `json:"id_owner"`
-	Infos		   string `json:"infos"`
-	Banner		   string `json:"banner"`
+	Infos          string `json:"infos"`
+	Banner         string `json:"banner"`
 }
 
 type SubscribeToSubject struct {
@@ -106,32 +105,29 @@ type SubscribeToSubject struct {
 	IdSubject string `json:"id_subject"`
 }
 
-
 type Errors struct {
-	Signup string
-	Signin string
+	Signup          string
+	Signin          string
 	CreateSubtidder string
-	CreatePost string
+	CreatePost      string
 }
-
 
 // ViewData
 
 type MasterVD struct {
-	SubtidderVD 	SubtidderViewData
-	SearchVD		SearchViewData
-	CreatePostsVD	CreatePostsVD
-	Errors 			Errors
+	SubtidderVD   SubtidderViewData
+	SearchVD      SearchViewData
+	CreatePostsVD CreatePostsVD
+	Account       Accounts
+	Errors        Errors
 
-	Connected 		bool
+	Connected bool
 }
-
 
 type SubtidderViewData struct {
-	Sub 	Subject
-	Posts 	[]map[Posts]Accounts
+	Sub   Subject
+	Posts []map[Posts]Accounts
 }
-
 
 type SearchViewData struct {
 	Subjects map[Subject]int
