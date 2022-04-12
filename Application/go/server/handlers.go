@@ -21,7 +21,8 @@ func IndexHandler(db *SQL.SqlServer) {
 
 	tpl := template.Must(template.ParseFiles("./pages/index.html"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		if r.FormValue("name") != "" { // create subtidder
+		// CREATE SUBTIDDER COMPONENT //
+		if r.FormValue("name") != "" {
 			subTidderName := r.FormValue("name")
 			subTidderNsfw := false
 			if r.FormValue("nsfw") == "0" {
@@ -30,6 +31,7 @@ func IndexHandler(db *SQL.SqlServer) {
 			viewData.Errors.CreateSubtidder = db.CreateSub(subTidderName, 2, subTidderNsfw)
 		}
 
+		// SIGN UP COMPONENT //
 		if r.Method == http.MethodPost {
 			pseudo := r.FormValue("pseudo_input")
 			email := r.FormValue("email_input")
@@ -47,12 +49,14 @@ func IndexHandler(db *SQL.SqlServer) {
 }
 
 func SubtidderHandler(db *SQL.SqlServer) {
+	viewData := SQL.MasterVD{}
+	viewData.Connected = true
 	var subtidder SQL.SubtidderViewData
+	
 
 	tpl := template.Must(template.ParseFiles("./pages/subtidder.html"))
 	http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
-		// CREATE SUBTIDDER COMPONENT //////////////////////////////////////////////////
-
+		// CREATE SUBTIDDER COMPONENT //
 		if r.FormValue("name") != "" {
 			subTidderName := r.FormValue("name")
 			subTidderNsfw := false
@@ -62,8 +66,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			db.CreateSub(subTidderName, 1, subTidderNsfw)
 		}
 
-		// END CREATE SUBTIDDER COMPONENT //////////////////////////////////////////////
-		// SUBSCRIBE TO SUBTIDDER COMPONENT ////////////////////////////////////////////
+		// SUBSCRIBE TO SUBTIDDER COMPONENT //
 
 		type Subscription struct {
 			IdAccount int `json:"id_account_subscribing"`
@@ -75,8 +78,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			db.SubscribeToSubject(subscription.IdAccount, subscription.IdSubject)
 		}
 
-		// END SUBSCRIBE TO SUBTIDDER COMPONENT ////////////////////////////////////////
-		// MAIN SUBTIDDER COMPONENT ////////////////////////////////////////////////////
+		// MAIN SUBTIDDER COMPONENT //
 
 		id := strings.ReplaceAll(r.URL.Path, "localhost/t/", "")
 		id = strings.ReplaceAll(r.URL.Path, "/t/", "")
@@ -104,8 +106,8 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			)
 		}
 
-		tpl.Execute(w, subtidder)
-		// END MAIN SUBTIDDER COMPONENT ////////////////////////////////////////////////
+		viewData.SubtidderVD = subtidder
+		tpl.Execute(w, viewData)
 	})
 }
 
@@ -115,6 +117,7 @@ func SearchHandler(db *SQL.SqlServer) {
 
 	tpl := template.Must(template.ParseFiles("./pages/search/search.html"))
 	http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
+		// SEARCH COMPONENT //
 		viewData.SearchVD.Subjects = map[SQL.Subject]int{}
 		search := ""
 		if r.FormValue("search") != "" {
@@ -124,6 +127,7 @@ func SearchHandler(db *SQL.SqlServer) {
 		for _, subject := range db.GetSubs("name LIKE \"%" + search + "%\"") {
 			viewData.SearchVD.Subjects[subject] = db.GetNumberOfSubscriber(subject.Id)
 		}
+
 		tpl.Execute(w, viewData)
 	})
 }
