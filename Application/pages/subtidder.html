@@ -97,13 +97,13 @@
         </ul>
       </form>
 
-      <img id="banner" src="/images/subtidder/{{.Sub.Banner}}" alt="banner">
+      <img id="banner" src="/images/subtidder/{{.SubtidderVD.Sub.Banner}}" alt="banner">
 
       <div id="sub_header">
-        <img src="../images/subtidder/{{.Sub.ProfilePicture}}" alt="sub logo">
+        <img src="../images/subtidder/{{.SubtidderVD.Sub.ProfilePicture}}" alt="sub logo">
         <div id="sub_top_container">
-          <h2>t/{{.Sub.Name}}</h2>
-          <div id="subscribe_bt" onclick="SubscribeTo(1, {{.Sub.Id}})">Subscribe</div>
+          <h2>t/{{.SubtidderVD.Sub.Name}}</h2>
+          <div id="subscribe_bt" onclick="SubscribeTo(1, {{.SubtidderVD.Sub.Id}})">Subscribe</div>
         </div>
       </div>
       <div id="sub_bot_container">
@@ -114,20 +114,20 @@
 
       <div id="infos">
         <div class="post infos">
-          <h3>{{.Sub.Name}}'s infos :</h3><br>
-          <p>{{.Sub.Infos}}</p>
+          <h3>{{.SubtidderVD.Sub.Name}}'s infos :</h3><br>
+          <p>{{.SubtidderVD.Sub.Infos}}</p>
         </div>
       </div>
 
       <div id="posts">
-        {{ range .Posts}}
+        {{ range .SubtidderVD.Posts }}
           {{ range $post, $author := . }}
             <div class="post">
               <ul>
                 <li class="post_upper">
-                  <a class="subreddit_name" href="/t/{{$.Sub.Name}}">
-                    <img class="sub_logo" src="/images/subtidder/{{$.Sub.ProfilePicture}}" alt="subreddit logo">
-                    <p>t/{{$.Sub.Name}}</p>
+                  <a class="subreddit_name" href="/t/{{$.SubtidderVD.Sub.Name}}">
+                    <img class="sub_logo" src="/images/subtidder/{{$.SubtidderVD.Sub.ProfilePicture}}" alt="subreddit logo">
+                    <p>t/{{$.SubtidderVD.Sub.Name}}</p>
                   </a>
                   <p>Published by <a href="">u/{{$author.Name}}</a> {{$post.CreationDate}} </p>
                 </li>
