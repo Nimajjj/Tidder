@@ -120,7 +120,6 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 	query += "\"" + currentTime.Format("2006-01-02") + "\","
 	query += " 0, \"Default.png\","
 	query += "\"" + studentId + "\")"
-	Util.Query(query)
 	sqlServ.executeQuery(query)
 	return error
 }

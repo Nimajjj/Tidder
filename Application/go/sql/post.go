@@ -1,6 +1,7 @@
 package mySQL
 
 import (
+	"time"
 	"strconv"
 	Util "github.com/Nimajjj/Tidder/go/utility"
 )
@@ -64,26 +65,53 @@ func (sqlServ SqlServer) GetPosts(conditions string) []Posts {
 	return result
 }
 
-func (sqlServ SqlServer) CreatePost(postName string, ownerId int) {
-	if len(postName) >= 125 || ownerId < 1 {
-		Util.Warning("Creating post failed : post name <" + postName + "> is longer than 125 characters.")
+
+func (sqlServ SqlServer) CreatePost(title string, media_url string, content string,  nsfw_input bool, id_subject string, id_author int) {
+	if len(title) >= 125 || id_author < 1 {
+		Util.Warning("Creating post failed : post name <" + title + "> is longer than 125 characters.")
 		return
 	}
 	forbiddenChar := []string{"`", "|", "*", "&", "@", "~", "^", "{", "}"}
-	for _, char := range postName {
+	for _, char := range title {
 		for _, forbidden := range forbiddenChar {
 			if string(char) == forbidden {
-				Util.Warning("Creating sub failed : sub name <" + postName + "> contains forbidden characters.")
+				Util.Warning("Creating sub failed : sub name <" + title + "> contains forbidden characters.")
 				return
 			}
 		}
 	}
+	if id_subject == "-1" {
+		Util.Warning("Creating sub failed : please choose a correct subtidder.")
+		return
+	}
 
-	// test if sub name is already taken
-	query := "name=\"" + postName + "\""
-	query = "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("
-	query += "\"" + postName + "\", \"default_pp.png\", "
-	query += strconv.Itoa(ownerId) + ", " + ")"
-	Util.Query(query)
+	if content == "" {
+		Util.Warning("Creating sub failed : content cannot be empty.")
+		return
+	}
+
+	if title == "" {
+		Util.Warning("Creating sub failed : content cannot be empty.")
+		return
+	}
+
+
+
+	nsfw := "0"
+	if nsfw_input == true {
+		nsfw = "1"
+	}
+	currentTime := time.Now().Format("2006-01-02 15:04:05")
+	query := "INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("
+	query += "\"" + title + "\","
+	query += "\"" + media_url + "\","
+	query += "\"" + content + "\","
+	query += "\"" + currentTime + "\","
+	query += " 0, 0,"
+	query += "\"" + nsfw + "\","
+	query += " 0, 0,"
+	query += "\"" + id_subject + "\","
+	query += "\"" + strconv.Itoa(id_author) + "\")"
+
 	sqlServ.executeQuery(query)
 }

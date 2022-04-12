@@ -17,30 +17,47 @@ import (
 */
 func IndexHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
-	viewData.Connected = false
+	viewData.Connected = true
+	viewData.CreatePostsVD = SQL.CreatePostsVD{}
+
+	IAM := 1
+
+	viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
 
 	tpl := template.Must(template.ParseFiles("./pages/index.html"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		if r.FormValue("name") != "" { // create subtidder
+		// CREATE SUBTIDDER COMPONENT //
+		if r.FormValue("name") != "" {
 			subTidderName := r.FormValue("name")
 			subTidderNsfw := false
 			if r.FormValue("nsfw") == "0" {
 				subTidderNsfw = true
 			}
-			viewData.Error = db.CreateSub(subTidderName, 2, subTidderNsfw)
+			viewData.Errors.CreateSubtidder = db.CreateSub(subTidderName, 2, subTidderNsfw)
 		}
 
+		// SIGN UP COMPONENT //
 		if r.Method == http.MethodPost {
-			pseudo := r.FormValue("pseudo_input")
-			email := r.FormValue("email_input")
-			password := r.FormValue("password_input")
-			verifpassword := r.FormValue("passwordverif_input")
-			birthdate := r.FormValue("birthdate_input")
-			studentId := r.FormValue("id_input")
-			if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
-				viewData.Error = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
+			
+			if (r.FormValue("submit_post") == "Envoyer") {
+				title := r.FormValue("post_title")
+				media_url := ""
+				content := r.FormValue("post_content")
+				nsfw := false
+				id_subject := r.FormValue("post_subtidder")
+				id_author := IAM
+
+				db.CreatePost(title, media_url, content, nsfw, id_subject, id_author)
 			} else {
-				viewData.Error = "Rentrez des informations valides"
+				pseudo := r.FormValue("pseudo_input")
+				email := r.FormValue("email_input")
+				password := r.FormValue("password_input")
+				verifpassword := r.FormValue("passwordverif_input")
+				birthdate := r.FormValue("birthdate_input")
+				studentId := r.FormValue("id_input")
+				if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
+					viewData.Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
+				}
 			}
 		}
 
@@ -49,12 +66,14 @@ func IndexHandler(db *SQL.SqlServer) {
 }
 
 func SubtidderHandler(db *SQL.SqlServer) {
+	viewData := SQL.MasterVD{}
+	viewData.Connected = true
 	var subtidder SQL.SubtidderViewData
+	
 
 	tpl := template.Must(template.ParseFiles("./pages/subtidder.html"))
 	http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
-		// CREATE SUBTIDDER COMPONENT //////////////////////////////////////////////////
-
+		// CREATE SUBTIDDER COMPONENT //
 		if r.FormValue("name") != "" {
 			subTidderName := r.FormValue("name")
 			subTidderNsfw := false
@@ -64,8 +83,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			db.CreateSub(subTidderName, 1, subTidderNsfw)
 		}
 
-		// END CREATE SUBTIDDER COMPONENT //////////////////////////////////////////////
-		// SUBSCRIBE TO SUBTIDDER COMPONENT ////////////////////////////////////////////
+		// SUBSCRIBE TO SUBTIDDER COMPONENT //
 
 		type Subscription struct {
 			IdAccount int `json:"id_account_subscribing"`
@@ -77,8 +95,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			db.SubscribeToSubject(subscription.IdAccount, subscription.IdSubject)
 		}
 
-		// END SUBSCRIBE TO SUBTIDDER COMPONENT ////////////////////////////////////////
-		// MAIN SUBTIDDER COMPONENT ////////////////////////////////////////////////////
+		// MAIN SUBTIDDER COMPONENT //
 
 		id := strings.ReplaceAll(r.URL.Path, "localhost/t/", "")
 		id = strings.ReplaceAll(r.URL.Path, "/t/", "")
@@ -106,25 +123,29 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			)
 		}
 
-		tpl.Execute(w, subtidder)
-		// END MAIN SUBTIDDER COMPONENT ////////////////////////////////////////////////
+		viewData.SubtidderVD = subtidder
+		tpl.Execute(w, viewData)
 	})
 }
 
 func SearchHandler(db *SQL.SqlServer) {
-	results := SQL.SearchViewData{}
+	viewData := SQL.MasterVD{}
+	viewData.Connected = true
+
 	tpl := template.Must(template.ParseFiles("./pages/search/search.html"))
 	http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
-		results.Subjects = map[SQL.Subject]int{}
+		// SEARCH COMPONENT //
+		viewData.SearchVD.Subjects = map[SQL.Subject]int{}
 		search := ""
 		if r.FormValue("search") != "" {
 			search = r.FormValue("search")
 		}
 
 		for _, subject := range db.GetSubs("name LIKE \"%" + search + "%\"") {
-			results.Subjects[subject] = db.GetNumberOfSubscriber(subject.Id)
+			viewData.SearchVD.Subjects[subject] = db.GetNumberOfSubscriber(subject.Id)
 		}
-		tpl.Execute(w, results)
+
+		tpl.Execute(w, viewData)
 	})
 }
 
