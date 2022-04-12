@@ -155,7 +155,12 @@ func (sqlServ SqlServer) SubscribeToSubject(idAccount int, idSubject int) {
 	}
 }
 
-//func (sqlServ SqlServer) Connection(idAccount int) {
-//IsConnected := false
-//firstquery := "SELECT PASSWORD FROM WHERE id_account = " + strconv.Itoa(idAccount)
-//}
+func (sqlServ SqlServer) Connection(idAccount int, name string, password string, Isconnected bool) {
+	query := "SELECT * FROM accounts WHERE id_account = " + strconv.Itoa(idAccount)
+	firstquery := "SELECT PASSWORD FROM accounts WHERE id_account = " + strconv.Itoa(idAccount)
+	if password == firstquery {
+		sqlServ.executeQuery(query)
+		Isconnected = true
+	}
+
+}
