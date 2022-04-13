@@ -134,13 +134,15 @@
                 <li class="post_title">
                   <h2>{{$post.Title}}</h2>
                 </li>
-                <li class="post_content">
                   {{if (eq $post.MediaUrl "")}}
-                    <p>{{$post.Content}}</p>
+                    <li class="post_content">
+                      <p>{{$post.Content}}</p>
+                    </li>
                   {{else}}
-                    <img src="/images/posts/{{$post.MediaUrl}}" alt="post content">
+                    <li class="post_content" style="display: flex; justify-content: center;">
+                      <img src="/images/posts/{{$post.MediaUrl}}" alt="post content">
+                    </li>
                   {{end}}
-                </li>
                 <li class="post_bottom">
                   <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="upvote">
                   <p>{{$post.Score}}</p>

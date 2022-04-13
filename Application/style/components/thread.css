@@ -75,9 +75,8 @@
 /*-----------------------*/
 
 /*----------MID----------*/
-.post_content{
-    display: flex;
-    justify-content: center;
+.post_content {
+
 }
 
 .post_content > img {
