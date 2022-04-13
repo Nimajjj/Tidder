@@ -1,4 +1,6 @@
-
+h2 {
+    font-size: 22px;
+}
 /*----------POPUP----------*/
 
 #create_post_popup {
@@ -170,25 +172,32 @@ select {
 
 /*----------Text zone + BB code----------*/
 
-textarea {
-    width: 61.8vw;
-    height: 25.7vh;
+
+
+textarea.txt_container {
+    padding: 1%;
+    width: 62vw;
+    height: 22vh;
     background-color: #1A1A1B;
     color: #F2F2F2;
     font-size: 15px;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #F2F2F2;
+    margin-top: 2%;
     resize : none;
 }
 
-.txt_container {
+textarea.title_area{
     padding: 1%;
     width: 62vw;
-    height: 40vh;
+    height: 6vh;
     background-color: #1A1A1B;
     color: #F2F2F2;
     font-size: 15px;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 5px 5px;
     border: 1px solid #F2F2F2;
     margin-top: 2%;
+    resize : none;
 }
 
 .button_txt {
