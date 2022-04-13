@@ -135,7 +135,6 @@ func (sqlServ SqlServer) GetSubtiddersSubscribed(account_id int) []Subject {
 		query += " id_subject = " + strconv.Itoa(id)
 	}
 
-
 	Util.Query(query)
 	rows2, err2 := sqlServ.db.Query(query)
 	if err2 != nil { Util.Error(err2) }

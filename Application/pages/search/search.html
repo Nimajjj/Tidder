@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="../style/pages/search.css">
     
 
-    <script type="text/javascript" src="../scripts/master.js" defer></script>
-    <script type="text/javascript" src="../scripts/subtidder.js" defer></script>
+    <script type="text/javascript" src="/scripts/master.js" defer></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -112,6 +111,43 @@
             <input id="submit_bt" type="submit" value="Submit">
           </li>
 
+        </ul>
+      </form>
+
+      <form id="create_post_popup" method="post">
+        <ul>
+            <li>
+                <div id="title_container">
+                    <h2>Create a post</h2>
+                    <a class="close" onclick="hide_post_popup()"></a>
+                </div>
+            </li>
+            <li class="input_container">
+                <div class="bloc">
+                    <div class="select">
+                        <select name="post_subtidder" id="post_subtidder_select">
+                            <option value="-1">Which Subtidder ?</option>
+                            {{range .CreatePostsVD.SubscribedSubjects}}
+                                <option value="{{.Id}}">t/{{.Name}}</option>
+                            {{end}}
+                        </select>
+                    </div>
+                </div>
+            </li>
+
+            <li class="input_container ">
+                <div class="advice_post">
+                    <p>1) Check our FAQ before posting. <br/>2) Anything past the anime timeline is considered a spoiler. Make sure you correctly hide your text and images with a spoiler tag. <br/>3) Spoilers on title will result in the post's removal. <br/>4) No ALL CAPS titles.</p>
+                </div>
+            </li>
+            <li class="input_container">
+              <p style: font-weight: bold;>Title: </p>
+              <input type="text" name="post_title" style="width: 90%;">
+            </li>
+            
+            <textarea class="txt_container" name="post_content" rows="12" cols="35"></textarea><br>
+            <input type="submit" name="submit_post" value="Envoyer">
+            <p id="create_post_error"></p>
         </ul>
       </form>
 
