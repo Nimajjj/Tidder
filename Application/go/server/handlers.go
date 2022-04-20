@@ -8,11 +8,27 @@ import (
 	"strings"
 	"time"
 
+	Util "github.com/Nimajjj/Tidder/go/utility"
 	SQL "github.com/Nimajjj/Tidder/go/sql"
 )
 
-func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer) {
-	IAM := 1
+/*
+	return -1 == not connected
+	return 0 == connected
+*/
+func testConnection(r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer) int {
+	cookie, _ := r.Cookie("session_id")
+	if cookie == nil { 
+		Util.Log("No cookie found")
+		return -1 
+	}
+	(*viewData).Connected = true
+	(*viewData).Account = db.GetAccountFromSession(cookie.Value)
+	return (*viewData).Account.Id
+}
+
+
+func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer, IAM int) {
 	// CREATE SUBTIDDER COMPONENT //
 	if r.FormValue("name") != "" {
 		subTidderName := r.FormValue("name")
@@ -68,16 +84,12 @@ func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *S
 */
 func IndexHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
-	viewData.CreatePostsVD = SQL.CreatePostsVD{}
-
-	IAM := 1
-
-	viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
-
-
+	
 	tpl := template.Must(template.ParseFiles("./pages/index.html"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		popup(w, r, &viewData, db)
+		IAM := testConnection(r, &viewData, db)
+		popup(w, r, &viewData, db, IAM)
+		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
 
 		tpl.Execute(w, viewData)
 	})
@@ -90,7 +102,8 @@ func SubtidderHandler(db *SQL.SqlServer) {
 
 	tpl := template.Must(template.ParseFiles("./pages/subtidder.html"))
 	http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
-		popup(w, r, &viewData, db)
+		IAM := testConnection(r, &viewData, db)
+		popup(w, r, &viewData, db, IAM)
 
 		// MAIN SUBTIDDER COMPONENT //
 
@@ -130,7 +143,8 @@ func SearchHandler(db *SQL.SqlServer) {
 
 	tpl := template.Must(template.ParseFiles("./pages/search/search.html"))
 	http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
-		popup(w, r, &viewData, db)
+		IAM := testConnection(r, &viewData, db)
+		popup(w, r, &viewData, db, IAM)
 		// SEARCH COMPONENT //
 		viewData.SearchVD.Subjects = map[SQL.Subject]int{}
 		search := ""

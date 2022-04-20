@@ -1,8 +1,9 @@
 package mySQL
 
 import (
-	Util "github.com/Nimajjj/Tidder/go/utility"
 	"strconv"
+
+	Util "github.com/Nimajjj/Tidder/go/utility"
 )
 
 /*
@@ -105,6 +106,8 @@ func (sqlServ SqlServer) GetNumberOfSubscriber(subject_id int) int {
 }
 
 func (sqlServ SqlServer) GetSubtiddersSubscribed(account_id int) []Subject {
+	if (account_id == -1) {return []Subject{}}
+
 	subscribedID :=  []int{} 
 	query := "SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =" + strconv.Itoa(account_id)
 	Util.Query(query)

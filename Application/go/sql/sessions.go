@@ -54,3 +54,16 @@ func (sqlServ SqlServer) TryToConnectUser(usr string, psw string) ([]Accounts, s
 	sqlServ.executeQuery(query)
 	return account, token
 }
+
+
+func (sqlServ SqlServer) GetAccountFromSession(sessionId string) Accounts {
+	query := "SELECT id_account FROM sessions WHERE id_session = '" + sessionId + "'"
+	rows, err := sqlServ.db.Query(query)
+	if err != nil {	Util.Error(err)	}
+	for rows.Next() {
+		var id int
+		rows.Scan(&id)
+		return sqlServ.GetAccount("id_account = " + strconv.Itoa(id))[0]
+	}
+	return Accounts{}
+}
