@@ -1,8 +1,9 @@
 package mySQL
 
 import (
-	"time"
 	"strconv"
+	"time"
+
 	Util "github.com/Nimajjj/Tidder/go/utility"
 )
 
@@ -12,7 +13,6 @@ import (
   Script only containing post related methods of SqlServer struct.
 */
 
-
 /*
   (sqlServ SqlServer) GetPosts(conditions string) []Posts
 
@@ -20,12 +20,16 @@ import (
 */
 func (sqlServ SqlServer) GetPosts(conditions string) []Posts {
 	query := "SELECT * FROM posts "
-	if conditions != "" {
+	if conditions == " ORDER BY creation_date DESC" {
+		query += " ORDER BY creation_date DESC" // LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOL FLEMME
+	} else if conditions != "" {
 		query += "WHERE " + conditions
 	}
 	Util.Query(query)
 	rows, err := sqlServ.db.Query(query)
-	if err != nil {	Util.Error(err)	}
+	if err != nil {
+		Util.Error(err)
+	}
 
 	result := []Posts{}
 	for rows.Next() {
@@ -58,15 +62,14 @@ func (sqlServ SqlServer) GetPosts(conditions string) []Posts {
 			Util.Error(err2)
 		}
 		numberOfComments := len(sqlServ.GetComments("id_post = " + strconv.Itoa(id) + " ORDER BY creation_date DESC"))
-		post := Posts{id, title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author, upvotes-downvotes, numberOfComments}
+		post := Posts{id, title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author, upvotes - downvotes, numberOfComments}
 		result = append(result, post)
 	}
 
 	return result
 }
 
-
-func (sqlServ SqlServer) CreatePost(title string, media_url string, content string,  nsfw_input bool, id_subject string, id_author int) {
+func (sqlServ SqlServer) CreatePost(title string, media_url string, content string, nsfw_input bool, id_subject string, id_author int) {
 	if len(title) >= 125 || id_author < 1 {
 		Util.Warning("Creating post failed : post name <" + title + "> is longer than 125 characters.")
 		return
@@ -95,8 +98,6 @@ func (sqlServ SqlServer) CreatePost(title string, media_url string, content stri
 		return
 	}
 
-
-
 	nsfw := "0"
 	if nsfw_input == true {
 		nsfw = "1"
@@ -114,4 +115,45 @@ func (sqlServ SqlServer) CreatePost(title string, media_url string, content stri
 	query += "\"" + strconv.Itoa(id_author) + "\")"
 
 	sqlServ.executeQuery(query)
+}
+
+func (sqlServ SqlServer) MakeDisplayablePost(post Posts) DisplayablePost {
+	sub := sqlServ.GetSubs("id_subject = " + strconv.Itoa(post.IdSubject))[0]
+	return DisplayablePost{
+		post.Id,
+		post.Title,
+		post.MediaUrl,
+		post.Content,
+		post.CreationDate,
+		post.Nsfw,
+		post.Redacted,
+		post.Pinned,
+		post.Score,
+		post.NumberOfComments,
+		sqlServ.GetAccountById(post.IdAuthor).Name,
+		sub.Name,
+		sub.ProfilePicture,
+	}
+}
+
+func (sqlServ SqlServer) GenerateFeed(user int) []DisplayablePost {
+	query := ""
+	if user != -1 {
+		subtidders := sqlServ.GetSubtiddersSubscribed(user)
+		for i, subtidder := range subtidders {
+			query += "id_subject = " + strconv.Itoa(subtidder.Id) + " "
+			if i < len(subtidders)-1 {
+				query += "OR "
+			}
+		}
+	}
+
+	query += " ORDER BY creation_date DESC"
+
+	res := []DisplayablePost{}
+	for _, post := range sqlServ.GetPosts(query) {
+		res = append(res, sqlServ.MakeDisplayablePost(post))
+	}
+
+	return res
 }

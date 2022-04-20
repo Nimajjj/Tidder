@@ -106,6 +106,7 @@ func (sqlServ SqlServer) GetNumberOfSubscriber(subject_id int) int {
 	return result
 }
 
+// GetSubtiddersSubscribed return array of all subtidder where given account is subscribe
 func (sqlServ SqlServer) GetSubtiddersSubscribed(account_id int) []Subject {
 	if account_id == -1 {
 		return []Subject{}

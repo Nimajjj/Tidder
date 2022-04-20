@@ -118,14 +118,40 @@ type Errors struct {
 
 // ViewData
 
+type DisplayablePost struct {
+	// POST RELATED
+	Id               int    `json:"idpost"`
+	Title            string `json:"title"`
+	MediaUrl         string `json:"media_url"`
+	Content          string `json:"content"`
+	CreationDate     string `json:"creation_date"`
+	Nsfw             bool   `json:"nsfw"`
+	Redacted         bool   `json:"redacted"`
+	Pinned           bool   `json:"pinned"`
+	Score            int
+	NumberOfComments int
+
+	// AUTHOR
+	AuthorName string
+
+	// SUBTIDDER
+	SubtidderName string
+	SubtidderPP   string
+}
+
 type MasterVD struct {
+	IndexVD       IndexViewData
 	SubtidderVD   SubtidderViewData
 	SearchVD      SearchViewData
 	CreatePostsVD CreatePostsVD
 	Account       Accounts
 	Errors        Errors
 
-	Connected     bool
+	Connected bool
+}
+
+type IndexViewData struct {
+	Posts []DisplayablePost
 }
 
 type SubtidderViewData struct {

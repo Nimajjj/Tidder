@@ -87,6 +87,7 @@ func IndexHandler(db *SQL.SqlServer) {
 		IAM := testConnection(r, &viewData, db)
 		popup(w, r, &viewData, db, IAM)
 		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
+		viewData.IndexVD.Posts = db.GenerateFeed(IAM)
 
 		tpl.Execute(w, viewData)
 		viewData.ClearErrors()
@@ -161,20 +162,5 @@ func SearchHandler(db *SQL.SqlServer) {
 
 		tpl.Execute(w, viewData)
 		viewData.ClearErrors()
-	})
-}
-
-func ConnectionHandler(db *SQL.SqlServer) {
-
-	Testc := SQL.MasterVD{}
-	tpltest := template.Must(template.ParseFiles("./test/connectiontest.html"))
-	http.HandleFunc("/testco/", func(w http.ResponseWriter, r *http.Request) {
-		if r.Method == http.MethodPost {
-			pseudo := r.FormValue("pseudo_input")
-			password := r.FormValue("password_input")
-
-			db.Connection(Testc.Account.Id, pseudo, password, Testc.Connected)
-		}
-		tpltest.Execute(w, Testc)
 	})
 }

@@ -155,13 +155,3 @@ func (sqlServ SqlServer) SubscribeToSubject(idAccount int, idSubject int) {
 		Util.Log("User id " + strconv.Itoa(idAccount) + " unsubscribed from subject id " + strconv.Itoa(idSubject))
 	}
 }
-
-func (sqlServ SqlServer) Connection(idAccount int, name string, password string, Isconnected bool) {
-	query := "SELECT * FROM accounts WHERE id_account = " + strconv.Itoa(idAccount)
-	firstquery := "SELECT PASSWORD FROM accounts WHERE id_account = " + strconv.Itoa(idAccount)
-	if password == firstquery {
-		sqlServ.executeQuery(query)
-		Isconnected = true
-	}
-
-}

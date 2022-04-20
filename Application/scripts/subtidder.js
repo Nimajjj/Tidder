@@ -64,4 +64,39 @@ function main() {
   show_posts()
 }
 
+
+
+// SUBSCRIBE TO SUBTIDDER --> to move to subjtidder.js
+let bt = document.getElementById("subscribe_bt")
+if (bt.innerHTML == "Subscribe") { 
+  bt.innerHTML = "Unsubscribe"
+  bt.style.backgroundColor = "#666666"
+} else {
+  bt.innerHTML = "Subscribe"
+  bt.style.backgroundColor = "#148AA6"
+}
+
+
+function SubscribeTo(id_account, id_subject) {
+  if (bt.innerHTML == "Subscribe") { 
+    bt.innerHTML = "Unsubscribe"
+    bt.style.backgroundColor = "#666666"
+  } else {
+    bt.innerHTML = "Subscribe"
+    bt.style.backgroundColor = "#148AA6"
+  }
+  fetch(location.pathname, {
+    method: "post",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  
+    //make sure to serialize your JSON body
+    body: JSON.stringify({
+      "id_account_subscribing": id_account,
+      "id_subject_to_subscribe": id_subject
+    })
+  })
+}
+
 main()

@@ -236,52 +236,42 @@
       </form>
 
 
-      <div class="post">
-        <ul>
-          <li class="post_upper">
-            <a class="subreddit_name" href=""><img class="sub_logo" src="/images/global/logo.png" alt="subreddit logo">r/subreddit_name</a>
-            <p>Published by <a href="">u/Author</a> 2022-01-12 </p>
-          </li>
-          <li class="post_title">
-            <h2>Post title goes right here. bla bla bla</h2>
-          </li>
-          <li class="post_content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra purus in ipsum eleifend elementum. Cras iaculis, lorem at maximus  dictum, nibh ipsum pretium justo, ac hendrerit erat tellus non erat.  Vivamus commodo sapien a dapibus luctus. In hac habitasse platea  dictumst. Nulla sit amet venenatis metus. In hac habitasse platea  dictumst. Donec interdum enim a lectus luctus mollis. Integer libero  mauris.</p>
-          </li>
-          <li class="post_bottom">
-            <img class="post_icon" src="/images/global/upvote.png" alt="upvote">
-            <img class="post_icon" src="/images/global/empty_downvote.png" alt="downvote">
-            <a href="">123 Comments</a>
-            <a class="post_share" href="">
-              <img class="post_icon" src="/images/global/share.png" alt="share">
-              <p style="margin-left: 1vh;">Share</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="post">
-        <ul>
-          <li class="post_upper">
-            <a class="subreddit_name" href=""><img class="sub_logo" src="/images/global/logo.png" alt="subreddit logo">r/subreddit_name</a>
-            <p>Published by <a href="">u/Author</a> 2022-01-12 </p>
-          </li>
-          <li class="post_title">
-            <h2>Post title goes right here. bla bla bla</h2>
-          </li>
-          <li class="post_content">
-            <img src="/images/global/test.jpg" alt="post content">
-          </li>
-          <li class="post_bottom">
-            <img class="post_icon" src="/images/global/empty_upvote.png" alt="upvote">
-            <img class="post_icon" src="/images/global/downvote.png" alt="downvote">
-            <a href="">123 Comments</a>
-            <a class="post_share" href="">
-              <img class="post_icon" src="/images/global/share.png" alt="share">
-              <p style="margin-left: 1vh;">Share</p>
-            </a>
-          </li>
-        </ul>
+      <div id="posts">
+        {{ range .IndexVD.Posts }}
+            <div class="post">
+              <ul>
+                <li class="post_upper">
+                  <a class="subreddit_name" href="/t/{{.SubtidderName}}">
+                    <img class="sub_logo" src="/images/subtidder/{{.SubtidderPP}}" alt="subreddit logo">
+                    <p>t/{{.SubtidderName}}</p>
+                  </a>
+                  <p>Published by <a href="">u/{{.AuthorName}}</a> {{.CreationDate}} </p>
+                </li>
+                <li class="post_title">
+                  <h2>{{.Title}}</h2>
+                </li>
+                  {{if (eq .MediaUrl "")}}
+                    <li class="post_content">
+                      <p>{{.Content}}</p>
+                    </li>
+                  {{else}}
+                    <li class="post_content" style="display: flex; justify-content: center;">
+                      <img src="/images/posts/{{.MediaUrl}}" alt="post content">
+                    </li>
+                  {{end}}
+                <li class="post_bottom">
+                  <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="upvote">
+                  <p>{{.Score}}</p>
+                  <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="downvote">
+                  <a href="">{{.NumberOfComments}} Comments</a>
+                  <a class="post_share" href="">
+                    <img class="post_icon" src="../images/global/share.png" alt="share">
+                    <p style="margin-left: 1vh;">Share</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+        {{end}}
       </div>
     </div>
 
