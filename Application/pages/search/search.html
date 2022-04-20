@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="../style/components/thread.css">
     <link rel="stylesheet" href="../style/components/create_sub.css">
     <link rel="stylesheet" href="../style/components/signup_popup.css">
+    <link rel="stylesheet" href="../style/components/creat_post.css">
     <link rel="stylesheet" href="../style/pages/search.css">
-    
 
     <script type="text/javascript" src="/scripts/master.js" defer></script>
 
@@ -38,7 +38,7 @@
 
       {{if .Connected}}
         <div class="container">
-          <div id="new_post_container" onclick="show_popup()">
+          <div id="new_post_container" onclick="show_post_popup()">
             <img src="../images/global/cross.png" alt="new post">
             <p>New post</p>
           </div>
@@ -46,21 +46,20 @@
             <img src="/images/global/cross.png" alt="create subtidder">
             <p>Create subtidder</p>
           </div>
-          <img id="profile_picture" src="/images/global/empty_profile_picture.png" alt="profile picture">
-          <p id="pseudonym">TEST</p>
+          <img id="profile_picture" src="/images/profiles/{{.Account.ProfilePicture}}" alt="profile picture">
+          <p id="pseudonym">{{.Account.Name}}</p>
         </div>
       {{else}}
         <div class="container">
           <div id="new_post_container" onclick="show_signup_popup()">
             <p style="font-weight: bold; color: #148AA6;">Sign-up</p>
           </div>
-          <div id="create_sub_container" onclick="">
+          <div id="create_sub_container" onclick="show_signin_popup()">
             <p>Sign-in</p>
           </div>
         </div>
       {{end}}
     </div>
-
 
     <div id="main">
       <form id="create_sub_popup" method="post" style="display: none;">
@@ -141,17 +140,16 @@
                 </div>
             </li>
             <li class="input_container">
-              <p style: font-weight: bold;>Title: </p>
-              <input type="text" name="post_title" style="width: 90%;">
+                <textarea placeholder="Title" class="title_area" name="post_title" rows="1" cols="35"></textarea><br>
             </li>
             
-            <textarea class="txt_container" name="post_content" rows="12" cols="35"></textarea><br>
+            <textarea placeholder="Write something here..." class="txt_container" name="post_content" rows="12" cols="35"></textarea><br>
             <input type="submit" name="submit_post" value="Envoyer">
             <p id="create_post_error"></p>
         </ul>
       </form>
 
-      <form id="signup_popup" action="/test" method="post">
+      <form id="signup_popup" class="popup" method="post">
         <div id="title_container">
             <h2>Create an account</h2>
             <a href="#" class="close" id="popup_sub_close" onclick="hide_signup_popup()"></a>
@@ -209,6 +207,29 @@
         </div>
         <input id="submit_bt" type="submit" value="Submit">
         <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signup}}</p>
+      </form>
+
+      <form id="signin_popup" class="popup" method="post">
+        <div id="signin_title_container">
+            <h2>Sign in</h2>
+            <a href="#" class="close" id="popup_signin_close" onclick="hide_signin_popup()"></a>
+        </div>
+        <div id="main_part">
+            <div id="left_part">
+                <ul>
+                    <li class="">
+                        <p class="liste">Pseudo : </p>
+                        <input class="input_pseudo_signin" type="text" name="input_pseudo_signin"/>
+                    </li>
+                    <li class="">
+                        <p class="liste">Password : </p>
+                        <input class="input_password_signin" type="text" name="input_password_signin"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <input id="submit_signin_bt" type="submit" value="SubmitSignin" name="SubmitSignin">
+        <p id="signin_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signin}}</p>
       </form>
 
       <div id="search_results">

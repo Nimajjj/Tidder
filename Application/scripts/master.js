@@ -48,6 +48,22 @@ if (document.getElementById("signup_error").innerHTML != "") {
   hide_signup_popup()
 }
 
+const signin_popup = document.getElementById("signin_popup");
+
+function hide_signin_popup() {
+  signin_popup.style.display = "none"
+}
+
+function show_signin_popup() {
+  signin_popup.style.display = "block"
+}
+
+if (document.getElementById("signin_error").innerHTML != "") {
+  show_signin_popup()
+} else {
+  hide_signin_popup()
+}
+
 
 
 function SubscribeTo(id_account, id_subject) {

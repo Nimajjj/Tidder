@@ -1,5 +1,9 @@
 package mySQL
 
+import (
+	"time"
+)
+
 // SQL STRUCTURES //
 
 type Accounts struct {
@@ -121,7 +125,7 @@ type MasterVD struct {
 	Account       Accounts
 	Errors        Errors
 
-	Connected bool
+	Connected 	  bool `default:false` 
 }
 
 type SubtidderViewData struct {
@@ -135,4 +139,20 @@ type SearchViewData struct {
 
 type CreatePostsVD struct {
 	SubscribedSubjects []Subject
+}
+
+
+// COOKIES 
+type Cookie struct {
+	Name       	string
+	Value      	string
+	Path       	string
+	Domain     	string
+	Expires    	time.Time
+	RawExpires 	string
+	MaxAge   	int
+	Secure   	bool
+	HttpOnly 	bool
+	Raw      	string
+	Unparsed 	[]string
 }
