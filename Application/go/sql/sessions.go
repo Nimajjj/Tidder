@@ -10,10 +10,10 @@ import (
 )
 
 /* to do:
-	- clear token in database
 	- clear cookies
 	- clear session
 	- disconnect option
+	- need to work through all pages
 */
 
 func (sqlServ SqlServer) GenerateSecureToken(length int) string {
