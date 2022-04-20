@@ -1,31 +1,33 @@
 package mySQL
 
 import (
-	"time"
-	"strconv"
-	"math/rand"
 	"encoding/hex"
-	"golang.org/x/crypto/bcrypt"
+	"math/rand"
+	"strconv"
+	"time"
+
 	Util "github.com/Nimajjj/Tidder/go/utility"
+	"golang.org/x/crypto/bcrypt"
 )
 
 /* to do:
-	- clear cookies
-	- clear session
-	- disconnect option
-	- need to work through all pages
+- clear cookies
+- clear session
+- disconnect option
 */
 
 func (sqlServ SqlServer) GenerateSecureToken(length int) string {
-    b := make([]byte, length)
-    if _, err := rand.Read(b); err != nil {
-        return ""
-    }
+	b := make([]byte, length)
+	if _, err := rand.Read(b); err != nil {
+		return ""
+	}
 
 	token := hex.EncodeToString(b)
 	query := "SELECT 'id_session' FROM sessions WHERE id_session = '" + token + "'"
 	rows, err := sqlServ.db.Query(query)
-	if err != nil {	Util.Error(err)	}
+	if err != nil {
+		Util.Error(err)
+	}
 	toBreak := false
 	for rows.Next() {
 		toBreak = true
@@ -36,9 +38,8 @@ func (sqlServ SqlServer) GenerateSecureToken(length int) string {
 		token = sqlServ.GenerateSecureToken(length)
 	}
 
-    return token
+	return token
 }
-
 
 func (sqlServ SqlServer) TryToConnectUser(usr string, psw string) ([]Accounts, string) {
 	query := "name = '" + usr + "'"
@@ -62,11 +63,12 @@ func (sqlServ SqlServer) TryToConnectUser(usr string, psw string) ([]Accounts, s
 	return account, token
 }
 
-
 func (sqlServ SqlServer) GetAccountFromSession(sessionId string) Accounts {
 	query := "SELECT id_account FROM sessions WHERE id_session = '" + sessionId + "'"
 	rows, err := sqlServ.db.Query(query)
-	if err != nil {	Util.Error(err)	}
+	if err != nil {
+		Util.Error(err)
+	}
 	for rows.Next() {
 		var id int
 		rows.Scan(&id)

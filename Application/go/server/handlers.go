@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	Util "github.com/Nimajjj/Tidder/go/utility"
 	SQL "github.com/Nimajjj/Tidder/go/sql"
+	Util "github.com/Nimajjj/Tidder/go/utility"
 )
 
 /*
@@ -18,25 +18,24 @@ import (
 */
 func testConnection(r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer) int {
 	cookie, _ := r.Cookie("session_id")
-	if cookie == nil { 
+	if cookie == nil {
 		Util.Log("No cookie found")
-		return -1 
+		return -1
 	}
 	(*viewData).Connected = true
 	(*viewData).Account = db.GetAccountFromSession(cookie.Value)
 	return (*viewData).Account.Id
 }
 
-
 func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer, IAM int) {
-	if r.FormValue("name") != "" {									// SUBTIDDER CREATION //
+	if r.FormValue("name") != "" { // SUBTIDDER CREATION //
 		subTidderName := r.FormValue("name")
 		subTidderNsfw := false
 		if r.FormValue("nsfw") == "0" {
 			subTidderNsfw = true
 		}
 		(*viewData).Errors.CreateSubtidder = db.CreateSub(subTidderName, 2, subTidderNsfw)
-	} else if r.FormValue("SubmitSignin") != "" {					// SIGN IN //
+	} else if r.FormValue("SubmitSignin") != "" { // SIGN IN //
 		username := r.FormValue("input_pseudo_signin")
 		password := r.FormValue("input_password_signin")
 		connectedUsr, sessionId := db.TryToConnectUser(username, password)
@@ -44,10 +43,10 @@ func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *S
 			(*viewData).Connected = true
 			(*viewData).Account = connectedUsr[0]
 			expiration := time.Now().Add(24 * time.Hour)
-			cookie := http.Cookie{Name: "session_id", Value: sessionId, Expires: expiration}
+			cookie := http.Cookie{Name: "session_id", Value: sessionId, Expires: expiration, Path: "/"}
 			http.SetCookie(w, &cookie)
-		} 
-	} else if (r.FormValue("submit_post") == "Envoyer") {			// POST CREATION //
+		}
+	} else if r.FormValue("submit_post") == "Envoyer" { // POST CREATION //
 		title := r.FormValue("post_title")
 		media_url := ""
 		content := r.FormValue("post_content")
@@ -55,14 +54,14 @@ func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *S
 		id_subject := r.FormValue("post_subtidder")
 		id_author := IAM
 
-		if (content != "" && title != "") {
+		if content != "" && title != "" {
 			db.CreatePost(title, media_url, content, nsfw, id_subject, id_author)
 		} else {
 			Util.Warning("An error occured during post creation.")
 			(*viewData).Errors.CreatePost = "An error occured during post creation."
 		}
-		
-	} else {														// SIGN UP //
+
+	} else { // SIGN UP //
 		pseudo := r.FormValue("pseudo_input")
 		email := r.FormValue("email_input")
 		password := r.FormValue("password_input")
@@ -75,10 +74,6 @@ func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *S
 	}
 }
 
-
-
-
-
 /*
   IndexHandler(db *SQL.SqlServer)
 
@@ -86,7 +81,7 @@ func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *S
 */
 func IndexHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
-	
+
 	tpl := template.Must(template.ParseFiles("./pages/index.html"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
@@ -98,11 +93,9 @@ func IndexHandler(db *SQL.SqlServer) {
 	})
 }
 
-
 func SubtidderHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
 	var subtidder SQL.SubtidderViewData
-	
 
 	tpl := template.Must(template.ParseFiles("./pages/subtidder.html"))
 	http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
