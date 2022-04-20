@@ -142,6 +142,12 @@ type CreatePostsVD struct {
 	SubscribedSubjects []Subject
 }
 
+func (viewData *MasterVD) ClearErrors() {
+	(*viewData).Errors.Signup = ""
+	(*viewData).Errors.Signin = ""
+	(*viewData).Errors.CreateSubtidder = ""
+	(*viewData).Errors.CreatePost = ""
+}
 
 // COOKIES 
 type Cookie struct {

@@ -148,7 +148,7 @@
             
             <textarea placeholder="Write something here..." class="txt_container" name="post_content" rows="12" cols="35"></textarea><br>
             <input type="submit" name="submit_post" value="Envoyer">
-            <p id="create_post_error"></p>
+            <p id="create_post_error">{{.Errors.CreatePost}}</p>
         </ul>
       </form>
 

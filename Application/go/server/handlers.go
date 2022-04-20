@@ -29,15 +29,14 @@ func testConnection(r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer) 
 
 
 func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer, IAM int) {
-	// CREATE SUBTIDDER COMPONENT //
-	if r.FormValue("name") != "" {
+	if r.FormValue("name") != "" {									// SUBTIDDER CREATION //
 		subTidderName := r.FormValue("name")
 		subTidderNsfw := false
 		if r.FormValue("nsfw") == "0" {
 			subTidderNsfw = true
 		}
 		(*viewData).Errors.CreateSubtidder = db.CreateSub(subTidderName, 2, subTidderNsfw)
-	} else if r.FormValue("SubmitSignin") != "" {		// SIGN IN COMPONENT //
+	} else if r.FormValue("SubmitSignin") != "" {					// SIGN IN //
 		username := r.FormValue("input_pseudo_signin")
 		password := r.FormValue("input_password_signin")
 		connectedUsr, sessionId := db.TryToConnectUser(username, password)
@@ -47,34 +46,37 @@ func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *S
 			expiration := time.Now().Add(24 * time.Hour)
 			cookie := http.Cookie{Name: "session_id", Value: sessionId, Expires: expiration}
 			http.SetCookie(w, &cookie)
-		}
-	}
+		} 
+	} else if (r.FormValue("submit_post") == "Envoyer") {			// POST CREATION //
+		title := r.FormValue("post_title")
+		media_url := ""
+		content := r.FormValue("post_content")
+		nsfw := false
+		id_subject := r.FormValue("post_subtidder")
+		id_author := IAM
 
-	// SIGN UP COMPONENT //
-	if r.Method == http.MethodPost {
-		
-		if (r.FormValue("submit_post") == "Envoyer") {
-			title := r.FormValue("post_title")
-			media_url := ""
-			content := r.FormValue("post_content")
-			nsfw := false
-			id_subject := r.FormValue("post_subtidder")
-			id_author := IAM
-
+		if (content != "" && title != "") {
 			db.CreatePost(title, media_url, content, nsfw, id_subject, id_author)
 		} else {
-			pseudo := r.FormValue("pseudo_input")
-			email := r.FormValue("email_input")
-			password := r.FormValue("password_input")
-			verifpassword := r.FormValue("passwordverif_input")
-			birthdate := r.FormValue("birthdate_input")
-			studentId := r.FormValue("id_input")
-			if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
-				(*viewData).Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
-			}
+			Util.Warning("An error occured during post creation.")
+			(*viewData).Errors.CreatePost = "An error occured during post creation."
+		}
+		
+	} else {														// SIGN UP //
+		pseudo := r.FormValue("pseudo_input")
+		email := r.FormValue("email_input")
+		password := r.FormValue("password_input")
+		verifpassword := r.FormValue("passwordverif_input")
+		birthdate := r.FormValue("birthdate_input")
+		studentId := r.FormValue("id_input")
+		if pseudo != "" && email != "" && password != "" && birthdate != "" && studentId != "" {
+			(*viewData).Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, studentId, verifpassword)
 		}
 	}
 }
+
+
+
 
 
 /*
@@ -92,6 +94,7 @@ func IndexHandler(db *SQL.SqlServer) {
 		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
 
 		tpl.Execute(w, viewData)
+		viewData.ClearErrors()
 	})
 }
 
@@ -105,6 +108,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 	http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
 		popup(w, r, &viewData, db, IAM)
+		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
 
 		// MAIN SUBTIDDER COMPONENT //
 		id := strings.ReplaceAll(r.URL.Path, "localhost/t/", "")
@@ -138,6 +142,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		subtidder.Subscribed = db.IsSubscribeTo(IAM, subtidder.Sub.Id)
 		viewData.SubtidderVD = subtidder
 		tpl.Execute(w, viewData)
+		viewData.ClearErrors()
 	})
 }
 
@@ -148,6 +153,8 @@ func SearchHandler(db *SQL.SqlServer) {
 	http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
 		popup(w, r, &viewData, db, IAM)
+		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
+
 		// SEARCH COMPONENT //
 		viewData.SearchVD.Subjects = map[SQL.Subject]int{}
 		search := ""
@@ -160,6 +167,7 @@ func SearchHandler(db *SQL.SqlServer) {
 		}
 
 		tpl.Execute(w, viewData)
+		viewData.ClearErrors()
 	})
 }
 

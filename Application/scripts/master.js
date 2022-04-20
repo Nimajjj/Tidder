@@ -1,3 +1,4 @@
+// CREATE SUB
 const createsub_popup = document.getElementById("create_sub_popup");
 
 function hide_popup() {
@@ -15,6 +16,7 @@ if (document.getElementById("create_subtidder_error").innerHTML != "") {
 }
 
 
+// CREATE POST
 const createpost_popup = document.getElementById("create_post_popup");
 
 function hide_post_popup() {
@@ -32,6 +34,7 @@ if (document.getElementById("create_post_error").innerHTML != "") {
 }
 
 
+// SIGN UP
 const signup_popup = document.getElementById("signup_popup");
 
 function hide_signup_popup() {
@@ -48,6 +51,8 @@ if (document.getElementById("signup_error").innerHTML != "") {
   hide_signup_popup()
 }
 
+
+// SIGN IN 
 const signin_popup = document.getElementById("signin_popup");
 
 function hide_signin_popup() {
@@ -64,6 +69,8 @@ if (document.getElementById("signin_error").innerHTML != "") {
   hide_signin_popup()
 }
 
+
+// SUBSCRIBE TO SUBTIDDER --> to move to subjtidder.js
 let bt = document.getElementById("subscribe_bt")
 if (bt.innerHTML == "Subscribe") { 
   bt.innerHTML = "Unsubscribe"

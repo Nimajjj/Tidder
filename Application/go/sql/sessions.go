@@ -9,6 +9,13 @@ import (
 	Util "github.com/Nimajjj/Tidder/go/utility"
 )
 
+/* to do:
+	- clear token in database
+	- clear cookies
+	- clear session
+	- disconnect option
+*/
+
 func (sqlServ SqlServer) GenerateSecureToken(length int) string {
     b := make([]byte, length)
     if _, err := rand.Read(b); err != nil {

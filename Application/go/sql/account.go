@@ -1,10 +1,11 @@
 package mySQL
 
 import (
-	Util "github.com/Nimajjj/Tidder/go/utility"
 	"golang.org/x/crypto/bcrypt"
 	"strconv"
 	"time"
+
+	Util "github.com/Nimajjj/Tidder/go/utility"
 )
 
 func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
