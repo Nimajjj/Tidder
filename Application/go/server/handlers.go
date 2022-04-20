@@ -1,7 +1,7 @@
 package server
 
 import (
-	_ "encoding/json"
+	"encoding/json"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -95,6 +95,7 @@ func IndexHandler(db *SQL.SqlServer) {
 	})
 }
 
+
 func SubtidderHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
 	var subtidder SQL.SubtidderViewData
@@ -106,21 +107,11 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		popup(w, r, &viewData, db, IAM)
 
 		// MAIN SUBTIDDER COMPONENT //
-
 		id := strings.ReplaceAll(r.URL.Path, "localhost/t/", "")
 		id = strings.ReplaceAll(r.URL.Path, "/t/", "")
 
-		formated_id := ""
-		for _, char := range id {
-			if char == '+' {
-				formated_id += " "
-			} else {
-				formated_id += string(char)
-			}
-		}
-
 		subtidder.Posts = []map[SQL.Posts]SQL.Accounts{}
-		subtidder.Sub = db.GetSubs("name=\"" + formated_id + "\"")[0] // ca c'est sale -> a refaire
+		subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0] // ca c'est sale -> a refaire
 
 		posts := db.GetPosts("id_subject=" + strconv.Itoa(subtidder.Sub.Id) + " ORDER BY creation_date DESC")
 
@@ -133,6 +124,18 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			)
 		}
 
+		// SUBSCRIBE TO SUBTIDDER COMPONENT //
+		type Subscription struct {
+			IdAccount int `json:"id_account_subscribing"`
+			IdSubject int `json:"id_subject_to_subscribe"`
+		}
+		subscription := &Subscription{}
+		json.NewDecoder(r.Body).Decode(subscription)
+		if subscription.IdAccount != 0 && subscription.IdSubject != 0 {
+			db.SubscribeToSubject(IAM, subtidder.Sub.Id)
+		}
+
+		subtidder.Subscribed = db.IsSubscribeTo(IAM, subtidder.Sub.Id)
 		viewData.SubtidderVD = subtidder
 		tpl.Execute(w, viewData)
 	})

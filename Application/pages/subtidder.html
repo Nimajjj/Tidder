@@ -240,7 +240,13 @@
         <img src="../images/subtidder/{{.SubtidderVD.Sub.ProfilePicture}}" alt="sub logo">
         <div id="sub_top_container">
           <h2>t/{{.SubtidderVD.Sub.Name}}</h2>
-          <div id="subscribe_bt" onclick="SubscribeTo(1, {{.SubtidderVD.Sub.Id}})">Subscribe</div>
+          {{if .Connected}}
+            {{if .SubtidderVD.Subscribed}}
+              <div id="subscribe_bt" onclick="SubscribeTo({{.Account.Id}}, {{.SubtidderVD.Sub.Id}})">Subscribe</div>
+            {{else}}
+              <div id="subscribe_bt" onclick="SubscribeTo({{.Account.Id}}, {{.SubtidderVD.Sub.Id}})">Unsubscribe</div>
+            {{end}}
+          {{end}}
         </div>
       </div>
       <div id="sub_bot_container">

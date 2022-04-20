@@ -124,9 +124,8 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 	return error
 }
 
-func (sqlServ SqlServer) SubscribeToSubject(idAccount int, idSubject int) {
+func (sqlServ SqlServer) IsSubscribeTo(idAccount int, idSubject int) bool {
 	alreadySubscribed := false
-
 	query := "SELECT * FROM subscribe_to_subject WHERE id_account = " + strconv.Itoa(idAccount) + " AND id_subject = " + strconv.Itoa(idSubject)
 	Util.Query(query)
 	rows, err := sqlServ.db.Query(query)
@@ -137,18 +136,19 @@ func (sqlServ SqlServer) SubscribeToSubject(idAccount int, idSubject int) {
 		alreadySubscribed = true
 		break
 	}
+	return alreadySubscribed
+}
 
-	if !alreadySubscribed {
-		query = "INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES ("
+func (sqlServ SqlServer) SubscribeToSubject(idAccount int, idSubject int) {
+	if !sqlServ.IsSubscribeTo(idAccount, idSubject) {
+		query := "INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES ("
 		query += strconv.Itoa(idAccount) + ","
 		query += strconv.Itoa(idSubject) + ")"
-		Util.Query(query)
 		sqlServ.executeQuery(query)
 		Util.Log("User id " + strconv.Itoa(idAccount) + " subscribed to subject id " + strconv.Itoa(idSubject))
 	} else {
-		query = "DELETE FROM subscribe_to_subject WHERE id_account ="
+		query := "DELETE FROM subscribe_to_subject WHERE id_account ="
 		query += strconv.Itoa(idAccount) + " AND id_subject = " + strconv.Itoa(idSubject)
-		Util.Query(query)
 		sqlServ.executeQuery(query)
 		Util.Log("User id " + strconv.Itoa(idAccount) + " unsubscribed from subject id " + strconv.Itoa(idSubject))
 	}

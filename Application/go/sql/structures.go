@@ -131,6 +131,7 @@ type MasterVD struct {
 type SubtidderViewData struct {
 	Sub   Subject
 	Posts []map[Posts]Accounts
+	Subscribed bool
 }
 
 type SearchViewData struct {
