@@ -1,9 +1,10 @@
 package mySQL
 
 import (
-	"golang.org/x/crypto/bcrypt"
 	"strconv"
 	"time"
+
+	"golang.org/x/crypto/bcrypt"
 
 	Util "github.com/Nimajjj/Tidder/go/utility"
 )

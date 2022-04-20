@@ -125,12 +125,12 @@ type MasterVD struct {
 	Account       Accounts
 	Errors        Errors
 
-	Connected 	  bool `default:false` 
+	Connected     bool
 }
 
 type SubtidderViewData struct {
-	Sub   Subject
-	Posts []map[Posts]Accounts
+	Sub        Subject
+	Posts      []map[Posts]Accounts
 	Subscribed bool
 }
 
@@ -149,17 +149,17 @@ func (viewData *MasterVD) ClearErrors() {
 	(*viewData).Errors.CreatePost = ""
 }
 
-// COOKIES 
+// COOKIES
 type Cookie struct {
-	Name       	string
-	Value      	string
-	Path       	string
-	Domain     	string
-	Expires    	time.Time
-	RawExpires 	string
-	MaxAge   	int
-	Secure   	bool
-	HttpOnly 	bool
-	Raw      	string
-	Unparsed 	[]string
+	Name       string
+	Value      string
+	Path       string
+	Domain     string
+	Expires    time.Time
+	RawExpires string
+	MaxAge     int
+	Secure     bool
+	HttpOnly   bool
+	Raw        string
+	Unparsed   []string
 }

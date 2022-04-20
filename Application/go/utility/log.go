@@ -1,12 +1,11 @@
 package utility
 
 import (
-    "fmt"
-    "os"
-    "time"
-    "log"
+	"fmt"
+	"log"
+	"os"
+	"time"
 )
-
 
 /*
   Log(text string)
@@ -17,9 +16,9 @@ import (
 
 */
 func Log(text string) {
-  logs := time.Now().Format("01-02-2006 15:04:05") + " \tDEBUG\t\t" + text
-  registerLog(logs)
-  fmt.Println(logs)
+	logs := time.Now().Format("01-02-2006 15:04:05") + " \tDEBUG\t\t" + text
+	registerLog(logs)
+	fmt.Println(logs)
 }
 
 /*
@@ -29,24 +28,22 @@ func Log(text string) {
   Kill program
 */
 func Error(err error) {
-  logs := time.Now().Format("01-02-2006 15:04:05") + " \tERROR /!\\\t\t" + err.Error()
-  registerLog(logs)
-  log.Fatal(err)
+	logs := time.Now().Format("01-02-2006 15:04:05") + " \tERROR /!\\\t\t" + err.Error()
+	registerLog(logs)
+	log.Fatal(err)
 }
 
 func Warning(text string) {
-  logs := time.Now().Format("01-02-2006 15:04:05") + " \tWARNING\t\t" + text
-  registerLog(logs)
-  fmt.Println(logs)
+	logs := time.Now().Format("01-02-2006 15:04:05") + " \tWARNING\t\t" + text
+	registerLog(logs)
+	fmt.Println(logs)
 }
-
 
 func Query(querry string) {
-  logs := time.Now().Format("01-02-2006 15:04:05") + " \tQUERRY\t\t" + querry
-  registerLog(logs)
-  fmt.Println(logs)
+	logs := time.Now().Format("01-02-2006 15:04:05") + " \tQUERRY\t\t" + querry
+	registerLog(logs)
+	fmt.Println(logs)
 }
-
 
 /*
   addToLogs(text string, isErr bool)
@@ -54,10 +51,14 @@ func Query(querry string) {
   Print text in ./logs/master.log
 */
 func registerLog(text string) {
-  file, err := os.OpenFile("./logs/master.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-  if err != nil { panic(err) }
-  defer file.Close()
+	file, err := os.OpenFile("./logs/master.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
 
-  _, err2 := file.WriteString("\n" + text)
-  if err2 != nil { panic(err2) }
+	_, err2 := file.WriteString("\n" + text)
+	if err2 != nil {
+		panic(err2)
+	}
 }
