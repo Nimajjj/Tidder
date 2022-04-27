@@ -38,7 +38,7 @@ document.querySelectorAll('.upvote_bt').forEach(item => {
           })
     })
 })
-  
+
 document.querySelectorAll('.downvote_bt').forEach(item => {
     item.addEventListener('click', event => {
         let change = -1

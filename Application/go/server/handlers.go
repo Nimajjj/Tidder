@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"html/template"
 	"net/http"
-	"strconv"
 	"strings"
 	"time"
 
@@ -141,28 +140,25 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		id := strings.ReplaceAll(r.URL.Path, "localhost/t/", "")
 		id = strings.ReplaceAll(r.URL.Path, "/t/", "")
 
-		subtidder.Posts = []map[SQL.Posts]SQL.Accounts{}
 		subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0] // ca c'est sale -> a refaire
+		subtidder.Posts = db.GenerateSubTidderFeed(IAM, subtidder.Sub.Id)
 
-		posts := db.GetPosts("id_subject=" + strconv.Itoa(subtidder.Sub.Id) + " ORDER BY creation_date DESC")
-
-		for _, post := range posts { // svp me demandez pas d'expliquer ce bout de code franchement c chaud
-			subtidder.Posts = append(
-				subtidder.Posts,
-				map[SQL.Posts]SQL.Accounts{
-					post: db.GetAccountById(post.IdAuthor),
-				},
-			)
-		}
-
-		// SUBSCRIBE TO SUBTIDDER COMPONENT //
-		type Subscription struct {
+		type FetchQuery struct {
+			IdPost    int `json:"id_post"`
+			Score     int `json:"score"`
 			IdAccount int `json:"id_account_subscribing"`
 			IdSubject int `json:"id_subject_to_subscribe"`
 		}
-		subscription := &Subscription{}
-		json.NewDecoder(r.Body).Decode(subscription)
-		if subscription.IdAccount != 0 && subscription.IdSubject != 0 {
+		fetchQuery := &FetchQuery{}
+		json.NewDecoder(r.Body).Decode(fetchQuery)
+
+		// VOTES //
+		if fetchQuery.IdPost != 0 && fetchQuery.Score != 0 {
+			db.Vote(fetchQuery.IdPost, fetchQuery.Score, IAM)
+		}
+
+		// SUBSCRIBE TO SUBTIDDER COMPONENT //
+		if fetchQuery.IdAccount != 0 && fetchQuery.IdSubject != 0 {
 			db.SubscribeToSubject(IAM, subtidder.Sub.Id)
 		}
 

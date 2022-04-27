@@ -247,3 +247,14 @@ func (sqlServ SqlServer) GenerateFeed(user int) []DisplayablePost {
 
 	return res
 }
+
+func (sqlServ SqlServer) GenerateSubTidderFeed(user int, subtidder int) []DisplayablePost {
+	query := " id_subject = " + strconv.Itoa(subtidder) + " ORDER BY creation_date DESC"
+
+	res := []DisplayablePost{}
+	for _, post := range sqlServ.GetPosts(query) {
+		res = append(res, sqlServ.MakeDisplayablePost(post, user))
+	}
+
+	return res
+}

@@ -157,7 +157,7 @@ type IndexViewData struct {
 
 type SubtidderViewData struct {
 	Sub        Subject
-	Posts      []map[Posts]Accounts
+	Posts      []DisplayablePost
 	Subscribed bool
 }
 
