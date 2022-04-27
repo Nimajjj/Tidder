@@ -1,0 +1,71 @@
+{{ define "content" }}
+    <link rel="stylesheet" href="../style/pages/subtidder.css">
+    <script type="text/javascript" src="/scripts/subtidder.js" defer></script>
+    <img id="banner" src="/images/subtidder/{{.SubtidderVD.Sub.Banner}}" alt="banner">
+    <div id="sub_header">
+        <img src="../images/subtidder/{{.SubtidderVD.Sub.ProfilePicture}}" alt="sub logo">
+        <div id="sub_top_container">
+          <h2>t/{{.SubtidderVD.Sub.Name}}</h2>
+          {{if .Connected}}
+            {{if .SubtidderVD.Subscribed}}
+              <div id="subscribe_bt" onclick="SubscribeTo({{.Account.Id}}, {{.SubtidderVD.Sub.Id}})">Subscribe</div>
+            {{else}}
+              <div id="subscribe_bt" onclick="SubscribeTo({{.Account.Id}}, {{.SubtidderVD.Sub.Id}})">Unsubscribe</div>
+            {{end}}
+          {{end}}
+        </div>
+    </div>
+      
+    <div id="sub_bot_container">
+    <div id="posts_tab" class="sub_tab" onclick="show_posts()">Posts</div>
+    <div id="infos_tab" class="sub_tab" onclick="show_infos()">Infos</div>
+    <div id="admin_tab" class="sub_tab" style="display: block;">Administration</div>
+    </div>
+
+    <div id="infos">
+    <div class="post infos">
+        <h3>{{.SubtidderVD.Sub.Name}}'s infos :</h3><br>
+        <p>{{.SubtidderVD.Sub.Infos}}</p>
+    </div>
+    </div>
+
+    <div id="posts">
+    {{ range .SubtidderVD.Posts }}
+        {{ range $post, $author := . }}
+        <div class="post">
+            <ul>
+            <li class="post_upper">
+                <a class="subreddit_name" href="/t/{{$.SubtidderVD.Sub.Name}}">
+                <img class="sub_logo" src="/images/subtidder/{{$.SubtidderVD.Sub.ProfilePicture}}" alt="subreddit logo">
+                <p>t/{{$.SubtidderVD.Sub.Name}}</p>
+                </a>
+                <p>Published by <a href="">u/{{$author.Name}}</a> {{$post.CreationDate}} </p>
+            </li>
+            <li class="post_title">
+                <h2>{{$post.Title}}</h2>
+            </li>
+                {{if (eq $post.MediaUrl "")}}
+                <li class="post_content">
+                    <p>{{$post.Content}}</p>
+                </li>
+                {{else}}
+                <li class="post_content" style="display: flex; justify-content: center;">
+                    <img src="/images/posts/{{$post.MediaUrl}}" alt="post content">
+                </li>
+                {{end}}
+            <li class="post_bottom">
+                <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="upvote">
+                <p>{{$post.Score}}</p>
+                <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="downvote">
+                <a href="">{{$post.NumberOfComments}} Comments</a>
+                <a class="post_share" href="">
+                <img class="post_icon" src="../images/global/share.png" alt="share">
+                <p style="margin-left: 1vh;">Share</p>
+                </a>
+            </li>
+            </ul>
+        </div>
+        {{end}}
+    {{end}}
+    </div>
+{{ end }}

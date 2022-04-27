@@ -27,6 +27,26 @@ func testConnection(r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer) 
 	return (*viewData).Account.Id
 }
 
+func callTemplate(templateName string, viewdata *SQL.MasterVD, w http.ResponseWriter) error {
+	templates := template.New("")
+	templates, err := templates.ParseFiles("./pages/base.html", "./pages/templates/"+templateName+".html")
+	if err != nil {
+		return err
+	}
+	templates, err = templates.ParseGlob("./pages/templates/components/*.html")
+	if err != nil {
+		return err
+	}
+
+	err = templates.ExecuteTemplate(w, "base", *viewdata)
+	if err != nil {
+		return err
+	}
+
+	_ = templateName
+	return nil
+}
+
 func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer, IAM int) {
 	if r.FormValue("name") != "" { // SUBTIDDER CREATION //
 		subTidderName := r.FormValue("name")
@@ -82,14 +102,16 @@ func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *S
 func IndexHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
 
-	tpl := template.Must(template.ParseFiles("./pages/index.html"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
 		popup(w, r, &viewData, db, IAM)
 		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
 		viewData.IndexVD.Posts = db.GenerateFeed(IAM)
 
-		tpl.Execute(w, viewData)
+		err := callTemplate("index_feed", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
 		viewData.ClearErrors()
 	})
 }
@@ -98,7 +120,6 @@ func SubtidderHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
 	var subtidder SQL.SubtidderViewData
 
-	tpl := template.Must(template.ParseFiles("./pages/subtidder.html"))
 	http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
 		popup(w, r, &viewData, db, IAM)
@@ -135,7 +156,11 @@ func SubtidderHandler(db *SQL.SqlServer) {
 
 		subtidder.Subscribed = db.IsSubscribeTo(IAM, subtidder.Sub.Id)
 		viewData.SubtidderVD = subtidder
-		tpl.Execute(w, viewData)
+
+		err := callTemplate("subtidder", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
 		viewData.ClearErrors()
 	})
 }
@@ -143,7 +168,6 @@ func SubtidderHandler(db *SQL.SqlServer) {
 func SearchHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
 
-	tpl := template.Must(template.ParseFiles("./pages/search/search.html"))
 	http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
 		popup(w, r, &viewData, db, IAM)
@@ -160,7 +184,10 @@ func SearchHandler(db *SQL.SqlServer) {
 			viewData.SearchVD.Subjects[subject] = db.GetNumberOfSubscriber(subject.Id)
 		}
 
-		tpl.Execute(w, viewData)
+		err := callTemplate("search", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
 		viewData.ClearErrors()
 	})
 }

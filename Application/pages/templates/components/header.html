@@ -1,0 +1,33 @@
+{{ define "header" }}
+    <a class="container" href="/">
+          <img id="tidder_logo" src="/images/global/logo.png" alt="tidder logo">
+          <h1 id="tidder_title">Tidder</h1>
+        </a>
+
+        {{template "search_bar" .}}
+
+
+        {{if .Connected}}
+          <div class="container">
+            <div id="new_post_container" onclick="show_post_popup()">
+              <img src="../images/global/cross.png" alt="new post">
+              <p>New post</p>
+            </div>
+            <div id="create_sub_container" onclick="show_popup()">
+              <img src="/images/global/cross.png" alt="create subtidder">
+              <p>Create subtidder</p>
+            </div>
+            <img id="profile_picture" src="/images/profiles/{{.Account.ProfilePicture}}" alt="profile picture">
+            <p id="pseudonym">{{.Account.Name}}</p>
+          </div>
+        {{else}}
+          <div class="container">
+            <div id="new_post_container" onclick="show_signup_popup()">
+              <p style="font-weight: bold; color: #148AA6;">Sign-up</p>
+            </div>
+            <div id="create_sub_container" onclick="show_signin_popup()">
+              <p>Sign-in</p>
+            </div>
+          </div>
+        {{end}}
+{{ end }}

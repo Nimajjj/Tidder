@@ -1,9 +1,10 @@
 package server
 
 import (
+	"net/http"
+
 	SQL "github.com/Nimajjj/Tidder/go/sql"
 	Util "github.com/Nimajjj/Tidder/go/utility"
-	"net/http"
 )
 
 /*
@@ -58,6 +59,7 @@ func launchServer(DatabaseIp string) {
 	db.Connect(DatabaseIp)
 	defer db.Close()
 
+	TestHandler(&db)
 	IndexHandler(&db)
 	SubtidderHandler(&db)
 	SearchHandler(&db)

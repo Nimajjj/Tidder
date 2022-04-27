@@ -1,0 +1,22 @@
+{{ define "content" }}
+    <div id="search_results">
+        {{if .SearchVD.Subjects}}
+          {{range $sub, $n := .SearchVD.Subjects}}
+            <div class="post search_result" onclick="location.href='/t/{{$sub.Name}}'">
+              <div>
+                <img class="sub_logo" src="../images/subtidder/{{$sub.ProfilePicture}}" alt="subtidder logo">
+                <div>
+                  <div class="sub_name_container">
+                    <h2>{{$sub.Name}}</h2>
+                    <p>{{$n}} subscribers</p>
+                  </div>
+                  <p>{{$sub.Infos}}</p>
+                </div>
+              </div>
+            </div>
+          {{end}}
+        {{else}}
+          <h2>Wow ! Such empty...</h2>
+        {{end}}        
+    </div>
+{{ end }}
