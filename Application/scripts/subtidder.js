@@ -33,6 +33,31 @@ const getNextSiblings = (e) => {
 }
 
 
+document.querySelectorAll('.upvote_bt').forEach(item => {
+  item.addEventListener('click', event => {
+    if (item.src == "http://localhost/images/global/upvote.png") {  // to change
+      item.src = "../images/global/empty_upvote.png"
+      item.nextElementSibling.innerHTML = parseInt(item.nextElementSibling.innerHTML) - 1
+      return
+    }
+    item.src = "../images/global/upvote.png"
+    item.nextElementSibling.nextElementSibling.src = "../images/global/empty_downvote.png"
+    item.nextElementSibling.innerHTML = parseInt(item.nextElementSibling.innerHTML) + 1
+  })
+})
+
+document.querySelectorAll('.downvote_bt').forEach(item => {
+  item.addEventListener('click', event => {
+    if (item.src == "http://localhost/images/global/downvote.png") { // to change
+      item.src = "../images/global/empty_downvote.png"
+      item.previousElementSibling.innerHTML = parseInt(item.previousElementSibling.innerHTML) + 1
+      return
+    }
+    item.src = "../images/global/downvote.png"
+    item.previousElementSibling.previousElementSibling.src = "../images/global/empty_upvote.png"
+    item.previousElementSibling.innerHTML = parseInt(item.previousElementSibling.innerHTML) - 1
+  })
+})
 
 
 function main() {

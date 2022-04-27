@@ -108,6 +108,18 @@ func IndexHandler(db *SQL.SqlServer) {
 		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
 		viewData.IndexVD.Posts = db.GenerateFeed(IAM)
 
+		// Vote
+		type Vote struct {
+			IdPost int `json:"id_post"`
+			Score  int `json:"score"`
+		}
+		vote := &Vote{}
+		json.NewDecoder(r.Body).Decode(vote)
+
+		if vote.IdPost != 0 && vote.Score != 0 {
+			db.Vote(vote.IdPost, vote.Score, IAM)
+		}
+
 		err := callTemplate("index_feed", &viewData, w)
 		if err != nil {
 			Util.Error(err)

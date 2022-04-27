@@ -130,6 +130,7 @@ type DisplayablePost struct {
 	Pinned           bool   `json:"pinned"`
 	Score            int
 	NumberOfComments int
+	Vote             int
 
 	// AUTHOR
 	AuthorName string

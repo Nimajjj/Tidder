@@ -24,9 +24,20 @@
                     </li>
                   {{end}}
                 <li class="post_bottom">
-                  <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="upvote">
+                {{if (eq .Vote 1)}}
+                  <img class="post_icon vote_bt upvote_bt" src="../images/global/upvote.png" alt="{{.Id}} upvote">
                   <p>{{.Score}}</p>
-                  <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="downvote">
+                  <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
+                {{else if (eq .Vote -1)}}
+                  <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
+                  <p>{{.Score}}</p>
+                  <img class="post_icon vote_bt downvote_bt" src="../images/global/downvote.png" alt="{{.Id}} downvote">
+                {{else}}
+                  <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
+                  <p>{{.Score}}</p>
+                  <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
+                {{end}}
+                  
                   <a href="">{{.NumberOfComments}} Comments</a>
                   <a class="post_share" href="">
                     <img class="post_icon" src="../images/global/share.png" alt="share">

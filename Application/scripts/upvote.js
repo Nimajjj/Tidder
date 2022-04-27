@@ -15,6 +15,27 @@ document.querySelectorAll('.upvote_bt').forEach(item => {
         item.src = src
         score.innerHTML = parseInt(score.innerHTML) + change
         otherBt.src = "../images/global/empty_downvote.png"
+
+
+        let id = ""
+        for (let i = 0; i < item.alt.length; i++) {
+            if (item.alt[i] == " ") {
+                break
+            }
+            id += item.alt[i]
+        }
+
+        fetch(location.pathname, {  // vote query
+            method: "post",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+          
+            body: JSON.stringify({
+              "id_post": parseInt(id),
+              "score": change
+            })
+          })
     })
 })
   
@@ -35,6 +56,26 @@ document.querySelectorAll('.downvote_bt').forEach(item => {
         item.src = src
         score.innerHTML = parseInt(score.innerHTML) + change
         otherBt.src = "../images/global/empty_upvote.png"
+
+        let id = ""
+        for (let i = 0; i < item.alt.length; i++) {
+            if (item.alt[i] == " ") {
+                break
+            }
+            id += item.alt[i]
+        }
+
+        fetch(location.pathname, {  // vote query
+            method: "post",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+          
+            body: JSON.stringify({
+              "id_post": parseInt(id),
+              "score": change
+            })
+          })
     })
 })
 
