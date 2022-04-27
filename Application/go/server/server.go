@@ -59,7 +59,6 @@ func launchServer(DatabaseIp string) {
 	db.Connect(DatabaseIp)
 	defer db.Close()
 
-	TestHandler(&db)
 	IndexHandler(&db)
 	SubtidderHandler(&db)
 	SearchHandler(&db)
