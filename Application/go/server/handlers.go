@@ -153,7 +153,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		json.NewDecoder(r.Body).Decode(fetchQuery)
 
 		// VOTES //
-		if fetchQuery.IdPost != 0 && fetchQuery.Score != 0 {
+		if fetchQuery.IdPost != 0 && fetchQuery.Score != 0 && IAM != -1 {
 			db.Vote(fetchQuery.IdPost, fetchQuery.Score, IAM)
 		}
 

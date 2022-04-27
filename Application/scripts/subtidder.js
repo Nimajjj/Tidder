@@ -40,13 +40,16 @@ function main() {
 
 // SUBSCRIBE TO SUBTIDDER --> to move to subjtidder.js
 let bt = document.getElementById("subscribe_bt")
-if (bt.innerHTML == "Subscribe") { 
-  bt.innerHTML = "Unsubscribe"
-  bt.style.backgroundColor = "#666666"
-} else {
-  bt.innerHTML = "Subscribe"
-  bt.style.backgroundColor = "#148AA6"
+if (typeof(bt) != 'undefined' && bt != null) {
+  if (bt.innerHTML == "Subscribe") { 
+    bt.innerHTML = "Unsubscribe"
+    bt.style.backgroundColor = "#666666"
+  } else {
+    bt.innerHTML = "Subscribe"
+    bt.style.backgroundColor = "#148AA6"
+  }
 }
+
 
 
 function SubscribeTo(id_account, id_subject) {
