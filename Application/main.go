@@ -1,8 +1,11 @@
 package main
 
 import (
-  Server "github.com/Nimajjj/Tidder/go/server"
-  "os"
+	"math/rand"
+	"os"
+	"time"
+
+	Server "github.com/Nimajjj/Tidder/go/server"
 )
 
 /*
@@ -22,6 +25,7 @@ import (
 */
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
 	DatabaseIp := "127.0.0.1"
 	if len(os.Args) > 1 {
 		DatabaseIp = os.Args[1]

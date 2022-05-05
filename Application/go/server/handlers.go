@@ -3,7 +3,9 @@ package server
 import (
 	"encoding/json"
 	"html/template"
+	"io"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
@@ -53,7 +55,7 @@ func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *S
 		if r.FormValue("nsfw") == "0" {
 			subTidderNsfw = true
 		}
-		(*viewData).Errors.CreateSubtidder = db.CreateSub(subTidderName, 2, subTidderNsfw)
+		(*viewData).Errors.CreateSubtidder = db.CreateSub(subTidderName, IAM, subTidderNsfw)
 	} else if r.FormValue("SubmitSignin") != "" { // SIGN IN //
 		username := r.FormValue("input_pseudo_signin")
 		password := r.FormValue("input_password_signin")
@@ -72,6 +74,20 @@ func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *S
 		nsfw := false
 		id_subject := r.FormValue("post_subtidder")
 		id_author := IAM
+
+		// load image
+		in, header, err := req.FormFile("post_media")
+		if err != nil {
+			Util.Error(err)
+		}
+		defer in.Close()
+
+		out, err := os.OpenFile(header.Filename, os.O_WRONLY, 0644)
+		if err != nil {
+			Util.Error(err)
+		}
+		defer out.Close()
+		io.Copy(out, in)
 
 		if content != "" && title != "" {
 			db.CreatePost(title, media_url, content, nsfw, id_subject, id_author)

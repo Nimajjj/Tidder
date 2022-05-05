@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../style/master.css">
+    <link rel="stylesheet" href="../style/components/search_bar.css">
+    <link rel="stylesheet" href="../style/components/thread.css">
+    <link rel="stylesheet" href="../style/components/create_sub.css">
+    <link rel="stylesheet" href="../style/components/main_menu.css">
+
+    <script type="text/javascript" src="../scripts/master.js" defer></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="icon" type="image/x-icon" href="../images/global/favicon.ico">
+    <title>Tidder</title>
+  </head>
+
+  <body>
+
+    <div id="header">
+      <a class="container" href="/">
+        <img id="tidder_logo" src="../images/global/logo.png" alt="tidder logo">
+        <h1 id="tidder_title">Tidder</h1>
+      </a>
+
+      <form class="container" action="" method="GET">
+        <input id="searchTerm" type="text" placeholder="What are you looking for ?">
+        <button id="searchButton" type="submit" >
+          <i class='fa-solid fa-magnifying-glass'></i>
+        </button>
+      </form>
+
+      <div class="container" onclick="show_popup()">
+        <div id="create_sub_container">
+          <img src="../images/global/cross.png" alt="create subtidder">
+          <p>Create subtidder</p>
+        </div>
+        <img id="profile_picture" src="../images/global/empty_profile_picture.png" alt="profile picture">
+        <p id="pseudonym">Nimajjj</p>
+      </div>
+    </div>
+
+    <div id="main">
+      <form id="create_sub_popup" method="post" style="display: none;">
+        <ul>
+
+          <li>
+            <div id="title_container">
+              <h2>Create a subtidder</h2>
+              <a href="#" class="close" id="popup_sub_close" onclick="hide_popup()"></a>
+            </div>
+          </li>
+
+          <li class="input_container">
+            <label for="name">Subtidder name :</label>
+            <div style="display: flex;">
+              <p>t/</p><input type="text" name="name">
+            </div>
+          </li>
+
+          <li class="input_container">
+            <label for="logo">Subtidder logo :</label>
+            <input type="file" name="logo" accept="image/jpeg, image/x-png">
+          </li>
+
+          <li class="img_container">
+            <img id="logo_img" src="../images/global/no-image.jpg" alt="logo subtidder">
+          </li>
+
+          <li class="input_container">
+            <label for="banner">Subtidder banner :</label>
+            <input type="file" name="banner" accept="image/jpeg, image/x-png">
+          </li>
+
+          <li class="img_container">
+            <img id="banner_img" src="../images/global/no-image.jpg" alt="banner subtidder">
+          </li>
+
+          <li>
+            <label for="nsfw" style="font-weight: bold;">NSFW :</label>
+            <input type="checkbox" name="nsfw">
+          </li>
+
+          <li class="img_container">
+            <input id="submit_bt" type="submit" value="Submit">
+          </li>
+
+        </ul>
+      </form>
+
+
+      <div class="post">
+        <ul>
+          <li class="post_upper">
+            <a class="subreddit_name" href=""><img class="sub_logo" src="../images/global/logo.png" alt="subreddit logo">r/subreddit_name</a>
+            <p>Published by <a href="">u/Author</a> 2022-01-12 </p>
+          </li>
+          <li class="post_title">
+            <h2>Post title goes right here. bla bla bla</h2>
+          </li>
+          <li class="post_content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra purus in ipsum eleifend elementum. Cras iaculis, lorem at maximus  dictum, nibh ipsum pretium justo, ac hendrerit erat tellus non erat.  Vivamus commodo sapien a dapibus luctus. In hac habitasse platea  dictumst. Nulla sit amet venenatis metus. In hac habitasse platea  dictumst. Donec interdum enim a lectus luctus mollis. Integer libero  mauris.</p>
+          </li>
+          <li class="post_bottom">
+            <img class="post_icon" src="../images/global/upvote.png" alt="upvote">
+            <img class="post_icon" src="../images/global/empty_downvote.png" alt="downvote">
+            <a href="">123 Comments</a>
+            <a class="post_share" href="">
+              <img class="post_icon" src="../images/global/share.png" alt="share">
+              <p style="margin-left: 1vh;">Share</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="post">
+        <ul>
+          <li class="post_upper">
+            <a class="subreddit_name" href=""><img class="sub_logo" src="../images/global/logo.png" alt="subreddit logo">r/subreddit_name</a>
+            <p>Published by <a href="">u/Author</a> 2022-01-12 </p>
+          </li>
+          <li class="post_title">
+            <h2>Post title goes right here. bla bla bla</h2>
+          </li>
+          <li class="post_content">
+            <img src="../images/global/test.jpg" alt="post content">
+          </li>
+          <li class="post_bottom">
+            <img class="post_icon" src="../images/global/empty_upvote.png" alt="upvote">
+            <img class="post_icon" src="../images/global/downvote.png" alt="downvote">
+            <a href="">123 Comments</a>
+            <a class="post_share" href="">
+              <img class="post_icon" src="../images/global/share.png" alt="share">
+              <p style="margin-left: 1vh;">Share</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="main_menu">
+
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p>Tidder :</p>
+        <ul>
+          <li> <a href="#">Report a problem</a> </li>
+          <li> <a href="#">Privacy policy</a> </li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <p>Authors :</p>
+        <ul>
+          <li> <a href="https://github.com/Lunasphys" target="_blank">JEHAM Laurie</a> </li>
+          <li> <a href="https://github.com/MaxYnovobry" target="_blank">OBRY Maxime</a> </li>
+          <li> <a href="https://github.com/Nimajjj" target="_blank">BORELLO Benjamin</a> </li>
+        </ul>
+      </div>
+
+      <div class="container last">
+        <a href="/">
+          <img id="tidder_logo" src="../images/global/logo.png" alt="tidder logo">
+        </a>
+        <a href=""> <!-- On mettera le lien vers les CGU ici aussi -->
+          <p>Tidder Inc © 2022. Tous droits réservés</p>
+        </a>
+      </div>
+    </div>
+
+  </body>
+</html>
