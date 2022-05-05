@@ -3,9 +3,7 @@ package server
 import (
 	"encoding/json"
 	"html/template"
-	"io"
 	"net/http"
-	"os"
 	"strings"
 	"time"
 
@@ -76,18 +74,6 @@ func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *S
 		id_author := IAM
 
 		// load image
-		in, header, err := req.FormFile("post_media")
-		if err != nil {
-			Util.Error(err)
-		}
-		defer in.Close()
-
-		out, err := os.OpenFile(header.Filename, os.O_WRONLY, 0644)
-		if err != nil {
-			Util.Error(err)
-		}
-		defer out.Close()
-		io.Copy(out, in)
 
 		if content != "" && title != "" {
 			db.CreatePost(title, media_url, content, nsfw, id_subject, id_author)
