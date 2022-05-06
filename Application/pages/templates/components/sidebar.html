@@ -24,12 +24,12 @@
           {{ else }}
           <li>
             <div id="signup" class="button highlight_bt" onclick="location.href='/signup'">
-              <p>Signup</p>
+              <p>Sign up</p>
             </div>
           </li>
           <li>
             <div id="create_community_bt" class="button" onclick="location.href='/signin'">
-              <p>Signin</p>
+              <p>Sign in</p>
             </div>
           </li>
           {{ end}}
@@ -39,8 +39,11 @@
 
     <div id="second_menu" class="menu">
       <ul>
-        <li><a href="">Disconnect</a></li>
-        <br>
+        {{ if .Connected }}
+          <script type="text/javascript" src="/scripts/disconnect.js" defer></script>
+          <li><a href="/disconnect">Disconnect</a></li>
+          <br>
+        {{ end }}
         <li><a href="">Report a problem</a></li>
         <li><a href="">Privacy policy</a></li>
         <li><a href="">Authors 🧡</a></li>
