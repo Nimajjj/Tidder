@@ -24,7 +24,7 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 		for _, forbidden := range forbiddenChar {
 			if string(char) == forbidden {
 				Util.Warning("Creating sub failed : sub name <" + subName + "> contains forbidden characters.")
-				return "Creating sub failed : sub name <" + subName + "> contains forbidden characters."
+				return "Subtidder name \"" + subName + "\" contains forbidden characters."
 			}
 		}
 	}
@@ -38,7 +38,7 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 	query := "name=\"" + subName + "\""
 	if len(sqlServ.GetSubs(query)) != 0 {
 		Util.Warning("Creating sub failed : sub name <" + subName + "> already taken.")
-		return "Creating sub failed : sub name <" + subName + "> already taken."
+		return "Subtidder name \"" + subName + "\" already taken."
 	}
 
 	query = "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("

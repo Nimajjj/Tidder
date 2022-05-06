@@ -26,6 +26,10 @@ body {
     margin-bottom: 1vh;
 }
 
+#create_post input, #create_post textarea, #create_post select {
+    padding: .5vh .5vw;
+}
+
 textarea {
     resize: vertical;
 }

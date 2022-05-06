@@ -1,3 +1,18 @@
-{{ define "content " }}
-
+{{ define "content" }}
+<link rel="stylesheet" href="../style/pages/create.css">
+<form method="post" id="create_post" name="create_subtidder">
+    <h2>Create a new community</h2>
+    
+    <input type="text" name="name" id="title" placeholder="Name of your subtidder...">
+    
+    <div id="bt_container">
+        <div id="submit_bt" class="button highlight_bt" onClick="document.forms['create_subtidder'].submit();">
+            <p>Submit</p>
+        </div>
+        <div id="previous_bt" class="button" onclick="location.href='/'">
+            <p>Previous</p>
+        </div>
+    </div>
+    <p id="create_post_error" style="color: #FF4400; font-weight: bold;">{{.Errors.CreateSubtidder}}</p>
+</form>
 {{ end }}

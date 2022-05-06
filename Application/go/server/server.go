@@ -65,6 +65,7 @@ func launchServer(DatabaseIp string) {
 	SignupHandler(&db)
 	SigninHandler(&db)
 	CreatePostHandler(&db)
+	CreateSubtidder(&db)
 
 	http.ListenAndServe(":80", nil)
 }

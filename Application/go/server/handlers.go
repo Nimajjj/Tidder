@@ -210,7 +210,7 @@ func SignupHandler(db *SQL.SqlServer) {
 	viewData.Page = "signup"
 
 	http.HandleFunc("/signup", func(w http.ResponseWriter, r *http.Request) {
-		if IAM != -1 { // if you're connected how tf did you get here
+		if testConnection(r, &viewData, db) != -1 { // if you're connected how tf did you get here
 			http.Redirect(w, r, "/", http.StatusFound)
 		}
 		pseudo := r.FormValue("pseudo_input")
@@ -238,7 +238,7 @@ func SigninHandler(db *SQL.SqlServer) { // TODO : handle when user is stupid
 	viewData.Page = "signup"
 
 	http.HandleFunc("/signin", func(w http.ResponseWriter, r *http.Request) {
-		if IAM != -1 { // if you're connected how tf did you get here
+		if testConnection(r, &viewData, db) != -1 { // if you're connected how tf did you get here
 			http.Redirect(w, r, "/", http.StatusFound)
 		}
 		if r.Method == "POST" {
@@ -268,11 +268,11 @@ func CreatePostHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
 	viewData.Page = "create_post"
 
-	http.HandleFunc("/create_post", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/new/post", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
 
 		if IAM == -1 { // if you're not connected redirect to home page
-			http.Redirect(w, r, "/signin", http.StatusFound)
+			http.Redirect(w, r, "/", http.StatusFound)
 		}
 
 		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
@@ -296,6 +296,37 @@ func CreatePostHandler(db *SQL.SqlServer) {
 		}
 
 		err := callTemplate("create_post", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
+		viewData.ClearErrors()
+	})
+}
+
+func CreateSubtidder(db *SQL.SqlServer) {
+	viewData := SQL.MasterVD{}
+	viewData.Page = "create_post"
+
+	http.HandleFunc("/new/t", func(w http.ResponseWriter, r *http.Request) {
+		IAM := testConnection(r, &viewData, db)
+		if IAM == -1 { // if you're not connected redirect to home page
+			http.Redirect(w, r, "/", http.StatusFound)
+		}
+
+		if r.Method == "POST" {
+			subTidderName := r.FormValue("name")
+			if subTidderName == "" {
+				viewData.Errors.CreateSubtidder = "Please enter a valid subtidder name..."
+			} else {
+				subTidderNsfw := false
+				viewData.Errors.CreateSubtidder = db.CreateSub(subTidderName, IAM, subTidderNsfw)
+				if viewData.Errors.CreateSubtidder == "" {
+					http.Redirect(w, r, "/t/"+subTidderName, http.StatusFound)
+				}
+			}
+		}
+
+		err := callTemplate("create_subtidder", &viewData, w)
 		if err != nil {
 			Util.Error(err)
 		}
