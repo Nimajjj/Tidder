@@ -91,20 +91,26 @@ func HashPassword(password string) string {
 func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string, Verif_password string) string {
 	error := ""
 	if Verif_password != Password {
-		error += "Les Mots de passes ne sont pas identiques"
-		Util.Warning("Les mots de passes : " + Password + "et" + Verif_password + "ne sont pas identiques")
+		error += "Password and verification password are different"
+		Util.Warning("Password and verification password are different : " + Password + " != " + Verif_password)
 		return error
 	}
+	if name == "" || email == "" || Password == "" || Birthdate == "" || studentId == "" {
+		error += "Please complete all fields"
+		Util.Warning("User try to create an account with empty fields")
+		return error
+	}
+
 	currentTime := time.Now()
 	query := "name=\"" + name + "\""
 	if len(sqlServ.GetAccount(query)) != 0 {
-		error += "Rentrez un pseudo non utilisé"
+		error += "This pseudoname is already used"
 		Util.Warning("Creating account failed : name :  <" + name + "> already taken.")
 		return error
 	}
 	query = "email=\"" + email + "\""
 	if len(sqlServ.GetAccount(query)) != 0 {
-		error += "Rentrez un email non utilisé"
+		error += "This email is already used"
 		Util.Warning("Creating account failed : email : <" + email + "> already taken.")
 		return error
 	}
