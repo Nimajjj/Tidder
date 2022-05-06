@@ -36,6 +36,15 @@
     border: 2px solid #F2F2F2;
 }
 
+#main_menu .highlight_bt {
+    border: 2px solid #148aa6;
+}
+
+.highlight_bt > p {
+    color: #148aa6;
+}
+
+
 #main_menu .button:hover {
     cursor: pointer;
     opacity: 0.7;
@@ -47,3 +56,5 @@
     padding-top: 1vh;
     border-top: 1px solid #F2F2F2;
 }
+
+

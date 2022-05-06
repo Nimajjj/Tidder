@@ -10,8 +10,9 @@
           <li>
             <p>Your personnal Tidder home page. Come here to consult all your favorites communities.</p>
           </li>
+          {{ if .Connected }}
           <li>
-            <div id="create_post_bt" class="button">
+            <div id="create_post_bt" class="button highlight_bt">
               <p>Create a post</p>
             </div>
           </li>
@@ -20,6 +21,18 @@
               <p>Create a community</p>
             </div>
           </li>
+          {{ else }}
+          <li>
+            <div id="signup" class="button highlight_bt">
+              <p>Signup</p>
+            </div>
+          </li>
+          <li>
+            <div id="create_community_bt" class="button">
+              <p>Signin</p>
+            </div>
+          </li>
+          {{ end}}
         </ul>
       </div>
     </div>
