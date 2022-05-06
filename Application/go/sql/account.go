@@ -108,12 +108,7 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 		Util.Warning("Creating account failed : email : <" + email + "> already taken.")
 		return error
 	}
-	query = "student_id=\"" + studentId + "\""
-	if len(sqlServ.GetAccount(query)) != 0 {
-		error += "Rentrez un identifiant ynov non utilisé"
-		Util.Warning("Creating account failed : studenId : <" + studentId + "> already taken.")
-		return error
-	}
+
 	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture, student_id) VALUES ("
 	query += "\"" + name + "\","
 	query += "\"" + email + "\","

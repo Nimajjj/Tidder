@@ -1,0 +1,44 @@
+body {
+    background-image: url("/images/global/static_background.png");
+}
+
+#side_bar {
+    display: none;
+}
+
+#signup {
+    width: 100%;
+    height: 100%;
+    padding: 2vh 4vw;
+}
+
+#signup_main {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#signup_main p {
+    font-size: 22px;
+}
+
+#signup_main li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 2vh 0;
+}
+
+#signup_main input:not(#submit_bt), select {
+    height: 3.5vh;
+    width: 12vw;
+    margin-left: 2.5vw;
+}
+
+#submit_bt {
+    width: 10vw;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 1vh;
+}

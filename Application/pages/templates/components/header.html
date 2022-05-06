@@ -3,7 +3,26 @@
       <img id="tidder_logo" src="/images/global/logo.png" alt="tidder logo">
       <h1 id="tidder_title">Tidder</h1>
     </a>
-    <div style="width: 60%;">
+
+    {{if .Connected}}
       {{template "search_bar" .}}
-    </div>
+
+      <div class="container">
+        <div id="new_post_container" onclick="show_post_popup()">
+          <img src="../images/global/cross.png" alt="new post">
+          <p>New post</p>
+        </div>
+        <div id="create_sub_container" onclick="show_popup()">
+          <img src="/images/global/cross.png" alt="create subtidder">
+          <p>Create subtidder</p>
+        </div>
+        <img id="profile_picture" src="/images/profiles/{{.Account.ProfilePicture}}" alt="profile picture">
+        <p id="pseudonym">{{.Account.Name}}</p>
+      </div>
+    {{else}}
+      <div style="margin-right: 5vw;">
+        {{template "search_bar" .}}
+      </div>
+    {{end}}
+
 {{ end }}

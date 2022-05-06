@@ -204,3 +204,28 @@ func SearchHandler(db *SQL.SqlServer) {
 		viewData.ClearErrors()
 	})
 }
+
+func SignupHandler(db *SQL.SqlServer) {
+	viewData := SQL.MasterVD{}
+	viewData.Page = "search"
+
+	http.HandleFunc("/signup", func(w http.ResponseWriter, r *http.Request) {
+		pseudo := r.FormValue("pseudo_input")
+		email := r.FormValue("email_input")
+		password := r.FormValue("password_input")
+		verifpassword := r.FormValue("passwordverif_input")
+		birthdate := r.FormValue("birthdate_input")
+		if r.FormValue("submit_bt") == "Submit" {
+			viewData.Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, "", verifpassword)
+			if viewData.Errors.Signup == "" {
+				http.Redirect(w, r, "/", http.StatusFound)
+			}
+		}
+
+		err := callTemplate("signup", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
+		viewData.ClearErrors()
+	})
+}

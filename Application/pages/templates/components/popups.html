@@ -96,15 +96,15 @@
         <div id="main_part">
             <div id="left_part">
                 <ul>
-                    <li class="">
+                    <li>
                         <p class="liste">Pseudo : </p>
                         <input class="input_pseudo" type="text" name="pseudo_input"/>
                     </li>
-                    <li class="">
+                    <li>
                         <p class="liste">Mail address : </p>
                         <input class="input_mail" type="text" name="email_input"/>
                     </li>
-                    <li class="">
+                    <li>
                         <p class="liste">Genre : </p>
                         <select class="sexe_input" id="sexe-select" name="sexe">
                             <option value="">--Please choose an option--</option>
@@ -113,11 +113,11 @@
                             <option value="Other">Other</option>
                         </select>
                     </li>
-                    <li class="">
+                    <li>
                         <p class="listedate">Birthdate : </p>
                         <input class="input_birthdate" type="date" name="birthdate_input"/>
                     </li>
-                    <li class="">
+                    <li>
                         <p class="liste">Password : </p>
                         <input class="input_password" type="text" name="password_input"/>
                     </li>
@@ -133,7 +133,7 @@
                         <img id="id_logo" src="../images/global/no-image.jpg" alt="logo subtidder">
                         <input type="file" name="logo" accept="image/jpeg, image/x-png">
                     </li>
-                    <li class="">
+                    <li>
                         <p class="listespef">Student ID : </p>
                         <input class="input_id"type="text" name="id_input"/>
                     </li>
@@ -144,7 +144,7 @@
                 </ul>
             </div>
         </div>
-        <input id="submit_bt" type="submit" value="Submit">
+        <input id="submit_bt" name="submit_bt" type="submit" value="Submit">
         <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signup}}</p>
       </form>
 
@@ -156,11 +156,11 @@
         <div id="main_part">
             <div id="left_part">
                 <ul>
-                    <li class="">
+                    <li>
                         <p class="liste">Pseudo : </p>
                         <input class="input_pseudo_signin" type="text" name="input_pseudo_signin"/>
                     </li>
-                    <li class="">
+                    <li>
                         <p class="liste">Password : </p>
                         <input class="input_password_signin" type="text" name="input_password_signin"/>
                     </li>
