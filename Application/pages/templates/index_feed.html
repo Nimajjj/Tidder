@@ -25,17 +25,17 @@
                   {{end}}
                 <li class="post_bottom">
                 {{if (eq .Vote 1)}}
-                  <img class="post_icon vote_bt upvote_bt" src="../images/global/upvote.png" alt="{{.Id}} upvote">
+                  <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt="{{.Id}} upvote">
                   <p>{{.Score}}</p>
-                  <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
+                  <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
                 {{else if (eq .Vote -1)}}
-                  <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
+                  <img class="post_icon vote_bt upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
                   <p>{{.Score}}</p>
-                  <img class="post_icon vote_bt downvote_bt" src="../images/global/downvote.png" alt="{{.Id}} downvote">
+                  <img class="post_icon vote_bt downvote_bt" state="active" src="../images/global/downvote.png" alt="{{.Id}} downvote">
                 {{else}}
-                  <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
+                  <img class="post_icon vote_bt upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
                   <p>{{.Score}}</p>
-                  <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
+                  <img class="post_icon vote_bt downvote_bt" state="empty" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
                 {{end}}
                   
                   <a href="">{{.NumberOfComments}} Comments</a>
