@@ -7,15 +7,7 @@
     {{if .Connected}}
       {{template "search_bar" .}}
 
-      <div class="container">
-        <div id="new_post_container" onclick="show_post_popup()">
-          <img src="../images/global/cross.png" alt="new post">
-          <p>New post</p>
-        </div>
-        <div id="create_sub_container" onclick="show_popup()">
-          <img src="/images/global/cross.png" alt="create subtidder">
-          <p>Create subtidder</p>
-        </div>
+      <div class="container" style="margin-right: 2vw;">
         <img id="profile_picture" src="/images/profiles/{{.Account.ProfilePicture}}" alt="profile picture">
         <p id="pseudonym">{{.Account.Name}}</p>
       </div>

@@ -207,7 +207,7 @@ func SearchHandler(db *SQL.SqlServer) {
 
 func SignupHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
-	viewData.Page = "search"
+	viewData.Page = "signup"
 
 	http.HandleFunc("/signup", func(w http.ResponseWriter, r *http.Request) {
 		pseudo := r.FormValue("pseudo_input")
@@ -223,6 +223,34 @@ func SignupHandler(db *SQL.SqlServer) {
 		}
 
 		err := callTemplate("signup", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
+		viewData.ClearErrors()
+	})
+}
+
+func SigninHandler(db *SQL.SqlServer) {
+	viewData := SQL.MasterVD{}
+	viewData.Page = "signup"
+
+	http.HandleFunc("/signin", func(w http.ResponseWriter, r *http.Request) {
+		if r.FormValue("submit_bt") == "Submit" {
+			username := r.FormValue("pseudo_input")
+			password := r.FormValue("password_input")
+			connectedUsr, sessionId := db.TryToConnectUser(username, password)
+
+			if sessionId != "" {
+				viewData.Connected = true
+				viewData.Account = connectedUsr[0]
+				expiration := time.Now().Add(24 * time.Hour)
+				cookie := http.Cookie{Name: "session_id", Value: sessionId, Expires: expiration, Path: "/"}
+				http.SetCookie(w, &cookie)
+				http.Redirect(w, r, "/", http.StatusFound)
+			}
+		}
+
+		err := callTemplate("signin", &viewData, w)
 		if err != nil {
 			Util.Error(err)
 		}
