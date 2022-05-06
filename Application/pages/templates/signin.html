@@ -1,6 +1,6 @@
 {{ define "content" }}
 <link rel="stylesheet" href="../style/pages/signup.css">
-    <form id="signup" method="post">
+    <form id="signup" method="post" name="signin">
         <div id="title_container">
             <h2>Sign in</h2>
         </div>
@@ -18,8 +18,13 @@
                 <li style="margin-top: -2vh;">
                     <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signup}}</p>
                 </li>
-                <li style="margin-top: 5vh;">
-                    <input id="submit_bt" type="submit" value="Submit" name="submit_bt">
+                <li id="bt_container" style="margin-top: 5vh;">
+                    <div id="submit_bt" class="button highlight_bt" onClick="document.forms['signin'].submit();">
+                        <p>Submit</p>
+                    </div>
+                    <div id="previous_bt" class="button" onclick="location.href='/'">
+                        <p>Previous</p>
+                    </div>
                 </li>
                 <li style="margin-top: -2vh;">
                     <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signup}}</p>

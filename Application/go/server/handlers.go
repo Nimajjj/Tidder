@@ -210,12 +210,15 @@ func SignupHandler(db *SQL.SqlServer) {
 	viewData.Page = "signup"
 
 	http.HandleFunc("/signup", func(w http.ResponseWriter, r *http.Request) {
+		if IAM != -1 { // if you're connected how tf did you get here
+			http.Redirect(w, r, "/", http.StatusFound)
+		}
 		pseudo := r.FormValue("pseudo_input")
 		email := r.FormValue("email_input")
 		password := r.FormValue("password_input")
 		verifpassword := r.FormValue("passwordverif_input")
 		birthdate := r.FormValue("birthdate_input")
-		if r.FormValue("submit_bt") == "Submit" {
+		if r.Method == "POST" {
 			viewData.Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, "", verifpassword)
 			if viewData.Errors.Signup == "" {
 				http.Redirect(w, r, "/", http.StatusFound)
@@ -230,12 +233,15 @@ func SignupHandler(db *SQL.SqlServer) {
 	})
 }
 
-func SigninHandler(db *SQL.SqlServer) {
+func SigninHandler(db *SQL.SqlServer) { // TODO : handle when user is stupid
 	viewData := SQL.MasterVD{}
 	viewData.Page = "signup"
 
 	http.HandleFunc("/signin", func(w http.ResponseWriter, r *http.Request) {
-		if r.FormValue("submit_bt") == "Submit" {
+		if IAM != -1 { // if you're connected how tf did you get here
+			http.Redirect(w, r, "/", http.StatusFound)
+		}
+		if r.Method == "POST" {
 			username := r.FormValue("pseudo_input")
 			password := r.FormValue("password_input")
 			connectedUsr, sessionId := db.TryToConnectUser(username, password)

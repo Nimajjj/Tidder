@@ -7,13 +7,17 @@ body {
 }
 
 #signup {
-    width: 100%;
-    height: 100%;
-    padding: 2vh 4vw;
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #262626;
+    width: 50vw;
+    border-radius: 15px;
+    padding: 1vh 1vw;
 }
 
 #signup_main {
-    width: fit-content;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,9 +40,36 @@ body {
     margin-left: 2.5vw;
 }
 
-#submit_bt {
-    width: 10vw;
-    font-size: 32px;
+
+#bt_container {
+    margin-top: .5vh;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.button {
+    padding: 1vh 1vw;
+    width: 33%;
+    border-radius: 9999px;
+    border: 2px solid #F2F2F2;
+    display: flex;
+    justify-content: center;
     font-weight: bold;
-    margin-top: 1vh;
+    font-size: 22px;
+}
+
+
+.highlight_bt {
+    border: 2px solid #148aa6;
+}
+
+.highlight_bt > p {
+    color: #148aa6;
+}
+
+
+.button:hover {
+    cursor: pointer;
+    opacity: 0.7;
 }
