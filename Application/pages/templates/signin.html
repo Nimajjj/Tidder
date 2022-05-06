@@ -1,30 +1,30 @@
 {{ define "content" }}
 <link rel="stylesheet" href="../style/pages/signup.css">
-<form id="signup" method="post">
-    <div id="title_container">
-        <h2>Sign in</h2>
-    </div>
+    <form id="signup" method="post">
+        <div id="title_container">
+            <h2>Sign in</h2>
+        </div>
 
-    <div id="signup_main">
-        <ul>
-            <li>
-                <p class="liste">Pseudo : </p>
-                <input class="input_pseudo" type="text" name="pseudo_input" required/>
-            </li>
-            <li>
-                <p class="liste">Password : </p>
-                <input class="input_password" type="password" name="password_input" required/>
-            </li>
-            <li style="margin-top: -2vh;">
-                <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signup}}</p>
-            </li>
-            <li style="margin-top: 5vh;">
-                <input id="submit_bt" type="submit" value="Submit" name="submit_bt">
-            </li>
-            <li style="margin-top: -2vh;">
-                <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signup}}</p>
-            </li>
-        </ul>
-    </div>
-  </form>
+        <div id="signup_main">
+            <ul>
+                <li>
+                    <p class="liste">Pseudo : </p>
+                    <input class="input_pseudo" type="text" name="pseudo_input" required/>
+                </li>
+                <li>
+                    <p class="liste">Password : </p>
+                    <input class="input_password" type="password" name="password_input" required/>
+                </li>
+                <li style="margin-top: -2vh;">
+                    <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signup}}</p>
+                </li>
+                <li style="margin-top: 5vh;">
+                    <input id="submit_bt" type="submit" value="Submit" name="submit_bt">
+                </li>
+                <li style="margin-top: -2vh;">
+                    <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signup}}</p>
+                </li>
+            </ul>
+        </div>
+    </form>
 {{ end }}

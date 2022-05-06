@@ -1,3 +1,24 @@
-{{ define "content " }}
-
+{{ define "content" }}
+    <link rel="stylesheet" href="../style/pages/create.css">
+    <form method="post" id="create_post" name="create_post">
+        <h2>Create a post</h2>
+        <select name="subtidder" id="post_subtidder_select">
+            <option value="-1">Which Subtidder ?</option>
+            {{range .CreatePostsVD.SubscribedSubjects}}
+                <option value="{{.Id}}">t/{{.Name}}</option>
+            {{end}}
+        </select>
+        <input type="text" name="title" id="title" placeholder="Title of your post">
+        <textarea name="content" id="content" placeholder="Write something here..." rows="12" cols="35"></textarea>
+        
+        <div id="bt_container">
+            <div id="submit_bt" class="button highlight_bt" onClick="document.forms['create_post'].submit();">
+                <p>Submit</p>
+            </div>
+            <div id="previous_bt" class="button" onclick="location.href='/'">
+                <p>Previous</p>
+            </div>
+        </div>
+        <p id="create_post_error">{{.Errors.CreatePost}}</p>
+    </form>
 {{ end }}

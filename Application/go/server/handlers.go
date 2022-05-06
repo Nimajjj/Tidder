@@ -257,3 +257,42 @@ func SigninHandler(db *SQL.SqlServer) {
 		viewData.ClearErrors()
 	})
 }
+
+func CreatePostHandler(db *SQL.SqlServer) {
+	viewData := SQL.MasterVD{}
+	viewData.Page = "create_post"
+
+	http.HandleFunc("/create_post", func(w http.ResponseWriter, r *http.Request) {
+		IAM := testConnection(r, &viewData, db)
+
+		if IAM == -1 { // if you're not connected redirect to home page
+			http.Redirect(w, r, "/signin", http.StatusFound)
+		}
+
+		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
+
+		title := r.FormValue("title")
+		media_url := ""
+		content := r.FormValue("content")
+		nsfw := false
+		id_subject := r.FormValue("subtidder")
+		id_author := IAM
+
+		// load image
+		if r.Method == "POST" {
+			if content != "" && title != "" {
+				db.CreatePost(title, media_url, content, nsfw, id_subject, id_author)
+				http.Redirect(w, r, "/", http.StatusFound) // TODO : redirect to post page
+			} else {
+				Util.Warning("An error occured during post creation.")
+				viewData.Errors.CreatePost = "An error occured during post creation."
+			}
+		}
+
+		err := callTemplate("create_post", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
+		viewData.ClearErrors()
+	})
+}
