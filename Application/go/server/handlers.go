@@ -102,6 +102,7 @@ func popup(w http.ResponseWriter, r *http.Request, viewData *SQL.MasterVD, db *S
 */
 func IndexHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
+	viewData.Page = "index"
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
@@ -132,6 +133,7 @@ func IndexHandler(db *SQL.SqlServer) {
 func SubtidderHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
 	var subtidder SQL.SubtidderViewData
+	viewData.Page = "subtidder"
 
 	http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
@@ -177,6 +179,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 
 func SearchHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
+	viewData.Page = "search"
 
 	http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)

@@ -149,6 +149,7 @@ type MasterVD struct {
 	Errors        Errors
 
 	Connected bool
+	Page      string
 }
 
 type IndexViewData struct {
