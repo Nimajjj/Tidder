@@ -33,52 +33,58 @@
                 </div>
         
                 <div id="posts">
-                {{ range .SubtidderVD.Posts }}
-                    <div class="post">
-                        <ul>
-                        <li class="post_upper">
-                            <a class="subreddit_name" href="/t/{{.SubtidderName}}">
-                            <img class="sub_logo" src="/images/subtidder/{{.SubtidderPP}}" alt="subreddit logo">
-                            <p>t/{{.SubtidderName}}</p>
-                            </a>
-                            <p>Published by <a href="">u/{{.AuthorName}}</a> {{.CreationDate}} </p>
-                        </li>
-                        <li class="post_title">
-                            <h2>{{.Title}}</h2>
-                        </li>
-                            {{if (eq .MediaUrl "")}}
-                            <li class="post_content">
-                                <p>{{.Content}}</p>
+                {{ if .SubtidderVD.Posts }}
+                    {{ range .SubtidderVD.Posts }}
+                        <div class="post">
+                            <ul>
+                            <li class="post_upper">
+                                <a class="subreddit_name" href="/t/{{.SubtidderName}}">
+                                <img class="sub_logo" src="/images/subtidder/{{.SubtidderPP}}" alt="subreddit logo">
+                                <p>t/{{.SubtidderName}}</p>
+                                </a>
+                                <p>Published by <a href="">u/{{.AuthorName}}</a> {{.CreationDate}} </p>
                             </li>
+                            <li class="post_title">
+                                <h2>{{.Title}}</h2>
+                            </li>
+                                {{if (eq .MediaUrl "")}}
+                                <li class="post_content">
+                                    <p>{{.Content}}</p>
+                                </li>
+                                {{else}}
+                                <li class="post_content" style="display: flex; justify-content: center;">
+                                    <img src="/images/posts/{{.MediaUrl}}" alt="post content">
+                                </li>
+                                {{end}}
+                            <li class="post_bottom">
+                            {{if (eq .Vote 1)}}
+                                <img class="post_icon vote_bt upvote_bt" src="../images/global/upvote.png" alt="{{.Id}} upvote">
+                                <p>{{.Score}}</p>
+                                <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
+                            {{else if (eq .Vote -1)}}
+                                <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
+                                <p>{{.Score}}</p>
+                                <img class="post_icon vote_bt downvote_bt" src="../images/global/downvote.png" alt="{{.Id}} downvote">
                             {{else}}
-                            <li class="post_content" style="display: flex; justify-content: center;">
-                                <img src="/images/posts/{{.MediaUrl}}" alt="post content">
-                            </li>
+                                <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
+                                <p>{{.Score}}</p>
+                                <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
                             {{end}}
-                        <li class="post_bottom">
-                        {{if (eq .Vote 1)}}
-                            <img class="post_icon vote_bt upvote_bt" src="../images/global/upvote.png" alt="{{.Id}} upvote">
-                            <p>{{.Score}}</p>
-                            <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
-                        {{else if (eq .Vote -1)}}
-                            <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
-                            <p>{{.Score}}</p>
-                            <img class="post_icon vote_bt downvote_bt" src="../images/global/downvote.png" alt="{{.Id}} downvote">
-                        {{else}}
-                            <img class="post_icon vote_bt upvote_bt" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
-                            <p>{{.Score}}</p>
-                            <img class="post_icon vote_bt downvote_bt" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
-                        {{end}}
-                            
-                            <a href="">{{.NumberOfComments}} Comments</a>
-                            <a class="post_share" href="">
-                            <img class="post_icon" src="../images/global/share.png" alt="share">
-                            <p style="margin-left: 1vh;">Share</p>
-                            </a>
-                        </li>
-                        </ul>
+                                
+                                <a href="">{{.NumberOfComments}} Comments</a>
+                                <a class="post_share" href="">
+                                <img class="post_icon" src="../images/global/share.png" alt="share">
+                                <p style="margin-left: 1vh;">Share</p>
+                                </a>
+                            </li>
+                            </ul>
+                        </div>
+                    {{end}}
+                {{ else }}
+                    <div id="empty">
+                        <h2>Wow ! Such empty...</h2>
                     </div>
-                {{end}}
+                {{ end }}
                 </div>
 
                 {{ template "sidebar" . }}

@@ -111,3 +111,10 @@ body > div {
 }
 
 /* ------------------------ */
+
+
+#empty {
+	width: 65vw;
+	display: flex;
+	justify-content: center;
+}
