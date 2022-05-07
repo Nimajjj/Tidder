@@ -1,0 +1,55 @@
+{{define "sidebar"}}
+<div id="side_bar">
+    <div id="main_menu" class="menu">
+      <div class="box">
+        <ul>
+          <li>
+            <img src="../images/global/logo.png" alt="tidder logo">
+            <h3>Home</h3>
+          </li>
+          <li>
+            <p>Your personnal Tidder home page. Come here to consult all your favorites communities.</p>
+          </li>
+          {{ if .Connected }}
+          <li>
+            <div id="create_post_bt" class="button highlight_bt" onclick="location.href='/new/post'">
+              <p>Create a post</p>
+            </div>
+          </li>
+          <li>
+            <div id="create_community_bt" class="button" onclick="location.href='/new/t'">
+              <p>Create a community</p>
+            </div>
+          </li>
+          {{ else }}
+          <li>
+            <div id="signup" class="button highlight_bt" onclick="location.href='/signup'">
+              <p>Sign up</p>
+            </div>
+          </li>
+          <li>
+            <div id="create_community_bt" class="button" onclick="location.href='/signin'">
+              <p>Sign in</p>
+            </div>
+          </li>
+          {{ end}}
+        </ul>
+      </div>
+    </div>
+
+    <div id="second_menu" class="menu">
+      <ul>
+        {{ if .Connected }}
+          <script type="text/javascript" src="/scripts/disconnect.js" defer></script>
+          <li><a href="/disconnect">Disconnect</a></li>
+          <br>
+        {{ end }}
+        <li><a href="">Report a problem</a></li>
+        <li><a href="">Privacy policy</a></li>
+        <li><a href="">Authors 🧡</a></li>
+        
+        <li><p id="tidder_inc">Tidder Inc © 2022. Tous droits réservés</p></li>
+      </ul>
+    </div>
+</div>
+{{end}}

@@ -145,10 +145,12 @@ type MasterVD struct {
 	SubtidderVD   SubtidderViewData
 	SearchVD      SearchViewData
 	CreatePostsVD CreatePostsVD
+	PostVD        PostVD
 	Account       Accounts
 	Errors        Errors
 
 	Connected bool
+	Page      string
 }
 
 type IndexViewData struct {
@@ -167,6 +169,12 @@ type SearchViewData struct {
 
 type CreatePostsVD struct {
 	SubscribedSubjects []Subject
+}
+
+type PostVD struct {
+	Post       DisplayablePost
+	Sub        Subject
+	Subscribed bool
 }
 
 func (viewData *MasterVD) ClearErrors() {

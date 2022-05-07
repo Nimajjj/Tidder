@@ -5,6 +5,11 @@
   height: 180px;
 }
 
+#subtidder #sub {
+  display: flex;
+  justify-content: center;
+}
+
 #sub_header {
   display: flex;
   align-items: center;

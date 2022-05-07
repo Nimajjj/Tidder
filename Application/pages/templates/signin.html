@@ -1,0 +1,35 @@
+{{ define "content" }}
+<link rel="stylesheet" href="../style/pages/sign.css">
+    <form id="signup" method="post" name="signin">
+        <div id="title_container">
+            <h2>Sign in</h2>
+        </div>
+
+        <div id="signup_main">
+            <ul>
+                <li>
+                    <p class="liste">Pseudo : </p>
+                    <input class="input_pseudo" type="text" name="pseudo_input" required/>
+                </li>
+                <li>
+                    <p class="liste">Password : </p>
+                    <input class="input_password" type="password" name="password_input" required/>
+                </li>
+                <li style="margin-top: -2vh;">
+                    <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signup}}</p>
+                </li>
+                <li id="bt_container" style="margin-top: 5vh;">
+                    <div id="submit_bt" class="button highlight_bt" onClick="document.forms['signin'].submit();">
+                        <p>Submit</p>
+                    </div>
+                    <div id="previous_bt" class="button" onclick="location.href='/'">
+                        <p>Previous</p>
+                    </div>
+                </li>
+                <li style="margin-top: -2vh;">
+                    <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signup}}</p>
+                </li>
+            </ul>
+        </div>
+    </form>
+{{ end }}

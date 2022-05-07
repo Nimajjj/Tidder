@@ -8,9 +8,7 @@
       <link rel="stylesheet" href="../style/master.css">
       <link rel="stylesheet" href="../style/components/search_bar.css">
       <link rel="stylesheet" href="../style/components/thread.css">
-      <link rel="stylesheet" href="../style/components/create_sub.css">
-      <link rel="stylesheet" href="../style/components/signup_popup.css">
-      <link rel="stylesheet" href="../style/components/creat_post.css">
+      <link rel="stylesheet" href="../style/components/sidebar.css">
       <link rel="stylesheet" href="../style/pages/search.css">
 
       <script type="text/javascript" src="/scripts/master.js" defer></script>
@@ -32,12 +30,11 @@
       </div>
 
       <div id="main">
-        {{ template "popups" . }}
         {{ template "content" . }}
-      </div>
 
-      <div id="footer">
-        {{ template "footer" . }}
+        {{ if (ne .Page "subtidder") }}
+          {{ template "sidebar" . }}
+        {{ end }}
       </div>
 
     </body>

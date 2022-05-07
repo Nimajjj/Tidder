@@ -113,48 +113,8 @@ body > div {
 /* ------------------------ */
 
 
-/* ----------FOOTER---------- */
-
-#footer {
-	margin-top: 1vh;
-	bottom: 0%;
-	padding: 1vh 1vw;
-	display: flex;
-	align-items: center;
-	background-color: #262626;
-}
-
-#footer .container {
-	height: 100%;
-	width: 20vw;
-	border-right: 1px solid #1A1A1A;
-	padding: 1vh 1vw;
-}
-
-#footer .container.last {
-	width: 100%;
-	border: none;
+#empty {
+	width: 65vw;
 	display: flex;
 	justify-content: center;
-	align-items: center;
 }
-
-#footer img {
-	height: 75px;
-	margin-right: 1vw;
-}
-
-#footer a {
-	text-decoration: none;
-}
-
-#footer p {
-	font-weight: bold;
-}
-
-#footer ul {
-	list-style-type: none;
-	padding-left: 1vw;
-}
-
-/* -------------------------- */

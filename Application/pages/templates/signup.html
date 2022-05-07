@@ -1,0 +1,53 @@
+{{ define "content" }}
+<link rel="stylesheet" href="../style/pages/sign.css">
+<form id="signup" method="post" name="signup">
+    <div id="title_container">
+        <h2>Create an account</h2>
+    </div>
+
+    <div id="signup_main">
+        <ul>
+            <li>
+                <p class="liste">Pseudo : </p>
+                <input class="input_pseudo" type="text" name="pseudo_input" required/>
+            </li>
+            <li>
+                <p class="liste">Mail address : </p>
+                <input class="input_mail" type="email" name="email_input" required/>
+            </li>
+            <li>
+                <p class="liste">Genre : </p>
+                <select class="sexe_input" id="sexe-select" name="sexe" required>
+                    <option value="">--Please choose an option--</option>
+                    <option value="Woman">Woman</option>
+                    <option value="Man">Man</option>
+                    <option value="Other">Other</option>
+                </select>
+            </li>
+            <li>
+                <p class="listedate">Birthdate : </p>
+                <input class="input_birthdate" type="date" name="birthdate_input" required/>
+            </li>
+            <li>
+                <p class="liste">Password : </p>
+                <input class="input_password" type="password" name="password_input" required/>
+            </li>
+            <li>
+                <p class="listespefdouble">Password verification : </p>
+                <input class="input_password_verif" type="password" name="passwordverif_input" required/>
+            </li>
+            <li id="bt_container" style="margin-top: 5vh;">
+                <div id="submit_bt" class="button highlight_bt" onClick="document.forms['signup'].submit();">
+                    <p>Submit</p>
+                </div>
+                <div id="previous_bt" class="button" onclick="location.href='/'">
+                    <p>Previous</p>
+                </div>
+            </li>
+            <li style="margin-top: -2vh;">
+                <p id="signup_error" style="color: #FF4400; font-weight: bold;">{{.Errors.Signup}}</p>
+            </li>
+        </ul>
+    </div>
+  </form>
+{{ end }}
