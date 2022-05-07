@@ -20,7 +20,7 @@
                     </li>
                   {{else}}
                     <li class="post_content" style="display: flex; justify-content: center;">
-                      <img src="/images/posts/{{.MediaUrl}}" alt="post content">
+                      <img src="{{blobToUrl .MediaUrl}}" alt="post content">
                     </li>
                   {{end}}
                 <li class="post_bottom">

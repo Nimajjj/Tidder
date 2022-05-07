@@ -1,6 +1,7 @@
 {{ define "content" }}
     <link rel="stylesheet" href="../style/pages/create.css">
-    <form method="post" id="create_post" name="create_post">
+    <script src="../scripts/create_post.js" defer></script>
+    <form method="post" id="create_post" name="create_post" enctype="multipart/form-data">
         <h2>Create a post</h2>
         <select name="subtidder" id="post_subtidder_select">
             <option value="-1">Which Subtidder ?</option>
@@ -9,6 +10,8 @@
             {{end}}
         </select>
         <input type="text" name="title" id="title" placeholder="Title of your post">
+        <img src="" id="media_preview">
+        <input type="file" name="media_file" id="media_file" accept=".png, .jpg, .jpeg, .gif" onchange="readURL(this)">
         <textarea name="content" id="content" placeholder="Write something here..." rows="12" cols="35"></textarea>
         
         <div id="bt_container">

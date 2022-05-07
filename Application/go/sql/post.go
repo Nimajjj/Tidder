@@ -88,8 +88,8 @@ func (sqlServ SqlServer) CreatePost(title string, media_url string, content stri
 		return
 	}
 
-	if content == "" {
-		Util.Warning("Creating sub failed : content cannot be empty.")
+	if content == "" && media_url == "" {
+		Util.Warning("Creating sub failed : content and media cannot be both empty.")
 		return
 	}
 

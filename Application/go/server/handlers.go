@@ -1,8 +1,11 @@
 package server
 
 import (
+	"encoding/base64"
 	"encoding/json"
 	"html/template"
+	"io"
+	"mime/multipart"
 	"net/http"
 	"strings"
 	"time"
@@ -35,7 +38,14 @@ func testConnection(r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer) 
 }
 
 func callTemplate(templateName string, viewdata *SQL.MasterVD, w http.ResponseWriter) error {
-	templates := template.New("")
+	funcMap := template.FuncMap{
+		"blobToUrl": func(u string) template.URL {
+			return template.URL(u)
+		},
+	}
+
+	templates := template.New("").Funcs(funcMap)
+
 	templates, err := templates.ParseFiles("./pages/base.html", "./pages/templates/"+templateName+".html")
 	if err != nil {
 		return err
@@ -96,7 +106,6 @@ func SubtidderHandler(db *SQL.SqlServer) {
 
 	http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
-
 		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
 
 		// MAIN SUBTIDDER COMPONENT //
@@ -237,7 +246,6 @@ func CreatePostHandler(db *SQL.SqlServer) {
 		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
 
 		title := r.FormValue("title")
-		media_url := ""
 		content := r.FormValue("content")
 		nsfw := false
 		id_subject := r.FormValue("subtidder")
@@ -245,8 +253,33 @@ func CreatePostHandler(db *SQL.SqlServer) {
 
 		// load image
 		if r.Method == "POST" {
-			if content != "" && title != "" {
-				db.CreatePost(title, media_url, content, nsfw, id_subject, id_author)
+			var media string
+			file, header, err := r.FormFile("media_file")
+			if header != nil { // if header != nil then there is a file
+				defer func(file multipart.File) {
+					err := file.Close()
+					if err != nil {
+						Util.Error(err)
+					}
+				}(file)
+			}
+			if err != nil {
+				if err != http.ErrMissingFile {
+					Util.Error(err)
+				}
+			} else {
+				media = "data:" + header.Header.Get("Content-Type") + ";base64," // file to base64
+
+				bytes, err := io.ReadAll(file)
+				if err != nil {
+					Util.Error(err)
+				}
+
+				media += base64.StdEncoding.EncodeToString(bytes)
+			}
+
+			if title != "" && (content != "" || media != "") {
+				db.CreatePost(title, media, content, nsfw, id_subject, id_author)
 				http.Redirect(w, r, "/", http.StatusFound) // TODO : redirect to post page
 			} else {
 				Util.Warning("An error occured during post creation.")
@@ -264,7 +297,7 @@ func CreatePostHandler(db *SQL.SqlServer) {
 
 func CreateSubtidderHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
-	viewData.Page = "create_post"
+	viewData.Page = "create_subtidder"
 
 	http.HandleFunc("/new/t", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
