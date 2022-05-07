@@ -308,3 +308,17 @@ func DisconnectHandler(db *SQL.SqlServer) {
 		viewData.ClearErrors()
 	})
 }
+
+func ProfilePageHandler(db *SQL.SqlServer) {
+	viewData := SQL.MasterVD{}
+	http.HandleFunc("/u/", func(w http.ResponseWriter, r *http.Request) {
+		IAM := testConnection(r, &viewData, db)
+		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
+
+		err := callTemplate("profile_page", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
+		viewData.ClearErrors()
+	})
+}

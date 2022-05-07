@@ -1,0 +1,58 @@
+
+
+#side_bar {
+    display: none;
+}
+
+#profile_picture{
+    display: flex;
+    flex-direction: column;
+    margin-right:10vh
+}
+
+#first_block{
+    display:flex;
+    margin-top:10vh
+}
+
+.list{
+    display:flex;
+    flex-direction:row;
+    margin-top:3vh
+}
+
+#default_png{
+    border-radius:50vh;
+    width:13vw;
+}
+
+#info_account{
+   margin-right:93vh;
+    margin-top:3vh;
+}
+
+.left_para{
+    font-size:2.8vh
+}
+
+.right_para_up{
+    margin-left:6.8vh;
+    margin-top:1vh;
+    font-size:2vh;
+}
+
+.right_para_mid{
+    margin-left:5vh;
+    margin-top:0.6vh;
+    font-size:2vh;
+}
+
+.right_para_down{
+    margin-left:8.1vh;
+    margin-top:0.9vh;
+    font-size:2vh;
+}
+
+.pseudo{
+    font-size:3.3vh
+}

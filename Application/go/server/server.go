@@ -67,6 +67,7 @@ func launchServer(DatabaseIp string) {
 	CreatePostHandler(&db)
 	CreateSubtidderHandler(&db)
 	DisconnectHandler(&db)
-
-	http.ListenAndServe(":80", nil)
+	ProfilePageHandler(&db)
+	
+	http.ListenAndServe(":8091", nil)
 }
