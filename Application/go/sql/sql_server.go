@@ -2,6 +2,7 @@ package mySQL
 
 import (
 	"database/sql"
+
 	Util "github.com/Nimajjj/Tidder/go/utility"
 	_ "github.com/go-sql-driver/mysql"
 )
