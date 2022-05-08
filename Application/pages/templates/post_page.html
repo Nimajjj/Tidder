@@ -4,44 +4,27 @@
 <script type="text/javascript" src="/scripts/upvote.js" defer></script>
 <link rel="stylesheet" href="../style/pages/subtidder.css">
 
-{{ range .postVD.Post }}
 
 <div id="post_content">
     <div class="post">
         <ul>
             <li class="post_upper">
-                <a class="subreddit_name" href="/t/">
+                <a class="subreddit_name" href="/t/{{.PostVD.Post.SubtidderName}}">
                     <img class="sub_logo" src="../../images/global/logo.png" alt="subreddit logo">
-                    <p>t/{{.Id}}</p>
+                    <p>t/</p>
                 </a>
                 <p>Published by <a href="">u/blabla</a> bloupbloup </p>
             </li>
             <li class="post_title">
-                <h2>Titre</h2>
+                <h2>{{.PostVD.Post.SubtidderName}}</h2>
             </li>
             <li class="post_content">
                 <br>
-                <p>Hello,
-
-                    I made a bet with my roommate that the font on this envelope is not genuine handwriting, but a font style used to get us to open the envelope.
-
-                    Help me please!! I cannot find it online, but I am confident it is a computer font.
-
-                    The Envelope Says:
-
-                    "Piece By Piece
-                    210 Webster Street
-                    West Newton, MA 02465"
-                    ...
-                    "The Residents Of
-                    (Address removed)
-                    Boston, MA 02127"
-
-                </p>
+                <p>{{.PostVD.Post.Content}}</p>
                 <br>
             </li>
             <li class="post_content" style="display: flex; justify-content: center;">
-                <img src="../../images/posts/default_post.jpg" alt="post content">
+                <img src="{{blobToUrl .PostVD.Post.MediaUrl}}" alt="post content">
             </li>
             <br>
 
@@ -60,4 +43,5 @@
         </ul>
     </div>
 </div>
+
 {{ end }}

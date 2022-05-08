@@ -7,7 +7,6 @@ import (
 	"io"
 	"mime/multipart"
 	"net/http"
-	"strconv"
 	"strings"
 	"time"
 
@@ -345,14 +344,17 @@ func DisconnectHandler(db *SQL.SqlServer) {
 
 func PostHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
-	viewData.Page = "post_page"
+	viewData.Page = "post"
 
 	http.HandleFunc("/post/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
 		var postVD SQL.PostVD
-		var ID = postVD.Post.Id
+		viewData.PostVD.Subscribed = true
 
-		post := db.GetPosts("id_post=" + strconv.Itoa(ID))[0]
+		id := strings.ReplaceAll(r.URL.Path, "localhost/post/", "")
+		id = strings.ReplaceAll(r.URL.Path, "/post/", "")
+
+		post := db.GetPosts("id_post=" + id)[0]
 		postVD.Post = db.MakeDisplayablePost(post, IAM)
 
 		err := callTemplate("post_page", &viewData, w)
