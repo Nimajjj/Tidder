@@ -29,11 +29,17 @@ func testConnection(r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer) 
 	// if connected
 	(*viewData).Connected = true
 	(*viewData).Account = db.GetAccountFromSession(cookie.Value)
+
 	if (*viewData).Account.Id == 0 {
 		Util.Warning("Account ID == 0 found ! We have fuckng problem captain !")
 		(*viewData).Connected = false
 		return -1
 	}
+
+	if (*viewData).Account.ProfilePicture == "" {
+		(*viewData).Account.ProfilePicture = SQL.DefaultPP()
+	}
+
 	return (*viewData).Account.Id
 }
 
@@ -75,8 +81,6 @@ func IndexHandler(db *SQL.SqlServer) {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
-
-		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
 		viewData.IndexVD.Posts = db.GenerateFeed(IAM)
 
 		// Vote
@@ -106,7 +110,6 @@ func SubtidderHandler(db *SQL.SqlServer) {
 
 	http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
-		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
 
 		// MAIN SUBTIDDER COMPONENT //
 		id := strings.ReplaceAll(r.URL.Path, "localhost/t/", "")
@@ -150,9 +153,7 @@ func SearchHandler(db *SQL.SqlServer) {
 	viewData.Page = "search"
 
 	http.HandleFunc("/s/", func(w http.ResponseWriter, r *http.Request) {
-		IAM := testConnection(r, &viewData, db)
-
-		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
+		testConnection(r, &viewData, db)
 
 		// SEARCH COMPONENT //
 		viewData.SearchVD.Subjects = map[SQL.Subject]int{}
@@ -238,7 +239,6 @@ func CreatePostHandler(db *SQL.SqlServer) {
 
 	http.HandleFunc("/new/post", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
-
 		if IAM == -1 { // if you're not connected redirect to home page
 			http.Redirect(w, r, "/", http.StatusFound)
 		}

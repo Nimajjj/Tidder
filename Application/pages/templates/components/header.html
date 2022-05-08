@@ -8,7 +8,7 @@
       {{template "search_bar" .}}
 
       <div class="container" style="margin-right: 2vw;">
-        <img id="profile_picture" src="/images/profiles/{{.Account.ProfilePicture}}" alt="profile picture">
+        <img id="profile_picture" src="{{blobToUrl .Account.ProfilePicture}}" alt="profile picture">
         <p id="pseudonym">{{.Account.Name}}</p>
       </div>
     {{else}}
