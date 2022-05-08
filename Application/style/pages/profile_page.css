@@ -1,4 +1,6 @@
-
+body{
+    overflow: hidden;
+}
 
 #side_bar {
     display: none;
@@ -12,7 +14,10 @@
 
 #first_block{
     display:flex;
-    margin-top:10vh
+    margin-bottom:10vh;
+    position:relative;
+    left:2vw;
+    top:5vh;
 }
 
 .list{
@@ -27,8 +32,8 @@
 }
 
 #info_account{
-   margin-right:93vh;
-    margin-top:3vh;
+    position:relative;
+
 }
 
 .left_para{
@@ -55,4 +60,53 @@
 
 .pseudo{
     font-size:3.3vh
+}
+
+#container{
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    right:30.5vw;
+}
+
+.Subtidder{
+    background-color:grey;
+    width: 24.8vw;
+    height:10vh;
+    font-size:1.8vw;
+    text-align:center;
+    padding:2.2vh;
+    letter-spacing:-0.04vw;
+}
+
+#subtidder_joined{
+    border: solid grey 1px;
+    width:25vw;
+
+}
+
+.liste_sub li{
+    padding-top:3.5vh;
+    font-size:1.5vw;
+    padding-left:2vw;
+}
+
+ul.liste_sub{
+    margin-top:2vh;
+}
+
+#last_li{
+    margin-bottom:3vh
+}
+
+#thread{
+    border: solid grey 1px;
+    width:15vw;
+}
+
+.liste_sub{
+    overflow-y: scroll;
+    overflow-x:hidden;
+    scroll-behavior: smooth;
+    height:50vh;
 }
