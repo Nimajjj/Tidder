@@ -1,5 +1,7 @@
 {{ define "content" }}
 <link rel="stylesheet" href="../style/pages/profile_page.css">
+<link rel="stylesheet" href="../style/master.css">
+
 <div id="container">
     <div id="first_block">
         <div id="profile_picture">
@@ -29,9 +31,9 @@
     <div id="second_block">
         <div id="subtidder_joined">
             <div>
-                <p class="Subtidder">
+                <h2 class="Subtidder">
                     Subtidder joined
-                </p>
+                </h2>
             </div>
             <ul class="liste_sub">
                 <li>
@@ -71,8 +73,82 @@
             </ul>
         </div>
         <div id="thread">
+                <div id="post_content">
+                    <div class="post">
+                        <ul class="list_post">
+                            <li class="post_upper">
+                                <a class="subreddit_name" href="/t/subtidder">
+                                    <img class="sub_logo" src="../../images/global/logo.png" alt="subreddit logo">
+                                    <p>t/</p>
+                                </a>
+                                <p>Published by <a href="">u/blabla</a> bloupbloup </p>
+                            </li>
 
-        </div>
+                            <li class="post_title">
+                                <h2>Titre</h2>
+                            </li>
+
+                            <li class="post_content">
+                                <br>
+                                <p>youyouyouyoyuyou</p>
+                                <br>
+                            </li>
+                            <li class="post_content" style="display: flex; justify-content: center;">
+                                <img src="../../images/posts/default_post.jpg" alt="post content">
+                            </li>
+                            <br>
+                            <ul class="list_post">
+                                <li class="post_bottom">
+                                    <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt=" upvote">
+                                    <p>26816</p>
+                                    <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt=" downvote">
+
+                                    <a href=""> Comments</a>
+                                    <a class="post_share" href="">
+                                        <img class="post_icon" src="../images/global/share.png" alt="share">
+                                        <p style="margin-left: 1vh;">Share</p>
+                                    </a>
+                                </li>
+                            <br>
+                        </ul>
+                        <ul class="list_post">
+                            <li class="post_upper">
+                                <a class="subreddit_name" href="/t/subtidder">
+                                    <img class="sub_logo" src="../../images/global/logo.png" alt="subreddit logo">
+                                    <p>t/</p>
+                                </a>
+                                <p>Published by <a href="">u/blabla</a> bloupbloup </p>
+                            </li>
+
+                            <li class="post_title">
+                                <h2>Titre</h2>
+                            </li>
+
+                            <li class="post_content">
+                                <br>
+                                <p>youyouyouyoyuyou</p>
+                                <br>
+                            </li>
+                            <li class="post_content" style="display: flex; justify-content: center;">
+                                <img src="../../images/posts/default_post.jpg" alt="post content">
+                            </li>
+                            <br>
+
+                            <li class="post_bottom">
+                                <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt=" upvote">
+                                <p>26816</p>
+                                <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt=" downvote">
+
+                                <a href=""> Comments</a>
+                                <a class="post_share" href="">
+                                    <img class="post_icon" src="../images/global/share.png" alt="share">
+                                    <p style="margin-left: 1vh;">Share</p>
+                                </a>
+                            </li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
     </div>
 </div>
 

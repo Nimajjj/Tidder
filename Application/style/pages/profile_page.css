@@ -70,13 +70,13 @@ body{
 }
 
 .Subtidder{
-    background-color:grey;
+    background-color: grey;
     width: 24.8vw;
-    height:10vh;
-    font-size:1.8vw;
-    text-align:center;
-    padding:2.2vh;
-    letter-spacing:-0.04vw;
+    height: 10vh;
+    font-size: 40px;
+    text-align: center;
+    padding: 2.5vh;
+    letter-spacing: -0.04vw;
 }
 
 #subtidder_joined{
@@ -100,8 +100,8 @@ ul.liste_sub{
 }
 
 #thread{
-    border: solid grey 1px;
     width:15vw;
+
 }
 
 .liste_sub{
@@ -109,4 +109,24 @@ ul.liste_sub{
     overflow-x:hidden;
     scroll-behavior: smooth;
     height:50vh;
+}
+
+#second_block {
+    display: flex;
+}
+
+#post_content {
+    margin-left: 12vh;
+}
+
+.post {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    height: 55vh;
+}
+
+ul.list_post {
+    border-bottom: solid 1px white;
+    padding: 15px;
 }
