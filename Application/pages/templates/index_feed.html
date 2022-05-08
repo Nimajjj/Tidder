@@ -1,9 +1,11 @@
 {{ define "content" }}
     <script type="text/javascript" src="/scripts/upvote.js" defer></script>
     <div id="posts">
+
         {{ range .IndexVD.Posts }}
             <div class="post">
               <ul>
+                <a href="../post_page.html"> j'y arrive pas dsl Ben, jtm </a>
                 <li class="post_upper">
                   <a class="subreddit_name" href="/t/{{.SubtidderName}}">
                     <img class="sub_logo" src="/images/subtidder/{{.SubtidderPP}}" alt="subreddit logo">
@@ -44,8 +46,10 @@
                     <p style="margin-left: 1vh;">Share</p>
                   </a>
                 </li>
+                </a>
               </ul>
             </div>
         {{end}}
+
       </div>
 {{ end }}
