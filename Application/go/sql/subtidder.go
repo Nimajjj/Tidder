@@ -86,6 +86,12 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 			Util.Error(err2)
 		}
 		sub := Subject{id, name, pp, nsfw, id_owner, infos, banner}
+		if banner == "" {
+			sub.Banner = DefaultSubtidderBanner()
+		}
+		if pp == "" {
+			sub.ProfilePicture = DefaultSubtidderPP()
+		}
 		result = append(result, sub)
 	}
 

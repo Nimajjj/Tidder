@@ -4,7 +4,7 @@
           {{range $sub, $n := .SearchVD.Subjects}}
             <div class="post search_result" onclick="location.href='/t/{{$sub.Name}}'">
               <div>
-                <img class="sub_logo" src="../images/subtidder/{{$sub.ProfilePicture}}" alt="subtidder logo">
+                <img class="sub_logo" src="{{blobToUrl $sub.ProfilePicture}}" alt="subtidder logo">
                 <div>
                   <div class="sub_name_container">
                     <h2>{{$sub.Name}}</h2>

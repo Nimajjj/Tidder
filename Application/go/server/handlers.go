@@ -7,7 +7,6 @@ import (
 	"io"
 	"mime/multipart"
 	"net/http"
-	"strconv"
 	"strings"
 	"time"
 
@@ -205,7 +204,7 @@ func SignupHandler(db *SQL.SqlServer) { // TODO : handle when user is stupid
 
 func SigninHandler(db *SQL.SqlServer) { // TODO : handle when user is stupid
 	viewData := SQL.MasterVD{}
-	viewData.Page = "signup"
+	viewData.Page = "signin"
 
 	http.HandleFunc("/signin", func(w http.ResponseWriter, r *http.Request) {
 		if testConnection(r, &viewData, db) != -1 { // if you're connected how tf did you get here
@@ -336,30 +335,6 @@ func DisconnectHandler(db *SQL.SqlServer) {
 		http.Redirect(w, r, "/", http.StatusFound)
 
 		err := callTemplate("disconnect", &viewData, w)
-		if err != nil {
-			Util.Error(err)
-		}
-		viewData.ClearErrors()
-	})
-}
-
-func PostHandler(db *SQL.SqlServer) {
-	viewData := SQL.MasterVD{}
-	viewData.Page = "post_page"
-
-	http.HandleFunc("/post/", func(w http.ResponseWriter, r *http.Request) {
-		IAM := testConnection(r, &viewData, db)
-		var postVD SQL.PostVD
-		var ID = postVD.Post.Id
-
-		id := strings.ReplaceAll(r.URL.Path, "localhost/post/", "")
-		id = strings.ReplaceAll(r.URL.Path, "/post/", "")
-
-		post := db.GetPosts("id_post=" + strconv.Itoa(ID))[0]
-		postVD.Post = db.MakeDisplayablePost(post, IAM)
-		postVD.Sub = db.GenerateSubTidderFeed(IAM, subtidder.Sub.Id)
-
-		err := callTemplate("post_page", &viewData, w)
 		if err != nil {
 			Util.Error(err)
 		}

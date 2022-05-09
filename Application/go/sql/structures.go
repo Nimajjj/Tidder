@@ -173,7 +173,6 @@ type CreatePostsVD struct {
 
 type PostVD struct {
 	Post       DisplayablePost
-	Sub        Subject
 	Subscribed bool
 }
 

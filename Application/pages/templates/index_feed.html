@@ -2,13 +2,13 @@
     <script type="text/javascript" src="/scripts/upvote.js" defer></script>
     <div id="posts">
 
+
         {{ range .IndexVD.Posts }}
             <div class="post">
               <ul>
-                <a href="../post_page.html"> j'y arrive pas dsl Ben, jtm </a>
                 <li class="post_upper">
                   <a class="subreddit_name" href="/t/{{.SubtidderName}}">
-                    <img class="sub_logo" src="/images/subtidder/{{.SubtidderPP}}" alt="subreddit logo">
+                    <img class="sub_logo" src="{{blobToUrl .SubtidderPP}}" alt="subreddit logo">
                     <p>t/{{.SubtidderName}}</p>
                   </a>
                   <p>Published by <a href="">u/{{.AuthorName}}</a> {{.CreationDate}} </p>
@@ -39,7 +39,7 @@
                   <p>{{.Score}}</p>
                   <img class="post_icon vote_bt downvote_bt" state="empty" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
                 {{end}}
-                  
+
                   <a href="">{{.NumberOfComments}} Comments</a>
                   <a class="post_share" href="">
                     <img class="post_icon" src="../images/global/share.png" alt="share">

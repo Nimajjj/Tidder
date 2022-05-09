@@ -4,9 +4,9 @@
     <link rel="stylesheet" href="../style/pages/subtidder.css">
 
     <div id="subtidder">
-        <img id="banner" src="/images/subtidder/{{.SubtidderVD.Sub.Banner}}" alt="banner">
+        <img id="banner" src="{{blobToUrl .SubtidderVD.Sub.Banner}}" alt="banner">
         <div id="sub_header">
-            <img src="../images/subtidder/{{.SubtidderVD.Sub.ProfilePicture}}" alt="sub logo">
+            <img src="{{blobToUrl .SubtidderVD.Sub.ProfilePicture}}" alt="sub logo">
             <div id="sub_top_container">
             <h2>t/{{.SubtidderVD.Sub.Name}}</h2>
             {{if .Connected}}
@@ -39,7 +39,7 @@
                             <ul>
                             <li class="post_upper">
                                 <a class="subreddit_name" href="/t/{{.SubtidderName}}">
-                                <img class="sub_logo" src="/images/subtidder/{{.SubtidderPP}}" alt="subreddit logo">
+                                <img class="sub_logo" src="{{blobToUrl .SubtidderPP}}" alt="subreddit logo">
                                 <p>t/{{.SubtidderName}}</p>
                                 </a>
                                 <p>Published by <a href="">u/{{.AuthorName}}</a> {{.CreationDate}} </p>
