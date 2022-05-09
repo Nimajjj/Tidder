@@ -1,0 +1,132 @@
+body{
+    overflow: hidden;
+}
+
+#side_bar {
+    display: none;
+}
+
+#profile_picture{
+    display: flex;
+    flex-direction: column;
+    margin-right:10vh
+}
+
+#first_block{
+    display:flex;
+    margin-bottom:10vh;
+    position:relative;
+    left:2vw;
+    top:5vh;
+}
+
+.list{
+    display:flex;
+    flex-direction:row;
+    margin-top:3vh
+}
+
+#default_png{
+    border-radius:50vh;
+    width:13vw;
+}
+
+#info_account{
+    position:relative;
+
+}
+
+.left_para{
+    font-size:2.8vh
+}
+
+.right_para_up{
+    margin-left:6.8vh;
+    margin-top:1vh;
+    font-size:2vh;
+}
+
+.right_para_mid{
+    margin-left:5vh;
+    margin-top:0.6vh;
+    font-size:2vh;
+}
+
+.right_para_down{
+    margin-left:8.1vh;
+    margin-top:0.9vh;
+    font-size:2vh;
+}
+
+.pseudo{
+    font-size:3.3vh
+}
+
+#container{
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    right:30.5vw;
+}
+
+.Subtidder{
+    background-color: grey;
+    width: 24.8vw;
+    height: 10vh;
+    font-size: 40px;
+    text-align: center;
+    padding: 2.5vh;
+    letter-spacing: -0.04vw;
+}
+
+#subtidder_joined{
+    border: solid grey 1px;
+    width:25vw;
+
+}
+
+.liste_sub li{
+    padding-top:3.5vh;
+    font-size:1.5vw;
+    padding-left:2vw;
+}
+
+ul.liste_sub{
+    margin-top:2vh;
+}
+
+#last_li{
+    margin-bottom:3vh
+}
+
+#thread{
+    width:15vw;
+
+}
+
+.liste_sub{
+    overflow-y: scroll;
+    overflow-x:hidden;
+    scroll-behavior: smooth;
+    height:50vh;
+}
+
+#second_block {
+    display: flex;
+}
+
+#post_content {
+    margin-left: 12vh;
+}
+
+.post {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    height: 55vh;
+}
+
+ul.list_post {
+    border-bottom: solid 1px white;
+    padding: 15px;
+}

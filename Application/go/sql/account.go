@@ -121,7 +121,7 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 	query += "\"" + HashPassword(Password) + "\","
 	query += "\"" + Birthdate + "\","
 	query += "\"" + currentTime.Format("2006-01-02") + "\","
-	query += " 0, \"Default.png\","
+	query += " 0, \"default.png\","
 	query += "\"" + studentId + "\")"
 	sqlServ.executeQuery(query)
 	return error

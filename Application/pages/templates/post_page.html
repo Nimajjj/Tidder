@@ -1,63 +1,46 @@
 {{ define "content" }}
-    <script type="text/javascript" src="/scripts/upvote.js" defer></script>
-    <script type="text/javascript" src="/scripts/subtidder.js" defer></script>
-    <script type="text/javascript" src="/scripts/upvote.js" defer></script>
-    <link rel="stylesheet" href="../style/pages/subtidder.css">
+<script type="text/javascript" src="/scripts/upvote.js" defer></script>
+<script type="text/javascript" src="/scripts/subtidder.js" defer></script>
+<script type="text/javascript" src="/scripts/upvote.js" defer></script>
+<link rel="stylesheet" href="../style/pages/subtidder.css">
 
-    {{ range .postVD.Post }}
-        <div id="post_content">
-            <div class="post">
-                <ul>
-                    <li class="post_upper">
-                        <a class="subreddit_name" href="/t/">
-                            <img class="sub_logo" src="../../images/global/logo.png" alt="subreddit logo">
-                            <p>t/{{ .PostVD.Post.SubtidderName }}</p>
-                        </a>
-                        <p>Published by <a href="">u/blabla</a> bloupbloup </p>
-                    </li>
-                    <li class="post_title">
-                        <h2>{{ .PostVD.Post.Title }}</h2>
-                    </li>
-                    <li class="post_content">
-                        <br>
-                        <p>Hello,
 
-                            I made a bet with my roommate that the font on this envelope is not genuine handwriting, but a font style used to get us to open the envelope.
+<div id="post_content">
+    <div class="post">
+        <ul>
+            <li class="post_upper">
+                <a class="subreddit_name" href="/t/subtidder">
+                    <img class="sub_logo" src="../../images/global/logo.png" alt="subreddit logo">
+                    <p>t/</p>
+                </a>
+                <p>Published by <a href="">u/blabla</a> bloupbloup </p>
+            </li>
+            <li class="post_title">
+                <h2>{{.PostVD.Post.SubtidderName}}</h2>
+            </li>
+            <li class="post_content">
+                <br>
+                <p>{{.PostVD.Post.Content}}</p>
+                <br>
+            </li>
+            <li class="post_content" style="display: flex; justify-content: center;">
+                <img src="../../images/posts/default_post.jpg" alt="post content">
+            </li>
+            <br>
 
-                            Help me please!! I cannot find it online, but I am confident it is a computer font.
+            <li class="post_bottom">
+                <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt=" upvote">
+                <p>26816</p>
+                <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt=" downvote">
 
-                            The Envelope Says:
-
-                            "Piece By Piece
-                            210 Webster Street
-                            West Newton, MA 02465"
-                            ...
-                            "The Residents Of
-                            (Address removed)
-                            Boston, MA 02127"
-
-                        </p>
-                        <br>
-                    </li>
-                    <li class="post_content" style="display: flex; justify-content: center;">
-                        <img src="../../images/posts/default_post.jpg" alt="post content">
-                    </li>
-                    <br>
-
-                    <li class="post_bottom">
-                        <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt=" upvote">
-                        <p>26816</p>
-                        <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt=" downvote">
-
-                        <a href=""> Comments</a>
-                        <a class="post_share" href="">
-                            <img class="post_icon" src="../images/global/share.png" alt="share">
-                            <p style="margin-left: 1vh;">Share</p>
-                        </a>
-                    </li>
-                    </a>
-                </ul>
-            </div>
-        </div>
-    {{ end }}
+                <a href=""> Comments</a>
+                <a class="post_share" href="">
+                    <img class="post_icon" src="../images/global/share.png" alt="share">
+                    <p style="margin-left: 1vh;">Share</p>
+                </a>
+            </li>
+            </a>
+        </ul>
+    </div>
+</div>
 {{ end }}
