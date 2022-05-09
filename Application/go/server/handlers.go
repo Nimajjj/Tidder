@@ -341,3 +341,40 @@ func DisconnectHandler(db *SQL.SqlServer) {
 		viewData.ClearErrors()
 	})
 }
+
+func PostHandler(db *SQL.SqlServer) {
+	viewData := SQL.MasterVD{}
+	viewData.Page = "post"
+
+	http.HandleFunc("/post/", func(w http.ResponseWriter, r *http.Request) {
+		IAM := testConnection(r, &viewData, db)
+		var postVD SQL.PostVD
+		viewData.PostVD.Subscribed = true
+
+		id := strings.ReplaceAll(r.URL.Path, "localhost/post/", "")
+		id = strings.ReplaceAll(r.URL.Path, "/post/", "")
+
+		post := db.GetPosts("id_post=" + id)[0]
+		postVD.Post = db.MakeDisplayablePost(post, IAM)
+
+		err := callTemplate("post_page", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
+		viewData.ClearErrors()
+	})
+}
+
+func ProfilePageHandler(db *SQL.SqlServer) {
+	viewData := SQL.MasterVD{}
+	http.HandleFunc("/u/", func(w http.ResponseWriter, r *http.Request) {
+		IAM := testConnection(r, &viewData, db)
+		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
+
+		err := callTemplate("profile_page", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
+		viewData.ClearErrors()
+	})
+}
