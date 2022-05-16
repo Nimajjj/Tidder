@@ -7,6 +7,7 @@ import (
 	"io"
 	"mime/multipart"
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 
@@ -369,7 +370,19 @@ func ProfilePageHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
 	http.HandleFunc("/u/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
-		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
+		var profilePageVD SQL.ProfilePageVD
+
+		name := strings.ReplaceAll(r.URL.Path, "localhost/u/", "")
+		name = strings.ReplaceAll(r.URL.Path, "/u/", "")
+		profilePageVD.Account = db.GetAccountByName(name)
+
+		posts := db.GetPosts("id_author =" + strconv.Itoa(profilePageVD.Account.Id))
+		for _, post := range posts {
+			profilePageVD.Posts = append(profilePageVD.Posts, db.MakeDisplayablePost(post, IAM))
+		}
+		profilePageVD.Subtidders = db.GetSubtiddersSubscribed(profilePageVD.Account.Id)
+
+		viewData.ProfilePageVD = profilePageVD
 
 		err := callTemplate("profile_page", &viewData, w)
 		if err != nil {

@@ -146,6 +146,7 @@ type MasterVD struct {
 	SearchVD      SearchViewData
 	CreatePostsVD CreatePostsVD
 	PostVD        PostVD
+	ProfilePageVD ProfilePageVD
 	Account       Accounts
 	Errors        Errors
 
@@ -174,6 +175,12 @@ type CreatePostsVD struct {
 type PostVD struct {
 	Post       DisplayablePost
 	Subscribed bool
+}
+
+type ProfilePageVD struct {
+	Account    Accounts
+	Posts      []DisplayablePost
+	Subtidders []Subject
 }
 
 func (viewData *MasterVD) ClearErrors() {
