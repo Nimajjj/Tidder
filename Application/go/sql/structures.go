@@ -146,9 +146,9 @@ type MasterVD struct {
 	SearchVD      SearchViewData
 	CreatePostsVD CreatePostsVD
 	PostVD        PostVD
-	Account       Accounts
-	Errors        Errors
 
+	Account   Accounts
+	Errors    Errors
 	Connected bool
 	Page      string
 }

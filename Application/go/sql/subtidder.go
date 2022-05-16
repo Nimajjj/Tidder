@@ -41,9 +41,9 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 		return "Subtidder name \"" + subName + "\" already taken."
 	}
 
-	query = "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw) VALUES ("
-	query += "\"" + subName + "\", \"Default_pp.png\", "
-	query += strconv.Itoa(ownerId) + ", " + strconv.Itoa(nsfw) + ")"
+	query = "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw, banner) VALUES ("
+	query += "\"" + subName + "\", \"\", "
+	query += strconv.Itoa(ownerId) + ", " + strconv.Itoa(nsfw) + ", \"\")"
 	Util.Query(query)
 	sqlServ.executeQuery(query)
 	return ""

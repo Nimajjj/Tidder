@@ -21,7 +21,11 @@
         <div id="sub_bot_container">
             <div id="posts_tab" class="sub_tab" onclick="show_posts()">Posts</div>
             <div id="infos_tab" class="sub_tab" onclick="show_infos()">Infos</div>
-            <div id="admin_tab" class="sub_tab" style="display: block;">Administration</div>
+            <div id="admin_tab" class="sub_tab" style="display: block;">
+            {{ if (eq .Account.Id .SubtidderVD.Sub.IdOwner) }}
+                Administration
+            {{ end }}
+            </div>
         </div>
 
         <div id="sub">
@@ -35,7 +39,7 @@
                 <div id="posts">
                 {{ if .SubtidderVD.Posts }}
                     {{ range .SubtidderVD.Posts }}
-                        <div class="post">
+                        <div class="post" onclick="location.href='/post/{{.Id}}'">
                             <ul>
                             <li class="post_upper">
                                 <a class="subreddit_name" href="/t/{{.SubtidderName}}">

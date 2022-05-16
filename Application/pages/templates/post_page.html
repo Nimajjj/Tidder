@@ -1,7 +1,5 @@
 {{ define "content" }}
 <script type="text/javascript" src="/scripts/upvote.js" defer></script>
-<script type="text/javascript" src="/scripts/subtidder.js" defer></script>
-<script type="text/javascript" src="/scripts/upvote.js" defer></script>
 <link rel="stylesheet" href="../style/pages/subtidder.css">
 
 
@@ -9,29 +7,38 @@
     <div class="post">
         <ul>
             <li class="post_upper">
-                <a class="subreddit_name" href="/t/subtidder">
-                    <img class="sub_logo" src="../../images/global/logo.png" alt="subreddit logo">
-                    <p>t/</p>
+                <a class="subreddit_name" href="/t/{{.PostVD.Post.SubtidderName}}">
+                    <img class="sub_logo" src="{{blobToUrl .PostVD.Post.SubtidderPP}}" alt="subreddit logo">
+                    <p>t/{{.PostVD.Post.SubtidderName}}</p>
                 </a>
-                <p>Published by <a href="">u/blabla</a> bloupbloup </p>
+                <p>Published by <a href="">u/{{.PostVD.Post.AuthorName}}</a> {{.PostVD.Post.CreationDate}} </p>
             </li>
             <li class="post_title">
-                <h2>{{.PostVD.Post.SubtidderName}}</h2>
+                <h2>{{.PostVD.Post.Title}}</h2>
             </li>
             <li class="post_content">
-                <br>
                 <p>{{.PostVD.Post.Content}}</p>
-                <br>
             </li>
-            <li class="post_content" style="display: flex; justify-content: center;">
-                <img src="../../images/posts/default_post.jpg" alt="post content">
-            </li>
-            <br>
+            {{if (ne .PostVD.Post.MediaUrl "")}}
+                <li class="post_content" style="display: flex; justify-content: center;">
+                    <img src="{{blobToUrl .PostVD.Post.MediaUrl}}" alt="post content">
+                </li>
+            {{end}}
 
             <li class="post_bottom">
-                <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt=" upvote">
-                <p>26816</p>
-                <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt=" downvote">
+                {{if (eq .PostVD.Post.Vote 1)}}
+                  <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt="{{.PostVD.Post.Id}} upvote">
+                  <p>{{.PostVD.Post.Score}}</p>
+                  <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt="{{.PostVD.Post.Id}} downvote">
+                {{else if (eq .PostVD.Post.Vote -1)}}
+                  <img class="post_icon vote_bt upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="{{.PostVD.Post.Id}} upvote">
+                  <p>{{.PostVD.Post.Score}}</p>
+                  <img class="post_icon vote_bt downvote_bt" state="active" src="../images/global/downvote.png" alt="{{.PostVD.Post.Id}} downvote">
+                {{else}}
+                  <img class="post_icon vote_bt upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="{{.PostVD.Post.Id}} upvote">
+                  <p>{{.PostVD.Post.Score}}</p>
+                  <img class="post_icon vote_bt downvote_bt" state="empty" src="../images/global/empty_downvote.png" alt="{{.PostVD.Post.Id}} downvote">
+                {{end}}
 
                 <a href=""> Comments</a>
                 <a class="post_share" href="">
