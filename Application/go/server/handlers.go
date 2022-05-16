@@ -350,13 +350,28 @@ func PostHandler(db *SQL.SqlServer) {
 	http.HandleFunc("/post/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
 		var postVD SQL.PostVD
-		viewData.PostVD.Subscribed = true
 
 		id := strings.ReplaceAll(r.URL.Path, "localhost/post/", "")
 		id = strings.ReplaceAll(r.URL.Path, "/post/", "")
 
 		post := db.GetPosts("id_post=" + id)[0]
 		postVD.Post = db.MakeDisplayablePost(post, IAM)
+
+		viewData.PostVD = postVD
+
+		type FetchQuery struct {
+			IdPost    int `json:"id_post"`
+			Score     int `json:"score"`
+			IdAccount int `json:"id_account_subscribing"`
+			IdSubject int `json:"id_subject_to_subscribe"`
+		}
+		fetchQuery := &FetchQuery{}
+		json.NewDecoder(r.Body).Decode(fetchQuery)
+
+		// VOTES //
+		if fetchQuery.IdPost != 0 && fetchQuery.Score != 0 && IAM != -1 {
+			db.Vote(fetchQuery.IdPost, fetchQuery.Score, IAM)
+		}
 
 		err := callTemplate("post_page", &viewData, w)
 		if err != nil {

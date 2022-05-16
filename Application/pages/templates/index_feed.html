@@ -6,22 +6,22 @@
         {{ range .IndexVD.Posts }}
             <div class="post">
               <ul>
-                <li class="post_upper">
+                <li class="post_upper" onclick="location.href='/post/{{.Id}}'">
                   <a class="subreddit_name" href="/t/{{.SubtidderName}}">
                     <img class="sub_logo" src="{{blobToUrl .SubtidderPP}}" alt="subreddit logo">
                     <p>t/{{.SubtidderName}}</p>
                   </a>
                   <p>Published by <a href="">u/{{.AuthorName}}</a> {{.CreationDate}} </p>
                 </li>
-                <li class="post_title">
+                <li class="post_title" onclick="location.href='/post/{{.Id}}'">
                   <h2>{{.Title}}</h2>
                 </li>
                   {{if (eq .MediaUrl "")}}
-                    <li class="post_content">
+                    <li class="post_content" onclick="location.href='/post/{{.Id}}'">
                       <p>{{.Content}}</p>
                     </li>
                   {{else}}
-                    <li class="post_content" style="display: flex; justify-content: center;">
+                    <li class="post_content" style="display: flex; justify-content: center;" onclick="location.href='/post/{{.Id}}'">
                       <img src="{{blobToUrl .MediaUrl}}" alt="post content">
                     </li>
                   {{end}}
