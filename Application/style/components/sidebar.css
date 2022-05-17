@@ -59,3 +59,26 @@
 }
 
 
+
+#subtidder_menu #subtidder_banner {
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+#subtidder_menu #subtidder_logo {
+    border-radius: 100%;
+    height: 40px;
+    margin-top: -30px;
+    border: 1px solid #1a1a1a;
+}
+
+#subtidder_menu li:not(:last-child) {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.75vh;
+}
+
+#subtidder_menu li a {
+    margin-left: 0.5vw;
+}

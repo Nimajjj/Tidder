@@ -358,6 +358,8 @@ func PostHandler(db *SQL.SqlServer) {
 		postVD.Post = db.MakeDisplayablePost(post, IAM)
 		print(postVD.Post.SubtidderName)
 
+		postVD.Subtidder = db.GetSubs("id_subject=" + strconv.Itoa(post.IdSubject))[0]
+
 		viewData.PostVD = postVD
 
 		type FetchQuery struct {

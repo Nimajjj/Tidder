@@ -173,8 +173,8 @@ type CreatePostsVD struct {
 }
 
 type PostVD struct {
-	Post       DisplayablePost
-	Subscribed bool
+	Post      DisplayablePost
+	Subtidder Subject
 }
 
 type ProfilePageVD struct {
