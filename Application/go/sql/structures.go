@@ -172,8 +172,8 @@ type CreatePostsVD struct {
 }
 
 type PostVD struct {
-	Post       DisplayablePost
-	Subscribed bool
+	Post      DisplayablePost
+	Subtidder Subject
 }
 
 func (viewData *MasterVD) ClearErrors() {

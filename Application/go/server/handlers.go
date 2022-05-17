@@ -7,6 +7,7 @@ import (
 	"io"
 	"mime/multipart"
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 
@@ -355,6 +356,8 @@ func PostHandler(db *SQL.SqlServer) {
 
 		post := db.GetPosts("id_post=" + id)[0]
 		postVD.Post = db.MakeDisplayablePost(post, IAM)
+
+		postVD.Subtidder = db.GetSubs("id_subject=" + strconv.Itoa(post.IdSubject))[0]
 
 		viewData.PostVD = postVD
 

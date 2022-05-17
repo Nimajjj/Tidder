@@ -1,5 +1,22 @@
 {{define "sidebar"}}
 <div id="side_bar">
+    {{ if (eq .Page "post") }}
+      <div id="subtidder_menu" class="menu">
+        <ul>
+          <li>
+            <img src="{{blobToUrl .PostVD.Subtidder.Banner}}" alt="subtidder banner" id="subtidder_banner">
+          </li>
+          <li>
+            <img src="{{blobToUrl .PostVD.Subtidder.ProfilePicture}}" alt="subtidder logo" id="subtidder_logo">
+            <a href="/t/{{.PostVD.Subtidder.Name}}">t/{{.PostVD.Subtidder.Name}}</a>
+          </li>
+          <li>
+            <p>{{.PostVD.Subtidder.Infos}}</p>
+          </li>
+        </ul>
+      </div>
+    {{ end }}
+
     <div id="main_menu" class="menu">
       <div class="box">
         <ul>
