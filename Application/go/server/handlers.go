@@ -189,7 +189,7 @@ func SignupHandler(db *SQL.SqlServer) { // TODO : handle when user is stupid
 		verifpassword := r.FormValue("passwordverif_input")
 		birthdate := r.FormValue("birthdate_input")
 		if r.Method == "POST" {
-			viewData.Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, "", verifpassword)
+			viewData.Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, verifpassword)
 			if viewData.Errors.Signup == "" {
 				http.Redirect(w, r, "/", http.StatusFound)
 			}
@@ -368,6 +368,7 @@ func PostHandler(db *SQL.SqlServer) {
 		if r.Method == "POST" {
 			if r.FormValue("comment_content") != "" {
 				db.CreateComment(r.FormValue("comment_content"), IAM, id)
+				// TODO : RELOAD PAGE
 			}
 		}
 
