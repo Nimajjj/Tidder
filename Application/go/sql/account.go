@@ -109,14 +109,14 @@ func HashPassword(password string) string {
 	return hashedPassword
 }
 
-func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, studentId string, Verif_password string) string {
+func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, Verif_password string) string {
 	error := ""
 	if Verif_password != Password {
 		error += "Password and verification password are different"
 		Util.Warning("Password and verification password are different : " + Password + " != " + Verif_password)
 		return error
 	}
-	if name == "" || email == "" || Password == "" || Birthdate == "" || studentId == "" {
+	if name == "" || email == "" || Password == "" || Birthdate == "" {
 		error += "Please complete all fields"
 		Util.Warning("User try to create an account with empty fields")
 		return error
@@ -136,14 +136,13 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 		return error
 	}
 
-	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture, student_id) VALUES ("
+	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("
 	query += "\"" + name + "\","
 	query += "\"" + email + "\","
 	query += "\"" + HashPassword(Password) + "\","
 	query += "\"" + Birthdate + "\","
 	query += "\"" + currentTime.Format("2006-01-02") + "\","
-	query += " 0, \"default.png\","
-	query += "\"" + studentId + "\")"
+	query += " 0, \"default.png\")"
 	sqlServ.executeQuery(query)
 	return error
 }
