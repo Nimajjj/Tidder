@@ -77,6 +77,27 @@ func (sqlServ SqlServer) GetAccountById(id int) Accounts {
 	return account
 }
 
+func (sqlServ SqlServer) GetAccountByName(name string) Accounts {
+	var account Accounts
+	query := "SELECT * FROM accounts WHERE name = " + name
+	Util.Query(query)
+	err := sqlServ.db.QueryRow(query).Scan(
+		&account.Id,
+		&account.Name,
+		&account.Email,
+		&account.Password,
+		&account.BirthDate,
+		&account.CreationDate,
+		&account.Karma,
+		&account.ProfilePicture,
+		&account.StudentId,
+	)
+	if err != nil {
+		Util.Error(err)
+	}
+	return account
+}
+
 func HashPassword(password string) string {
 	var passwordBytes = []byte(password)
 	hashedPasswordBytes, err := bcrypt.GenerateFromPassword(passwordBytes, bcrypt.MinCost)
