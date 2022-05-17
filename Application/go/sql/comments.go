@@ -50,7 +50,7 @@ func (sqlServ SqlServer) GetComments(conditions string) []Comments {
 	return result
 }
 
-func (sqlServ SqlServer) CreateComment(content string, idUser int, idPost string) {
+func (sqlServ SqlServer) CreateComment(content string, idUser int, idPost string, answerToId string) {
 	if content == "" {
 		return
 	}
@@ -62,16 +62,17 @@ func (sqlServ SqlServer) CreateComment(content string, idUser int, idPost string
 	}
 
 	currentTime := time.Now().Format("2006-01-02 15:04:05")
-	query := "INSERT INTO comments (content, creation_date, id_author, id_post) VALUES ("
+	query := "INSERT INTO comments (content, creation_date, id_author, id_post, response_to_id) VALUES ("
 	query += "'" + content + "', "
 	query += "'" + currentTime + "', "
-	query += "'" + strconv.Itoa(idUser) + "', "
-	query += "'" + idPost + "')"
+	query += strconv.Itoa(idUser) + ", "
+	query += "'" + idPost + "', "
+	query += answerToId + ")"
 
 	sqlServ.executeQuery(query)
 }
 
-func (sqlServ SqlServer) MakeDisplayableComments(comments []Comments) ([]DisplayableComment, []int) {
+func (sqlServ SqlServer) MakeDisplayableComments(comments []Comments, IAM int) ([]DisplayableComment, []int) {
 	res := []DisplayableComment{}
 
 	alreadyMade := []int{}
@@ -88,6 +89,27 @@ func (sqlServ SqlServer) MakeDisplayableComments(comments []Comments) ([]Display
 			continue
 		}
 
+		vote := 0
+		query := "SELECT * FROM vote_comment_to WHERE id_account = " + strconv.Itoa(IAM) + " AND id_comment = " + strconv.Itoa(c.Id)
+		Util.Query("MakeDisplayableComments", query)
+		rows, err := sqlServ.db.Query(query)
+		if err != nil {
+			Util.Error(err)
+		}
+		for rows.Next() {
+			var a int
+			var b int
+			var c int
+			if err2 := rows.Scan(
+				&a,
+				&b,
+				&c,
+				&vote,
+			); err2 != nil {
+				Util.Error(err2)
+			}
+		}
+
 		displayableComment := DisplayableComment{}
 		displayableComment.Id = c.Id
 		displayableComment.Content = c.Content
@@ -97,18 +119,19 @@ func (sqlServ SqlServer) MakeDisplayableComments(comments []Comments) ([]Display
 		displayableComment.Redacted = c.Redacted
 		displayableComment.IdPost = c.IdPost
 		displayableComment.Score = c.Upvotes - c.Downvotes
+		displayableComment.Vote = vote
 
 		author := sqlServ.GetAccountById(c.IdAuthor)
 		displayableComment.AuthorName = author.Name
 		displayableComment.AuthorPP = author.ProfilePicture
-		if displayableComment.AuthorPP == "" {
+		if displayableComment.AuthorPP == "default" || displayableComment.AuthorPP == "" {
 			displayableComment.AuthorPP = DefaultPP()
 		}
 
 		responses := sqlServ.GetComments("response_to_id = " + strconv.Itoa(c.Id))
 		if len(responses) > 0 {
 			toAppend := []int{}
-			displayableComment.Response, toAppend = sqlServ.MakeDisplayableComments(responses)
+			displayableComment.Response, toAppend = sqlServ.MakeDisplayableComments(responses, IAM)
 			for _, r := range toAppend {
 				alreadyMade = append(alreadyMade, r)
 			}
@@ -137,14 +160,24 @@ func (c DisplayableComment) PrintComment() template.HTML {
 
                 <div class="content">
                     <div class="comment_text">` + c.Content + `</div>
-                    <div class="content_footer">
-                        <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/empty_upvote.png" alt=" upvote">
-                        <p>` + strconv.Itoa(c.Score) + `</p>
-                        <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt=" downvote">
-                        <p>Answer</p>
-                        <p>...</p>
-                    </div>
-	`
+                    <div class="content_footer" id="comment_` + strconv.Itoa(c.Id) + `">`
+
+	if c.Vote == 1 {
+		html += `<img class="post_icon vote_bt comments_upvote_bt" state="active" src="../images/global/upvote.png" alt="` + strconv.Itoa(c.Id) + ` upvote">
+				<p>` + strconv.Itoa(c.Score) + `</p>
+				<img class="post_icon vote_bt comments_downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt="` + strconv.Itoa(c.Id) + ` downvote">`
+	} else if c.Vote == -1 {
+		html += `<img class="post_icon vote_bt comments_upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="` + strconv.Itoa(c.Id) + ` upvote">
+				<p>` + strconv.Itoa(c.Score) + `</p>
+				<img class="post_icon vote_bt comments_downvote_bt" state="active"  src="../images/global/downvote.png" alt="` + strconv.Itoa(c.Id) + ` downvote">`
+	} else {
+		html += `<img class="post_icon vote_bt comments_upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="` + strconv.Itoa(c.Id) + ` upvote">
+				<p>` + strconv.Itoa(c.Score) + `</p>
+				<img class="post_icon vote_bt comments_downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt="` + strconv.Itoa(c.Id) + ` downvote">`
+	}
+
+	html += `<a onClick="AnswerToComment(` + strconv.Itoa(c.Id) + `)">Answer</a> <p>...</p> </div>`
+
 	if len(c.Response) > 0 {
 		for _, r := range c.Response {
 			html += string(r.PrintComment())
@@ -156,4 +189,69 @@ func (c DisplayableComment) PrintComment() template.HTML {
 	`
 
 	return template.HTML(html)
+}
+
+func (sqlServ SqlServer) VoteForComment(idComment int, score int, idAccount int) {
+	Util.Log("Vote for comment received: " + strconv.Itoa(idComment) + " " + strconv.Itoa(score))
+	query := "UPDATE tidder.comments SET "
+	if score < 0 {
+		query += "downvotes = downvotes + " + strconv.Itoa(score*(-1))
+	} else {
+		query += "upvotes = upvotes + " + strconv.Itoa(score)
+	}
+	query += " WHERE id_comment = " + strconv.Itoa(idComment)
+	sqlServ.executeQuery(query)
+
+	type VoteTo struct {
+		IdComment int
+		IdAccount int
+		Vote      int
+		Shit      int
+	}
+
+	var voteTo VoteTo
+	query = "SELECT * FROM vote_comment_to WHERE id_account = " + strconv.Itoa(idAccount) + " AND id_comment = " + strconv.Itoa(idComment)
+	rows, err := sqlServ.db.Query(query)
+	if err != nil {
+		Util.Error(err)
+	}
+	res := 0
+	for rows.Next() {
+		res += 1
+		var id_comment int
+		var id_account int
+		var vote int
+		var shit int
+		if err2 := rows.Scan(
+			&shit,
+			&id_comment,
+			&id_account,
+			&vote,
+		); err2 != nil {
+			Util.Error(err2)
+		}
+		voteTo = VoteTo{id_comment, id_account, vote, shit}
+	}
+	if res == 0 {
+		query = "INSERT INTO vote_comment_to (id_comment, id_account, vote) VALUES (" + strconv.Itoa(idComment) + ", " + strconv.Itoa(idAccount) + ", "
+		if score < 0 {
+			query += strconv.Itoa(-1) + ")"
+		} else {
+			query += strconv.Itoa(1) + ")"
+		}
+	} else {
+		query = "UPDATE vote_comment_to SET vote = "
+		x := ""
+		if (score == -1 && voteTo.Vote == 1) || (score == 1 && voteTo.Vote == -1) {
+			x += strconv.Itoa(0)
+		} else if score > 0 {
+			x += strconv.Itoa(1)
+		} else if score < 0 {
+			x += strconv.Itoa(-1)
+		} else {
+			x += "0"
+		}
+		query += x + " WHERE id_comment = " + strconv.Itoa(idComment) + " AND id_account = " + strconv.Itoa(idAccount)
+	}
+	sqlServ.executeQuery(query)
 }

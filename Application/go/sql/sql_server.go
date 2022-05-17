@@ -74,11 +74,11 @@ func (sqlServ SqlServer) GetDB() *sql.DB {
   Private SqlServer method
   To use ONLY if you already made all verifications to avoid SQL error
 */
-func (sqlServ SqlServer) executeQuery(query string) {
+func (sqlServ SqlServer) executeQuery(query string) error {
 	Util.Query("executeQuery", query)
 	_, err := sqlServ.db.Query(query)
 	if err != nil {
 		Util.Error(err)
-		return
 	}
+	return err
 }

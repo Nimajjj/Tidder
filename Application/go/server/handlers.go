@@ -37,7 +37,7 @@ func testConnection(r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer) 
 		return -1
 	}
 
-	if (*viewData).Account.ProfilePicture == "" {
+	if (*viewData).Account.ProfilePicture == "default" || (*viewData).Account.ProfilePicture == "" {
 		(*viewData).Account.ProfilePicture = SQL.DefaultPP()
 	}
 
@@ -359,23 +359,20 @@ func PostHandler(db *SQL.SqlServer) {
 			return
 		}
 
-		query := "id_post=" + id
-		Util.Log(query)
-		Util.Log(r.URL.Path)
-		post := db.GetPosts(query)[0]
+		post := db.GetPosts("id_post=" + id)[0]
 		postVD.Post = db.MakeDisplayablePost(post, IAM)
 
 		postVD.Subtidder = db.GetSubs("id_subject=" + strconv.Itoa(post.IdSubject))[0]
 
 		comments := db.GetComments("id_post=" + id)
-		postVD.Comments, _ = db.MakeDisplayableComments(comments)
+		postVD.Comments, _ = db.MakeDisplayableComments(comments, IAM)
 
 		viewData.PostVD = postVD
 
 		// BASIC NEW COMMENTS //
 		if r.Method == "POST" {
 			if r.FormValue("comment_content") != "" {
-				db.CreateComment(r.FormValue("comment_content"), IAM, id)
+				db.CreateComment(r.FormValue("comment_content"), IAM, id, "-1")
 				http.Redirect(w, r, "/post/"+id, http.StatusFound)
 			}
 		}
@@ -386,12 +383,24 @@ func PostHandler(db *SQL.SqlServer) {
 			Score     int `json:"score"`
 			IdAccount int `json:"id_account_subscribing"`
 			IdSubject int `json:"id_subject_to_subscribe"`
+
+			IdResponseTo int    `json:"id_response_to"`
+			Content      string `json:"content"`
+
+			IdComment    int `json:"id_comment"`
+			ScoreComment int `json:"score_comment"`
 		}
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
 
-		if fetchQuery.IdPost != 0 && fetchQuery.Score != 0 && IAM != -1 {
+		if fetchQuery.IdPost != 0 && fetchQuery.Score != 0 && IAM != -1 { // vote for post
 			db.Vote(fetchQuery.IdPost, fetchQuery.Score, IAM)
+		}
+		if fetchQuery.IdComment != 0 && fetchQuery.ScoreComment != 0 && IAM != -1 { // vote for comment
+			db.VoteForComment(fetchQuery.IdComment, fetchQuery.ScoreComment, IAM)
+		}
+		if fetchQuery.IdResponseTo != 0 && fetchQuery.Content != "" && IAM != -1 { // comment a comment
+			db.CreateComment(fetchQuery.Content, IAM, id, strconv.Itoa(fetchQuery.IdResponseTo))
 		}
 
 		err := callTemplate("post_page", &viewData, w)
