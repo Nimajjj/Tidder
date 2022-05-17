@@ -354,7 +354,15 @@ func PostHandler(db *SQL.SqlServer) {
 		id := strings.ReplaceAll(r.URL.Path, "localhost/post/", "")
 		id = strings.ReplaceAll(r.URL.Path, "/post/", "")
 
-		post := db.GetPosts("id_post=" + id)[0]
+		if r.URL.Path == "/post/default.png" {
+			Util.Warning("Laurie fait chier : default.png")
+			return
+		}
+
+		query := "id_post=" + id
+		Util.Log(query)
+		Util.Log(r.URL.Path)
+		post := db.GetPosts(query)[0]
 		postVD.Post = db.MakeDisplayablePost(post, IAM)
 
 		postVD.Subtidder = db.GetSubs("id_subject=" + strconv.Itoa(post.IdSubject))[0]
@@ -368,7 +376,7 @@ func PostHandler(db *SQL.SqlServer) {
 		if r.Method == "POST" {
 			if r.FormValue("comment_content") != "" {
 				db.CreateComment(r.FormValue("comment_content"), IAM, id)
-				// TODO : RELOAD PAGE
+				http.Redirect(w, r, "/post/"+id, http.StatusFound)
 			}
 		}
 

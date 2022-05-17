@@ -13,7 +13,7 @@ func (sqlServ SqlServer) GetComments(conditions string) []Comments {
 	if conditions != "" {
 		query += "WHERE " + conditions
 	}
-	Util.Query(query)
+	Util.Query("GetComments", query)
 	rows, err := sqlServ.db.Query(query)
 	if err != nil {
 		Util.Error(err)
@@ -61,10 +61,10 @@ func (sqlServ SqlServer) CreateComment(content string, idUser int, idPost string
 		return
 	}
 
-	currentTime := time.Now()
+	currentTime := time.Now().Format("2006-01-02 15:04:05")
 	query := "INSERT INTO comments (content, creation_date, id_author, id_post) VALUES ("
 	query += "'" + content + "', "
-	query += "'" + currentTime.Format("2006-01-02") + "', "
+	query += "'" + currentTime + "', "
 	query += "'" + strconv.Itoa(idUser) + "', "
 	query += "'" + idPost + "')"
 

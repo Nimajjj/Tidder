@@ -25,7 +25,7 @@ func (sqlServ SqlServer) GetPosts(conditions string) []Posts {
 	} else if conditions != "" {
 		query += "WHERE " + conditions
 	}
-	Util.Query(query)
+	Util.Query("GetPosts", query)
 	rows, err := sqlServ.db.Query(query)
 	if err != nil {
 		Util.Error(err)
@@ -186,7 +186,7 @@ func (sqlServ SqlServer) MakeDisplayablePost(post Posts, account_id int) Display
 	vote := 0
 	if account_id != -1 {
 		query := "SELECT * FROM vote_to WHERE id_account = " + strconv.Itoa(sqlServ.GetAccountById(account_id).Id) + " AND id_post = " + strconv.Itoa(post.Id)
-		Util.Query(query)
+		Util.Query("MakeDisplayablePost", query)
 		rows, err := sqlServ.db.Query(query)
 		if err != nil {
 			Util.Error(err)
