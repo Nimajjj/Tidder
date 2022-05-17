@@ -1,0 +1,85 @@
+#comment_content {
+    width: 100%;
+    margin-bottom: 1vh;
+    resize: vertical;
+}
+
+#comment_section .button {
+    padding: 1vh 1vw;
+    width: 100%;
+    border-radius: 9999px;
+    border: 2px solid #F2F2F2;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+#comment_section .button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+#comment_section > form {
+    margin-bottom: 1vh;
+}
+
+.comment {
+    margin: 1vh 0;
+}
+
+.comment .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5vh;
+}
+
+.comment .header > *:not(last-child) {
+    margin-right: 0.5vw;
+}
+
+.comment .header img {
+    height: 32px;
+    border-radius: 100%;
+}
+
+.comment .footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.comment .footer .bar_container {
+    width: 32px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.comment .footer .bar_container .bar {
+    width: 2px;
+    height: 100%;
+    background-color: #F2F2F2;
+}
+
+.comment .content_footer {
+    display: flex;
+}
+
+.comment .comment_text {
+    margin-bottom: 1vh;
+}
+
+.comment .content_footer > * {
+    margin-right: 0.5vw;
+}
+
+.comment a:hover {
+    cursor: pointer;
+}
+
+.comment .content {
+    width: 100%;
+}

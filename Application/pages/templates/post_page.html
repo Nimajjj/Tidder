@@ -1,10 +1,9 @@
 {{ define "content" }}
 <script type="text/javascript" src="/scripts/upvote.js" defer></script>
-<link rel="stylesheet" href="../style/pages/subtidder.css">
-
+<link rel="stylesheet" href="../style/components/comments.css">
 
 <div id="post_content">
-    <div class="post">
+    <div class="post post_page">
         <ul>
             <li class="post_upper">
                 <a class="subreddit_name" href="/t/{{.PostVD.Post.SubtidderName}}">
@@ -48,6 +47,22 @@
             </li>
             </a>
         </ul>
+    </div>
+    <div class="post post_page" id="comment_section">
+        <h2>Comments :</h2>
+        {{ if .Connected }}
+            <form method="post" name="create_comment">
+                <textarea name="comment_content" id="comment_content" rows="5"></textarea>
+                <div id="submit_bt" class="button" onClick="document.forms['create_comment'].submit();">
+                    <p>Submit</p>
+                </div>
+            </form>
+        {{ end }}
+
+        {{ range .PostVD.Comments }}
+            {{ .PrintComment }}
+        {{ end }}
+
     </div>
 </div>
 
