@@ -2,7 +2,6 @@ package mySQL
 
 import (
 	"database/sql"
-
 	Util "github.com/Nimajjj/Tidder/go/utility"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -39,7 +38,7 @@ type SqlServer struct {
 */
 func (sqlServ *SqlServer) Connect(ip string) {
 	Util.Log("Connecting to @tcp(" + ip + ")/tidder ...")
-	db, err := sql.Open("mysql", "root:Tidder123reddit@tcp("+ip+")/tidder")
+	db, err := sql.Open("mysql", "root:B1d78021@tcp("+ip+")/tidder")
 	if err != nil {
 		Util.Error(err)
 	}
@@ -55,7 +54,10 @@ func (sqlServ *SqlServer) Connect(ip string) {
 */
 func (sqlServ SqlServer) Close() {
 	Util.Log("Closing @tcp(127.0.0.1:3306)/tidder connection.")
-	sqlServ.db.Close()
+	err := sqlServ.db.Close()
+	if err != nil {
+		return
+	}
 }
 
 /*

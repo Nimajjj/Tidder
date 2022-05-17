@@ -356,7 +356,6 @@ func PostHandler(db *SQL.SqlServer) {
 
 		post := db.GetPosts("id_post=" + id)[0]
 		postVD.Post = db.MakeDisplayablePost(post, IAM)
-		print(postVD.Post.SubtidderName)
 
 		postVD.Subtidder = db.GetSubs("id_subject=" + strconv.Itoa(post.IdSubject))[0]
 
@@ -388,19 +387,19 @@ func ProfilePageHandler(db *SQL.SqlServer) {
 	viewData := SQL.MasterVD{}
 	http.HandleFunc("/u/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
-		var ProfilePageVD SQL.ProfilePageVD
+		var profilePageVD SQL.ProfilePageVD
 
 		name := strings.ReplaceAll(r.URL.Path, "localhost/u/", "")
 		name = strings.ReplaceAll(r.URL.Path, "/u/", "")
-		ProfilePageVD.Account = db.GetAccountByName(name)
+		profilePageVD.Account = db.GetAccountByName(name)
 
-		posts := db.GetPosts("id_author =" + strconv.Itoa(ProfilePageVD.Account.Id))
+		posts := db.GetPosts("id_author =" + strconv.Itoa(profilePageVD.Account.Id))
 		for _, post := range posts {
-			ProfilePageVD.Posts = append(ProfilePageVD.Posts, db.MakeDisplayablePost(post, IAM))
+			profilePageVD.Posts = append(profilePageVD.Posts, db.MakeDisplayablePost(post, IAM))
 		}
-		ProfilePageVD.Subtidders = db.GetSubtiddersSubscribed(ProfilePageVD.Account.Id)
+		profilePageVD.Subtidders = db.GetSubtiddersSubscribed(profilePageVD.Account.Id)
 
-		viewData.ProfilePageVD = ProfilePageVD
+		viewData.ProfilePageVD = profilePageVD
 
 		err := callTemplate("profile_page", &viewData, w)
 		if err != nil {

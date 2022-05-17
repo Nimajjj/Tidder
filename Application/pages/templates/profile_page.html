@@ -1,6 +1,7 @@
-{{ define "content" }}
+{{define "content"}}
 <link rel="stylesheet" href="../style/pages/profile_page.css">
 <link rel="stylesheet" href="../style/master.css">
+<link rel="stylesheet" href="../style/pages/subtidder.css">
 
 <div id="container">
     <div id="first_block">
@@ -11,25 +12,26 @@
         <div id="info_account">
             <ul>
                 <li>
-                    <p class="pseudo">{{.ProfilePageVD.Account.name}}</p>
+                    <p class="pseudo">{{.ProfilePageVD.Account.Name}}</p>
                 </li>
                 <li class="list">
                     <p class="left_para">Password : </p>
-                    <p class="right_para_up">**********</p>
+                    <p class="right_para_up">********</p>
                 </li>
                 <li class="list">
                     <p class="left_para">Mail adress : </p>
-                    <p class="right_para_mid">exemple.gmail.com</p>
+                    <p class="right_para_mid">{{.ProfilePageVD.Account.Email}}</p>
                 </li>
                 <li class="list">
                     <p class="left_para">Birthday : </p>
-                    <p class="right_para_down">12/12/20XX</p>
+                    <p class="right_para_down">{{.ProfilePageVD.Account.BirthDate}}</p>
                 </li>
             </ul>
         </div>
     </div>
     <div id="second_block">
         <div id="subtidder_joined">
+            {{ range .ProfilePageVD.Subtidders }}
             <div>
                 <h2 class="Subtidder">
                     Subtidder joined
@@ -37,119 +39,73 @@
             </div>
             <ul class="liste_sub">
                 <li>
-                    t/SubtidderName
-                </li>
-                <li>
-                    t/SubtidderName
-                </li>
-                <li>
-                    t/SubtidderName
-                </li>
-                <li>
-                    t/SubtidderName
-                </li>
-                <li>
-                    t/SubtidderName
-                </li>
-                <li>
-                    t/SubtidderName
-                </li>
-                <li>
-                    t/SubtidderName
-                </li>
-                <li>
-                    t/SubtidderName
-                </li>
-                <li>
-                    t/SubtidderName
-                </li>
-                <li>
-                    t/SubtidderName
+                    {{.Name}}
                 </li>
                 <li id="last_li">
                     t/SubtidderName
                 </li>
-
+                {{end}}
             </ul>
         </div>
         <div id="thread">
-                <div id="post_content">
-                    <div class="post">
-                        <ul class="list_post">
-                            <li class="post_upper">
-                                <a class="subreddit_name" href="/t/subtidder">
-                                    <img class="sub_logo" src="../../images/global/logo.png" alt="subreddit logo">
-                                    <p>t/</p>
-                                </a>
-                                <p>Published by <a href="">u/blabla</a> bloupbloup </p>
-                            </li>
-
-                            <li class="post_title">
-                                <h2>Titre</h2>
-                            </li>
-
-                            <li class="post_content">
-                                <br>
-                                <p>youyouyouyoyuyou</p>
-                                <br>
-                            </li>
-                            <li class="post_content" style="display: flex; justify-content: center;">
-                                <img src="../../images/posts/default_post.jpg" alt="post content">
-                            </li>
-                            <br>
-                            <ul class="list_post">
-                                <li class="post_bottom">
-                                    <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt=" upvote">
-                                    <p>26816</p>
-                                    <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt=" downvote">
-
-                                    <a href=""> Comments</a>
-                                    <a class="post_share" href="">
-                                        <img class="post_icon" src="../images/global/share.png" alt="share">
-                                        <p style="margin-left: 1vh;">Share</p>
-                                    </a>
-                                </li>
-                            <br>
-                        </ul>
-                        <ul class="list_post">
-                            <li class="post_upper">
-                                <a class="subreddit_name" href="/t/subtidder">
-                                    <img class="sub_logo" src="../../images/global/logo.png" alt="subreddit logo">
-                                    <p>t/</p>
-                                </a>
-                                <p>Published by <a href="">u/blabla</a> bloupbloup </p>
-                            </li>
-
-                            <li class="post_title">
-                                <h2>Titre</h2>
-                            </li>
-
-                            <li class="post_content">
-                                <br>
-                                <p>youyouyouyoyuyou</p>
-                                <br>
-                            </li>
-                            <li class="post_content" style="display: flex; justify-content: center;">
-                                <img src="../../images/posts/default_post.jpg" alt="post content">
-                            </li>
-                            <br>
-
-                            <li class="post_bottom">
-                                <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt=" upvote">
-                                <p>26816</p>
-                                <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt=" downvote">
-
-                                <a href=""> Comments</a>
-                                <a class="post_share" href="">
-                                    <img class="post_icon" src="../images/global/share.png" alt="share">
-                                    <p style="margin-left: 1vh;">Share</p>
-                                </a>
-                            </li>
+            <div id="posts">
+                {{ if .ProfilePageVD.Posts }}
+                {{ range .ProfilePageVD.Posts }}
+                <div class="post" onclick="location.href='/post/{{.Id}}'">
+                    <ul>
+                        <li class="post_upper">
+                            <a class="subreddit_name" href="/t/{{.SubtidderName}}">
+                                <img class="sub_logo" src="{{blobToUrl .SubtidderPP}}" alt="subreddit logo">
+                                <p>t/{{.SubtidderName}}</p>
                             </a>
-                        </ul>
-                    </div>
+                            <p>Published by <a href="/u/{{.AuthorName}}">u/{{.AuthorName}}</a> {{.CreationDate}} </p>
+                        </li>
+                        <li class="post_title">
+                            <h2>{{.Title}}</h2>
+                        </li>
+                        {{if (eq .MediaUrl "")}}
+                        <li class="post_content">
+                            <p>{{.Content}}</p>
+                        </li>
+                        {{else}}
+                        <li class="post_content" style="display: flex; justify-content: center;">
+                            <img src="{{blobToUrl .MediaUrl}}" alt="post content">
+                        </li>
+                        {{end}}
+                        <li class="post_bottom">
+                            {{if (eq .Vote 1)}}
+                            <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt="{{.Id}} upvote">
+                            <p>{{.Score}}</p>
+                            <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
+                            {{else if (eq .Vote -1)}}
+                            <img class="post_icon vote_bt upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
+                            <p>{{.Score}}</p>
+                            <img class="post_icon vote_bt downvote_bt" state="active" src="../images/global/downvote.png" alt="{{.Id}} downvote">
+                            {{else}}
+                            <img class="post_icon vote_bt upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
+                            <p>{{.Score}}</p>
+                            <img class="post_icon vote_bt downvote_bt" state="empty" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
+                            {{end}}
+
+                            <a href="">{{.NumberOfComments}} Comments</a>
+                            <a class="post_share" href="">
+                                <img class="post_icon" src="../images/global/share.png" alt="share">
+                                <p style="margin-left: 1vh;">Share</p>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
+                {{end}}
+                {{ else }}
+                <div id="empty">
+                    <h2>Wow ! Such empty...</h2>
+                </div>
+                {{ end }}
+            </div>
+
+            {{ template "sidebar" . }}
+        </div>
     </div>
 </div>
-
+</div>
 {{ end }}

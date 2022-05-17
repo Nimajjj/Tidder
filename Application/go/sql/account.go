@@ -116,7 +116,7 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 		Util.Warning("Password and verification password are different : " + Password + " != " + Verif_password)
 		return error
 	}
-	if name == "" || email == "" || Password == "" || Birthdate == "" {
+	if name == "" || email == "" || Password == "" || Birthdate == "" || studentId == "" {
 		error += "Please complete all fields"
 		Util.Warning("User try to create an account with empty fields")
 		return error
@@ -136,13 +136,14 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 		return error
 	}
 
-	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("
+	query = "INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture, student_id) VALUES ("
 	query += "\"" + name + "\","
 	query += "\"" + email + "\","
 	query += "\"" + HashPassword(Password) + "\","
 	query += "\"" + Birthdate + "\","
 	query += "\"" + currentTime.Format("2006-01-02") + "\","
-	query += " 0, \"default.png\")"
+	query += " 0, \"default.png\","
+	query += "\"" + studentId + "\")"
 	sqlServ.executeQuery(query)
 	return error
 }
