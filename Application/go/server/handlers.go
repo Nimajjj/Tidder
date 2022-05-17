@@ -359,8 +359,19 @@ func PostHandler(db *SQL.SqlServer) {
 
 		postVD.Subtidder = db.GetSubs("id_subject=" + strconv.Itoa(post.IdSubject))[0]
 
+		comments := db.GetComments("id_post=" + id)
+		postVD.Comments, _ = db.MakeDisplayableComments(comments)
+
 		viewData.PostVD = postVD
 
+		// BASIC NEW COMMENTS //
+		if r.Method == "POST" {
+			if r.FormValue("comment_content") != "" {
+				db.CreateComment(r.FormValue("comment_content"), IAM, id)
+			}
+		}
+
+		// VOTES //
 		type FetchQuery struct {
 			IdPost    int `json:"id_post"`
 			Score     int `json:"score"`
@@ -370,7 +381,6 @@ func PostHandler(db *SQL.SqlServer) {
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
 
-		// VOTES //
 		if fetchQuery.IdPost != 0 && fetchQuery.Score != 0 && IAM != -1 {
 			db.Vote(fetchQuery.IdPost, fetchQuery.Score, IAM)
 		}

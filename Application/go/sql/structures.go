@@ -140,6 +140,24 @@ type DisplayablePost struct {
 	SubtidderPP   string
 }
 
+type DisplayableComment struct {
+	// COMMENT RELATED
+	Id           int
+	Content      string
+	CreationDate string
+	Upvotes      int
+	Downvotes    int
+	Redacted     bool
+	Response     []DisplayableComment
+	IdPost       int
+
+	Score int
+
+	// AUTHOR
+	AuthorName string
+	AuthorPP   string
+}
+
 type MasterVD struct {
 	IndexVD       IndexViewData
 	SubtidderVD   SubtidderViewData
@@ -175,6 +193,7 @@ type CreatePostsVD struct {
 type PostVD struct {
 	Post      DisplayablePost
 	Subtidder Subject
+	Comments  []DisplayableComment
 }
 
 type ProfilePageVD struct {
