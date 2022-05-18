@@ -421,7 +421,7 @@ func PostHandler(db *SQL.SqlServer) {
 
 	http.HandleFunc("/post/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
-		var postVD SQL.PostVD
+		postVD := SQL.PostVD{}
 
 		id := strings.ReplaceAll(r.URL.Path, "localhost/post/", "")
 		id = strings.ReplaceAll(r.URL.Path, "/post/", "")
