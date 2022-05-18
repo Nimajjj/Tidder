@@ -50,8 +50,13 @@
                 <div id="admin">
                     <div class="post infos">
                         <form method="post" enctype="multipart/form-data" name="sub_admin" id="sub_admin">
-                            <h3>{{.SubtidderVD.Sub.Name}}'s administration :</h3><br>
-                            <ul>
+                            <div id="admin_header">
+                                <div id="admin_tab_gen" class="admin_tab_selected" onclick="SwitchAdminTab('general')">General</div>
+                                <div id="admin_tab_rol" onclick="SwitchAdminTab('roles')">Roles</div>
+                                <div id="admin_tab_ban" onclick="SwitchAdminTab('ban')">Ban</div>
+                            </div>
+
+                            <ul style="display: block;" id="admin_gen">
                                 <li>
                                     <p>Banner :</p>
                                     <img id="banner_img" src="{{blobToUrl .SubtidderVD.Sub.Banner}}" alt="banner">
@@ -66,6 +71,19 @@
                                     <div id="submit_admin" class="button highlight_bt" onClick="document.forms['sub_admin'].submit().then(hystory.go(0));">
                                         <p>Submit</p>
                                     </div>
+                                </li>
+                            </ul>
+
+                            <ul style="display: none;" id="admin_roles">
+                                <li>
+                                    TO BE IMPLEMENTED
+                                </li>
+                            </ul>
+
+                            <ul style="display: none;" id="admin_ban">
+                                <li>
+                                    <p>Ban :</p>
+                                    <input type="text" name="ban_input" id="ban_input" placeholder="Ban reason">
                                 </li>
                             </ul>
                         </form>
