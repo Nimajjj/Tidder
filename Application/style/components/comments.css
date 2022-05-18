@@ -91,3 +91,7 @@ textarea {
     background-color: #1a1a1a;
     color: #F2F2F2;
 }
+
+.vote_bt:hover {
+    cursor: pointer;
+}

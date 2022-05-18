@@ -58,7 +58,7 @@
   border-bottom: 0.5vh solid #1A1A1A
 }
 
-#info .button, #admin .button {
+#infos .button, #admin .button {
   margin: 1vh 0;
   padding: 1vh 1vw;
   width: 20%;
@@ -70,16 +70,16 @@
   font-size: 22px;
 }
 
-#info .button:hover, #admin .button:hover {
+#infos .button:hover, #admin .button:hover {
   cursor: pointer;
   opacity: 0.7;
 }
 
-#info .highlight_bt, #admin .highlight_bt {
+#infos .highlight_bt, #admin .highlight_bt {
   border: 2px solid #148aa6;
 }
 
-#info .highlight_bt > p, #admin .highlight_bt > p {
+#infos .highlight_bt > p, #admin .highlight_bt > p {
   color: #148aa6;
 }
 
@@ -101,4 +101,35 @@
 #profile_img {
   height: 90px;
   border-radius: 50%;
+}
+
+.input_label {
+  margin-top: 1vh;
+}
+
+#sub_admin li {
+  margin-bottom: 1vh;
+}
+
+#admin_header {
+  margin-bottom: 1vh;
+  width: 100%;
+  display: flex;
+}
+
+#admin_header > div {
+  font-size: 24px;
+  margin-right: 1vw;
+}
+
+#admin_header > div:hover {
+  cursor: pointer;
+}
+
+.admin_tab_selected {
+  border-bottom: 2px solid #F2F2F2;
+}
+
+.admin_tab_selected {
+  font-weight: bold;
 }

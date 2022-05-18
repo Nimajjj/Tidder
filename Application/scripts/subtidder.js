@@ -124,3 +124,33 @@ function readURL(input, what) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+
+
+
+const admin_gen_tab = document.getElementById("admin_tab_gen")
+const admin_rol_tab = document.getElementById("admin_tab_rol")
+const admin_ban_tab = document.getElementById("admin_tab_ban")
+const admin_tabs = [admin_gen_tab, admin_rol_tab, admin_ban_tab]
+
+const gen = document.getElementById("admin_gen");
+const rol = document.getElementById("admin_roles");
+const ban = document.getElementById("admin_ban");
+const admin_pages = [gen, rol, ban]
+
+
+function SwitchAdminTab(tab) {
+  admin_tabs.forEach(tab => tab.classList.remove("admin_tab_selected"))
+  admin_pages.forEach(page => page.style.display = "none")
+
+  if (tab == "general") {
+    admin_gen_tab.classList.add("admin_tab_selected")
+    gen.style.display = "block"
+  } else if (tab == "roles") {
+    admin_rol_tab.classList.add("admin_tab_selected")
+    rol.style.display = "block"
+  } else if (tab == "ban") {
+    admin_ban_tab.classList.add("admin_tab_selected")
+    ban.style.display = "block"
+  }
+}
