@@ -117,6 +117,72 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		id = strings.ReplaceAll(r.URL.Path, "/t/", "")
 
 		subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0] // ca c'est sale -> a refaire
+
+		if r.Method == "POST" {
+			if true {
+				var pp string
+				file, header, err := r.FormFile("pp_input")
+				if header != nil { // if header != nil then there is a file
+					defer func(file multipart.File) {
+						err := file.Close()
+						if err != nil {
+							Util.Error(err)
+						}
+					}(file)
+				}
+				if err != nil {
+					if err != http.ErrMissingFile {
+						Util.Error(err)
+					}
+				} else {
+					pp = "data:" + header.Header.Get("Content-Type") + ";base64," // file to base64
+
+					bytes, err := io.ReadAll(file)
+					if err != nil {
+						Util.Error(err)
+					}
+
+					pp += base64.StdEncoding.EncodeToString(bytes)
+				}
+
+				if pp != "" {
+					db.UpdateSubtidder("profile_picture", pp, subtidder.Sub.Id)
+					subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0]
+				}
+			}
+			if true {
+				var banner string
+				file, header, err := r.FormFile("banner_input")
+				if header != nil { // if header != nil then there is a file
+					defer func(file multipart.File) {
+						err := file.Close()
+						if err != nil {
+							Util.Error(err)
+						}
+					}(file)
+				}
+				if err != nil {
+					if err != http.ErrMissingFile {
+						Util.Error(err)
+					}
+				} else {
+					banner = "data:" + header.Header.Get("Content-Type") + ";base64," // file to base64
+
+					bytes, err := io.ReadAll(file)
+					if err != nil {
+						Util.Error(err)
+					}
+
+					banner += base64.StdEncoding.EncodeToString(bytes)
+				}
+
+				if banner != "" {
+					db.UpdateSubtidder("banner", banner, subtidder.Sub.Id)
+					subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0]
+				}
+			}
+		}
+
 		subtidder.Posts = db.GenerateSubTidderFeed(IAM, subtidder.Sub.Id)
 
 		type FetchQuery struct {
@@ -124,6 +190,8 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			Score     int `json:"score"`
 			IdAccount int `json:"id_account_subscribing"`
 			IdSubject int `json:"id_subject_to_subscribe"`
+
+			Info string `json:"info"`
 		}
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
@@ -136,6 +204,10 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		// SUBSCRIBE TO SUBTIDDER COMPONENT //
 		if fetchQuery.IdAccount != 0 && fetchQuery.IdSubject != 0 {
 			db.SubscribeToSubject(IAM, subtidder.Sub.Id)
+		}
+
+		if fetchQuery.Info != "" {
+			db.EditInfo(fetchQuery.Info, subtidder.Sub.Id)
 		}
 
 		subtidder.Subscribed = db.IsSubscribeTo(IAM, subtidder.Sub.Id)

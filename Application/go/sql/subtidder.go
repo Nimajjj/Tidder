@@ -179,3 +179,15 @@ func (sqlServ SqlServer) GetSubtiddersSubscribed(account_id int) []Subject {
 
 	return result
 }
+
+func (sqlServ SqlServer) EditInfo(newInfo string, subjectId int) {
+	query := "UPDATE subjects SET infos=" + "\"" + newInfo + "\"" + " WHERE id_subject=" + strconv.Itoa(subjectId)
+	Util.Query("EditInfo", query)
+	sqlServ.executeQuery(query)
+}
+
+func (sqlServ SqlServer) UpdateSubtidder(col string, val string, id int) {
+	query := "UPDATE subjects SET " + col + "='" + val + "' WHERE id_subject=" + strconv.Itoa(id)
+	Util.Query("UpdateSubtidder", query)
+	sqlServ.executeQuery(query)
+}
