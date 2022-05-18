@@ -2,7 +2,6 @@ package utility
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"time"
 )
@@ -30,7 +29,7 @@ func Log(text string) {
 func Error(err error) {
 	logs := time.Now().Format("01-02-2006 15:04:05") + " \tERROR /!\\\t\t" + err.Error()
 	registerLog(logs)
-	log.Fatal(err)
+	//log.Fatal(err)
 }
 
 func Warning(text string) {

@@ -31,21 +31,21 @@
     </div>
     <div id="second_block">
         <div id="subtidder_joined">
-            {{ range .ProfilePageVD.Subtidders }}
             <div>
                 <h2 class="Subtidder">
                     Subtidder joined
                 </h2>
             </div>
+
             <ul class="liste_sub">
+                {{ range .ProfilePageVD.Subtidders }}
                 <li>
-                    {{.Name}}
-                </li>
-                <li id="last_li">
-                    t/SubtidderName
+                    <img src="{{blobToUrl .ProfilePicture}}">
+                    <a href="/t/{{.Name}}">t/{{.Name}}</a>
                 </li>
                 {{end}}
             </ul>
+
         </div>
         <div id="thread">
             <div id="posts">
