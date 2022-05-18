@@ -184,6 +184,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		}
 
 		subtidder.Posts = db.GenerateSubTidderFeed(IAM, subtidder.Sub.Id)
+		subtidder.SubscribedUser = db.GenerateAccountSubscribed(subtidder.Sub.Id)
 
 		type FetchQuery struct {
 			IdPost    int `json:"id_post"`
@@ -192,6 +193,8 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			IdSubject int `json:"id_subject_to_subscribe"`
 
 			Info string `json:"info"`
+
+			BannedChanges string `json:"banned_user_changes"`
 		}
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
@@ -208,6 +211,11 @@ func SubtidderHandler(db *SQL.SqlServer) {
 
 		if fetchQuery.Info != "" {
 			db.EditInfo(fetchQuery.Info, subtidder.Sub.Id)
+		}
+
+		if fetchQuery.BannedChanges != "" {
+			Util.Log("BannedChanges")
+			db.ChangeBanned(subtidder.Sub.Id, fetchQuery.BannedChanges)
 		}
 
 		subtidder.Subscribed = db.IsSubscribeTo(IAM, subtidder.Sub.Id)

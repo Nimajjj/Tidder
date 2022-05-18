@@ -7,8 +7,8 @@
     <div class="post post_page">
         <ul>
             <li class="post_upper">
-                <a class="subreddit_name" href="/t/{{.PostVD.Post.Id}}">
-                    <img class="sub_logo" src="{{blobToUrl .PostVD.Post.SubtidderPP}}" alt="subreddit logo">
+                <a class="subreddit_name" href="/t/{{.PostVD.Subtidder.Name}}">
+                    <img class="sub_logo" src="{{blobToUrl .PostVD.Subtidder.ProfilePicture}}" alt="subreddit logo">
                     <p>t/{{.PostVD.Post.SubtidderName}}</p>
                 </a>
                 <p>Published by <a href="/u/{{.PostVD.Post.AuthorName}}">u/{{.PostVD.Post.AuthorName}}</a> {{.PostVD.Post.CreationDate}} </p>
