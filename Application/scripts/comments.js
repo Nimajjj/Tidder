@@ -17,6 +17,7 @@ function AnswerToComment(id) {
     textarea.setAttribute("name", "answer_content")
     textarea.rows = 5
     textarea.style.width = "100%"
+    textarea.classList.add("answer_content")
 
     let div = document.createElement("div")
     div.classList.add("button")
