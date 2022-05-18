@@ -29,7 +29,7 @@ func Log(text string) {
 func Error(err error) {
 	logs := time.Now().Format("01-02-2006 15:04:05") + " \tERROR /!\\\t\t" + err.Error()
 	registerLog(logs)
-	//log.Fatal(err)
+	fmt.Println(logs)
 }
 
 func Warning(text string) {
@@ -38,8 +38,17 @@ func Warning(text string) {
 	fmt.Println(logs)
 }
 
-func Query(querry string) {
-	logs := time.Now().Format("01-02-2006 15:04:05") + " \tQUERRY\t\t" + querry
+func Query(function string, querry string) {
+	ignoreList := []string{
+		"GetAccountById",
+		"GetComments",
+	}
+	for _, ignore := range ignoreList {
+		if function == ignore {
+			return
+		}
+	}
+	logs := time.Now().Format("01-02-2006 15:04:05") + " \tQUERRY\t" + function + "\t" + querry
 	registerLog(logs)
 	fmt.Println(logs)
 }

@@ -44,7 +44,6 @@ func (sqlServ SqlServer) CreateSub(subName string, ownerId int, nsfwInput bool) 
 	query = "INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw, banner) VALUES ("
 	query += "\"" + subName + "\", \"\", "
 	query += strconv.Itoa(ownerId) + ", " + strconv.Itoa(nsfw) + ", \"\")"
-	Util.Query(query)
 	sqlServ.executeQuery(query)
 	return ""
 }
@@ -59,7 +58,7 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 	if conditions != "" {
 		query += "WHERE " + conditions
 	}
-	Util.Query(query)
+	Util.Query("GetSubs", query)
 	rows, err := sqlServ.db.Query(query)
 	if err != nil {
 		Util.Error(err)
@@ -100,7 +99,7 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 
 func (sqlServ SqlServer) GetNumberOfSubscriber(subject_id int) int {
 	query := "SELECT * FROM subscribe_to_subject WHERE id_subject=" + strconv.Itoa(subject_id)
-	Util.Query(query)
+	Util.Query("GetNumberOfSubscriber", query)
 	rows, err := sqlServ.db.Query(query)
 	if err != nil {
 		Util.Error(err)
@@ -120,7 +119,7 @@ func (sqlServ SqlServer) GetSubtiddersSubscribed(account_id int) []Subject {
 
 	subscribedID := []int{}
 	query := "SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =" + strconv.Itoa(account_id)
-	Util.Query(query)
+	Util.Query("GetSubtiddersSubscribed", query)
 
 	rows, err := sqlServ.db.Query(query)
 	if err != nil {
@@ -150,7 +149,7 @@ func (sqlServ SqlServer) GetSubtiddersSubscribed(account_id int) []Subject {
 		query += " id_subject = " + strconv.Itoa(id)
 	}
 
-	Util.Query(query)
+	Util.Query("GetSubtiddersSubscribed", query)
 	rows2, err2 := sqlServ.db.Query(query)
 	if err2 != nil {
 		Util.Error(err2)
@@ -179,4 +178,16 @@ func (sqlServ SqlServer) GetSubtiddersSubscribed(account_id int) []Subject {
 	}
 
 	return result
+}
+
+func (sqlServ SqlServer) EditInfo(newInfo string, subjectId int) {
+	query := "UPDATE subjects SET infos=" + "\"" + newInfo + "\"" + " WHERE id_subject=" + strconv.Itoa(subjectId)
+	Util.Query("EditInfo", query)
+	sqlServ.executeQuery(query)
+}
+
+func (sqlServ SqlServer) UpdateSubtidder(col string, val string, id int) {
+	query := "UPDATE subjects SET " + col + "='" + val + "' WHERE id_subject=" + strconv.Itoa(id)
+	Util.Query("UpdateSubtidder", query)
+	sqlServ.executeQuery(query)
 }

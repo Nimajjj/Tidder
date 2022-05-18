@@ -1,39 +1,28 @@
 const posts_tab = document.getElementById("posts_tab")
 const infos_tab = document.getElementById("infos_tab")
 const admin_tab = document.getElementById("admin_tab")
+const tabs = [posts_tab, infos_tab, admin_tab]
 
 const posts = document.getElementById("posts");
 const infos = document.getElementById("infos");
+const admin = document.getElementById("admin");
+const pages = [posts, infos, admin]
 
 
-function show_posts() {
-  posts_tab.style.borderBottom = "1vh solid #1A1A1A"
-  infos_tab.style.borderBottom = "0"
-  admin_tab.style.borderBottom = "0"
+function SwitchTab(tab) {
+  tabs.forEach(tab => tab.style.borderBottom = "0")
+  pages.forEach(page => page.style.display = "none")
 
-  posts.style.display = "block"
-  infos.style.display = "none"
-}
-
-function show_infos() {
-  posts_tab.style.borderBottom = "0"
-  infos_tab.style.borderBottom = "1vh solid #1A1A1A"
-  admin_tab.style.borderBottom = "0"
-
-  posts.style.display = "none"
-  infos.style.display = "block"
-}
-
-const getNextSiblings = (e) => {
-  let siblings = [];
-  while (e = e.nextSibling) {
-      siblings.push(e);
+  if (tab == "posts") {
+    posts_tab.style.borderBottom = "1vh solid #1A1A1A"
+    posts.style.display = "block"
+  } else if (tab == "infos") {
+    infos_tab.style.borderBottom = "1vh solid #1A1A1A"
+    infos.style.display = "block"
+  } else if (tab == "admin") {
+    admin_tab.style.borderBottom = "1vh solid #1A1A1A"
+    admin.style.display = "block"
   }
-  return siblings;
-}
-
-function main() {
-  show_posts()
 }
 
 
@@ -74,4 +63,64 @@ function SubscribeTo(id_account, id_subject) {
   })
 }
 
-main()
+SwitchTab("posts")
+
+let info = document.querySelector("#info")
+
+let edit = document.querySelector("#edit_info")
+let textarea = document.querySelector("#textarea_info")
+let submit = document.querySelector("#submit_info")
+let cancel = document.querySelector("#cancel_info")
+
+edit.addEventListener('click', event => {
+  textarea.style.display = "block"
+  submit.style.display = "block"
+  cancel.style.display = "block"
+  edit.style.display = "none"
+  info.style.display = "none"
+
+  textarea.value = info.innerHTML
+})
+
+submit.addEventListener('click', event => {
+  info.innerHTML = textarea.value
+
+  textarea.style.display = "none"
+  submit.style.display = "none"
+  cancel.style.display = "none"
+  edit.style.display = "block"
+  info.style.display = "block"
+
+  fetch(location.pathname, {
+    method: "post",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  
+    //make sure to serialize your JSON body
+    body: JSON.stringify({
+      "info": info.innerHTML,
+    })
+  })
+})
+
+cancel.addEventListener('click', event => {
+  textarea.style.display = "none"
+  submit.style.display = "none"
+  cancel.style.display = "none"
+  edit.style.display = "block"
+  info.style.display = "block"
+})
+
+
+function readURL(input, what) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('#' + what)
+        .attr('src', e.target.result)
+        .attr('max-height', 660)
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}

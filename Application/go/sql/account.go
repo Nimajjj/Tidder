@@ -14,7 +14,7 @@ func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
 	if conditions != "" {
 		query += "WHERE " + conditions
 	}
-	Util.Query(query)
+	Util.Query("GetAccount", query)
 	rows, err := sqlServ.db.Query(query)
 	if err != nil {
 		Util.Error(err)
@@ -59,7 +59,7 @@ func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
 func (sqlServ SqlServer) GetAccountById(id int) Accounts {
 	var account Accounts
 	query := "SELECT * FROM accounts WHERE id_account = " + strconv.Itoa(id)
-	Util.Query(query)
+	Util.Query("GetAccountById", query)
 	err := sqlServ.db.QueryRow(query).Scan(
 		&account.Id,
 		&account.Name,
@@ -79,8 +79,8 @@ func (sqlServ SqlServer) GetAccountById(id int) Accounts {
 
 func (sqlServ SqlServer) GetAccountByName(name string) Accounts {
 	var account Accounts
-	query := "SELECT * FROM accounts WHERE name = \"" + name + "\""
-	Util.Query(query)
+	query := "SELECT * FROM accounts WHERE name = " + name
+	Util.Query("GetAccountByName", query)
 	err := sqlServ.db.QueryRow(query).Scan(
 		&account.Id,
 		&account.Name,
@@ -150,7 +150,7 @@ func (sqlServ SqlServer) CreateAccount(name string, email string, Password strin
 func (sqlServ SqlServer) IsSubscribeTo(idAccount int, idSubject int) bool {
 	alreadySubscribed := false
 	query := "SELECT * FROM subscribe_to_subject WHERE id_account = " + strconv.Itoa(idAccount) + " AND id_subject = " + strconv.Itoa(idSubject)
-	Util.Query(query)
+	Util.Query("IsSubscribeTo", query)
 	rows, err := sqlServ.db.Query(query)
 	if err != nil {
 		Util.Error(err)

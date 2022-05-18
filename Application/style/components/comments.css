@@ -83,3 +83,11 @@
 .comment .content {
     width: 100%;
 }
+.answer_content {
+    width: 100%;
+}
+
+textarea {
+    background-color: #1a1a1a;
+    color: #F2F2F2;
+}

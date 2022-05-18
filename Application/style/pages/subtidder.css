@@ -25,9 +25,11 @@
 }
 
 #sub_header > img {
-  height: 90px;
+  height: 180px;
   border-radius: 50%;
   margin-right: 1.5vw;
+  margin-top: -10vh;
+  border: 1px solid #262626;; 
 }
 
 #subscribe_bt {
@@ -54,4 +56,49 @@
   cursor: pointer;
   margin-right: 1vw;
   border-bottom: 0.5vh solid #1A1A1A
+}
+
+#info .button, #admin .button {
+  margin: 1vh 0;
+  padding: 1vh 1vw;
+  width: 20%;
+  border-radius: 9999px;
+  border: 2px solid #F2F2F2;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+#info .button:hover, #admin .button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+#info .highlight_bt, #admin .highlight_bt {
+  border: 2px solid #148aa6;
+}
+
+#info .highlight_bt > p, #admin .highlight_bt > p {
+  color: #148aa6;
+}
+
+.edit_icon {
+  margin: 1vh 0;
+  width: 48px;
+}
+
+.edit_icon:hover {
+  cursor: pointer;
+}
+
+#banner_img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+}
+
+#profile_img {
+  height: 90px;
+  border-radius: 50%;
 }

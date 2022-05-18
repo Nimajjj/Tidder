@@ -150,6 +150,7 @@ type DisplayableComment struct {
 	Redacted     bool
 	Response     []DisplayableComment
 	IdPost       int
+	Vote         int
 
 	Score int
 

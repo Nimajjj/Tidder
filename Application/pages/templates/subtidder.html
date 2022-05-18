@@ -19,21 +19,57 @@
             </div>
         </div>
         <div id="sub_bot_container">
-            <div id="posts_tab" class="sub_tab" onclick="show_posts()">Posts</div>
-            <div id="infos_tab" class="sub_tab" onclick="show_infos()">Infos</div>
-            <div id="admin_tab" class="sub_tab" style="display: block;">
-            {{ if (eq .Account.Id .SubtidderVD.Sub.IdOwner) }}
-                Administration
-            {{ end }}
+            <div id="posts_tab" class="sub_tab" onclick="SwitchTab('posts')">Posts</div>
+            <div id="infos_tab" class="sub_tab" onclick="SwitchTab('infos')">Infos</div>
+            <div id="admin_tab" class="sub_tab" style="display: block;" onclick="SwitchTab('admin')">
+                {{ if (eq .Account.Id .SubtidderVD.Sub.IdOwner) }}
+                    Administration
+                {{ end }}
             </div>
+            
         </div>
 
         <div id="sub">
                 <div id="infos">
-                <div class="post infos">
-                    <h3>{{.SubtidderVD.Sub.Name}}'s infos :</h3><br>
-                    <p>{{.SubtidderVD.Sub.Infos}}</p>
+                    <div class="post infos">
+                        <h3>{{.SubtidderVD.Sub.Name}}'s infos :</h3><br>
+                        <p id="info">{{.SubtidderVD.Sub.Infos}}</p>
+                        {{ if (eq .Account.Id .SubtidderVD.Sub.IdOwner) }}
+                            <textarea name="textarea_info" id="textarea_info" rows="5" style="display: none; width: 100%;"></textarea>
+                            <img id="edit_info" class="edit_icon" src="/images/global/edit.png" alt="edit icon">
+                            <div id="submit_info" class="button highlight_bt" style="display: none;">
+                                <p>Submit</p>
+                            </div>
+                            <div id="cancel_info" class="button" style="display: none;">
+                                <p>Cancel</p>
+                            </div>
+                        {{ end }}
+                    </div>
                 </div>
+
+                <div id="admin">
+                    <div class="post infos">
+                        <form method="post" enctype="multipart/form-data" name="sub_admin" id="sub_admin">
+                            <h3>{{.SubtidderVD.Sub.Name}}'s administration :</h3><br>
+                            <ul>
+                                <li>
+                                    <p>Banner :</p>
+                                    <img id="banner_img" src="{{blobToUrl .SubtidderVD.Sub.Banner}}" alt="banner">
+                                    <input type="file" name="banner_input" id="banner_input" accept=".png, .jpg, .jpeg" onchange="readURL(this, 'banner_img')">
+                                </li>
+                                <li>
+                                    <p>Profile picture :</p>
+                                    <img id="profile_img" src="{{blobToUrl .SubtidderVD.Sub.ProfilePicture}}" alt="profile picture">
+                                    <input type="file" name="pp_input" id="pp_input" accept=".png, .jpg, .jpeg" onchange="readURL(this, 'profile_img')">
+                                </li>
+                                <li>
+                                    <div id="submit_admin" class="button highlight_bt" onClick="document.forms['sub_admin'].submit().then(hystory.go(0));">
+                                        <p>Submit</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
                 </div>
         
                 <div id="posts">

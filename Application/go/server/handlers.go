@@ -37,7 +37,7 @@ func testConnection(r *http.Request, viewData *SQL.MasterVD, db *SQL.SqlServer) 
 		return -1
 	}
 
-	if (*viewData).Account.ProfilePicture == "" {
+	if (*viewData).Account.ProfilePicture == "default" || (*viewData).Account.ProfilePicture == "" {
 		(*viewData).Account.ProfilePicture = SQL.DefaultPP()
 	}
 
@@ -117,6 +117,72 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		id = strings.ReplaceAll(r.URL.Path, "/t/", "")
 
 		subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0] // ca c'est sale -> a refaire
+
+		if r.Method == "POST" {
+			if true {
+				var pp string
+				file, header, err := r.FormFile("pp_input")
+				if header != nil { // if header != nil then there is a file
+					defer func(file multipart.File) {
+						err := file.Close()
+						if err != nil {
+							Util.Error(err)
+						}
+					}(file)
+				}
+				if err != nil {
+					if err != http.ErrMissingFile {
+						Util.Error(err)
+					}
+				} else {
+					pp = "data:" + header.Header.Get("Content-Type") + ";base64," // file to base64
+
+					bytes, err := io.ReadAll(file)
+					if err != nil {
+						Util.Error(err)
+					}
+
+					pp += base64.StdEncoding.EncodeToString(bytes)
+				}
+
+				if pp != "" {
+					db.UpdateSubtidder("profile_picture", pp, subtidder.Sub.Id)
+					subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0]
+				}
+			}
+			if true {
+				var banner string
+				file, header, err := r.FormFile("banner_input")
+				if header != nil { // if header != nil then there is a file
+					defer func(file multipart.File) {
+						err := file.Close()
+						if err != nil {
+							Util.Error(err)
+						}
+					}(file)
+				}
+				if err != nil {
+					if err != http.ErrMissingFile {
+						Util.Error(err)
+					}
+				} else {
+					banner = "data:" + header.Header.Get("Content-Type") + ";base64," // file to base64
+
+					bytes, err := io.ReadAll(file)
+					if err != nil {
+						Util.Error(err)
+					}
+
+					banner += base64.StdEncoding.EncodeToString(bytes)
+				}
+
+				if banner != "" {
+					db.UpdateSubtidder("banner", banner, subtidder.Sub.Id)
+					subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0]
+				}
+			}
+		}
+
 		subtidder.Posts = db.GenerateSubTidderFeed(IAM, subtidder.Sub.Id)
 
 		type FetchQuery struct {
@@ -124,6 +190,8 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			Score     int `json:"score"`
 			IdAccount int `json:"id_account_subscribing"`
 			IdSubject int `json:"id_subject_to_subscribe"`
+
+			Info string `json:"info"`
 		}
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
@@ -136,6 +204,10 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		// SUBSCRIBE TO SUBTIDDER COMPONENT //
 		if fetchQuery.IdAccount != 0 && fetchQuery.IdSubject != 0 {
 			db.SubscribeToSubject(IAM, subtidder.Sub.Id)
+		}
+
+		if fetchQuery.Info != "" {
+			db.EditInfo(fetchQuery.Info, subtidder.Sub.Id)
 		}
 
 		subtidder.Subscribed = db.IsSubscribeTo(IAM, subtidder.Sub.Id)
@@ -354,21 +426,26 @@ func PostHandler(db *SQL.SqlServer) {
 		id := strings.ReplaceAll(r.URL.Path, "localhost/post/", "")
 		id = strings.ReplaceAll(r.URL.Path, "/post/", "")
 
+		if r.URL.Path == "/post/default.png" {
+			Util.Warning("Laurie fait chier : default.png")
+			return
+		}
+
 		post := db.GetPosts("id_post=" + id)[0]
 		postVD.Post = db.MakeDisplayablePost(post, IAM)
 
 		postVD.Subtidder = db.GetSubs("id_subject=" + strconv.Itoa(post.IdSubject))[0]
 
 		comments := db.GetComments("id_post=" + id)
-		postVD.Comments, _ = db.MakeDisplayableComments(comments)
+		postVD.Comments, _ = db.MakeDisplayableComments(comments, IAM)
 
 		viewData.PostVD = postVD
 
 		// BASIC NEW COMMENTS //
 		if r.Method == "POST" {
 			if r.FormValue("comment_content") != "" {
-				db.CreateComment(r.FormValue("comment_content"), IAM, id)
-				// TODO : RELOAD PAGE
+				db.CreateComment(r.FormValue("comment_content"), IAM, id, "-1")
+				http.Redirect(w, r, "/post/"+id, http.StatusFound)
 			}
 		}
 
@@ -378,12 +455,24 @@ func PostHandler(db *SQL.SqlServer) {
 			Score     int `json:"score"`
 			IdAccount int `json:"id_account_subscribing"`
 			IdSubject int `json:"id_subject_to_subscribe"`
+
+			IdResponseTo int    `json:"id_response_to"`
+			Content      string `json:"content"`
+
+			IdComment    int `json:"id_comment"`
+			ScoreComment int `json:"score_comment"`
 		}
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
 
-		if fetchQuery.IdPost != 0 && fetchQuery.Score != 0 && IAM != -1 {
+		if fetchQuery.IdPost != 0 && fetchQuery.Score != 0 && IAM != -1 { // vote for post
 			db.Vote(fetchQuery.IdPost, fetchQuery.Score, IAM)
+		}
+		if fetchQuery.IdComment != 0 && fetchQuery.ScoreComment != 0 && IAM != -1 { // vote for comment
+			db.VoteForComment(fetchQuery.IdComment, fetchQuery.ScoreComment, IAM)
+		}
+		if fetchQuery.IdResponseTo != 0 && fetchQuery.Content != "" && IAM != -1 { // comment a comment
+			db.CreateComment(fetchQuery.Content, IAM, id, strconv.Itoa(fetchQuery.IdResponseTo))
 		}
 
 		err := callTemplate("post_page", &viewData, w)
