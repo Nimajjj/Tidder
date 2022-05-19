@@ -94,6 +94,7 @@ func (sqlServ SqlServer) GetAccountByName(name string) Accounts {
 	)
 	if err != nil {
 		Util.Error(err)
+		account.Id = -1
 	}
 	return account
 }

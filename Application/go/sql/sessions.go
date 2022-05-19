@@ -41,18 +41,18 @@ func (sqlServ SqlServer) GenerateSecureToken(length int) string {
 	return token
 }
 
-func (sqlServ SqlServer) TryToConnectUser(usr string, psw string) ([]Accounts, string) {
+func (sqlServ SqlServer) TryToConnectUser(usr string, psw string) (Accounts, string) {
 	query := "name = '" + usr + "'"
 	account := sqlServ.GetAccount(query)
 	if len(account) == 0 {
 		Util.Warning("No account found")
-		return []Accounts{}, ""
+		return Accounts{}, ""
 	}
 
 	err := bcrypt.CompareHashAndPassword([]byte(account[0].Password), []byte(psw))
 	if err != nil {
 		Util.Warning("Wrong password")
-		return []Accounts{}, ""
+		return Accounts{}, ""
 	}
 
 	token := sqlServ.GenerateSecureToken(10)
@@ -60,7 +60,7 @@ func (sqlServ SqlServer) TryToConnectUser(usr string, psw string) ([]Accounts, s
 
 	query = "INSERT INTO sessions (id_session, id_account, creation_date) VALUES ('" + token + "', " + strconv.Itoa(account[0].Id) + ", '" + time.Now().Format("2006-01-02 15:04:05") + "')"
 	sqlServ.executeQuery(query)
-	return account, token
+	return account[0], token
 }
 
 func (sqlServ SqlServer) GetAccountFromSession(sessionId string) Accounts {

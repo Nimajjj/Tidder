@@ -36,9 +36,11 @@ func Run(DatabaseIp string) {
 */
 func initStaticFolders() {
 
+	staticPageFolder := http.FileServer(http.Dir("./pages/static"))
 	cssFolder := http.FileServer(http.Dir("./style"))
 	imgFolder := http.FileServer(http.Dir("./images"))
 	jsFolder := http.FileServer(http.Dir("./scripts"))
+	http.Handle("/static/", http.StripPrefix("/static/", staticPageFolder))
 	http.Handle("/style/", http.StripPrefix("/style/", cssFolder))
 	http.Handle("/images/", http.StripPrefix("/images/", imgFolder))
 	http.Handle("/scripts/", http.StripPrefix("/scripts/", jsFolder))

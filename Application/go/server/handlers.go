@@ -15,6 +15,18 @@ import (
 	Util "github.com/Nimajjj/Tidder/go/utility"
 )
 
+func getSuffix(r *http.Request) string {
+	if strings.Contains(r.URL.Path, "/") {
+		split := strings.Split(r.URL.Path, "/")
+		if split[len(split)-1] != "" {
+			return split[len(split)-1]
+		} else {
+			return "!err404"
+		}
+	}
+	return "!err404"
+}
+
 /*
 	return -1 == not connected
 	return 0 == connected
@@ -112,11 +124,19 @@ func SubtidderHandler(db *SQL.SqlServer) {
 	http.HandleFunc("/t/", func(w http.ResponseWriter, r *http.Request) {
 		IAM := testConnection(r, &viewData, db)
 
-		// MAIN SUBTIDDER COMPONENT //
-		id := strings.ReplaceAll(r.URL.Path, "localhost/t/", "")
-		id = strings.ReplaceAll(r.URL.Path, "/t/", "")
+		id := getSuffix(r)
+		if id == "!err404" {
+			http.Redirect(w, r, "/static/404.html", http.StatusFound)
+			return
+		}
 
-		subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0] // ca c'est sale -> a refaire
+		// MAIN SUBTIDDER COMPONENT //
+		subs := db.GetSubs("name=\"" + id + "\"")
+		if len(subs) == 0 {
+			http.Redirect(w, r, "/static/404.html", http.StatusFound)
+			return
+		}
+		subtidder.Sub = subs[0]
 
 		if r.Method == "POST" {
 			if true {
@@ -147,7 +167,12 @@ func SubtidderHandler(db *SQL.SqlServer) {
 
 				if pp != "" {
 					db.UpdateSubtidder("profile_picture", pp, subtidder.Sub.Id)
-					subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0]
+					subs = db.GetSubs("name=\"" + id + "\"")
+					if len(subs) == 0 {
+						http.Redirect(w, r, "/static/404.html", http.StatusFound)
+						return
+					}
+					subtidder.Sub = subs[0]
 				}
 			}
 			if true {
@@ -178,7 +203,12 @@ func SubtidderHandler(db *SQL.SqlServer) {
 
 				if banner != "" {
 					db.UpdateSubtidder("banner", banner, subtidder.Sub.Id)
-					subtidder.Sub = db.GetSubs("name=\"" + id + "\"")[0]
+					subs = db.GetSubs("name=\"" + id + "\"")
+					if len(subs) == 0 {
+						http.Redirect(w, r, "/static/404.html", http.StatusFound)
+						return
+					}
+					subtidder.Sub = subs[0]
 				}
 			}
 		}
@@ -298,7 +328,7 @@ func SigninHandler(db *SQL.SqlServer) { // TODO : handle when user is stupid
 
 			if sessionId != "" {
 				viewData.Connected = true
-				viewData.Account = connectedUsr[0]
+				viewData.Account = connectedUsr
 				expiration := time.Now().Add(24 * time.Hour)
 				cookie := http.Cookie{Name: "session_id", Value: sessionId, Expires: expiration, Path: "/"}
 				http.SetCookie(w, &cookie)
@@ -431,18 +461,33 @@ func PostHandler(db *SQL.SqlServer) {
 		IAM := testConnection(r, &viewData, db)
 		postVD := SQL.PostVD{}
 
-		id := strings.ReplaceAll(r.URL.Path, "localhost/post/", "")
-		id = strings.ReplaceAll(r.URL.Path, "/post/", "")
+		id := getSuffix(r)
+		_, err := strconv.Atoi(id)
+		if id == "!err404" || err != nil {
+			http.Redirect(w, r, "/static/404.html", http.StatusFound)
+			return
+		}
+
+		posts := db.GetPosts("id_post=" + id)
+		if len(posts) == 0 {
+			http.Redirect(w, r, "/static/404.html", http.StatusFound)
+			return
+		}
+		post := posts[0]
 
 		if r.URL.Path == "/post/default.png" {
 			Util.Warning("Laurie fait chier : default.png")
 			return
 		}
 
-		post := db.GetPosts("id_post=" + id)[0]
 		postVD.Post = db.MakeDisplayablePost(post, IAM)
 
-		postVD.Subtidder = db.GetSubs("id_subject=" + strconv.Itoa(post.IdSubject))[0]
+		subs := db.GetSubs("id_subject=" + strconv.Itoa(post.IdSubject))
+		if len(subs) == 0 {
+			http.Redirect(w, r, "/static/404.html", http.StatusFound)
+			return
+		}
+		postVD.Subtidder = subs[0]
 
 		comments := db.GetComments("id_post=" + id)
 		postVD.Comments, _ = db.MakeDisplayableComments(comments, IAM)
@@ -483,7 +528,7 @@ func PostHandler(db *SQL.SqlServer) {
 			db.CreateComment(fetchQuery.Content, IAM, id, strconv.Itoa(fetchQuery.IdResponseTo))
 		}
 
-		err := callTemplate("post_page", &viewData, w)
+		err = callTemplate("post_page", &viewData, w)
 		if err != nil {
 			Util.Error(err)
 		}
@@ -497,9 +542,16 @@ func ProfilePageHandler(db *SQL.SqlServer) {
 		IAM := testConnection(r, &viewData, db)
 		var profilePageVD SQL.ProfilePageVD
 
-		name := strings.ReplaceAll(r.URL.Path, "localhost/u/", "")
-		name = strings.ReplaceAll(r.URL.Path, "/u/", "")
+		name := getSuffix(r)
+		if name == "!err404" {
+			http.Redirect(w, r, "/static/404.html", http.StatusFound)
+			return
+		}
 		profilePageVD.Account = db.GetAccountByName(name)
+		if profilePageVD.Account.Id == -1 {
+			http.Redirect(w, r, "/static/404.html", http.StatusFound)
+			return
+		}
 
 		posts := db.GetPosts("id_author =" + strconv.Itoa(profilePageVD.Account.Id))
 		for _, post := range posts {
@@ -515,4 +567,8 @@ func ProfilePageHandler(db *SQL.SqlServer) {
 		}
 		viewData.ClearErrors()
 	})
+}
+
+func Error404Handler(db *SQL.SqlServer) {
+
 }

@@ -159,9 +159,15 @@ type DisplayableComment struct {
 	AuthorPP   string
 }
 
+type RoleAccess struct {
+	Role   SubjectRoles
+	Access SubjectAccess
+}
+
 type AccountSubscribed struct {
 	Account Accounts
 	Banned  bool
+	Role    SubjectRoles
 }
 
 type MasterVD struct {
@@ -187,6 +193,9 @@ type SubtidderViewData struct {
 	Posts          []DisplayablePost
 	SubscribedUser []AccountSubscribed
 	Subscribed     bool
+	Roles          []RoleAccess
+
+	UserRole RoleAccess
 }
 
 type SearchViewData struct {

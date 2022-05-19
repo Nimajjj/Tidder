@@ -61,9 +61,20 @@ func (sqlServ SqlServer) CreateComment(content string, idUser int, idPost string
 		return
 	}
 
+	formatedContent := ""
+	for _, c := range content {
+		if c == '\n' {
+			formatedContent += "<br>"
+		} else if c == '\'' {
+			formatedContent += "\\'"
+		} else {
+			formatedContent += string(c)
+		}
+	}
+
 	currentTime := time.Now().Format("2006-01-02 15:04:05")
 	query := "INSERT INTO comments (content, creation_date, id_author, id_post, response_to_id) VALUES ("
-	query += "'" + content + "', "
+	query += "'" + formatedContent + "', "
 	query += "'" + currentTime + "', "
 	query += strconv.Itoa(idUser) + ", "
 	query += "'" + idPost + "', "

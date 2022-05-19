@@ -286,8 +286,15 @@ func (sqlServ SqlServer) GenerateAccountSubscribed(idSubject int) []AccountSubsc
 	}
 
 	for _, account := range accounts {
-		formatAccount := AccountSubscribed{account, false}
-
+		var formatAccount AccountSubscribed
+		formatAccount.Account = account
+		formatAccount.Banned = false
+		/*
+			var defaultRole SubjectRole
+			defaultRole.Role = "default"
+			defaultRole.Id = -1
+			formatAccount.Role = defaultRole
+		*/
 		for _, id := range idBanned {
 			if id == account.Id {
 				formatAccount.Banned = true

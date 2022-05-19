@@ -1,6 +1,8 @@
 {{ define "content" }}
     <script type="text/javascript" src="/scripts/subtidder.js" defer></script>
     <script type="text/javascript" src="/scripts/upvote.js" defer></script>
+    <script type="text/javascript" src="/scripts/subtidder_role.js" defer></script>
+    
     <link rel="stylesheet" href="../style/pages/subtidder.css">
 
     <div id="subtidder">
@@ -74,24 +76,70 @@
                                 </li>
                             </ul>
 
-                            <ul style="display: none;" id="admin_roles">
-                                <li>
-                                    TO BE IMPLEMENTED
-                                </li>
-                            </ul>
+                            <table style="display: none;" id="admin_roles">
+                                <tr>
+                                    <th>Role</th>
+                                    <th>Create post</th>
+                                    <th>Pin</th>
+                                    <th>Remove post</th>
+                                    <th>Ban user</th>
+                                    <th>Manage role</th>
+                                    <th>Give role</th>
+                                </tr>
+                                <tr id="role_-1" class="role_row">
+                                    <td>User</td>
+                                    <td><input type="checkbox" checked></td>
+                                    <td><input type="checkbox"></td>
+                                    <td><input type="checkbox"></td>
+                                    <td><input type="checkbox"></td>
+                                    <td><input type="checkbox"></td>
+                                    <td><input type="checkbox"></td>
+                                    <td style="color: red;"></td>
+                                </tr>
+                                <tr id="create_role">
+                                    <td class="role_bt" onclick="AddRoleRow()">
+                                        <p style="width: 100%;">Create Role</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="role_bt" onclick="UpdateRoles()">
+                                        <p style="width: 100%;">Submit</p>
+                                    </td>
+                                </tr>
+                            </table>
 
-                            <ul style="display: none;" id="admin_users">
-                                <p>Users :</p>
+                            <table style="display: none;" id="admin_users">
+                                <tr>
+                                    <th>User</th>
+                                    <th>Role</th>
+                                    <th>Ban</th>
+                                </tr>
                                 {{ range .SubtidderVD.SubscribedUser}}
-                                    <li>
-                                        <a href="/u/{{.Account.Name}}" {{if .Banned}} style="color: red;" {{end}}>u/{{.Account.Name}}</a>
-                                        <input type="checkbox" class="ban_checkbox" ban="{{.Banned}}" name="{{.Account.Id}}" {{if .Banned}} checked {{end}}>
-                                    </li>
+                                    <tr>
+                                        <td>
+                                            <a href="/u/{{.Account.Name}}" {{if .Banned}} style="color: red;" {{ else if (eq .Account.Id $.SubtidderVD.Sub.IdOwner) }} style="font-weight: bold; color: #148aa6;" {{end}}>u/{{.Account.Name}}</a>
+                                        </td>
+                                        {{ if (ne .Account.Id $.SubtidderVD.Sub.IdOwner) }}
+                                            <td>
+                                                <select name="user_role">
+                                                    <option value="-1">User</option> 
+                                                    {{range $.SubtidderVD.Roles}}
+                                                        <option value="{{.Role.Id}}">{{.Role.Name}}</option>
+                                                    {{end}}
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" class="ban_checkbox" ban="{{.Banned}}" name="{{.Account.Id}}" {{if .Banned}} checked {{end}}>
+                                            </td>
+                                        {{ end }}
+                                    </tr>
                                 {{ end }}
-                                <div id="submit_info" class="button highlight_bt" onclick="UpdateBannedUser()">
-                                    <p>Submit</p>
-                                </div>
-                            </ul>
+                                <tr>
+                                    <td class="role_bt" onclick="UpdateBannedUser()">
+                                        <p style="width: 100%;">Submit</p>
+                                    </td>
+                                </tr>
+                            </table>
                         </form>
                     </div>
                 </div>

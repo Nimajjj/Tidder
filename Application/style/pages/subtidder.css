@@ -133,3 +133,40 @@
 .admin_tab_selected {
   font-weight: bold;
 }
+
+#admin_roles {
+  width: 100%;
+}
+
+#admin_roles th, #admin_roles td {
+  width: 14.28%;
+  text-align: center;
+}
+
+.role_bt {
+  width: 100%;
+  border: 1px solid #F2F2F2;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.role_bt:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+
+.remove_row:hover {
+  user-select: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+#admin_users {
+  width: 100%;
+}
+
+#admin_users th, #admin_users td {
+  width: 33.33%;
+  text-align: center;
+}
