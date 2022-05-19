@@ -21,10 +21,10 @@ body{
 
 
 #content_cgu {
-    width: 50%;
+    width: 70%;
     position: relative;
     top: 8vh;
-    left: 10vw;
+    left: 6vw;
     background-color: #262626;
     box-sizing: border-box;
     border-radius: 10px;
@@ -54,5 +54,18 @@ p:not(.titre){
 }
 
 .essai{
-    padding-bottom:25.28px;
+    padding-bottom:5vh;
+}
+
+.signup_and_sheet{
+    width:10vw;
+    height:50vh;
+    border: 1px solid white;
+    position:relative;
+    left:15vw;
+    top:5vh
+}
+
+.content_and_signup{
+    display: flex;
 }
