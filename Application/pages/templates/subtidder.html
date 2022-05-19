@@ -53,7 +53,7 @@
                             <div id="admin_header">
                                 <div id="admin_tab_gen" class="admin_tab_selected" onclick="SwitchAdminTab('general')">General</div>
                                 <div id="admin_tab_rol" onclick="SwitchAdminTab('roles')">Roles</div>
-                                <div id="admin_tab_ban" onclick="SwitchAdminTab('ban')">Ban</div>
+                                <div id="admin_tab_users" onclick="SwitchAdminTab('users')">Users</div>
                             </div>
 
                             <ul style="display: block;" id="admin_gen">
@@ -80,11 +80,17 @@
                                 </li>
                             </ul>
 
-                            <ul style="display: none;" id="admin_ban">
-                                <li>
-                                    <p>Ban :</p>
-                                    <input type="text" name="ban_input" id="ban_input" placeholder="Ban reason">
-                                </li>
+                            <ul style="display: none;" id="admin_users">
+                                <p>Users :</p>
+                                {{ range .SubtidderVD.SubscribedUser}}
+                                    <li>
+                                        <a href="/u/{{.Account.Name}}" {{if .Banned}} style="color: red;" {{end}}>u/{{.Account.Name}}</a>
+                                        <input type="checkbox" class="ban_checkbox" ban="{{.Banned}}" name="{{.Account.Id}}" {{if .Banned}} checked {{end}}>
+                                    </li>
+                                {{ end }}
+                                <div id="submit_info" class="button highlight_bt" onclick="UpdateBannedUser()">
+                                    <p>Submit</p>
+                                </div>
                             </ul>
                         </form>
                     </div>

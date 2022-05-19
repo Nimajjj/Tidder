@@ -130,13 +130,13 @@ function readURL(input, what) {
 
 const admin_gen_tab = document.getElementById("admin_tab_gen")
 const admin_rol_tab = document.getElementById("admin_tab_rol")
-const admin_ban_tab = document.getElementById("admin_tab_ban")
-const admin_tabs = [admin_gen_tab, admin_rol_tab, admin_ban_tab]
+const admin_use_tab = document.getElementById("admin_tab_users")
+const admin_tabs = [admin_gen_tab, admin_rol_tab, admin_use_tab]
 
 const gen = document.getElementById("admin_gen");
 const rol = document.getElementById("admin_roles");
-const ban = document.getElementById("admin_ban");
-const admin_pages = [gen, rol, ban]
+const use = document.getElementById("admin_users");
+const admin_pages = [gen, rol, use]
 
 
 function SwitchAdminTab(tab) {
@@ -149,8 +149,42 @@ function SwitchAdminTab(tab) {
   } else if (tab == "roles") {
     admin_rol_tab.classList.add("admin_tab_selected")
     rol.style.display = "block"
-  } else if (tab == "ban") {
-    admin_ban_tab.classList.add("admin_tab_selected")
-    ban.style.display = "block"
+  } else if (tab == "users") {
+    admin_use_tab.classList.add("admin_tab_selected")
+    use.style.display = "block"
   }
 }
+
+
+function UpdateBannedUser() {
+  let changes = []
+  document.querySelectorAll(".ban_checkbox").forEach((item) => {
+    oldState = item.getAttribute("ban")
+    currentState = item.checked
+    if ((oldState === "true") != currentState) {
+      changes.push(item.getAttribute("name"))
+    }
+  })
+
+  let res = ""
+
+  changes.forEach((e) => {
+    res += e + ";"
+  })
+
+  if (res != "") {
+    fetch(location.pathname, {
+      method: "post",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    
+      //make sure to serialize your JSON body
+      body: JSON.stringify({
+        "banned_user_changes": res,
+      })
+    }).then(() => {
+      window.location.reload();
+  })
+  }
+} 

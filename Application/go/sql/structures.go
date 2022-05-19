@@ -159,6 +159,11 @@ type DisplayableComment struct {
 	AuthorPP   string
 }
 
+type AccountSubscribed struct {
+	Account Accounts
+	Banned  bool
+}
+
 type MasterVD struct {
 	IndexVD       IndexViewData
 	SubtidderVD   SubtidderViewData
@@ -178,9 +183,10 @@ type IndexViewData struct {
 }
 
 type SubtidderViewData struct {
-	Sub        Subject
-	Posts      []DisplayablePost
-	Subscribed bool
+	Sub            Subject
+	Posts          []DisplayablePost
+	SubscribedUser []AccountSubscribed
+	Subscribed     bool
 }
 
 type SearchViewData struct {
