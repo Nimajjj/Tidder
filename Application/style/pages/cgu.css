@@ -21,10 +21,10 @@ body{
 
 
 #content_cgu {
-    width: 70%;
+    width: 65%;
     position: relative;
-    top: 8vh;
-    left: 6vw;
+    top: 1vh;
+    left: 7vw;
     background-color: #262626;
     box-sizing: border-box;
     border-radius: 10px;
@@ -58,12 +58,12 @@ p:not(.titre){
 }
 
 .signup_and_sheet{
-    width:10vw;
+    width:20vw;
     height:50vh;
     border: 1px solid white;
     position:relative;
-    left:15vw;
-    top:5vh
+    left:10vw;
+    top:1vh
 }
 
 .content_and_signup{
