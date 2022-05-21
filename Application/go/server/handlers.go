@@ -603,3 +603,21 @@ func ProfilePageHandler(db *SQL.SqlServer) {
 func Error404Handler(db *SQL.SqlServer) {
 
 }
+
+func CGU(db *SQL.SqlServer) {
+	viewData := SQL.MasterVD{}
+	http.HandleFunc("/cgu", func(w http.ResponseWriter, r *http.Request) {
+		testConnection(r, &viewData, db)
+		name := getSuffix(r)
+		if name == "!err404" {
+			http.Redirect(w, r, "/static/404.html", http.StatusFound)
+			return
+		}
+
+		err := callTemplate("cgu", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
+		viewData.ClearErrors()
+	})
+}
