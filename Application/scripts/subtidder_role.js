@@ -27,6 +27,7 @@ function AddRoleRow() {
 function CreateRow() {
     let tr = document.createElement('tr');
     tr.classList.add('role_row');
+    tr.id = "role_NEW_" + Math.floor(Math.random() * 10000000);
 
     let nameCol = document.createElement('td');
     let nameInput = document.createElement('input');
@@ -89,21 +90,32 @@ function insertBefore(newNode, existingNode) {
 }
 
 function removeRow(e) {
-    root = e.parentNode.parentNode.parentNode
-    root.removeChild(e.parentNode.parentNode);
+    root = e.parentNode.parentNode
+    root.removeChild(e.parentNode);
 }
 
 function getRoles() {
     let roles = [];
     let rolesRow = document.querySelectorAll('.role_row');
+    
 
     let i = 0;
     rolesRow.forEach(function (row) {
         let role = new Role;
         let access = new Access;
 
-        if (i == 0) {
+        let id = "NEW";
+        if (!row.id.includes("NEW")) {
+            id = row.id.replace("role_", "");
+        }
+
+        if (id == "-1") {
             role.name = "User"
+            role.access = access;
+            role.id = id;
+            i++;
+            roles.push(role);
+            return;
         } else {
             role.name = row.querySelector(':nth-child(1)').firstChild.value;
         }
@@ -116,7 +128,7 @@ function getRoles() {
         access.give = row.querySelector(':nth-child(7)').firstChild.checked;
 
         role.access = access;
-        role.id = i;
+        role.id = id;
         i++;
 
         roles.push(role);
@@ -125,32 +137,97 @@ function getRoles() {
     return roles;
 }
 
+let rolesWhenInit = getRoles()
 function UpdateRoles() {
-    let query = ""
+    let toCreate = "";
+    let toChange = "";
+    let toDelete = "";
+
     let newRoles = getRoles();
 
-    for (let i = 0; i < newRoles.length; i++) {
-        let toUpdate = false
-        let roleA = newRoles[i];
+    let toCreateArr = [];
+    let toDeleteArr = [];
 
-        let j = 0;
-        rolesWhenInit.forEach(function (roleB) {
-            if (roleA.id == roleB.id) {
-                if (roleA.name != roleB.name || roleA.access.create != roleB.access.create || roleA.access.pin != roleB.access.pin || roleA.access.remove != roleB.access.remove || roleA.access.ban != roleB.access.ban || roleA.access.manage != roleB.access.manage || roleA.access.give != roleB.access.give) {
-                    toUpdate = true;
-                    return
+    console.log("Before\nrolesWhenInit : ");
+    printArr(rolesWhenInit);
+    console.log("newRoles : ");
+    printArr(newRoles);
+
+    for (let i = 0; i < rolesWhenInit.length; i++) {
+        let role = rolesWhenInit[i];
+        let stillExist = false;
+        
+        if (role == null) {continue;}
+        for (let j = 0; j < newRoles.length; j++) {
+            let newRole = newRoles[j];
+            if (newRole == null) {continue;}
+            if (role == null) {continue;}
+            if (role.id == newRole.id) {
+                stillExist = true;
+                if (!compareRoles(role, newRole)) { // toChange
+                    toChange += newRole.id + "," + newRole.name + "," + newRole.access.create + "," + newRole.access.pin + "," + newRole.access.remove + "," + newRole.access.ban + "," + newRole.access.manage + "," + newRole.access.give + ";";
                 }
+                delete newRoles[j];
+                delete rolesWhenInit[i];
             }
+        }
 
-            j++;
-        })
-
-        if (toUpdate) {
-            query += roleA.id + "," + roleA.name + "," + roleA.access.create + "," + roleA.access.pin + "," + roleA.access.remove + "," + roleA.access.ban + "," + roleA.access.manage + "," + roleA.access.give + ";";
+        if (!stillExist) {
+            toDelete += role.id + ";";
+            delete rolesWhenInit[i];
         }
     }
 
-    console.log(query);
+    console.log("After\nrolesWhenInit : ");
+    printArr(rolesWhenInit);
+    console.log("newRoles : ");
+    printArr(newRoles);
+
+
+    newRoles.forEach(function (newRole) {   // toCreate
+        if (newRole == null) {return;}
+        toCreate += newRole.id + "," + newRole.name + "," + newRole.access.create + "," + newRole.access.pin + "," + newRole.access.remove + "," + newRole.access.ban + "," + newRole.access.manage + "," + newRole.access.give + ";"; 
+    })
+
+    console.log("\ntoChange :", toChange);
+    console.log("toCreate :", toCreate);
+    console.log("toDelete :", toDelete);
+    
+    fetch(location.pathname, {
+        method: "post",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      
+        //make sure to serialize your JSON body
+        body: JSON.stringify({
+          "role_to_create": toCreate,
+          "role_to_update": toChange,
+          "role_to_delete": toDelete,
+        })
+    }).then(() => {
+        window.location.reload();
+    })
+    
 }
 
-let rolesWhenInit = getRoles()
+function compareRoles(roleA, roleB) {
+    if (roleA.id != roleB.id) {
+        return false;
+    } else {
+        if (roleA.name != roleB.name || roleA.access.create != roleB.access.create || roleA.access.pin != roleB.access.pin || roleA.access.remove != roleB.access.remove || roleA.access.ban != roleB.access.ban || roleA.access.manage != roleB.access.manage || roleA.access.give != roleB.access.give) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function printArr(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == null) {
+            console.log("null");
+        } else {
+            console.log(arr[i]);       
+        }
+    }
+}

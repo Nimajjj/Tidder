@@ -289,12 +289,36 @@ func (sqlServ SqlServer) GenerateAccountSubscribed(idSubject int) []AccountSubsc
 		var formatAccount AccountSubscribed
 		formatAccount.Account = account
 		formatAccount.Banned = false
-		/*
-			var defaultRole SubjectRole
-			defaultRole.Role = "default"
+
+		defaultRole := SubjectRoles{}
+
+		if sqlServ.RowExists("has_subject_role", "id_account="+strconv.Itoa(account.Id)+" AND id_subject="+strconv.Itoa(idSubject)) {
+			query = "SELECT * FROM has_subject_role WHERE id_account=" + strconv.Itoa(account.Id) + " AND id_subject=" + strconv.Itoa(idSubject)
+			Util.Query("GenerateBannedAccountList", query)
+			rows, err = sqlServ.db.Query(query)
+			if err != nil {
+				Util.Error(err)
+			}
+			for rows.Next() {
+				var idAccount int
+				var idSubject int
+				var idRole int
+				if err2 := rows.Scan(
+					&idAccount,
+					&idSubject,
+					&idRole,
+				); err2 != nil {
+					Util.Error(err2)
+				}
+				defaultRole.Id = idRole
+				break
+			}
+		} else {
 			defaultRole.Id = -1
-			formatAccount.Role = defaultRole
-		*/
+		}
+
+		formatAccount.Role = defaultRole
+
 		for _, id := range idBanned {
 			if id == account.Id {
 				formatAccount.Banned = true
