@@ -72,6 +72,7 @@ func launchServer(DatabaseIp string) {
 	PostHandler(&db)
 	ProfilePageHandler(&db)
 	CGU(&db)
+	Authors_redirect(&db)
 
 	http.ListenAndServe(":8091", nil)
 }

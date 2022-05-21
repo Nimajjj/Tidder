@@ -22,16 +22,6 @@
 }
 
 
-
-
-.signup_and_sheet{
-    width:20vw;
-    height:50vh;
-    position:relative;
-    left:10vw;
-    top:1vh
-}
-
 .gest{
     padding-left: 1.5vw;
 }
@@ -39,3 +29,4 @@
 .post:hover{
     border:0px;
 }
+
