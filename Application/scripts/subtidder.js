@@ -173,18 +173,8 @@ function UpdateBannedUser() {
   })
 
   if (res != "") {
-    fetch(location.pathname, {
-      method: "post",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    
-      //make sure to serialize your JSON body
-      body: JSON.stringify({
-        "banned_user_changes": res,
-      })
-    }).then(() => {
-      window.location.reload();
-  })
+    return res;
   }
 } 
+
+

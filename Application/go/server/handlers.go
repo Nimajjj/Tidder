@@ -137,6 +137,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			return
 		}
 		subtidder.Sub = subs[0]
+		subtidder.Roles = db.GenerateRoleAccess(subtidder.Sub.Id)
 
 		if r.Method == "POST" {
 			if true {
@@ -225,9 +226,19 @@ func SubtidderHandler(db *SQL.SqlServer) {
 			Info string `json:"info"`
 
 			BannedChanges string `json:"banned_user_changes"`
+
+			RoleToCreate string `json:"role_to_create"`
+			RoleToDelete string `json:"role_to_delete"`
+			RoleToUpdate string `json:"role_to_update"`
+
+			RoleAtribution string `json:"role_atribution_changes"`
 		}
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
+
+		Util.Log("RoleToCreate: " + fetchQuery.RoleToCreate)
+		Util.Log("RoleToDelete: " + fetchQuery.RoleToDelete)
+		Util.Log("RoleToUpdate: " + fetchQuery.RoleToUpdate)
 
 		// VOTES //
 		if fetchQuery.IdPost != 0 && fetchQuery.Score != 0 && IAM != -1 {
@@ -246,6 +257,26 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		if fetchQuery.BannedChanges != "" {
 			Util.Log("BannedChanges")
 			db.ChangeBanned(subtidder.Sub.Id, fetchQuery.BannedChanges)
+		}
+
+		if fetchQuery.RoleToCreate != "" {
+			Util.Log("RoleToCreate")
+			db.CreateRole(subtidder.Sub.Id, fetchQuery.RoleToCreate)
+		}
+
+		if fetchQuery.RoleToDelete != "" {
+			Util.Log("RoleToDelete")
+			db.DeleteRole(subtidder.Sub.Id, fetchQuery.RoleToDelete)
+		}
+
+		if fetchQuery.RoleToUpdate != "" {
+			Util.Log("RoleToUpdate")
+			db.UpdateRole(subtidder.Sub.Id, fetchQuery.RoleToUpdate)
+		}
+
+		if fetchQuery.RoleAtribution != "" {
+			Util.Log("RoleAtribution")
+			db.ChangeRoleAtribution(subtidder.Sub.Id, fetchQuery.RoleAtribution)
 		}
 
 		subtidder.Subscribed = db.IsSubscribeTo(IAM, subtidder.Sub.Id)

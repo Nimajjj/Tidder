@@ -78,13 +78,13 @@ type Posts struct {
 }
 
 type SubjectAccess struct {
-	Id         int  `json:"id_subject_access"`
-	PinPost    bool `json:"pin_post"`
-	RemovePost bool `json:"remove_post"`
-	BanUser    bool `json:"ban_user"`
-	CreateRole bool `json:"create_role"`
-	GiveRole   bool `json:"give_role"`
-	DeleteRole bool `json:"delete_role"`
+	Id         int `json:"id_subject_access"`
+	CreatePost int `json:"create_post"`
+	PinPost    int `json:"pin_post"`
+	ManagePost int `json:"manage_post"`
+	BanUser    int `json:"ban_user"`
+	ManageRole int `json:"manage_role"`
+	GiveRole   int `json:"give_role"`
 }
 
 type SubjectRoles struct {

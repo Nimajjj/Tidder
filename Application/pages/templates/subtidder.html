@@ -2,6 +2,7 @@
     <script type="text/javascript" src="/scripts/subtidder.js" defer></script>
     <script type="text/javascript" src="/scripts/upvote.js" defer></script>
     <script type="text/javascript" src="/scripts/subtidder_role.js" defer></script>
+    <script type="text/javascript" src="/scripts/subtidder_roles_attribution.js" defer></script>
     
     <link rel="stylesheet" href="../style/pages/subtidder.css">
 
@@ -81,7 +82,7 @@
                                     <th>Role</th>
                                     <th>Create post</th>
                                     <th>Pin</th>
-                                    <th>Remove post</th>
+                                    <th>Moderate post</th>
                                     <th>Ban user</th>
                                     <th>Manage role</th>
                                     <th>Give role</th>
@@ -89,13 +90,20 @@
                                 <tr id="role_-1" class="role_row">
                                     <td>User</td>
                                     <td><input type="checkbox" checked></td>
-                                    <td><input type="checkbox"></td>
-                                    <td><input type="checkbox"></td>
-                                    <td><input type="checkbox"></td>
-                                    <td><input type="checkbox"></td>
-                                    <td><input type="checkbox"></td>
                                     <td style="color: red;"></td>
                                 </tr>
+                                {{ range .SubtidderVD.Roles }}
+                                    <tr id="role_{{.Role.Id}}" class="role_row">
+                                        <td><input type="text" placeholder="Role Name" value="{{.Role.Name}}"></td>
+                                        <td><input type="checkbox" {{if eq .Access.CreatePost 1}} checked {{end}}></td>
+                                        <td><input type="checkbox" {{if eq .Access.PinPost 1}} checked {{end}}></td>
+                                        <td><input type="checkbox" {{if eq .Access.ManagePost 1}} checked {{end}}></td>
+                                        <td><input type="checkbox" {{if eq .Access.BanUser 1}} checked {{end}}></td>
+                                        <td><input type="checkbox" {{if eq .Access.ManageRole 1}} checked {{end}}></td>
+                                        <td><input type="checkbox" {{if eq .Access.GiveRole 1}} checked {{end}}></td>
+                                        <td class="remove_row" style="color: red;" onclick="removeRow(this)">X</td>
+                                    </tr>
+                                {{ end }}
                                 <tr id="create_role">
                                     <td class="role_bt" onclick="AddRoleRow()">
                                         <p style="width: 100%;">Create Role</p>
@@ -114,17 +122,17 @@
                                     <th>Role</th>
                                     <th>Ban</th>
                                 </tr>
-                                {{ range .SubtidderVD.SubscribedUser}}
-                                    <tr>
+                                {{ range $user := .SubtidderVD.SubscribedUser}}
+                                    <tr class="role_attribution_row">
                                         <td>
-                                            <a href="/u/{{.Account.Name}}" {{if .Banned}} style="color: red;" {{ else if (eq .Account.Id $.SubtidderVD.Sub.IdOwner) }} style="font-weight: bold; color: #148aa6;" {{end}}>u/{{.Account.Name}}</a>
+                                            <a href="/u/{{.Account.Name}}" {{if .Banned}} style="color: red;" {{ else if (eq .Account.Id $.SubtidderVD.Sub.IdOwner) }} style="font-weight: bold; color: #148aa6;" {{end}} user_id="{{.Account.Id}}">u/{{.Account.Name}}</a>
                                         </td>
                                         {{ if (ne .Account.Id $.SubtidderVD.Sub.IdOwner) }}
                                             <td>
-                                                <select name="user_role">
+                                                <select name="user_role" class="select_role">
                                                     <option value="-1">User</option> 
                                                     {{range $.SubtidderVD.Roles}}
-                                                        <option value="{{.Role.Id}}">{{.Role.Name}}</option>
+                                                        <option value="{{.Role.Id}}"  {{if eq .Role.Id $user.Role.Id}} selected {{end}}>{{.Role.Name}}</option>
                                                     {{end}}
                                                 </select>
                                             </td>
@@ -135,7 +143,7 @@
                                     </tr>
                                 {{ end }}
                                 <tr>
-                                    <td class="role_bt" onclick="UpdateBannedUser()">
+                                    <td class="role_bt" onclick="UpdateUser()">
                                         <p style="width: 100%;">Submit</p>
                                     </td>
                                 </tr>
