@@ -79,7 +79,7 @@ func (sqlServ SqlServer) GetAccountById(id int) Accounts {
 
 func (sqlServ SqlServer) GetAccountByName(name string) Accounts {
 	var account Accounts
-	query := "SELECT * FROM accounts WHERE name = " + name
+	query := "SELECT * FROM accounts WHERE name = \"" + name + "\""
 	Util.Query("GetAccountByName", query)
 	err := sqlServ.db.QueryRow(query).Scan(
 		&account.Id,

@@ -651,3 +651,21 @@ func CGU(db *SQL.SqlServer) {
 		viewData.ClearErrors()
 	})
 }
+
+func Authors_redirect(db *SQL.SqlServer) {
+	viewData := SQL.MasterVD{}
+	http.HandleFunc("/Authors", func(w http.ResponseWriter, r *http.Request) {
+		testConnection(r, &viewData, db)
+		name := getSuffix(r)
+		if name == "!err404" {
+			http.Redirect(w, r, "/static/404.html", http.StatusFound)
+			return
+		}
+
+		err := callTemplate("authors_redirect", &viewData, w)
+		if err != nil {
+			Util.Error(err)
+		}
+		viewData.ClearErrors()
+	})
+}
