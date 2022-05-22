@@ -65,7 +65,6 @@ func callTemplate(templateName string, viewdata *SQL.MasterVD, w http.ResponseWr
 		"hasAccess": func(access SQL.SubjectAccess, accessList string) bool {
 			accessSplit := strings.Split(accessList, ",")
 			for _, a := range accessSplit {
-				fmt.Println(a)
 				switch a {
 				case "pin_post":
 					if access.Pin == 1 {
@@ -415,7 +414,7 @@ func CreatePostHandler(db *SQL.SqlServer) {
 			http.Redirect(w, r, "/", http.StatusFound)
 		}
 
-		viewData.CreatePostsVD.SubscribedSubjects = db.GetSubtiddersSubscribed(IAM)
+		viewData.CreatePostsVD.PostCreation = db.GetPostCreationTest(IAM)
 
 		title := r.FormValue("title")
 		content := r.FormValue("content")

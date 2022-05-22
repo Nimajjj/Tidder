@@ -73,6 +73,7 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 		var id_owner int
 		var infos string
 		var banner string
+		var canCreatePost int
 		if err2 := rows.Scan(
 			&id,
 			&name,
@@ -81,10 +82,11 @@ func (sqlServ SqlServer) GetSubs(conditions string) []Subject {
 			&nsfw,
 			&banner,
 			&infos,
+			&canCreatePost,
 		); err2 != nil {
 			Util.Error(err2)
 		}
-		sub := Subject{id, name, pp, nsfw, id_owner, infos, banner}
+		sub := Subject{id, name, pp, nsfw, id_owner, infos, banner, canCreatePost}
 		if banner == "" {
 			sub.Banner = DefaultSubtidderBanner()
 		}
@@ -162,6 +164,7 @@ func (sqlServ SqlServer) GetSubtiddersSubscribed(account_id int) []Subject {
 		var id_owner int
 		var infos string
 		var banner string
+		var canCreatePost int
 		if err2 := rows2.Scan(
 			&id,
 			&name,
@@ -170,14 +173,136 @@ func (sqlServ SqlServer) GetSubtiddersSubscribed(account_id int) []Subject {
 			&nsfw,
 			&banner,
 			&infos,
+			&canCreatePost,
 		); err2 != nil {
 			Util.Error(err2)
 		}
-		sub := Subject{id, name, pp, nsfw, id_owner, infos, banner}
+		sub := Subject{id, name, pp, nsfw, id_owner, infos, banner, canCreatePost}
 		result = append(result, sub)
 	}
 
 	return result
+}
+
+func (sqlServ SqlServer) GetPostCreationTest(account_id int) []PostCreationTest {
+	if account_id == -1 {
+		return []PostCreationTest{}
+	}
+
+	res := []PostCreationTest{}
+
+	subscribedID := []int{}
+	query := "SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =" + strconv.Itoa(account_id)
+	Util.Query("GetSubtiddersSubscribed", query)
+
+	rows, err := sqlServ.db.Query(query)
+	if err != nil {
+		Util.Error(err)
+	}
+
+	for rows.Next() {
+		var id int
+		if err2 := rows.Scan(
+			&id,
+		); err2 != nil {
+			Util.Error(err2)
+		}
+		subscribedID = append(subscribedID, id)
+	}
+
+	if len(subscribedID) == 0 {
+		return []PostCreationTest{}
+	}
+
+	query = "SELECT * FROM tidder.subjects WHERE"
+	for i, id := range subscribedID {
+		if i != 0 {
+			query += " OR"
+		}
+		query += " id_subject = " + strconv.Itoa(id)
+	}
+
+	Util.Query("GetSubtiddersSubscribed", query)
+	rows2, err2 := sqlServ.db.Query(query)
+	if err2 != nil {
+		Util.Error(err2)
+	}
+	for rows2.Next() {
+		sub := Subject{}
+		role := SubjectRoles{}
+		access := SubjectAccess{}
+		if err2 := rows2.Scan(
+			&sub.Id,
+			&sub.Name,
+			&sub.ProfilePicture,
+			&sub.IdOwner,
+			&sub.Nsfw,
+			&sub.Banner,
+			&sub.Infos,
+			&sub.CanCreatePost,
+		); err2 != nil {
+			Util.Error(err2)
+		}
+		role.Id = -1
+		role.Name = "User"
+		if sqlServ.RowExists("has_subject_role", "id_account="+strconv.Itoa(account_id)+" AND id_subject="+strconv.Itoa(sub.Id)) {
+			var roleId int
+			query = "SELECT id_subject_role FROM has_subject_role WHERE id_account=" + strconv.Itoa(account_id) + " AND id_subject=" + strconv.Itoa(sub.Id)
+			Util.Query("GetPostCreationTest", query)
+			rows3, err3 := sqlServ.db.Query(query)
+			if err3 != nil {
+				Util.Error(err3)
+			}
+			for rows3.Next() {
+				if err3 := rows3.Scan(
+					&roleId,
+				); err3 != nil {
+					Util.Error(err3)
+				}
+			}
+
+			role.Id = roleId
+			query = "SELECT name, id_subject_access FROM subject_roles WHERE id_subject_role=" + strconv.Itoa(roleId)
+			Util.Query("GetPostCreationTest", query)
+			rows4, err4 := sqlServ.db.Query(query)
+			if err4 != nil {
+				Util.Error(err4)
+			}
+			for rows4.Next() {
+				if err4 := rows4.Scan(
+					&role.Name,
+					&access.Id,
+				); err4 != nil {
+					Util.Error(err4)
+				}
+			}
+
+			query = "SELECT * FROM subject_access WHERE id_subject_access=" + strconv.Itoa(access.Id)
+			Util.Query("GetPostCreationTest", query)
+			rows5, err5 := sqlServ.db.Query(query)
+			if err5 != nil {
+				Util.Error(err5)
+			}
+			for rows5.Next() {
+				if err5 := rows5.Scan(
+					&access.Id,
+					&access.CreatePost,
+					&access.Pin,
+					&access.ManagePost,
+					&access.BanUser,
+					&access.ManageRole,
+					&access.ManageSub,
+				); err5 != nil {
+					Util.Error(err5)
+				}
+			}
+
+		}
+
+		res = append(res, PostCreationTest{sub, role, access})
+	}
+
+	return res
 }
 
 func (sqlServ SqlServer) EditInfo(newInfo string, subjectId int) {

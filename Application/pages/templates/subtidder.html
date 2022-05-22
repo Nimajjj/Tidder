@@ -91,7 +91,7 @@
                                 </tr>
                                 <tr id="role_-1" class="role_row">
                                     <td>User</td>
-                                    <td><input type="checkbox" checked></td>
+                                    <td><input type="checkbox" {{ if (eq .SubtidderVD.Sub.CanCreatePost 1) }} checked {{ end }}></td>
                                     <td style="color: red;"></td>
                                 </tr>
                                 {{ range .SubtidderVD.Roles }}

@@ -102,6 +102,7 @@ type Subject struct {
 	IdOwner        int    `json:"id_owner"`
 	Infos          string `json:"infos"`
 	Banner         string `json:"banner"`
+	CanCreatePost  int    `json:"can_create_post"`
 }
 
 type SubscribeToSubject struct {
@@ -114,6 +115,12 @@ type Errors struct {
 	Signin          string
 	CreateSubtidder string
 	CreatePost      string
+}
+
+type PostCreationTest struct {
+	Sub        Subject
+	UserRole   SubjectRoles
+	UserAccess SubjectAccess
 }
 
 // ViewData
@@ -203,7 +210,7 @@ type SearchViewData struct {
 }
 
 type CreatePostsVD struct {
-	SubscribedSubjects []Subject
+	PostCreation []PostCreationTest
 }
 
 type PostVD struct {

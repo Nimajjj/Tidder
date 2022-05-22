@@ -52,6 +52,12 @@ func (sqlServ SqlServer) UpdateRole(idSubject int, data string) {
 		roleId := access[0]
 		roleName := access[1]
 
+		if roleId == "-1" {
+			query := "UPDATE subjects SET can_create_post=" + access[2] + " WHERE id_subject=" + strconv.Itoa(idSubject)
+			sqlServ.executeQuery(query)
+			continue
+		}
+
 		query := "UPDATE subject_roles SET name='" + roleName + "'" + " WHERE id_subject_role=" + roleId + " AND id_subject=" + strconv.Itoa(idSubject)
 		sqlServ.executeQuery(query)
 
