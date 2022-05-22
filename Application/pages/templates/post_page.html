@@ -30,10 +30,9 @@
             {{if not .PostVD.Post.Redacted}}
                 <li class="post_content">
                     <p id="post_text_content">{{.PostVD.Post.Content}}</p>
-                </li>
                 {{if (ne .PostVD.Post.MediaUrl "")}}
                     <li class="post_content media_container" style="display: flex; justify-content: center;">
-                        <img src="{{blobToUrl .PostVD.Post.MediaUrl}}" alt="post content">
+                        <img class="post_image" src="{{blobToUrl .PostVD.Post.MediaUrl}}" alt="post content">
                     </li>
                 {{end}}
             

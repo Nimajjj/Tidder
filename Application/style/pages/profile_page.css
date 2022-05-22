@@ -1,6 +1,4 @@
-body{
-    overflow: hidden;
-}
+
 
 #side_bar {
     display: none;
@@ -28,7 +26,7 @@ body{
 
 #default_png{
     border-radius:50vh;
-    width:13vw;
+    width:8vw;
 }
 
 #info_account{
@@ -59,7 +57,10 @@ body{
 }
 
 .pseudo{
-    font-size:3.3vh
+    font-size:5vh;
+    position:relative;
+    top:5vh;
+    padding-left:0.5vw
 }
 
 #container{
@@ -75,7 +76,7 @@ body{
     background-color: grey;
     width: 24.8vw;
     height: 10vh;
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     padding: 2.5vh;
     letter-spacing: -0.04vw;
@@ -88,8 +89,9 @@ body{
 }
 
 .liste_sub li{
-    padding-top:3.5vh;
-    font-size:1.5vw;
+    padding-top:2.5vh;
+    padding-bottom: 2.5vh;
+    font-size:1.3vw;
     padding-left:2vw;
 }
 
@@ -102,15 +104,15 @@ ul.liste_sub{
 }
 
 #thread{
-    width:15vw;
-    padding-left:5vw;
+    width:65vw;
+    margin-left:5vw;
 }
 
 .liste_sub{
     overflow-y: scroll;
     overflow-x:hidden;
     scroll-behavior: smooth;
-    height:50vh;
+    height:75vh;
 }
 
 #second_block {
@@ -121,14 +123,32 @@ ul.liste_sub{
     margin-left: 12vh;
 }
 
-.post {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    height: 55vh;
-}
 
 ul.list_post {
     border-bottom: solid 1px white;
     padding: 15px;
+}
+
+.icone_subtidder{
+    display:flex;
+    flex-direction: row;
+}
+
+#icone_img_subtidder{
+    position:relative;
+    width: 25px;
+    height:25px
+}
+
+#name_subtidder{
+    padding-left:2vw;
+    position:relative;
+    bottom:0.3vh
+}
+
+#posts{
+    overflow-y: scroll;
+    overflow-x:hidden;
+    scroll-behavior: smooth;
+    height:87.8vh;
 }

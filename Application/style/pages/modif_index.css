@@ -1,0 +1,6 @@
+.post_content > img {
+    width: 80%;
+    height:80%;
+    object-fit: cover;
+}
+
