@@ -19,6 +19,9 @@
                         <img id="edit_post" src="/images/global/edit.png" alt="edit" onclick="EditPost()">
                         <img id="delete_post" src="/images/global/trash-can.png" alt="delete" onclick="DeletePost()">
                     {{ end }}
+                    {{ if (hasAccess .PostVD.UserAccess "pin_post") }}
+                        <img id="pin_post" src="/images/global/thumbtacks.png" state={{.PostVD.Post.Pinned}} alt="pin" onclick="PinPost(this)">
+                    {{ end }}
                 {{end}}
             </li>
             <li class="post_title">

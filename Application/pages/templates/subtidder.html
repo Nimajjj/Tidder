@@ -175,7 +175,7 @@
                 {{ if .SubtidderVD.Posts }}
                     {{ range .SubtidderVD.Posts }}
                         {{ if not .Redacted }}
-                            <div class="post" onclick="location.href='/post/{{.Id}}'">
+                            <div class="post {{if .Pinned}} pinned_post {{end}} " onclick="location.href='/post/{{.Id}}'">
                                 <ul>
                                 <li class="post_upper">
                                     <a class="subreddit_name" href="/t/{{.SubtidderName}}">
@@ -183,6 +183,7 @@
                                         <p>t/{{.SubtidderName}}</p>
                                     </a>
                                     <p>Published by <a href="/u/{{.AuthorName}}">u/{{.AuthorName}}</a> {{.CreationDate}} </p>
+                                    {{if .Pinned}} <p style="color:#148aa6; opacity: 0.8;">Pin</p> {{end}}
                                 </li>
                                 <li class="post_title">
                                     <h2>{{.Title}}</h2>

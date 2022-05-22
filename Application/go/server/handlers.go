@@ -575,6 +575,8 @@ func PostHandler(db *SQL.SqlServer) {
 			NewPostTextContent string `json:"new_post_text_content"`
 
 			DeletePost string `json:"delete_post"`
+
+			PostToPin string `json:"post_to_pin"`
 		}
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
@@ -595,6 +597,10 @@ func PostHandler(db *SQL.SqlServer) {
 
 		if fetchQuery.DeletePost != "" {
 			db.DeletePost(fetchQuery.DeletePost)
+		}
+
+		if fetchQuery.PostToPin != "" {
+			db.PinPost(fetchQuery.PostToPin)
 		}
 
 		err = callTemplate("post_page", &viewData, w)

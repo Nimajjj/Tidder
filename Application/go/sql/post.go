@@ -256,7 +256,20 @@ func (sqlServ SqlServer) GenerateSubTidderFeed(user int, subtidder int) []Displa
 		res = append(res, sqlServ.MakeDisplayablePost(post, user))
 	}
 
-	return res
+	sortedRes := []DisplayablePost{}
+	pinnedPosts := []DisplayablePost{}
+	notPinnedPosts := []DisplayablePost{}
+	for _, post := range res {
+		if post.Pinned {
+			pinnedPosts = append(pinnedPosts, post)
+		} else {
+			notPinnedPosts = append(notPinnedPosts, post)
+		}
+	}
+
+	sortedRes = append(pinnedPosts, notPinnedPosts...)
+
+	return sortedRes
 }
 
 func (sqlServ SqlServer) UpdatePost(postId string, newPostContent string) {
@@ -289,6 +302,7 @@ func (sqlServ SqlServer) GetPostAccess(IAM int, IdSubject int) SubjectAccess {
 
 	if idOwner == IAM {
 		res.ManagePost = 1
+		res.Pin = 1
 		return res
 	}
 
@@ -319,7 +333,7 @@ func (sqlServ SqlServer) GetPostAccess(IAM int, IdSubject int) SubjectAccess {
 			}
 		}
 
-		query = "SELECT manage_post FROM subject_access WHERE id_subject_access = " + strconv.Itoa(accessId)
+		query = "SELECT manage_post, pin_post FROM subject_access WHERE id_subject_access = " + strconv.Itoa(accessId)
 		Util.Query("GetPostAccess", query)
 		rows, err = sqlServ.db.Query(query)
 		if err != nil {
@@ -328,6 +342,7 @@ func (sqlServ SqlServer) GetPostAccess(IAM int, IdSubject int) SubjectAccess {
 		for rows.Next() {
 			if err2 := rows.Scan(
 				&res.ManagePost,
+				&res.Pin,
 			); err2 != nil {
 				Util.Error(err2)
 			}
@@ -335,4 +350,9 @@ func (sqlServ SqlServer) GetPostAccess(IAM int, IdSubject int) SubjectAccess {
 	}
 
 	return res
+}
+
+func (sqlServ SqlServer) PinPost(postId string) {
+	query := "UPDATE tidder.posts SET pinned = NOT pinned WHERE id_post = " + postId
+	sqlServ.executeQuery(query)
 }
