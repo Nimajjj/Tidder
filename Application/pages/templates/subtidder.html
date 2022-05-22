@@ -174,50 +174,52 @@
                 <div id="posts">
                 {{ if .SubtidderVD.Posts }}
                     {{ range .SubtidderVD.Posts }}
-                        <div class="post" onclick="location.href='/post/{{.Id}}'">
-                            <ul>
-                            <li class="post_upper">
-                                <a class="subreddit_name" href="/t/{{.SubtidderName}}">
-                                    <img class="sub_logo" src="{{blobToUrl .SubtidderPP}}" alt="subreddit logo">
-                                    <p>t/{{.SubtidderName}}</p>
-                                </a>
-                                <p>Published by <a href="/u/{{.AuthorName}}">u/{{.AuthorName}}</a> {{.CreationDate}} </p>
-                            </li>
-                            <li class="post_title">
-                                <h2>{{.Title}}</h2>
-                            </li>
-                                {{if (eq .MediaUrl "")}}
-                                <li class="post_content">
-                                    <p>{{.Content}}</p>
+                        {{ if not .Redacted }}
+                            <div class="post" onclick="location.href='/post/{{.Id}}'">
+                                <ul>
+                                <li class="post_upper">
+                                    <a class="subreddit_name" href="/t/{{.SubtidderName}}">
+                                        <img class="sub_logo" src="{{blobToUrl .SubtidderPP}}" alt="subreddit logo">
+                                        <p>t/{{.SubtidderName}}</p>
+                                    </a>
+                                    <p>Published by <a href="/u/{{.AuthorName}}">u/{{.AuthorName}}</a> {{.CreationDate}} </p>
                                 </li>
-                                {{else}}
-                                <li class="post_content" style="display: flex; justify-content: center;">
-                                    <img class="post_image" src="{{blobToUrl .MediaUrl}}" alt="post content">
+                                <li class="post_title">
+                                    <h2>{{.Title}}</h2>
                                 </li>
-                                {{end}}
-                            <li class="post_bottom">
-                                {{if (eq .Vote 1)}}
-                                    <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt="{{.Id}} upvote">
-                                    <p>{{.Score}}</p>
-                                    <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
-                                {{else if (eq .Vote -1)}}
-                                    <img class="post_icon vote_bt upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
-                                    <p>{{.Score}}</p>
-                                    <img class="post_icon vote_bt downvote_bt" state="active" src="../images/global/downvote.png" alt="{{.Id}} downvote">
-                                {{else}}
-                                    <img class="post_icon vote_bt upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
-                                    <p>{{.Score}}</p>
-                                    <img class="post_icon vote_bt downvote_bt" state="empty" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
-                                {{end}}
-                                
-                                <a href="">{{.NumberOfComments}} Comments</a>
-                                <a class="post_share" href="">
-                                <img class="post_icon" src="../images/global/share.png" alt="share">
-                                <p style="margin-left: 1vh;">Share</p>
-                                </a>
-                            </li>
-                            </ul>
-                        </div>
+                                    {{if (eq .MediaUrl "")}}
+                                    <li class="post_content">
+                                        <p>{{.Content}}</p>
+                                    </li>
+                                    {{else}}
+                                    <li class="post_content" style="display: flex; justify-content: center;">
+                                        <img class="post_image" src="{{blobToUrl .MediaUrl}}" alt="post content">
+                                    </li>
+                                    {{end}}
+                                <li class="post_bottom">
+                                    {{if (eq .Vote 1)}}
+                                        <img class="post_icon vote_bt upvote_bt" state="active" src="../images/global/upvote.png" alt="{{.Id}} upvote">
+                                        <p>{{.Score}}</p>
+                                        <img class="post_icon vote_bt downvote_bt" state="empty"  src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
+                                    {{else if (eq .Vote -1)}}
+                                        <img class="post_icon vote_bt upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
+                                        <p>{{.Score}}</p>
+                                        <img class="post_icon vote_bt downvote_bt" state="active" src="../images/global/downvote.png" alt="{{.Id}} downvote">
+                                    {{else}}
+                                        <img class="post_icon vote_bt upvote_bt" state="empty" src="../images/global/empty_upvote.png" alt="{{.Id}} upvote">
+                                        <p>{{.Score}}</p>
+                                        <img class="post_icon vote_bt downvote_bt" state="empty" src="../images/global/empty_downvote.png" alt="{{.Id}} downvote">
+                                    {{end}}
+                                    
+                                    <a href="">{{.NumberOfComments}} Comments</a>
+                                    <a class="post_share" href="">
+                                    <img class="post_icon" src="../images/global/share.png" alt="share">
+                                    <p style="margin-left: 1vh;">Share</p>
+                                    </a>
+                                </li>
+                                </ul>
+                            </div>
+                        {{end}}
                     {{end}}
                 {{ else }}
                     <div id="empty">

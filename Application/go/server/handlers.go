@@ -622,7 +622,7 @@ func ProfilePageHandler(db *SQL.SqlServer) {
 			return
 		}
 
-		posts := db.GetPosts("id_author =" + strconv.Itoa(profilePageVD.Account.Id))
+		posts := db.GetPosts("id_author =" + strconv.Itoa(profilePageVD.Account.Id) + " ORDER BY creation_date DESC")
 		for _, post := range posts {
 			profilePageVD.Posts = append(profilePageVD.Posts, db.MakeDisplayablePost(post, IAM))
 		}
