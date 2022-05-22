@@ -299,7 +299,12 @@ func (sqlServ SqlServer) GetPostCreationTest(account_id int) []PostCreationTest 
 
 		}
 
-		res = append(res, PostCreationTest{sub, role, access})
+		isBan := false
+		if sqlServ.RowExists("is_ban", "id_account="+strconv.Itoa(account_id)+" AND id_subject="+strconv.Itoa(sub.Id)) {
+			isBan = true
+		}
+
+		res = append(res, PostCreationTest{sub, role, access, isBan})
 	}
 
 	return res

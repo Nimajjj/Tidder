@@ -207,6 +207,7 @@ func (sqlServ SqlServer) GenerateUserRoleAccess(idSubject int, idUser int) RoleA
 
 	if !sqlServ.RowExists("has_subject_role", "id_account="+strconv.Itoa(idUser)+" AND id_subject="+strconv.Itoa(idSubject)) {
 		role.Id = -1
+		role.Name = "User"
 		res.Role = role
 		return res
 	}

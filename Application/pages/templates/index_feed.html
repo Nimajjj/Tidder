@@ -1,9 +1,8 @@
 {{ define "content" }}
     <script type="text/javascript" src="/scripts/upvote.js" defer></script>
     <div id="posts">
-
-
         {{ range .IndexVD.Posts }}
+          {{ if not .Redacted }}
             <div class="post">
               <ul>
                 <li class="post_upper" onclick="location.href='/post/{{.Id}}'">
@@ -49,7 +48,7 @@
                 </a>
               </ul>
             </div>
+          {{end}}
         {{end}}
-
-      </div>
+    </div>
 {{ end }}

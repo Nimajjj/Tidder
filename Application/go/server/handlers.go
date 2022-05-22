@@ -3,7 +3,6 @@ package server
 import (
 	"encoding/base64"
 	"encoding/json"
-	"fmt"
 	"html/template"
 	"io"
 	"mime/multipart"
@@ -307,10 +306,6 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		subtidder.Subscribed = db.IsSubscribeTo(IAM, subtidder.Sub.Id)
 		viewData.SubtidderVD = subtidder
 
-		fmt.Println("RoleToCreate : ", fetchQuery.RoleToCreate)
-		fmt.Println("RoleToDelete : ", fetchQuery.RoleToDelete)
-		fmt.Println("RoleToUpdate : ", fetchQuery.RoleToUpdate)
-
 		err := callTemplate("subtidder", &viewData, w)
 		if err != nil {
 			Util.Error(err)
@@ -541,6 +536,7 @@ func PostHandler(db *SQL.SqlServer) {
 		}
 
 		postVD.Post = db.MakeDisplayablePost(post, IAM)
+		postVD.UserAccess = db.GetPostAccess(IAM, post.IdSubject)
 
 		subs := db.GetSubs("id_subject=" + strconv.Itoa(post.IdSubject))
 		if len(subs) == 0 {
@@ -574,6 +570,11 @@ func PostHandler(db *SQL.SqlServer) {
 
 			IdComment    int `json:"id_comment"`
 			ScoreComment int `json:"score_comment"`
+
+			PostId             string `json:"post_id"`
+			NewPostTextContent string `json:"new_post_text_content"`
+
+			DeletePost string `json:"delete_post"`
 		}
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
@@ -586,6 +587,14 @@ func PostHandler(db *SQL.SqlServer) {
 		}
 		if fetchQuery.IdResponseTo != 0 && fetchQuery.Content != "" && IAM != -1 { // comment a comment
 			db.CreateComment(fetchQuery.Content, IAM, id, strconv.Itoa(fetchQuery.IdResponseTo))
+		}
+
+		if fetchQuery.NewPostTextContent != "" && fetchQuery.PostId != "" {
+			db.UpdatePost(fetchQuery.PostId, fetchQuery.NewPostTextContent)
+		}
+
+		if fetchQuery.DeletePost != "" {
+			db.DeletePost(fetchQuery.DeletePost)
 		}
 
 		err = callTemplate("post_page", &viewData, w)

@@ -258,3 +258,81 @@ func (sqlServ SqlServer) GenerateSubTidderFeed(user int, subtidder int) []Displa
 
 	return res
 }
+
+func (sqlServ SqlServer) UpdatePost(postId string, newPostContent string) {
+	query := "UPDATE tidder.posts SET content = '" + newPostContent + "' WHERE id_post = " + postId
+	sqlServ.executeQuery(query)
+}
+
+func (sqlServ SqlServer) DeletePost(postId string) {
+	query := "UPDATE tidder.posts SET redacted = true WHERE id_post = " + postId
+	sqlServ.executeQuery(query)
+}
+
+func (sqlServ SqlServer) GetPostAccess(IAM int, IdSubject int) SubjectAccess {
+	res := SubjectAccess{}
+	res.ManagePost = 0
+
+	var idOwner int
+	query := "SELECT id_owner FROM tidder.subjects WHERE id_subject = " + strconv.Itoa(IdSubject)
+	rows, err := sqlServ.db.Query(query)
+	if err != nil {
+		Util.Error(err)
+	}
+	for rows.Next() {
+		if err2 := rows.Scan(
+			&idOwner,
+		); err2 != nil {
+			Util.Error(err2)
+		}
+	}
+
+	if idOwner == IAM {
+		res.ManagePost = 1
+		return res
+	}
+
+	if sqlServ.RowExists("has_subject_role", "id_account = "+strconv.Itoa(IAM)+" AND id_subject = "+strconv.Itoa(IdSubject)) {
+		var roleId int
+		query := "SELECT id_subject_role FROM has_subject_role WHERE id_account = " + strconv.Itoa(IAM) + " AND id_subject = " + strconv.Itoa(IdSubject)
+		Util.Query("GetPostAccess", query)
+		rows, err := sqlServ.db.Query(query)
+		if err != nil {
+			Util.Error(err)
+		}
+		for rows.Next() {
+			if err2 := rows.Scan(&roleId); err2 != nil {
+				Util.Error(err2)
+			}
+		}
+
+		var accessId int
+		query = "SELECT id_subject_access FROM subject_roles WHERE id_subject_role = " + strconv.Itoa(roleId)
+		Util.Query("GetPostAccess", query)
+		rows, err = sqlServ.db.Query(query)
+		if err != nil {
+			Util.Error(err)
+		}
+		for rows.Next() {
+			if err2 := rows.Scan(&accessId); err2 != nil {
+				Util.Error(err2)
+			}
+		}
+
+		query = "SELECT manage_post FROM subject_access WHERE id_subject_access = " + strconv.Itoa(accessId)
+		Util.Query("GetPostAccess", query)
+		rows, err = sqlServ.db.Query(query)
+		if err != nil {
+			Util.Error(err)
+		}
+		for rows.Next() {
+			if err2 := rows.Scan(
+				&res.ManagePost,
+			); err2 != nil {
+				Util.Error(err2)
+			}
+		}
+	}
+
+	return res
+}

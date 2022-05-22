@@ -1,6 +1,7 @@
 {{ define "content" }}
 <script type="text/javascript" src="/scripts/comments.js" defer></script>
 <script type="text/javascript" src="/scripts/upvote.js" defer></script>
+<script type="text/javascript" src="/scripts/edit_post.js" defer></script>
 <link rel="stylesheet" href="../style/components/comments.css">
 
 <div id="post_content">
@@ -12,18 +13,30 @@
                     <p>t/{{.PostVD.Post.SubtidderName}}</p>
                 </a>
                 <p>Published by <a href="/u/{{.PostVD.Post.AuthorName}}">u/{{.PostVD.Post.AuthorName}}</a> {{.PostVD.Post.CreationDate}} </p>
+                {{if not .PostVD.Post.Redacted}}
+                    {{ if or (eq .Account.Name .PostVD.Post.AuthorName) (hasAccess .PostVD.UserAccess "manage_post") }}
+                        <img id="edit_post" src="/images/global/edit.png" alt="edit" onclick="EditPost()">
+                        <img id="delete_post" src="/images/global/trash-can.png" alt="delete" onclick="DeletePost()">
+                    {{ end }}
+                {{end}}
             </li>
             <li class="post_title">
-                <h2>{{.PostVD.Post.Title}}</h2>
+                {{if .PostVD.Post.Redacted}}
+                    <h2>[REDACTED]</h2>
+                {{else}}
+                    <h2>{{.PostVD.Post.Title}}</h2>
+                {{end}}
             </li>
-            <li class="post_content">
-                <p>{{.PostVD.Post.Content}}</p>
-            </li>
-            {{if (ne .PostVD.Post.MediaUrl "")}}
-                <li class="post_content" style="display: flex; justify-content: center;">
-                    <img src="{{blobToUrl .PostVD.Post.MediaUrl}}" alt="post content">
+            {{if not .PostVD.Post.Redacted}}
+                <li class="post_content">
+                    <p id="post_text_content">{{.PostVD.Post.Content}}</p>
                 </li>
-            {{end}}
+                {{if (ne .PostVD.Post.MediaUrl "")}}
+                    <li class="post_content media_container" style="display: flex; justify-content: center;">
+                        <img src="{{blobToUrl .PostVD.Post.MediaUrl}}" alt="post content">
+                    </li>
+                {{end}}
+            
 
             <li class="post_bottom">
                 {{if (eq .PostVD.Post.Vote 1)}}
@@ -46,24 +59,26 @@
                     <p style="margin-left: 1vh;">Share</p>
                 </a>
             </li>
+            {{end}}
             </a>
         </ul>
     </div>
     <div class="post post_page" id="comment_section">
         <h2>Comments :</h2>
         {{ if .Connected }}
-            <form method="post" name="create_comment">
-                <textarea name="comment_content" id="comment_content" rows="5"></textarea>
-                <div id="submit_bt" class="button" onClick="document.forms['create_comment'].submit();">
-                    <p>Submit</p>
-                </div>
-            </form>
-        {{ end }}
+            {{if not .PostVD.Post.Redacted}}
+                <form method="post" name="create_comment">
+                    <textarea name="comment_content" id="comment_content" rows="5"></textarea>
+                    <div id="submit_bt" class="button" onClick="document.forms['create_comment'].submit();">
+                        <p>Submit</p>
+                    </div>
+                </form>
+            {{ end }}
+        {{end}}
 
         {{ range .PostVD.Comments }}
             {{ .PrintComment }}
         {{ end }}
-
     </div>
 </div>
 

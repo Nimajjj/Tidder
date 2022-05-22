@@ -121,6 +121,7 @@ type PostCreationTest struct {
 	Sub        Subject
 	UserRole   SubjectRoles
 	UserAccess SubjectAccess
+	IsBan      bool
 }
 
 // ViewData
@@ -214,9 +215,10 @@ type CreatePostsVD struct {
 }
 
 type PostVD struct {
-	Post      DisplayablePost
-	Subtidder Subject
-	Comments  []DisplayableComment
+	Post       DisplayablePost
+	Subtidder  Subject
+	Comments   []DisplayableComment
+	UserAccess SubjectAccess
 }
 
 type ProfilePageVD struct {

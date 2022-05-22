@@ -6,10 +6,12 @@
         <select name="subtidder" id="post_subtidder_select">
             <option value="-1">Which Subtidder ?</option>
             {{range .CreatePostsVD.PostCreation}}
-                {{ if and (eq .UserRole.Id -1) (eq .Sub.CanCreatePost 1)}}
-                    <option value="{{.Sub.Id}}">t/{{.Sub.Name}}</option>
-                {{ else if (eq .UserAccess.CreatePost 1) }}
-                    <option value="{{.Sub.Id}}">t/{{.Sub.Name}}</option>
+                {{ if not .IsBan }}
+                    {{ if and (eq .UserRole.Id -1) (eq .Sub.CanCreatePost 1)}}
+                        <option value="{{.Sub.Id}}">t/{{.Sub.Name}}</option>
+                    {{ else if (eq .UserAccess.CreatePost 1) }}
+                        <option value="{{.Sub.Id}}">t/{{.Sub.Name}}</option>
+                    {{ end }}
                 {{ end }}
             {{end}}
         </select>
