@@ -636,6 +636,37 @@ func ProfilePageHandler(db *SQL.SqlServer) {
 
 		viewData.ProfilePageVD = profilePageVD
 
+		if r.Method == "POST" {
+			var media string
+			file, header, err := r.FormFile("media_file")
+			if header != nil { // if header != nil then there is a file
+				defer func(file multipart.File) {
+					err := file.Close()
+					if err != nil {
+						Util.Error(err)
+					}
+				}(file)
+			}
+			if err != nil {
+				if err != http.ErrMissingFile {
+					Util.Error(err)
+				}
+			} else {
+				media = "data:" + header.Header.Get("Content-Type") + ";base64," // file to base64
+
+				bytes, err := io.ReadAll(file)
+				if err != nil {
+					Util.Error(err)
+				}
+
+				media += base64.StdEncoding.EncodeToString(bytes)
+			}
+
+			if media != "" {
+				db.ChangeProfilePicture(media, profilePageVD.Account.Id)
+			}
+		}
+
 		err := callTemplate("profile_page", &viewData, w)
 		if err != nil {
 			Util.Error(err)

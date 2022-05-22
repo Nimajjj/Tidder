@@ -177,3 +177,8 @@ func (sqlServ SqlServer) SubscribeToSubject(idAccount int, idSubject int) {
 		Util.Log("User id " + strconv.Itoa(idAccount) + " unsubscribed from subject id " + strconv.Itoa(idSubject))
 	}
 }
+
+func (sqlServ SqlServer) ChangeProfilePicture(media string, idAccount int) {
+	query := "UPDATE accounts SET profile_picture = \"" + media + "\" WHERE id_account = " + strconv.Itoa(idAccount)
+	sqlServ.executeQuery(query)
+}
