@@ -575,6 +575,8 @@ func PostHandler(db *SQL.SqlServer) {
 			NewPostTextContent string `json:"new_post_text_content"`
 
 			DeletePost string `json:"delete_post"`
+
+			PostToPin string `json:"post_to_pin"`
 		}
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
@@ -595,6 +597,10 @@ func PostHandler(db *SQL.SqlServer) {
 
 		if fetchQuery.DeletePost != "" {
 			db.DeletePost(fetchQuery.DeletePost)
+		}
+
+		if fetchQuery.PostToPin != "" {
+			db.PinPost(fetchQuery.PostToPin)
 		}
 
 		err = callTemplate("post_page", &viewData, w)
@@ -622,7 +628,7 @@ func ProfilePageHandler(db *SQL.SqlServer) {
 			return
 		}
 
-		posts := db.GetPosts("id_author =" + strconv.Itoa(profilePageVD.Account.Id))
+		posts := db.GetPosts("id_author =" + strconv.Itoa(profilePageVD.Account.Id) + " ORDER BY creation_date DESC")
 		for _, post := range posts {
 			profilePageVD.Posts = append(profilePageVD.Posts, db.MakeDisplayablePost(post, IAM))
 		}

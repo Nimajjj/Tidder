@@ -80,3 +80,45 @@ function DeletePost() {
           })
     }
 }
+
+function PinPost(e) {
+  let state = e.getAttribute("state");
+
+  if (state == "true") {  // unpin
+    e.classList.remove("pinned");
+    e.setAttribute("state", "false");
+  } else {                // pin
+    e.classList.add("pinned");
+    e.setAttribute("state", "true");
+  }
+
+  let url = window.location.href
+  let count = 0
+  for (let i = 0; i < url.length; i++) {
+      if (count != 2) {
+          if (url[i] == "/") {
+              count += 1
+          }
+          url = url.substring(i + 1);
+      }
+  }
+  url = url.substring(1);
+
+
+  fetch(location.pathname, {
+    method: "post",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  
+    //make sure to serialize your JSON body
+    body: JSON.stringify({
+      "post_to_pin": url,
+    })
+  }).then(() => {
+    window.location.reload();
+  })
+}
+
+// update pin icon
+document.querySelector("#pin_post").getAttribute("state") == "true" ? document.querySelector("#pin_post").classList.add("pinned") : null;
