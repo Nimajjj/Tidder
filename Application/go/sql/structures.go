@@ -80,11 +80,11 @@ type Posts struct {
 type SubjectAccess struct {
 	Id         int `json:"id_subject_access"`
 	CreatePost int `json:"create_post"`
-	PinPost    int `json:"pin_post"`
+	Pin        int `json:"pin_post"`
 	ManagePost int `json:"manage_post"`
 	BanUser    int `json:"ban_user"`
 	ManageRole int `json:"manage_role"`
-	GiveRole   int `json:"give_role"`
+	ManageSub  int `json:"manage_subtidder"`
 }
 
 type SubjectRoles struct {

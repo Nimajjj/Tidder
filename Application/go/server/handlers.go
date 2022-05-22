@@ -3,6 +3,7 @@ package server
 import (
 	"encoding/base64"
 	"encoding/json"
+	"fmt"
 	"html/template"
 	"io"
 	"mime/multipart"
@@ -60,6 +61,39 @@ func callTemplate(templateName string, viewdata *SQL.MasterVD, w http.ResponseWr
 	funcMap := template.FuncMap{
 		"blobToUrl": func(u string) template.URL {
 			return template.URL(u)
+		},
+		"hasAccess": func(access SQL.SubjectAccess, accessList string) bool {
+			accessSplit := strings.Split(accessList, ",")
+			for _, a := range accessSplit {
+				fmt.Println(a)
+				switch a {
+				case "pin_post":
+					if access.Pin == 1 {
+						return true
+					}
+				case "create_post":
+					if access.CreatePost == 1 {
+						return true
+					}
+				case "manage_post":
+					if access.ManagePost == 1 {
+						return true
+					}
+				case "manage_subject":
+					if access.ManageSub == 1 {
+						return true
+					}
+				case "manage_role":
+					if access.ManageRole == 1 {
+						return true
+					}
+				case "ban_user":
+					if access.BanUser == 1 {
+						return true
+					}
+				}
+			}
+			return false
 		},
 	}
 
@@ -138,6 +172,7 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		}
 		subtidder.Sub = subs[0]
 		subtidder.Roles = db.GenerateRoleAccess(subtidder.Sub.Id)
+		subtidder.UserRole = db.GenerateUserRoleAccess(subtidder.Sub.Id, IAM)
 
 		if r.Method == "POST" {
 			if true {
@@ -236,10 +271,6 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
 
-		Util.Log("RoleToCreate: " + fetchQuery.RoleToCreate)
-		Util.Log("RoleToDelete: " + fetchQuery.RoleToDelete)
-		Util.Log("RoleToUpdate: " + fetchQuery.RoleToUpdate)
-
 		// VOTES //
 		if fetchQuery.IdPost != 0 && fetchQuery.Score != 0 && IAM != -1 {
 			db.Vote(fetchQuery.IdPost, fetchQuery.Score, IAM)
@@ -255,32 +286,31 @@ func SubtidderHandler(db *SQL.SqlServer) {
 		}
 
 		if fetchQuery.BannedChanges != "" {
-			Util.Log("BannedChanges")
 			db.ChangeBanned(subtidder.Sub.Id, fetchQuery.BannedChanges)
 		}
 
 		if fetchQuery.RoleToCreate != "" {
-			Util.Log("RoleToCreate")
 			db.CreateRole(subtidder.Sub.Id, fetchQuery.RoleToCreate)
 		}
 
 		if fetchQuery.RoleToDelete != "" {
-			Util.Log("RoleToDelete")
 			db.DeleteRole(subtidder.Sub.Id, fetchQuery.RoleToDelete)
 		}
 
 		if fetchQuery.RoleToUpdate != "" {
-			Util.Log("RoleToUpdate")
 			db.UpdateRole(subtidder.Sub.Id, fetchQuery.RoleToUpdate)
 		}
 
 		if fetchQuery.RoleAtribution != "" {
-			Util.Log("RoleAtribution")
 			db.ChangeRoleAtribution(subtidder.Sub.Id, fetchQuery.RoleAtribution)
 		}
 
 		subtidder.Subscribed = db.IsSubscribeTo(IAM, subtidder.Sub.Id)
 		viewData.SubtidderVD = subtidder
+
+		fmt.Println("RoleToCreate : ", fetchQuery.RoleToCreate)
+		fmt.Println("RoleToDelete : ", fetchQuery.RoleToDelete)
+		fmt.Println("RoleToUpdate : ", fetchQuery.RoleToUpdate)
 
 		err := callTemplate("subtidder", &viewData, w)
 		if err != nil {

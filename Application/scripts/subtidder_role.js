@@ -9,14 +9,14 @@ class Role {
 }
 
 class Access {
-    constructor(id, create, pin, remove, ban, manage, give) {
+    constructor(id, create, pin, remove, ban, manage, sub) {
         this.id = id;
         this.create = create;
         this.pin = pin;
         this.remove = remove;
         this.ban = ban;
         this.manage = manage;
-        this.give = give;
+        this.sub = sub;
     }
 }
 
@@ -60,10 +60,10 @@ function CreateRow() {
     manageInput.setAttribute('type', 'checkbox');
     manageCol.appendChild(manageInput);
 
-    let giveCol = document.createElement('td');
-    let giveInput = document.createElement('input');
-    giveInput.setAttribute('type', 'checkbox');
-    giveCol.appendChild(giveInput);
+    let subCol = document.createElement('td');
+    let subInput = document.createElement('input');
+    subInput.setAttribute('type', 'checkbox');
+    subCol.appendChild(subInput);
 
     let removeCol2 = document.createElement('td');
     let p = document.createElement('p');
@@ -79,7 +79,7 @@ function CreateRow() {
     tr.appendChild(removeCol);
     tr.appendChild(banCol);
     tr.appendChild(manageCol);
-    tr.appendChild(giveCol);
+    tr.appendChild(subCol);
     tr.appendChild(removeCol2);
 
     insertBefore(tr, table.querySelector('#create_role'));
@@ -111,6 +111,7 @@ function getRoles() {
 
         if (id == "-1") {
             role.name = "User"
+            access.create = row.querySelector(':nth-child(2)').firstChild.checked;
             role.access = access;
             role.id = id;
             i++;
@@ -125,7 +126,7 @@ function getRoles() {
         access.remove = row.querySelector(':nth-child(4)').firstChild.checked;
         access.ban = row.querySelector(':nth-child(5)').firstChild.checked;
         access.manage = row.querySelector(':nth-child(6)').firstChild.checked;
-        access.give = row.querySelector(':nth-child(7)').firstChild.checked;
+        access.sub = row.querySelector(':nth-child(7)').firstChild.checked;
 
         role.access = access;
         role.id = id;
@@ -148,11 +149,6 @@ function UpdateRoles() {
     let toCreateArr = [];
     let toDeleteArr = [];
 
-    console.log("Before\nrolesWhenInit : ");
-    printArr(rolesWhenInit);
-    console.log("newRoles : ");
-    printArr(newRoles);
-
     for (let i = 0; i < rolesWhenInit.length; i++) {
         let role = rolesWhenInit[i];
         let stillExist = false;
@@ -165,7 +161,7 @@ function UpdateRoles() {
             if (role.id == newRole.id) {
                 stillExist = true;
                 if (!compareRoles(role, newRole)) { // toChange
-                    toChange += newRole.id + "," + newRole.name + "," + newRole.access.create + "," + newRole.access.pin + "," + newRole.access.remove + "," + newRole.access.ban + "," + newRole.access.manage + "," + newRole.access.give + ";";
+                    toChange += newRole.id + "," + newRole.name + "," + newRole.access.create + "," + newRole.access.pin + "," + newRole.access.remove + "," + newRole.access.ban + "," + newRole.access.manage + "," + newRole.access.sub + ";";
                 }
                 delete newRoles[j];
                 delete rolesWhenInit[i];
@@ -178,20 +174,10 @@ function UpdateRoles() {
         }
     }
 
-    console.log("After\nrolesWhenInit : ");
-    printArr(rolesWhenInit);
-    console.log("newRoles : ");
-    printArr(newRoles);
-
-
     newRoles.forEach(function (newRole) {   // toCreate
         if (newRole == null) {return;}
-        toCreate += newRole.id + "," + newRole.name + "," + newRole.access.create + "," + newRole.access.pin + "," + newRole.access.remove + "," + newRole.access.ban + "," + newRole.access.manage + "," + newRole.access.give + ";"; 
+        toCreate += newRole.id + "," + newRole.name + "," + newRole.access.create + "," + newRole.access.pin + "," + newRole.access.remove + "," + newRole.access.ban + "," + newRole.access.manage + "," + newRole.access.sub + ";"; 
     })
-
-    console.log("\ntoChange :", toChange);
-    console.log("toCreate :", toCreate);
-    console.log("toDelete :", toDelete);
     
     fetch(location.pathname, {
         method: "post",
@@ -215,7 +201,7 @@ function compareRoles(roleA, roleB) {
     if (roleA.id != roleB.id) {
         return false;
     } else {
-        if (roleA.name != roleB.name || roleA.access.create != roleB.access.create || roleA.access.pin != roleB.access.pin || roleA.access.remove != roleB.access.remove || roleA.access.ban != roleB.access.ban || roleA.access.manage != roleB.access.manage || roleA.access.give != roleB.access.give) {
+        if (roleA.name != roleB.name || roleA.access.create != roleB.access.create || roleA.access.pin != roleB.access.pin || roleA.access.remove != roleB.access.remove || roleA.access.ban != roleB.access.ban || roleA.access.manage != roleB.access.manage || roleA.access.sub != roleB.access.sub) {
             return false;
         }
     }

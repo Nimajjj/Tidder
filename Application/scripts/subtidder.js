@@ -72,46 +72,52 @@ let textarea = document.querySelector("#textarea_info")
 let submit = document.querySelector("#submit_info")
 let cancel = document.querySelector("#cancel_info")
 
-edit.addEventListener('click', event => {
-  textarea.style.display = "block"
-  submit.style.display = "block"
-  cancel.style.display = "block"
-  edit.style.display = "none"
-  info.style.display = "none"
-
-  textarea.value = info.innerHTML
-})
-
-submit.addEventListener('click', event => {
-  info.innerHTML = textarea.value
-
-  textarea.style.display = "none"
-  submit.style.display = "none"
-  cancel.style.display = "none"
-  edit.style.display = "block"
-  info.style.display = "block"
-
-  fetch(location.pathname, {
-    method: "post",
-    headers: {
-      'Content-Type': 'application/json'
-    },
+if (edit != null) {
+  edit.addEventListener('click', event => {
+    textarea.style.display = "block"
+    submit.style.display = "block"
+    cancel.style.display = "block"
+    edit.style.display = "none"
+    info.style.display = "none"
   
-    //make sure to serialize your JSON body
-    body: JSON.stringify({
-      "info": info.innerHTML,
+    textarea.value = info.innerHTML
+  })
+  
+}
+
+if (submit != null) {
+  submit.addEventListener('click', event => {
+    info.innerHTML = textarea.value
+
+    textarea.style.display = "none"
+    submit.style.display = "none"
+    cancel.style.display = "none"
+    edit.style.display = "block"
+    info.style.display = "block"
+
+    fetch(location.pathname, {
+      method: "post",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    
+      //make sure to serialize your JSON body
+      body: JSON.stringify({
+        "info": info.innerHTML,
+      })
     })
   })
-})
+}
 
-cancel.addEventListener('click', event => {
-  textarea.style.display = "none"
-  submit.style.display = "none"
-  cancel.style.display = "none"
-  edit.style.display = "block"
-  info.style.display = "block"
-})
-
+if (cancel != null) {
+  cancel.addEventListener('click', event => {
+    textarea.style.display = "none"
+    submit.style.display = "none"
+    cancel.style.display = "none"
+    edit.style.display = "block"
+    info.style.display = "block"
+  })
+}
 
 function readURL(input, what) {
   if (input.files && input.files[0]) {

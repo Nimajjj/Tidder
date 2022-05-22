@@ -293,25 +293,36 @@ func (sqlServ SqlServer) GenerateAccountSubscribed(idSubject int) []AccountSubsc
 		defaultRole := SubjectRoles{}
 
 		if sqlServ.RowExists("has_subject_role", "id_account="+strconv.Itoa(account.Id)+" AND id_subject="+strconv.Itoa(idSubject)) {
-			query = "SELECT * FROM has_subject_role WHERE id_account=" + strconv.Itoa(account.Id) + " AND id_subject=" + strconv.Itoa(idSubject)
+			query = "SELECT id_subject_role FROM has_subject_role WHERE id_account=" + strconv.Itoa(account.Id) + " AND id_subject=" + strconv.Itoa(idSubject)
 			Util.Query("GenerateBannedAccountList", query)
 			rows, err = sqlServ.db.Query(query)
 			if err != nil {
 				Util.Error(err)
 			}
 			for rows.Next() {
-				var idAccount int
-				var idSubject int
 				var idRole int
 				if err2 := rows.Scan(
-					&idAccount,
-					&idSubject,
 					&idRole,
 				); err2 != nil {
 					Util.Error(err2)
 				}
 				defaultRole.Id = idRole
 				break
+			}
+
+			query = "SELECT name, id_subject_access FROM subject_roles WHERE id_subject=" + strconv.Itoa(idSubject) + " AND id_subject_role=" + strconv.Itoa(defaultRole.Id)
+			Util.Query("GenerateBannedAccountList", query)
+			rows, err = sqlServ.db.Query(query)
+			if err != nil {
+				Util.Error(err)
+			}
+			for rows.Next() {
+				if err2 := rows.Scan(
+					&defaultRole.Name,
+					&defaultRole.IdSubjectAccess,
+				); err2 != nil {
+					Util.Error(err2)
+				}
 			}
 		} else {
 			defaultRole.Id = -1

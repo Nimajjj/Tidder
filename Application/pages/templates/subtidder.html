@@ -25,7 +25,7 @@
             <div id="posts_tab" class="sub_tab" onclick="SwitchTab('posts')">Posts</div>
             <div id="infos_tab" class="sub_tab" onclick="SwitchTab('infos')">Infos</div>
             <div id="admin_tab" class="sub_tab" style="display: block;" onclick="SwitchTab('admin')">
-                {{ if (eq .Account.Id .SubtidderVD.Sub.IdOwner) }}
+                {{ if or (eq .Account.Id .SubtidderVD.Sub.IdOwner) (hasAccess .SubtidderVD.UserRole.Access "manage_subject,manage_role,ban_user") }}
                     Administration
                 {{ end }}
             </div>
@@ -37,7 +37,7 @@
                     <div class="post infos">
                         <h3>{{.SubtidderVD.Sub.Name}}'s infos :</h3><br>
                         <p id="info">{{.SubtidderVD.Sub.Infos}}</p>
-                        {{ if (eq .Account.Id .SubtidderVD.Sub.IdOwner) }}
+                        {{ if or (eq .Account.Id .SubtidderVD.Sub.IdOwner) (hasAccess .SubtidderVD.UserRole.Access "manage_subject") }}
                             <textarea name="textarea_info" id="textarea_info" rows="5" style="display: none; width: 100%;"></textarea>
                             <img id="edit_info" class="edit_icon" src="/images/global/edit.png" alt="edit icon">
                             <div id="submit_info" class="button highlight_bt" style="display: none;">
@@ -70,11 +70,13 @@
                                     <img id="profile_img" src="{{blobToUrl .SubtidderVD.Sub.ProfilePicture}}" alt="profile picture">
                                     <input type="file" name="pp_input" id="pp_input" accept=".png, .jpg, .jpeg" onchange="readURL(this, 'profile_img')">
                                 </li>
-                                <li>
-                                    <div id="submit_admin" class="button highlight_bt" onClick="document.forms['sub_admin'].submit().then(hystory.go(0));">
-                                        <p>Submit</p>
-                                    </div>
-                                </li>
+                                {{ if or (eq .Account.Id .SubtidderVD.Sub.IdOwner) (hasAccess .SubtidderVD.UserRole.Access "manage_subject") }}
+                                    <li>
+                                        <div id="submit_admin" class="role_bt" onClick="document.forms['sub_admin'].submit().then(hystory.go(0));" style="width: fit-content; padding: 0 2vw;">
+                                            <p style="width: 100%;">Submit</p>
+                                        </div>
+                                    </li>
+                                {{ end }}
                             </ul>
 
                             <table style="display: none;" id="admin_roles">
@@ -85,7 +87,7 @@
                                     <th>Moderate post</th>
                                     <th>Ban user</th>
                                     <th>Manage role</th>
-                                    <th>Give role</th>
+                                    <th>Manage subtidder</th>
                                 </tr>
                                 <tr id="role_-1" class="role_row">
                                     <td>User</td>
@@ -96,24 +98,28 @@
                                     <tr id="role_{{.Role.Id}}" class="role_row">
                                         <td><input type="text" placeholder="Role Name" value="{{.Role.Name}}"></td>
                                         <td><input type="checkbox" {{if eq .Access.CreatePost 1}} checked {{end}}></td>
-                                        <td><input type="checkbox" {{if eq .Access.PinPost 1}} checked {{end}}></td>
+                                        <td><input type="checkbox" {{if eq .Access.Pin 1}} checked {{end}}></td>
                                         <td><input type="checkbox" {{if eq .Access.ManagePost 1}} checked {{end}}></td>
                                         <td><input type="checkbox" {{if eq .Access.BanUser 1}} checked {{end}}></td>
                                         <td><input type="checkbox" {{if eq .Access.ManageRole 1}} checked {{end}}></td>
-                                        <td><input type="checkbox" {{if eq .Access.GiveRole 1}} checked {{end}}></td>
-                                        <td class="remove_row" style="color: red;" onclick="removeRow(this)">X</td>
+                                        <td><input type="checkbox" {{if eq .Access.ManageSub 1}} checked {{end}}></td>
+                                        {{ if or (eq $.Account.Id $.SubtidderVD.Sub.IdOwner) (hasAccess $.SubtidderVD.UserRole.Access "manage_role") }}
+                                            <td class="remove_row" style="color: red;" onclick="removeRow(this)">X</td>
+                                        {{ end }}
                                     </tr>
                                 {{ end }}
-                                <tr id="create_role">
-                                    <td class="role_bt" onclick="AddRoleRow()">
-                                        <p style="width: 100%;">Create Role</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="role_bt" onclick="UpdateRoles()">
-                                        <p style="width: 100%;">Submit</p>
-                                    </td>
-                                </tr>
+                                {{ if or (eq .Account.Id .SubtidderVD.Sub.IdOwner) (hasAccess .SubtidderVD.UserRole.Access "manage_role") }}
+                                    <tr id="create_role">
+                                        <td class="role_bt" onclick="AddRoleRow()">
+                                            <p style="width: 100%;">Create Role</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="role_bt" onclick="UpdateRoles()">
+                                            <p style="width: 100%;">Submit</p>
+                                        </td>
+                                    </tr>
+                                {{ end }}
                             </table>
 
                             <table style="display: none;" id="admin_users">
@@ -130,23 +136,35 @@
                                         {{ if (ne .Account.Id $.SubtidderVD.Sub.IdOwner) }}
                                             <td>
                                                 <select name="user_role" class="select_role">
-                                                    <option value="-1">User</option> 
-                                                    {{range $.SubtidderVD.Roles}}
-                                                        <option value="{{.Role.Id}}"  {{if eq .Role.Id $user.Role.Id}} selected {{end}}>{{.Role.Name}}</option>
-                                                    {{end}}
+                                                    {{ if eq .Account.Name $.Account.Name }}
+                                                        <option value="{{$.SubtidderVD.UserRole.Role.Id}}">{{$.SubtidderVD.UserRole.Role.Name}}</option>
+                                                    {{ else }}
+                                                        {{ if or (eq $.Account.Id $.SubtidderVD.Sub.IdOwner) (hasAccess $.SubtidderVD.UserRole.Access "manage_role") }}
+                                                            <option value="-1">User</option> 
+                                                            {{ range $.SubtidderVD.Roles }}
+                                                                <option value="{{.Role.Id}}"  {{if eq .Role.Id $user.Role.Id}} selected {{end}}>{{.Role.Name}}</option>
+                                                            {{ end }}
+                                                        {{ else }}
+                                                                <option value="{{.Role.Id}}" >{{.Role.Name}}</option>
+                                                        {{ end}}
+                                                    {{ end }}
                                                 </select>
                                             </td>
-                                            <td>
-                                                <input type="checkbox" class="ban_checkbox" ban="{{.Banned}}" name="{{.Account.Id}}" {{if .Banned}} checked {{end}}>
-                                            </td>
+                                            {{ if or (eq $.Account.Id $.SubtidderVD.Sub.IdOwner) (hasAccess $.SubtidderVD.UserRole.Access "ban_user") }}
+                                                <td>
+                                                    <input type="checkbox" class="ban_checkbox" ban="{{.Banned}}" name="{{.Account.Id}}" {{if .Banned}} checked {{end}}>
+                                                </td>
+                                            {{ end }}
                                         {{ end }}
                                     </tr>
                                 {{ end }}
-                                <tr>
-                                    <td class="role_bt" onclick="UpdateUser()">
-                                        <p style="width: 100%;">Submit</p>
-                                    </td>
-                                </tr>
+                                {{ if or (eq $.Account.Id $.SubtidderVD.Sub.IdOwner) (hasAccess $.SubtidderVD.UserRole.Access "manage_role,ban_user")}}
+                                    <tr>
+                                        <td class="role_bt" onclick="UpdateUser()">
+                                            <p style="width: 100%;">Submit</p>
+                                        </td>
+                                    </tr>
+                                {{ end }}
                             </table>
                         </form>
                     </div>

@@ -16,6 +16,9 @@ import (
 */
 func Log(text string) {
 	logs := time.Now().Format("01-02-2006 15:04:05") + " \tDEBUG\t\t" + text
+	if len(logs) > 255 {
+		logs = logs[:255] + "..."
+	}
 	registerLog(logs)
 	fmt.Println(logs)
 }
@@ -28,12 +31,18 @@ func Log(text string) {
 */
 func Error(err error) {
 	logs := time.Now().Format("01-02-2006 15:04:05") + " \tERROR /!\\\t\t" + err.Error()
+	if len(logs) > 512 {
+		logs = logs[:512] + "..."
+	}
 	registerLog(logs)
 	fmt.Println(logs)
 }
 
 func Warning(text string) {
 	logs := time.Now().Format("01-02-2006 15:04:05") + " \tWARNING\t\t" + text
+	if len(logs) > 255 {
+		logs = logs[:255] + "..."
+	}
 	registerLog(logs)
 	fmt.Println(logs)
 }
@@ -49,6 +58,9 @@ func Query(function string, querry string) {
 		}
 	}
 	logs := time.Now().Format("01-02-2006 15:04:05") + " \tQUERRY\t" + function + "\t" + querry
+	if len(logs) > 255 {
+		logs = logs[:255] + "..."
+	}
 	registerLog(logs)
 	fmt.Println(logs)
 }

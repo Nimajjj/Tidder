@@ -17,7 +17,7 @@ func (sqlServ SqlServer) CreateRole(idSubject int, data string) {
 		}
 		roleName := access[1]
 
-		query := "INSERT INTO subject_access (create_post, pin_post, manage_post, ban_user, manage_role, give_role) VALUES ("
+		query := "INSERT INTO subject_access (create_post, pin_post, manage_post, ban_user, manage_role, manage_subtidder) VALUES ("
 		for i, acc := range access {
 			if i > 1 {
 				query += acc
@@ -52,7 +52,7 @@ func (sqlServ SqlServer) UpdateRole(idSubject int, data string) {
 		roleId := access[0]
 		roleName := access[1]
 
-		query := "UPDATE subject_roles SET name='" + roleName + "'"
+		query := "UPDATE subject_roles SET name='" + roleName + "'" + " WHERE id_subject_role=" + roleId + " AND id_subject=" + strconv.Itoa(idSubject)
 		sqlServ.executeQuery(query)
 
 		var accessId int
@@ -77,7 +77,7 @@ func (sqlServ SqlServer) UpdateRole(idSubject int, data string) {
 				case 6:
 					query += " manage_role="
 				case 7:
-					query += " give_role="
+					query += " manage_subtidder="
 				}
 				query += acc
 				if i != len(access)-1 {
@@ -192,4 +192,37 @@ func (sqlServ SqlServer) RowExists(table string, conditions string) bool {
 		return true
 	}
 	return false
+}
+
+func (sqlServ SqlServer) GenerateUserRoleAccess(idSubject int, idUser int) RoleAccess {
+	res := RoleAccess{}
+	role := SubjectRoles{}
+	access := SubjectAccess{}
+
+	if !sqlServ.RowExists("has_subject_role", "id_account="+strconv.Itoa(idUser)+" AND id_subject="+strconv.Itoa(idSubject)) {
+		role.Id = -1
+		res.Role = role
+		return res
+	}
+
+	query := "SELECT id_subject_role FROM has_subject_role WHERE id_account=" + strconv.Itoa(idUser) + " AND id_subject=" + strconv.Itoa(idSubject)
+	var idRole int
+	if err := sqlServ.db.QueryRow(query).Scan(&idRole); err != nil {
+		Util.Error(err)
+	}
+
+	query = "SELECT * FROM subject_roles WHERE id_subject_role=" + strconv.Itoa(idRole)
+	if err := sqlServ.db.QueryRow(query).Scan(&role.Id, &role.Name, &role.IdSubject, &role.IdSubjectAccess); err != nil {
+		Util.Error(err)
+	}
+
+	query = "SELECT * FROM subject_access WHERE id_subject_access=" + strconv.Itoa(role.IdSubjectAccess)
+	if err := sqlServ.db.QueryRow(query).Scan(&access.Id, &access.CreatePost, &access.Pin, &access.ManagePost, &access.BanUser, &access.ManageRole, &access.ManageSub); err != nil {
+		Util.Error(err)
+	}
+
+	res.Role = role
+	res.Access = access
+
+	return res
 }
