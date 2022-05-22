@@ -1,5 +1,6 @@
 {{ define "content" }}
     <script type="text/javascript" src="/scripts/upvote.js" defer></script>
+    <link rel="stylesheet" href="../../style/pages/modif_index.css">
     <div id="posts">
 
 
@@ -22,7 +23,7 @@
                     </li>
                   {{else}}
                     <li class="post_content" style="display: flex; justify-content: center;" onclick="location.href='/post/{{.Id}}'">
-                      <img src="{{blobToUrl .MediaUrl}}" alt="post content">
+                      <img class="post_image" src="{{blobToUrl .MediaUrl}}" alt="post content">
                     </li>
                   {{end}}
                 <li class="post_bottom">
