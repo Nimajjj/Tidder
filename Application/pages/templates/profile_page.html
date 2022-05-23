@@ -9,8 +9,10 @@
     <div id="first_block">
         <form method="post" id="profile_picture" name="profile_picture" enctype="multipart/form-data">
             <img id="default_png" src="{{blobToUrl .ProfilePageVD.Account.ProfilePicture}}"/>
-            <p>Change profile picture :</p>
-            <input type="file" name="media_file" id="media_file" accept=".png, .jpg, .jpeg, .gif" onchange="readURL(this)"/>
+            {{ if (eq .ProfilePageVD.Account.Id .Account.Id) }}
+                <p>Change profile picture :</p>
+                <input type="file" name="media_file" id="media_file" accept=".png, .jpg, .jpeg, .gif" onchange="readURL(this)"/>
+            {{ end }}
         </form>
         <div id="info_account">
             <ul>
