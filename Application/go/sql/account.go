@@ -45,6 +45,11 @@ func (sqlServ SqlServer) GetAccount(conditions string) []Accounts {
 			Util.Error(err2)
 		}
 		account := Accounts{id, name, email, hashed_password, birth_date, creation_date, karma, profile_picture, student_id}
+
+		if account.ProfilePicture == "default.png" || account.ProfilePicture == "default" {
+			account.ProfilePicture = DefaultPP()
+		}
+
 		result = append(result, account)
 	}
 
@@ -96,6 +101,11 @@ func (sqlServ SqlServer) GetAccountByName(name string) Accounts {
 		Util.Error(err)
 		account.Id = -1
 	}
+
+	if account.ProfilePicture == "default.png" || account.ProfilePicture == "default" {
+		account.ProfilePicture = DefaultPP()
+	}
+
 	return account
 }
 

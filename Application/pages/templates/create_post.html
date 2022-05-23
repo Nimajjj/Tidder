@@ -21,12 +21,13 @@
         <textarea name="content" id="content" placeholder="Write something here..." rows="12" cols="35"></textarea>
         
         <div id="bt_container">
-            <div id="submit_bt" class="button highlight_bt" onClick="document.forms['create_post'].submit();">
-                <p>Submit</p>
-            </div>
             <div id="previous_bt" class="button" onclick="location.href='/'">
                 <p>Previous</p>
             </div>
+            <div id="submit_bt" class="button highlight_bt" onClick="document.forms['create_post'].submit();">
+                <p>Submit</p>
+            </div>
+            
         </div>
         <p id="create_post_error" style="color: #FF4400; font-weight: bold;">{{.Errors.CreatePost}}</p>
     </form>
