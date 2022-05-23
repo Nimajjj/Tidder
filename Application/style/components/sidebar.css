@@ -83,3 +83,59 @@
 #subtidder_menu li a {
     margin-left: 0.5vw;
 }
+
+
+
+#annonce  {
+    margin-left: 1vw;
+    margin-bottom: 1vh;
+    border-radius: 10px;
+    width: 20vw;
+    background-color: #262626;
+}
+
+#slider {
+    position: relative;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+
+#precedent,
+#suivant {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    position: absolute;
+    font-size: 30px;
+    color: rgba(220, 220, 220, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+}
+
+#precedent {
+    left: 0;
+}
+
+#suivant {
+    right: 0;
+}
+
+#slider:hover #precedent,
+#slider:hover #suivant {
+    opacity: 1;
+}
+
+#slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+
+
+
+

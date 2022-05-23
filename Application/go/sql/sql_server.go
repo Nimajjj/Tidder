@@ -39,7 +39,7 @@ type SqlServer struct {
 */
 func (sqlServ *SqlServer) Connect(ip string) {
 	Util.Log("Connecting to @tcp(" + ip + ")/tidder ...")
-	db, err := sql.Open("mysql", "root:B1d78021@tcp("+ip+")/tidder")
+	db, err := sql.Open("mysql", "root:namiChan83@tcp("+ip+")/tidder")
 	if err != nil {
 		Util.Error(err)
 	}

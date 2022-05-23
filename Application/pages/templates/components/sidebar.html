@@ -1,4 +1,5 @@
 {{define "sidebar"}}
+<script type="text/javascript" src="/scripts/annonce.js" defer></script>
 <div id="side_bar">
     {{ if (eq .Page "post") }}
       <div id="subtidder_menu" class="menu">
@@ -17,7 +18,18 @@
       </div>
     {{ end }}
 
-    <div id="main_menu" class="menu">
+  <div id="annonce" class="annonce">
+
+      <div class="container">
+        <div id="slider">
+          <img src="../images/annonce/4.PNG" alt="" id="slide">
+          <div id="precedent" onclick="Carrousel(-1)"><</div>
+          <div id="suivant" onclick="Carrousel(1)">></div>
+        </div>
+      </div>
+  </div>
+
+  <div id="main_menu" class="menu">
       <div class="box">
         <ul>
           <li>
