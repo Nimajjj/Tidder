@@ -4,10 +4,10 @@
     display: none;
 }
 
-#profile_picture{
-    display: flex;
-    flex-direction: column;
-    margin-right:10vh
+#profile_picture {
+
+    margin-right:10vh;
+    flex-wrap: wrap;
 }
 
 #first_block{
@@ -25,8 +25,12 @@
 }
 
 #default_png{
-    border-radius:50vh;
+    border-radius:50%;
+    
     width:8vw;
+    height:8vw;
+
+    object-fit: cover;
 }
 
 #info_account{
@@ -35,29 +39,29 @@
 }
 
 .left_para{
-    font-size:2.8vh
+    font-size:28px
 }
 
 .right_para_up{
     margin-left:6.8vh;
     margin-top:1vh;
-    font-size:2vh;
+    font-size:22px;
 }
 
 .right_para_mid{
     margin-left:5vh;
     margin-top:0.6vh;
-    font-size:2vh;
+    font-size:22px;
 }
 
 .right_para_down{
     margin-left:8.1vh;
     margin-top:0.9vh;
-    font-size:2vh;
+    font-size:22px;
 }
 
 .pseudo{
-    font-size:5vh;
+    font-size:48px;
     position:relative;
     top:5vh;
     padding-left:0.5vw
@@ -85,13 +89,12 @@
 #subtidder_joined{
     border: solid grey 1px;
     width:25vw;
-
 }
 
 .liste_sub li{
     padding-top:2.5vh;
     padding-bottom: 2.5vh;
-    font-size:1.3vw;
+    font-size:18px;
     padding-left:2vw;
 }
 
@@ -134,10 +137,10 @@ ul.list_post {
     flex-direction: row;
 }
 
-#icone_img_subtidder{
-    position:relative;
-    width: 25px;
-    height:25px
+.icone_img_subtidder{
+    border-radius: 50%;
+    width: 48px;
+    height: 48px
 }
 
 #name_subtidder{
@@ -151,4 +154,15 @@ ul.list_post {
     overflow-x:hidden;
     scroll-behavior: smooth;
     height:87.8vh;
+}
+
+.sumbit_bt {
+    width: fit-content;
+    border: solid 1px #F2F2F2;
+    padding: 0 2vw;
+}
+
+.sumbit_bt:hover {
+    cursor: pointer;
+    opacity: 0.8;
 }

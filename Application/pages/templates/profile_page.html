@@ -2,13 +2,16 @@
 <link rel="stylesheet" href="../style/pages/profile_page.css">
 <link rel="stylesheet" href="../style/master.css">
 <link rel="stylesheet" href="../style/pages/subtidder.css">
+<script type="text/javascript" src="/scripts/profile_page.js" defer></script>
+    
 
 <div id="container">
     <div id="first_block">
-        <div id="profile_picture">
-            <img id="default_png"src="../images/profiles/default.png">
-            <button>change profil pic</button>
-        </div>
+        <form method="post" id="profile_picture" name="profile_picture" enctype="multipart/form-data">
+            <img id="default_png" src="{{blobToUrl .ProfilePageVD.Account.ProfilePicture}}"/>
+            <p>Change profile picture :</p>
+            <input type="file" name="media_file" id="media_file" accept=".png, .jpg, .jpeg, .gif" onchange="readURL(this)"/>
+        </form>
         <div id="info_account">
             <ul>
                 <li>
@@ -28,7 +31,7 @@
             <ul class="liste_sub">
                 {{ range .ProfilePageVD.Subtidders }}
                 <li class="icone_subtidder">
-                    <img id="icone_img_subtidder" src="{{blobToUrl .ProfilePicture}}">
+                    <img class="icone_img_subtidder" src="{{blobToUrl .ProfilePicture}}">
                     <a id="name_subtidder" href="/t/{{.Name}}">t/{{.Name}}</a>
                 </li>
                 {{end}}

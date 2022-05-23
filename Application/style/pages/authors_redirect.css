@@ -1,10 +1,19 @@
+.background{
+    background-color:#1A1A1A;
+}
+
+
+
+
 #Laurie{
 
 }
 
 #ben_le_plus_beau{
-    width: 40%;
-    height:10%;
+    width: 35%;
+    position:absolute;
+    left:32%;
+    top:4%
 }
 
 #link_to_authorsimg{
@@ -12,35 +21,29 @@
 }
 
 .list{
-    font-size:2.5vh;
-    padding-bottom:2vh;
-    padding-top:2vh;
+    font-size:3vh;
+    padding-bottom:5vh;
+    padding-top:5vh;
 }
 
-#ben_icone{
-    width: 2vw;
-    height:2vh;
-    padding-right:0.5vw;
+.icone_link {
+    width: 2.8vw;
+    height: 2.8vh;
+    padding-right: 0.5vw;
 }
 
-#maxime_icone{
-    width: 2vw;
-    height:2vh;
-    padding-right:0.5vw;
-}
-
-#laurie_icone{
-    width: 2vw;
-    height:2vh;
-    padding-right:0.5vw;
-}
 
 #maxime{
-    width: 60%;
-    height:40%;
+    width: 50vw;
+    position:absolute;
+    left:24.4%;
+    top:12%;
 }
 
 #laurie_la_clodo{
-    width: 60%;
-    height:10%;
+    width: 38vw;
+    height: 90vh;
+    position:absolute;
+    left:30%;
+    top:5%
 }

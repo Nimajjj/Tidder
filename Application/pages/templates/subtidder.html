@@ -62,7 +62,7 @@
 
                             <ul style="display: block;" id="admin_gen">
                                 <li>
-                                    <p>Banner :</p>
+                                    <p>Banner : (recommended image size 1900x200)</p>
                                     <img id="banner_img" src="{{blobToUrl .SubtidderVD.Sub.Banner}}" alt="banner">
                                     <input type="file" name="banner_input" id="banner_input" accept=".png, .jpg, .jpeg" onchange="readURL(this, 'banner_img')">
                                 </li>
@@ -175,7 +175,7 @@
                 {{ if .SubtidderVD.Posts }}
                     {{ range .SubtidderVD.Posts }}
                         {{ if not .Redacted }}
-                            <div class="post" onclick="location.href='/post/{{.Id}}'">
+                            <div class="post {{if .Pinned}} pinned_post {{end}} " onclick="location.href='/post/{{.Id}}'">
                                 <ul>
                                 <li class="post_upper">
                                     <a class="subreddit_name" href="/t/{{.SubtidderName}}">
@@ -183,6 +183,9 @@
                                         <p>t/{{.SubtidderName}}</p>
                                     </a>
                                     <p>Published by <a href="/u/{{.AuthorName}}">u/{{.AuthorName}}</a> {{.CreationDate}} </p>
+                                    {{if .Pinned}}
+                                        <img src="/images/global/thumbtacks2.png" style="opacity: 0.8;">
+                                    {{end}}
                                 </li>
                                 <li class="post_title">
                                     <h2>{{.Title}}</h2>

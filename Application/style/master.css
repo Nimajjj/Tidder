@@ -98,6 +98,10 @@ body > div {
 	opacity: 1;
 }
 
+#header .profile_container:hover {
+	cursor: pointer;
+}
+
 /* -------------------------- */
 
 

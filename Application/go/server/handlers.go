@@ -353,8 +353,9 @@ func SignupHandler(db *SQL.SqlServer) { // TODO : handle when user is stupid
 		password := r.FormValue("password_input")
 		verifpassword := r.FormValue("passwordverif_input")
 		birthdate := r.FormValue("birthdate_input")
+		cgu := r.FormValue("accept_cgu")
 		if r.Method == "POST" {
-			viewData.Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, verifpassword)
+			viewData.Errors.Signup = db.CreateAccount(pseudo, email, password, birthdate, verifpassword, cgu)
 			if viewData.Errors.Signup == "" {
 				http.Redirect(w, r, "/", http.StatusFound)
 			}
@@ -575,6 +576,8 @@ func PostHandler(db *SQL.SqlServer) {
 			NewPostTextContent string `json:"new_post_text_content"`
 
 			DeletePost string `json:"delete_post"`
+
+			PostToPin string `json:"post_to_pin"`
 		}
 		fetchQuery := &FetchQuery{}
 		json.NewDecoder(r.Body).Decode(fetchQuery)
@@ -595,6 +598,10 @@ func PostHandler(db *SQL.SqlServer) {
 
 		if fetchQuery.DeletePost != "" {
 			db.DeletePost(fetchQuery.DeletePost)
+		}
+
+		if fetchQuery.PostToPin != "" {
+			db.PinPost(fetchQuery.PostToPin)
 		}
 
 		err = callTemplate("post_page", &viewData, w)
@@ -629,6 +636,37 @@ func ProfilePageHandler(db *SQL.SqlServer) {
 		profilePageVD.Subtidders = db.GetSubtiddersSubscribed(profilePageVD.Account.Id)
 
 		viewData.ProfilePageVD = profilePageVD
+
+		if r.Method == "POST" {
+			var media string
+			file, header, err := r.FormFile("media_file")
+			if header != nil { // if header != nil then there is a file
+				defer func(file multipart.File) {
+					err := file.Close()
+					if err != nil {
+						Util.Error(err)
+					}
+				}(file)
+			}
+			if err != nil {
+				if err != http.ErrMissingFile {
+					Util.Error(err)
+				}
+			} else {
+				media = "data:" + header.Header.Get("Content-Type") + ";base64," // file to base64
+
+				bytes, err := io.ReadAll(file)
+				if err != nil {
+					Util.Error(err)
+				}
+
+				media += base64.StdEncoding.EncodeToString(bytes)
+			}
+
+			if media != "" {
+				db.ChangeProfilePicture(media, profilePageVD.Account.Id)
+			}
+		}
 
 		err := callTemplate("profile_page", &viewData, w)
 		if err != nil {

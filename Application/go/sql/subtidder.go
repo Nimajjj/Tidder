@@ -177,6 +177,10 @@ func (sqlServ SqlServer) GetSubtiddersSubscribed(account_id int) []Subject {
 		); err2 != nil {
 			Util.Error(err2)
 		}
+		if pp == "" {
+			pp = DefaultSubtidderPP()
+		}
+
 		sub := Subject{id, name, pp, nsfw, id_owner, infos, banner, canCreatePost}
 		result = append(result, sub)
 	}
