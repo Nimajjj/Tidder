@@ -35,3 +35,21 @@
 .subscribe_bt:hover {
     opacity: 1;
 }
+
+#empty {
+
+}
+
+#empty #create_post_bt {
+    margin-left: 2vw;
+    padding: 1vh 1vw;
+    width: 10vw;
+    border-radius: 9999px;
+    border: 2px solid #148aa6;
+    text-align: center;
+}
+
+#empty #create_post_bt:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}

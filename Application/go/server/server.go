@@ -74,5 +74,5 @@ func launchServer(DatabaseIp string) {
 	CGU(&db)
 	Authors_redirect(&db)
 
-	http.ListenAndServe(":8091", nil)
+	http.ListenAndServe(":80", nil)
 }

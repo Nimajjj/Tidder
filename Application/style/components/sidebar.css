@@ -112,6 +112,7 @@
     color: rgba(220, 220, 220, 0.8);
     background-color: rgba(0, 0, 0, 0.8);
     padding: 10px;
+    user-select: none;
 }
 
 #precedent {
@@ -134,8 +135,15 @@
     border-radius: 10px;
 }
 
-
-
-
-
+#annonce_text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 1vw;
+    width: 100%;
+    background-color: #262626;
+    opacity: 0.65;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
 
