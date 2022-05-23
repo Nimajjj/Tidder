@@ -110,8 +110,14 @@ func HashPassword(password string) string {
 	return hashedPassword
 }
 
-func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, Verif_password string) string {
+func (sqlServ SqlServer) CreateAccount(name string, email string, Password string, Birthdate string, Verif_password string, cgu string) string {
 	error := ""
+
+	if cgu != "on" {
+		error += "You must accept the terms of use to create an account.\n"
+		return error
+	}
+
 	if Verif_password != Password {
 		error += "Password and verification password are different"
 		Util.Warning("Password and verification password are different : " + Password + " != " + Verif_password)
