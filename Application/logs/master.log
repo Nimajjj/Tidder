@@ -1,0 +1,1645 @@
+
+05-23-2022 21:29:39 	DEBUG		Tidder Inc © 2022. Tous droits réservés
+05-23-2022 21:29:39 	DEBUG		Starting server : http://localhost:80
+05-23-2022 21:29:39 	DEBUG		Connecting to @tcp(127.0.0.1)/tidder ...
+05-23-2022 21:29:39 	DEBUG		Connection completed.
+05-23-2022 21:29:54 	ERROR /!\		Error 1049: Unknown database 'tidder2'
+05-23-2022 21:29:54 	ERROR /!\		Error 1049: Unknown database 'tidder2'
+05-23-2022 21:29:54 	ERROR /!\		Error 1049: Unknown database 'tidder2'
+05-23-2022 21:29:54 	ERROR /!\		Error 1049: Unknown database 'tidder2'
+05-23-2022 21:29:54 	ERROR /!\		Error 1049: Unknown database 'tidder2'
+05-23-2022 21:29:54 	ERROR /!\		Error 1049: Unknown database 'tidder2'
+05-23-2022 21:29:54 	ERROR /!\		Error 1049: Unknown database 'tidder2'
+05-23-2022 21:29:54 	ERROR /!\		Error 1049: Unknown database 'tidder2'
+05-23-2022 21:29:54 	ERROR /!\		Error 1049: Unknown database 'tidder2'
+05-23-2022 21:29:54 	ERROR /!\		Error 1049: Unknown database 'tidder2'
+05-23-2022 21:35:22 	DEBUG		Tidder Inc © 2022. Tous droits réservés
+05-23-2022 21:35:22 	DEBUG		Starting server : http://localhost:80
+05-23-2022 21:35:22 	DEBUG		Connecting to @tcp(127.0.0.1)/tidder ...
+05-23-2022 21:35:22 	DEBUG		Connection completed.
+05-23-2022 21:35:25 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 26
+05-23-2022 21:35:25 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =26
+05-23-2022 21:35:25 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 19 OR id_subject = 21 OR id_subject = 23 OR id_subject = 28 OR id_subject = 31 OR id_subject = 32 OR id_subject = 33 OR id_subject = 34 OR id_subject = 35...
+05-23-2022 21:35:25 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 19 OR id_subject = 21 OR id_subject = 23 OR id_subject = 28 OR id_subject = 31 OR id_subject = 32 OR id_subject = 33 OR id_subject = 34 OR id_subject = 35 OR id_subject = 36 OR id...
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 48
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 39
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 47
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 39
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 46
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 38
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 45
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 38
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 44
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 38
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 43
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 38
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 42
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 38
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 41
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 38
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 40
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 33
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 39
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 23
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 38
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 33
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 37
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 33
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 36
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 33
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 35
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 31
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 34
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 31
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 33
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 23
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 32
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 31
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 31
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 31
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 30
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 19
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 28
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 19
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 27
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 23
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 26
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 19
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 25
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 19
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 24
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 19
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 22
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 19
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 21
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 23
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 20
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 23
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 19
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 23
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 18
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 23
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 17
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 19
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 15
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 23
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 14
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 19
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 11
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 21
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 10
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 21
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 9
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 19
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 8
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 19
+05-23-2022 21:35:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 26 AND id_post = 7
+05-23-2022 21:35:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 19
+05-23-2022 21:38:36 	WARNING		Account ID == 0 found ! We have fuckng problem captain !
+05-23-2022 21:38:36 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:40:44 	WARNING		Account ID == 0 found ! We have fuckng problem captain !
+05-23-2022 21:40:55 	WARNING		Account ID == 0 found ! We have fuckng problem captain !
+05-23-2022 21:40:55 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name="Laurie"
+05-23-2022 21:40:55 	QUERRY	GetAccount	SELECT * FROM accounts WHERE email="a"
+05-23-2022 21:40:55 	DEBUG		Password Hash : $2a$04$fZ9jvV15TpTK5CzuzVhXMue0xXtfUr8jsEZGSVP1Eexh.uIZAvHDa
+05-23-2022 21:40:55 	QUERRY	executeQuery	INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("Laurie","a","$2a$04$fZ9jvV15TpTK5CzuzVhXMue0xXtfUr8jsEZGSVP1Eexh.uIZAvHDa","2022-05-03","2022-05-23...
+05-23-2022 21:40:55 	WARNING		Account ID == 0 found ! We have fuckng problem captain !
+05-23-2022 21:40:55 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:40:57 	WARNING		Account ID == 0 found ! We have fuckng problem captain !
+05-23-2022 21:41:01 	WARNING		Account ID == 0 found ! We have fuckng problem captain !
+05-23-2022 21:41:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name = 'Laurie'
+05-23-2022 21:41:01 	DEBUG		New token : 18a71a5f3e5aa32d78a8
+05-23-2022 21:41:01 	QUERRY	executeQuery	INSERT INTO sessions (id_session, id_account, creation_date) VALUES ('18a71a5f3e5aa32d78a8', 35, '2022-05-23 21:41:01')
+05-23-2022 21:41:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:41:01 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 21:41:01 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:41:03 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:41:20 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:41:20 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 21:41:20 	QUERRY	executeQuery	INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw, banner) VALUES ("B1-Ynov-21-22", "", 35, 0, "")
+05-23-2022 21:41:20 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:41:20 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 21:41:20 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 41 ORDER BY creation_date DESC
+05-23-2022 21:41:20 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 21:41:20 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 41
+05-23-2022 21:41:22 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:41:22 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 21:41:22 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:41:22 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:41:22 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 41 ORDER BY creation_date DESC
+05-23-2022 21:41:22 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 21:41:22 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 41
+05-23-2022 21:41:22 	QUERRY	executeQuery	INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES (35,41)
+05-23-2022 21:41:22 	DEBUG		User id 35 subscribed to subject id 41
+05-23-2022 21:41:22 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 41
+05-23-2022 21:45:02 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:45:02 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 21:45:02 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:45:02 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:45:02 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 41 ORDER BY creation_date DESC
+05-23-2022 21:45:02 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 21:45:02 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 21:45:02 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=41
+05-23-2022 21:45:02 	QUERRY	EditInfo	UPDATE subjects SET infos="Subtidder pour la classe de B1 informatique d'Ynov Aix-en-Provence.
+Promo 2021/2022" WHERE id_subject=41
+05-23-2022 21:45:02 	QUERRY	executeQuery	UPDATE subjects SET infos="Subtidder pour la classe de B1 informatique d'Ynov Aix-en-Provence.
+Promo 2021/2022" WHERE id_subject=41
+05-23-2022 21:45:02 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 41
+05-23-2022 21:46:38 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:46:46 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:46:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 21:46:46 	QUERRY	executeQuery	INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw, banner) VALUES ("NamiFanClub", "", 35, 0, "")
+05-23-2022 21:46:46 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:46:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 21:46:46 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 42 ORDER BY creation_date DESC
+05-23-2022 21:46:46 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=42
+05-23-2022 21:46:46 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 42
+05-23-2022 21:46:47 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:46:47 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 21:46:47 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:46:47 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:46:47 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 42 ORDER BY creation_date DESC
+05-23-2022 21:46:47 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=42
+05-23-2022 21:46:47 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 42
+05-23-2022 21:46:47 	QUERRY	executeQuery	INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES (35,42)
+05-23-2022 21:46:47 	DEBUG		User id 35 subscribed to subject id 42
+05-23-2022 21:46:47 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 42
+05-23-2022 21:47:26 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:47:26 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 21:47:26 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:47:26 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:47:26 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 42 ORDER BY creation_date DESC
+05-23-2022 21:47:26 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=42
+05-23-2022 21:47:26 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 21:47:26 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=42
+05-23-2022 21:47:26 	QUERRY	EditInfo	UPDATE subjects SET infos="Subtidder réunissant tous les grands fans du célèbre jolie potit chien : NAMI !" WHERE id_subject=42
+05-23-2022 21:47:26 	QUERRY	executeQuery	UPDATE subjects SET infos="Subtidder réunissant tous les grands fans du célèbre jolie potit chien : NAMI !" WHERE id_subject=42
+05-23-2022 21:47:26 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 42
+05-23-2022 21:47:30 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:47:44 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name="mAxxOU"
+05-23-2022 21:47:44 	QUERRY	GetAccount	SELECT * FROM accounts WHERE email="z"
+05-23-2022 21:47:44 	DEBUG		Password Hash : $2a$04$mBtNWPRAn/Dg9VHObUGkT.6spJ7yPznaBcOkCQ6E05UrOA9pfL476
+05-23-2022 21:47:44 	QUERRY	executeQuery	INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("mAxxOU","z","$2a$04$mBtNWPRAn/Dg9VHObUGkT.6spJ7yPznaBcOkCQ6E05UrOA9pfL476","2022-05-10","2022-05-23...
+05-23-2022 21:47:44 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:47:53 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name = 'mAxxOU'
+05-23-2022 21:47:53 	DEBUG		New token : 952a2d156b796a39b60d
+05-23-2022 21:47:53 	QUERRY	executeQuery	INSERT INTO sessions (id_session, id_account, creation_date) VALUES ('952a2d156b796a39b60d', 36, '2022-05-23 21:47:53')
+05-23-2022 21:47:53 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:47:53 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 21:47:53 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:47:55 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:48:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:48:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="Berserk"
+05-23-2022 21:48:01 	QUERRY	executeQuery	INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw, banner) VALUES ("Berserk", "", 36, 0, "")
+05-23-2022 21:48:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:48:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="Berserk"
+05-23-2022 21:48:01 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 43 ORDER BY creation_date DESC
+05-23-2022 21:48:01 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=43
+05-23-2022 21:48:01 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 43
+05-23-2022 21:48:02 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:48:02 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="Berserk"
+05-23-2022 21:48:02 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:48:02 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:48:02 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 43 ORDER BY creation_date DESC
+05-23-2022 21:48:02 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=43
+05-23-2022 21:48:02 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 43
+05-23-2022 21:48:02 	QUERRY	executeQuery	INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES (36,43)
+05-23-2022 21:48:02 	DEBUG		User id 36 subscribed to subject id 43
+05-23-2022 21:48:02 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 43
+05-23-2022 21:48:52 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:48:52 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="Berserk"
+05-23-2022 21:48:52 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:48:52 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:48:52 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 43 ORDER BY creation_date DESC
+05-23-2022 21:48:52 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=43
+05-23-2022 21:48:52 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=36 
+05-23-2022 21:48:52 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=43
+05-23-2022 21:48:52 	QUERRY	EditInfo	UPDATE subjects SET infos="Berserk since 1989. RIP Kentarō Miura &lt;3" WHERE id_subject=43
+05-23-2022 21:48:52 	QUERRY	executeQuery	UPDATE subjects SET infos="Berserk since 1989. RIP Kentarō Miura &lt;3" WHERE id_subject=43
+05-23-2022 21:48:52 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 43
+05-23-2022 21:48:56 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:48:59 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:48:59 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="Berserk"
+05-23-2022 21:48:59 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 43 ORDER BY creation_date DESC
+05-23-2022 21:48:59 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=43
+05-23-2022 21:48:59 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=36 
+05-23-2022 21:48:59 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=43
+05-23-2022 21:48:59 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 43
+05-23-2022 21:49:03 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:49:08 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:49:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PepePic"
+05-23-2022 21:49:08 	QUERRY	executeQuery	INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw, banner) VALUES ("PepePic", "", 36, 0, "")
+05-23-2022 21:49:08 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:49:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PepePic"
+05-23-2022 21:49:08 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 44 ORDER BY creation_date DESC
+05-23-2022 21:49:08 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=44
+05-23-2022 21:49:08 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 44
+05-23-2022 21:49:09 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:49:09 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PepePic"
+05-23-2022 21:49:09 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:49:09 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:49:09 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 44 ORDER BY creation_date DESC
+05-23-2022 21:49:09 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=44
+05-23-2022 21:49:09 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 44
+05-23-2022 21:49:09 	QUERRY	executeQuery	INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES (36,44)
+05-23-2022 21:49:09 	DEBUG		User id 36 subscribed to subject id 44
+05-23-2022 21:49:09 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 44
+05-23-2022 21:49:43 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 21:49:43 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PepePic"
+05-23-2022 21:49:43 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:49:43 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:49:43 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 44 ORDER BY creation_date DESC
+05-23-2022 21:49:43 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=44
+05-23-2022 21:49:43 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=36 
+05-23-2022 21:49:43 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=44
+05-23-2022 21:49:43 	QUERRY	EditInfo	UPDATE subjects SET infos="Pepe is frog. Frogs are cool. Pepe is cool." WHERE id_subject=44
+05-23-2022 21:49:43 	QUERRY	executeQuery	UPDATE subjects SET infos="Pepe is frog. Frogs are cool. Pepe is cool." WHERE id_subject=44
+05-23-2022 21:49:43 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 44
+05-23-2022 21:51:05 	DEBUG		Tidder Inc © 2022. Tous droits réservés
+05-23-2022 21:51:05 	DEBUG		Starting server : http://localhost:80
+05-23-2022 21:51:05 	DEBUG		Connecting to @tcp(127.0.0.1)/tidder ...
+05-23-2022 21:51:05 	DEBUG		Connection completed.
+05-23-2022 21:51:20 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:51:39 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:52:09 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name="VanilleAdmin"
+05-23-2022 21:52:09 	QUERRY	GetAccount	SELECT * FROM accounts WHERE email="e"
+05-23-2022 21:52:09 	DEBUG		Password Hash : $2a$04$k.nskzUjFA2Q.eo0CSPiBe23QXWN9udT5bs7X0NOBt7k0wF.ZR746
+05-23-2022 21:52:09 	QUERRY	executeQuery	INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("VanilleAdmin","e","$2a$04$k.nskzUjFA2Q.eo0CSPiBe23QXWN9udT5bs7X0NOBt7k0wF.ZR746","2022-05-03","2022...
+05-23-2022 21:52:09 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:52:17 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name = 'VanilleAdmin'
+05-23-2022 21:52:17 	DEBUG		New token : c9952d16fb2dc28c192f
+05-23-2022 21:52:17 	QUERRY	executeQuery	INSERT INTO sessions (id_session, id_account, creation_date) VALUES ('c9952d16fb2dc28c192f', 37, '2022-05-23 21:52:17')
+05-23-2022 21:52:17 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 21:52:17 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 21:52:17 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:52:21 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 21:53:09 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 21:53:09 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 21:53:09 	QUERRY	executeQuery	INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw, banner) VALUES ("AdministrationYnovCampus", "", 37, 0, "")
+05-23-2022 21:53:09 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 21:53:09 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 21:53:09 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 45 ORDER BY creation_date DESC
+05-23-2022 21:53:09 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 21:53:09 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 45
+05-23-2022 21:53:10 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 21:53:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 21:53:10 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:53:10 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:53:10 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 45 ORDER BY creation_date DESC
+05-23-2022 21:53:10 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 21:53:10 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 45
+05-23-2022 21:53:10 	QUERRY	executeQuery	INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES (37,45)
+05-23-2022 21:53:10 	DEBUG		User id 37 subscribed to subject id 45
+05-23-2022 21:53:10 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 45
+05-23-2022 21:54:08 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 21:54:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 21:54:08 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:54:08 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:54:08 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 45 ORDER BY creation_date DESC
+05-23-2022 21:54:08 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 21:54:08 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 21:54:08 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=45
+05-23-2022 21:54:08 	QUERRY	EditInfo	UPDATE subjects SET infos="Toutes les annonces et infos officiels du campus d'Ynov Aix-en-Provence au même endroit !" WHERE id_subject=45
+05-23-2022 21:54:08 	QUERRY	executeQuery	UPDATE subjects SET infos="Toutes les annonces et infos officiels du campus d'Ynov Aix-en-Provence au même endroit !" WHERE id_subject=45
+05-23-2022 21:54:08 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 45
+05-23-2022 21:54:16 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 21:54:25 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 21:54:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 21:54:25 	QUERRY	executeQuery	INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw, banner) VALUES ("BDE-Ynov-Campus", "", 37, 0, "")
+05-23-2022 21:54:25 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 21:54:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 21:54:25 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 21:54:25 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 21:54:25 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 46
+05-23-2022 21:54:41 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 21:54:41 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 21:54:41 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:54:41 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:54:41 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 21:54:41 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 21:54:41 	QUERRY	EditInfo	UPDATE subjects SET infos="Subtidder BDE Official 2021/2022" WHERE id_subject=46
+05-23-2022 21:54:41 	QUERRY	executeQuery	UPDATE subjects SET infos="Subtidder BDE Official 2021/2022" WHERE id_subject=46
+05-23-2022 21:54:41 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 46
+05-23-2022 21:54:46 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:54:59 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name="Nimajjj"
+05-23-2022 21:54:59 	QUERRY	GetAccount	SELECT * FROM accounts WHERE email="t"
+05-23-2022 21:54:59 	DEBUG		Password Hash : $2a$04$i6QahcQsSpAsOT8I8VPgRud0QO39xdiKQy5PgXZOS2XHYp0hXlzZO
+05-23-2022 21:54:59 	QUERRY	executeQuery	INSERT INTO accounts (name, email, hashed_password, birth_date , creation_date , karma , profile_picture) VALUES ("Nimajjj","t","$2a$04$i6QahcQsSpAsOT8I8VPgRud0QO39xdiKQy5PgXZOS2XHYp0hXlzZO","2022-05-03","2022-05-2...
+05-23-2022 21:54:59 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:55:05 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name = 'Nimajjj'
+05-23-2022 21:55:05 	DEBUG		New token : b85ab94996d12ea8eeac
+05-23-2022 21:55:05 	QUERRY	executeQuery	INSERT INTO sessions (id_session, id_account, creation_date) VALUES ('b85ab94996d12ea8eeac', 38, '2022-05-23 21:55:05')
+05-23-2022 21:55:06 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 21:55:06 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 21:55:06 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:56:03 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 21:56:12 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 21:56:12 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 21:56:12 	QUERRY	executeQuery	INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw, banner) VALUES ("PetitesAnnoncesYnovAix", "", 38, 0, "")
+05-23-2022 21:56:13 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 21:56:13 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 21:56:13 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 47 ORDER BY creation_date DESC
+05-23-2022 21:56:13 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=47
+05-23-2022 21:56:13 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 47
+05-23-2022 21:56:39 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 21:56:39 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 21:56:39 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:56:39 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:56:39 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 47 ORDER BY creation_date DESC
+05-23-2022 21:56:39 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=47
+05-23-2022 21:56:39 	QUERRY	EditInfo	UPDATE subjects SET infos="Un canapé à vendre ? Une table dont vous voulez vous débarrasser ? Vous êtes au bon endroit !" WHERE id_subject=47
+05-23-2022 21:56:39 	QUERRY	executeQuery	UPDATE subjects SET infos="Un canapé à vendre ? Une table dont vous voulez vous débarrasser ? Vous êtes au bon endroit !" WHERE id_subject=47
+05-23-2022 21:56:39 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 47
+05-23-2022 21:56:40 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 21:56:40 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 21:56:40 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:56:40 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:56:40 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 47 ORDER BY creation_date DESC
+05-23-2022 21:56:40 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=47
+05-23-2022 21:56:40 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 47
+05-23-2022 21:56:40 	QUERRY	executeQuery	INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES (38,47)
+05-23-2022 21:56:40 	DEBUG		User id 38 subscribed to subject id 47
+05-23-2022 21:56:40 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 47
+05-23-2022 21:56:50 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 21:57:21 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 21:57:21 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="EntraideYnov"
+05-23-2022 21:57:21 	QUERRY	executeQuery	INSERT INTO `subjects` (name, profile_picture, id_owner, nsfw, banner) VALUES ("EntraideYnov", "", 38, 0, "")
+05-23-2022 21:57:21 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 21:57:21 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="EntraideYnov"
+05-23-2022 21:57:21 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 48 ORDER BY creation_date DESC
+05-23-2022 21:57:21 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=48
+05-23-2022 21:57:21 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 48
+05-23-2022 21:57:23 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 21:57:23 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="EntraideYnov"
+05-23-2022 21:57:23 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:57:23 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:57:23 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 48 ORDER BY creation_date DESC
+05-23-2022 21:57:23 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=48
+05-23-2022 21:57:23 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 48
+05-23-2022 21:57:23 	QUERRY	executeQuery	INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES (38,48)
+05-23-2022 21:57:23 	DEBUG		User id 38 subscribed to subject id 48
+05-23-2022 21:57:23 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 48
+05-23-2022 21:58:33 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 21:58:33 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="EntraideYnov"
+05-23-2022 21:58:33 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:58:33 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 21:58:33 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 48 ORDER BY creation_date DESC
+05-23-2022 21:58:33 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=48
+05-23-2022 21:58:33 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=38 
+05-23-2022 21:58:33 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=48
+05-23-2022 21:58:33 	QUERRY	EditInfo	UPDATE subjects SET infos="Tu bloques sur un devoir ? Tu cherches l'aide d'un senior ? C'est le bon endroit pour toi ! (toute filières confondues)" WHERE id_subject=48
+05-23-2022 21:58:33 	QUERRY	executeQuery	UPDATE subjects SET infos="Tu bloques sur un devoir ? Tu cherches l'aide d'un senior ? C'est le bon endroit pour toi ! (toute filières confondues)" WHERE id_subject=48
+05-23-2022 21:58:33 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 48
+05-23-2022 21:58:36 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 21:58:43 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name = 'Laurie'
+05-23-2022 21:58:43 	DEBUG		New token : c21d4b531fe8c8d6cf24
+05-23-2022 21:58:43 	QUERRY	executeQuery	INSERT INTO sessions (id_session, id_account, creation_date) VALUES ('c21d4b531fe8c8d6cf24', 35, '2022-05-23 21:58:43')
+05-23-2022 21:58:43 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:58:43 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 21:58:43 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 21:58:43 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 21:58:47 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:58:47 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name LIKE "%B1%"
+05-23-2022 21:58:47 	QUERRY	GetNumberOfSubscriber	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 21:58:48 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:58:48 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 21:58:48 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 41 ORDER BY creation_date DESC
+05-23-2022 21:58:48 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 21:58:48 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 21:58:48 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=41
+05-23-2022 21:58:48 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 41
+05-23-2022 21:59:36 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:59:36 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 21:59:36 	QUERRY	UpdateSubtidder	UPDATE subjects SET profile_picture='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT0AAAFEEAYAAAAFJjXXAAA1j3pUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHjarZ1pliW3kaX/YxW1BEyGYTkYz+kd9PL7u/BIiqJIStVVysOMyIj3/LkDZncwGCB3...
+05-23-2022 21:59:36 	QUERRY	executeQuery	UPDATE subjects SET profile_picture='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT0AAAFEEAYAAAAFJjXXAAA1j3pUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHjarZ1pliW3kaX/YxW1BEyGYTkYz+kd9PL7u/BIiqJIStVVysOMyIj3/LkDZncwGCB3/u/...
+05-23-2022 21:59:36 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 21:59:36 	QUERRY	UpdateSubtidder	UPDATE subjects SET banner='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlwAAAEyCAYAAAAvCg4HAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhejP0HcB3JmqUJltma7c6sdVW9l4KZ1FprACS01...
+05-23-2022 21:59:36 	QUERRY	executeQuery	UPDATE subjects SET banner='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlwAAAEyCAYAAAAvCg4HAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhejP0HcB3JmqUJltma7c6sdVW9l4KZ1FprACS01lpr...
+05-23-2022 21:59:36 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 21:59:36 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 41 ORDER BY creation_date DESC
+05-23-2022 21:59:36 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 21:59:36 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 21:59:36 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=41
+05-23-2022 21:59:36 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 41
+05-23-2022 21:59:49 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 21:59:49 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 21:59:49 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:00:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:00:01 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:00:01 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:00:01 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("Goku drip !","data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEA3ADcAAD/2wBDAAMCAgMC...
+05-23-2022 22:00:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:00:01 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:00:01 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:00:01 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:00:01 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:00:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:07 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:00:07 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:00:07 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:00:07 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:00:07 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:00:07 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:07 	DEBUG		Vote received: 50 1
+05-23-2022 22:00:07 	QUERRY	executeQuery	UPDATE tidder.posts SET upvotes = upvotes + 1 WHERE id_post = 50
+05-23-2022 22:00:07 	QUERRY	executeQuery	INSERT INTO vote_to (id_post, id_account, vote) VALUES (50, 35, 1)
+05-23-2022 22:00:08 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:00:08 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:00:08 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:00:34 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:00:34 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:00:34 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:00:34 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("Notre dernière soirée !","data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEA3ADcAA...
+05-23-2022 22:00:34 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:00:34 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:00:34 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:00:34 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:00:34 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:00:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:34 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:00:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:36 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:00:36 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:00:36 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:00:36 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:00:36 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:00:36 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:36 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:00:36 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:36 	DEBUG		Vote received: 51 1
+05-23-2022 22:00:36 	QUERRY	executeQuery	UPDATE tidder.posts SET upvotes = upvotes + 1 WHERE id_post = 51
+05-23-2022 22:00:36 	QUERRY	executeQuery	INSERT INTO vote_to (id_post, id_account, vote) VALUES (51, 35, 1)
+05-23-2022 22:00:37 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:00:37 	QUERRY	GetAccountByName	SELECT * FROM accounts WHERE name = "Laurie"
+05-23-2022 22:00:37 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_author =35 ORDER BY creation_date DESC
+05-23-2022 22:00:37 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:00:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:37 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:00:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:37 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:00:37 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:00:55 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:00:55 	QUERRY	GetAccountByName	SELECT * FROM accounts WHERE name = "Laurie"
+05-23-2022 22:00:55 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_author =35 ORDER BY creation_date DESC
+05-23-2022 22:00:55 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:00:55 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:55 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:00:55 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:55 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:00:55 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:00:55 	QUERRY	executeQuery	UPDATE accounts SET profile_picture = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIAHAAcAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgo...
+05-23-2022 22:00:57 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:00:57 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 22:00:57 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 41 ORDER BY creation_date DESC
+05-23-2022 22:00:57 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:00:57 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:57 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:00:57 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:57 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 22:00:57 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 22:00:57 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=41
+05-23-2022 22:00:57 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 41
+05-23-2022 22:00:58 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:00:58 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=51
+05-23-2022 22:00:58 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:00:58 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:00:58 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=41
+05-23-2022 22:01:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:01:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 22:01:01 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 41 ORDER BY creation_date DESC
+05-23-2022 22:01:01 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:01:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:01 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:01:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:01 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 22:01:01 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 22:01:01 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=41
+05-23-2022 22:01:01 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 41
+05-23-2022 22:01:12 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:01:12 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:01:12 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:01:26 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:01:26 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:01:26 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:01:26 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("TOUTE LA CLASSE","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlwAAAEyCAYAA...
+05-23-2022 22:01:26 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:01:26 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:01:26 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:01:26 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:01:26 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:01:26 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:26 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:01:26 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:26 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:01:26 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:27 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:01:27 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=52
+05-23-2022 22:01:27 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:01:27 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:27 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=41
+05-23-2022 22:01:28 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:01:28 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=52
+05-23-2022 22:01:28 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:01:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=41
+05-23-2022 22:01:28 	QUERRY	executeQuery	UPDATE tidder.posts SET pinned = NOT pinned WHERE id_post = 52
+05-23-2022 22:01:28 	ERROR /!\		write tcp 127.0.0.1:80->127.0.0.1:2423: wsasend: An established connection was aborted by the software in your host machine.
+05-23-2022 22:01:28 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:01:28 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=52
+05-23-2022 22:01:28 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:01:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=41
+05-23-2022 22:01:29 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:01:29 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 22:01:29 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 41 ORDER BY creation_date DESC
+05-23-2022 22:01:29 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:01:29 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:29 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:01:29 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:29 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:01:29 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:29 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 22:01:29 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 22:01:29 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=41
+05-23-2022 22:01:29 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 41
+05-23-2022 22:01:51 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:01:51 	QUERRY	GetAccountByName	SELECT * FROM accounts WHERE name = "Laurie"
+05-23-2022 22:01:51 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_author =35 ORDER BY creation_date DESC
+05-23-2022 22:01:51 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:01:51 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:51 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:01:51 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:51 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:01:51 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:01:51 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:01:51 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:01:52 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:01:52 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 22:01:52 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 42 ORDER BY creation_date DESC
+05-23-2022 22:01:52 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=42
+05-23-2022 22:01:52 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 22:01:52 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=42
+05-23-2022 22:01:52 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 42
+05-23-2022 22:02:19 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:02:19 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 22:02:19 	QUERRY	UpdateSubtidder	UPDATE subjects SET profile_picture='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQ...
+05-23-2022 22:02:19 	QUERRY	executeQuery	UPDATE subjects SET profile_picture='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFB...
+05-23-2022 22:02:19 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 22:02:19 	QUERRY	UpdateSubtidder	UPDATE subjects SET banner='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEA3ADcAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQU...
+05-23-2022 22:02:19 	QUERRY	executeQuery	UPDATE subjects SET banner='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEA3ADcAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQ...
+05-23-2022 22:02:19 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 22:02:19 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 42 ORDER BY creation_date DESC
+05-23-2022 22:02:19 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=42
+05-23-2022 22:02:19 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 22:02:19 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=42
+05-23-2022 22:02:19 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 42
+05-23-2022 22:02:42 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:02:42 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 22:02:42 	QUERRY	UpdateSubtidder	UPDATE subjects SET banner='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEA3ADcAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQU...
+05-23-2022 22:02:42 	QUERRY	executeQuery	UPDATE subjects SET banner='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEA3ADcAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQ...
+05-23-2022 22:02:42 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 22:02:42 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 42 ORDER BY creation_date DESC
+05-23-2022 22:02:42 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=42
+05-23-2022 22:02:42 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 22:02:42 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=42
+05-23-2022 22:02:42 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 42
+05-23-2022 22:02:46 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:02:46 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:02:46 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:03:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:03:01 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:03:01 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:03:01 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("Petit tour de voiture dans la Dodge Charger 69 dans le Var ","data:image/jpeg...
+05-23-2022 22:03:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:03:01 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:03:01 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:03:01 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:03:01 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 53
+05-23-2022 22:03:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:03:01 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:03:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:03:01 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:03:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:03:01 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:03:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:03:04 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:03:04 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 22:03:04 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 42 ORDER BY creation_date DESC
+05-23-2022 22:03:04 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 53
+05-23-2022 22:03:04 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:03:04 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=42
+05-23-2022 22:03:04 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 22:03:04 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=42
+05-23-2022 22:03:04 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 42
+05-23-2022 22:03:06 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:03:06 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:03:06 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:03:20 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:03:20 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:03:20 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:03:20 	WARNING		Creating post failed : post name <Petite visite chez le vétérinaire à Six-Fours. Tout le monde l'aime là-bas, évidemment. Elle a même eu le droit à une friandise.> is longer than 125 characters.
+05-23-2022 22:03:20 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:03:20 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:03:20 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:03:20 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:03:20 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 53
+05-23-2022 22:03:20 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:03:20 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:03:20 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:03:20 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:03:20 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:03:20 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:03:20 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:03:30 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:03:30 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="NamiFanClub"
+05-23-2022 22:03:30 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 42 ORDER BY creation_date DESC
+05-23-2022 22:03:30 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 53
+05-23-2022 22:03:30 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:03:30 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=42
+05-23-2022 22:03:30 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 22:03:30 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=42
+05-23-2022 22:03:30 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 35 AND id_subject = 42
+05-23-2022 22:03:33 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:03:33 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:03:33 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:03:41 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:03:41 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:03:41 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:03:41 	WARNING		Creating post failed : post name <Petite visite chez le vétérinaire à Six-Fours. Tout le monde l'aime là-bas, évidemment. Elle a même eu le droit à une friandise.> is longer than 125 characters.
+05-23-2022 22:03:41 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:03:41 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:03:41 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:03:41 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:03:41 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 53
+05-23-2022 22:03:41 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:03:41 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:03:41 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:03:41 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:03:41 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:03:41 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:03:41 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:03:51 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:03:51 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:03:51 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:04:06 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:04:06 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:04:06 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:04:06 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("Petite visite chez le vétérinaire à Six-Fours","data:image/jpeg;base64,/9j...
+05-23-2022 22:04:06 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:04:06 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:04:06 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:04:06 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:04:06 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 54
+05-23-2022 22:04:06 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:06 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 53
+05-23-2022 22:04:06 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:06 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:04:06 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:06 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:04:06 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:06 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:04:06 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:07 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:04:07 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=54
+05-23-2022 22:04:07 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 54
+05-23-2022 22:04:07 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:07 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=42
+05-23-2022 22:04:10 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:04:10 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:04:10 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:04:10 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:04:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 54
+05-23-2022 22:04:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 53
+05-23-2022 22:04:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:04:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:04:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:04:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:16 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:04:16 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:04:16 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:04:16 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:04:16 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 54
+05-23-2022 22:04:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:16 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 53
+05-23-2022 22:04:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:16 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:04:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:16 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:04:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:16 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:04:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:16 	DEBUG		Vote received: 54 1
+05-23-2022 22:04:16 	QUERRY	executeQuery	UPDATE tidder.posts SET upvotes = upvotes + 1 WHERE id_post = 54
+05-23-2022 22:04:16 	QUERRY	executeQuery	INSERT INTO vote_to (id_post, id_account, vote) VALUES (54, 35, 1)
+05-23-2022 22:04:17 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:04:17 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =35
+05-23-2022 22:04:17 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 42
+05-23-2022 22:04:17 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 42  ORDER BY creation_date DESC
+05-23-2022 22:04:17 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 54
+05-23-2022 22:04:17 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:17 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 53
+05-23-2022 22:04:17 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:17 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 52
+05-23-2022 22:04:17 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:17 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 51
+05-23-2022 22:04:17 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:17 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 50
+05-23-2022 22:04:17 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:17 	DEBUG		Vote received: 53 1
+05-23-2022 22:04:17 	QUERRY	executeQuery	UPDATE tidder.posts SET upvotes = upvotes + 1 WHERE id_post = 53
+05-23-2022 22:04:17 	QUERRY	executeQuery	INSERT INTO vote_to (id_post, id_account, vote) VALUES (53, 35, 1)
+05-23-2022 22:04:23 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 35
+05-23-2022 22:04:23 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=54
+05-23-2022 22:04:23 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 35 AND id_post = 54
+05-23-2022 22:04:23 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:23 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=42
+05-23-2022 22:04:37 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 22:04:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:04:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:04:43 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name = 'mAxxOU'
+05-23-2022 22:04:43 	DEBUG		New token : b43393ed3073aa302b88
+05-23-2022 22:04:43 	QUERRY	executeQuery	INSERT INTO sessions (id_session, id_account, creation_date) VALUES ('b43393ed3073aa302b88', 36, '2022-05-23 22:04:43')
+05-23-2022 22:04:43 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:04:43 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:04:43 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:04:43 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 43 OR id_subject = 44  ORDER BY creation_date DESC
+05-23-2022 22:04:46 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:04:46 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:04:46 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:04:49 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:04:49 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name LIKE "%ber%"
+05-23-2022 22:04:49 	QUERRY	GetNumberOfSubscriber	SELECT * FROM subscribe_to_subject WHERE id_subject=43
+05-23-2022 22:04:50 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:04:50 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="Berserk"
+05-23-2022 22:04:50 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 43 ORDER BY creation_date DESC
+05-23-2022 22:04:50 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=43
+05-23-2022 22:04:50 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=36 
+05-23-2022 22:04:50 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=43
+05-23-2022 22:04:50 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 43
+05-23-2022 22:05:10 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:05:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="Berserk"
+05-23-2022 22:05:10 	QUERRY	UpdateSubtidder	UPDATE subjects SET profile_picture='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQ...
+05-23-2022 22:05:10 	QUERRY	executeQuery	UPDATE subjects SET profile_picture='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFB...
+05-23-2022 22:05:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="Berserk"
+05-23-2022 22:05:10 	QUERRY	UpdateSubtidder	UPDATE subjects SET banner='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQU...
+05-23-2022 22:05:10 	QUERRY	executeQuery	UPDATE subjects SET banner='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQ...
+05-23-2022 22:05:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="Berserk"
+05-23-2022 22:05:10 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 43 ORDER BY creation_date DESC
+05-23-2022 22:05:10 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=43
+05-23-2022 22:05:10 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=36 
+05-23-2022 22:05:10 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=43
+05-23-2022 22:05:10 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 43
+05-23-2022 22:05:27 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:05:27 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:05:27 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:05:44 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:05:44 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:05:44 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:05:44 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("Repose en paix Kentaro Miura","data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYAB...
+05-23-2022 22:05:44 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:05:44 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:05:44 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:05:44 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 43 OR id_subject = 44  ORDER BY creation_date DESC
+05-23-2022 22:05:44 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 55
+05-23-2022 22:05:44 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:05:48 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:05:48 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:05:48 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:06:06 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:06:06 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:06:06 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:06:06 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("Chapitre 363 berserk","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX4AAAD4...
+05-23-2022 22:06:06 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:06:06 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:06:06 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:06:06 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 43 OR id_subject = 44  ORDER BY creation_date DESC
+05-23-2022 22:06:06 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 56
+05-23-2022 22:06:06 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:06:06 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 55
+05-23-2022 22:06:06 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:06:27 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:06:27 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:06:27 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:06:29 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:06:29 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name LIKE "%pepe%"
+05-23-2022 22:06:29 	QUERRY	GetNumberOfSubscriber	SELECT * FROM subscribe_to_subject WHERE id_subject=44
+05-23-2022 22:06:30 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:06:30 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PepePic"
+05-23-2022 22:06:30 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 44 ORDER BY creation_date DESC
+05-23-2022 22:06:30 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=44
+05-23-2022 22:06:30 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=36 
+05-23-2022 22:06:30 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=44
+05-23-2022 22:06:30 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 44
+05-23-2022 22:06:52 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:06:52 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PepePic"
+05-23-2022 22:06:52 	QUERRY	UpdateSubtidder	UPDATE subjects SET profile_picture='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARQAAADcCAYAAACxvF4UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAMPQSURBVHhe7F0FmB5F0l4sthvBHeJZd3ffzW50...
+05-23-2022 22:06:52 	QUERRY	executeQuery	UPDATE subjects SET profile_picture='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARQAAADcCAYAAACxvF4UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAMPQSURBVHhe7F0FmB5F0l4sthvBHeJZd3ffzW50Ixt...
+05-23-2022 22:06:52 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PepePic"
+05-23-2022 22:06:52 	QUERRY	UpdateSubtidder	UPDATE subjects SET banner='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEA3ADcAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQU...
+05-23-2022 22:06:52 	QUERRY	executeQuery	UPDATE subjects SET banner='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEA3ADcAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQ...
+05-23-2022 22:06:52 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PepePic"
+05-23-2022 22:06:52 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 44 ORDER BY creation_date DESC
+05-23-2022 22:06:52 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=44
+05-23-2022 22:06:52 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=36 
+05-23-2022 22:06:52 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=44
+05-23-2022 22:06:52 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 44
+05-23-2022 22:07:17 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:07:17 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:07:17 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:07:26 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:07:26 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:07:26 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:07:26 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("Pokémon but did it like pepe","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgA...
+05-23-2022 22:07:26 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:07:26 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:07:26 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:07:26 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 43 OR id_subject = 44  ORDER BY creation_date DESC
+05-23-2022 22:07:26 	ERROR /!\		Error 1040: Too many connections
+05-23-2022 22:07:26 	ERROR /!\		Error 1040: Too many connections
+05-23-2022 22:07:26 	ERROR /!\		Error 1040: Too many connections
+05-23-2022 22:07:26 	ERROR /!\		Error 1040: Too many connections
+05-23-2022 22:07:26 	ERROR /!\		Error 1040: Too many connections
+05-23-2022 22:07:26 	ERROR /!\		Error 1040: Too many connections
+05-23-2022 22:07:26 	ERROR /!\		Error 1040: Too many connections
+05-23-2022 22:07:27 	ERROR /!\		Error 1040: Too many connections
+05-23-2022 22:07:27 	ERROR /!\		Error 1040: Too many connections
+05-23-2022 22:07:27 	ERROR /!\		Error 1040: Too many connections
+05-23-2022 22:07:34 	DEBUG		Tidder Inc © 2022. Tous droits réservés
+05-23-2022 22:07:35 	DEBUG		Starting server : http://localhost:80
+05-23-2022 22:07:35 	DEBUG		Connecting to @tcp(127.0.0.1)/tidder ...
+05-23-2022 22:07:35 	DEBUG		Connection completed.
+05-23-2022 22:07:36 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:07:36 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:07:36 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:07:36 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 43 OR id_subject = 44  ORDER BY creation_date DESC
+05-23-2022 22:07:36 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 57
+05-23-2022 22:07:36 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:07:36 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 56
+05-23-2022 22:07:36 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:07:36 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 55
+05-23-2022 22:07:36 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:07:39 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:07:39 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PepePic"
+05-23-2022 22:07:39 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 44 ORDER BY creation_date DESC
+05-23-2022 22:07:39 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 57
+05-23-2022 22:07:39 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:07:39 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=44
+05-23-2022 22:07:39 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=36 
+05-23-2022 22:07:39 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=44
+05-23-2022 22:07:39 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 36 AND id_subject = 44
+05-23-2022 22:07:43 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:07:43 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:07:43 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:07:57 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:07:57 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:07:57 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:07:57 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("GO TO THE BATTLEFIELD!!!!!!","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA...
+05-23-2022 22:07:57 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:07:57 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:07:57 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:07:57 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 43 OR id_subject = 44  ORDER BY creation_date DESC
+05-23-2022 22:07:57 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 58
+05-23-2022 22:07:57 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:07:57 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 57
+05-23-2022 22:07:57 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:07:57 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 56
+05-23-2022 22:07:57 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:07:57 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 55
+05-23-2022 22:07:57 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:07:59 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:07:59 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=58
+05-23-2022 22:07:59 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 58
+05-23-2022 22:07:59 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:07:59 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=44
+05-23-2022 22:08:39 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 36
+05-23-2022 22:08:39 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =36
+05-23-2022 22:08:39 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 43 OR id_subject = 44
+05-23-2022 22:08:39 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 43 OR id_subject = 44  ORDER BY creation_date DESC
+05-23-2022 22:08:39 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 58
+05-23-2022 22:08:39 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:08:39 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 57
+05-23-2022 22:08:39 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:08:39 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 56
+05-23-2022 22:08:39 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:08:39 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 36 AND id_post = 55
+05-23-2022 22:08:39 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:08:46 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 22:08:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:08:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:08:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:08:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:08:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:08:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:08:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:08:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:08:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:08:56 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name = 'VanilleAdmin'
+05-23-2022 22:08:56 	DEBUG		New token : 256af1bddfedf2f3d3fd
+05-23-2022 22:08:56 	QUERRY	executeQuery	INSERT INTO sessions (id_session, id_account, creation_date) VALUES ('256af1bddfedf2f3d3fd', 37, '2022-05-23 22:08:56')
+05-23-2022 22:08:56 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:08:56 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:08:56 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45
+05-23-2022 22:08:56 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 45  ORDER BY creation_date DESC
+05-23-2022 22:09:03 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:09:03 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name LIKE "%admi%"
+05-23-2022 22:09:03 	QUERRY	GetNumberOfSubscriber	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 22:09:04 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:09:04 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 22:09:04 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 45 ORDER BY creation_date DESC
+05-23-2022 22:09:04 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 22:09:04 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:09:04 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=45
+05-23-2022 22:09:04 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 45
+05-23-2022 22:09:29 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:09:29 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 22:09:29 	QUERRY	UpdateSubtidder	UPDATE subjects SET profile_picture='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAl0AAAJdCAYAAAAIgsIrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAIdUAACHVAQSctJ0AAKgLSURBVHhe7d0HYBRF3wZwkktv9N4EpFpQeu8d...
+05-23-2022 22:09:29 	QUERRY	executeQuery	UPDATE subjects SET profile_picture='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAl0AAAJdCAYAAAAIgsIrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAIdUAACHVAQSctJ0AAKgLSURBVHhe7d0HYBRF3wZwkktv9N4EpFpQeu8dVEA...
+05-23-2022 22:09:29 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 22:09:29 	QUERRY	UpdateSubtidder	UPDATE subjects SET banner='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlwAAADjCAYAAABQH8o5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7F0FYBVH1+3/eYt7gru7u7tL0RYpLqVQpC0tb...
+05-23-2022 22:09:29 	QUERRY	executeQuery	UPDATE subjects SET banner='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlwAAADjCAYAAABQH8o5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7F0FYBVH1+3/eYt7gru7u7tL0RYpLqVQpC0tbXFp...
+05-23-2022 22:09:29 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 22:09:29 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 45 ORDER BY creation_date DESC
+05-23-2022 22:09:29 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 22:09:29 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:09:29 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=45
+05-23-2022 22:09:29 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 45
+05-23-2022 22:09:40 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:09:40 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:09:40 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45
+05-23-2022 22:10:05 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:05 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:10:05 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45
+05-23-2022 22:10:06 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("DE L'AMOUR DANS L'AIR","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7sAAAO...
+05-23-2022 22:10:06 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:06 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:10:06 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45
+05-23-2022 22:10:06 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 45  ORDER BY creation_date DESC
+05-23-2022 22:10:06 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 59
+05-23-2022 22:10:06 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:10:07 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:07 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=59
+05-23-2022 22:10:07 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 59
+05-23-2022 22:10:07 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:10:07 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=45
+05-23-2022 22:10:21 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:21 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:10:21 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45
+05-23-2022 22:10:39 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:39 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:10:39 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45
+05-23-2022 22:10:39 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("FOCUS CHALLENGE 48H ADIDAS X AIX YNOV CAMPUS","data:image/png;base64,iVBORw0K...
+05-23-2022 22:10:40 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:40 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:10:40 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45
+05-23-2022 22:10:40 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 45  ORDER BY creation_date DESC
+05-23-2022 22:10:40 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 60
+05-23-2022 22:10:40 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:10:40 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 59
+05-23-2022 22:10:40 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:10:41 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:41 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=60
+05-23-2022 22:10:41 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 60
+05-23-2022 22:10:41 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:10:41 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=45
+05-23-2022 22:10:43 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:43 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:10:43 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45
+05-23-2022 22:10:43 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 45  ORDER BY creation_date DESC
+05-23-2022 22:10:43 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 60
+05-23-2022 22:10:43 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:10:43 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 59
+05-23-2022 22:10:43 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:10:54 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:54 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=60
+05-23-2022 22:10:54 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 60
+05-23-2022 22:10:54 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:10:54 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=45
+05-23-2022 22:10:56 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:56 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name LIKE "%BDE%"
+05-23-2022 22:10:56 	QUERRY	GetNumberOfSubscriber	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:10:58 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:58 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:10:58 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 22:10:58 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:10:58 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 46
+05-23-2022 22:10:59 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:10:59 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:10:59 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:10:59 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:10:59 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 22:10:59 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:10:59 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 46
+05-23-2022 22:10:59 	QUERRY	executeQuery	INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES (37,46)
+05-23-2022 22:10:59 	DEBUG		User id 37 subscribed to subject id 46
+05-23-2022 22:10:59 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 46
+05-23-2022 22:11:28 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:11:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:11:28 	QUERRY	UpdateSubtidder	UPDATE subjects SET profile_picture='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAs8AAALPCAYAAACdci23AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAIdUAACHVAQSctJ0AAP+lSURBVHhe7J0FYFRX9sZ3txAX4sESnHbl3+5u...
+05-23-2022 22:11:28 	QUERRY	executeQuery	UPDATE subjects SET profile_picture='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAs8AAALPCAYAAACdci23AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAIdUAACHVAQSctJ0AAP+lSURBVHhe7J0FYFRX9sZ3txAX4sESnHbl3+5uvcU...
+05-23-2022 22:11:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:11:28 	QUERRY	UpdateSubtidder	UPDATE subjects SET banner='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0MAAAJZCAYAAABr+u6mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAIdUAACHVAQSctJ0AAP+lSURBVHhe7P3ne5vXma8N59t7vMezn71nUhxbVhfF3gvYQ...
+05-23-2022 22:11:28 	QUERRY	executeQuery	UPDATE subjects SET banner='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0MAAAJZCAYAAABr+u6mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAIdUAACHVAQSctJ0AAP+lSURBVHhe7P3ne5vXma8N59t7vMezn71nUhxbVhfF3gvYQQAk...
+05-23-2022 22:11:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:11:28 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 22:11:28 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:11:28 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:11:28 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=46
+05-23-2022 22:11:28 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 46
+05-23-2022 22:24:04 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:24:04 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:24:04 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45 OR id_subject = 46
+05-23-2022 22:24:17 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:24:17 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:24:17 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45 OR id_subject = 46
+05-23-2022 22:24:17 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("Soirée raclette !","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABKwAAAJzCA...
+05-23-2022 22:24:18 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:24:18 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:24:18 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45 OR id_subject = 46
+05-23-2022 22:24:18 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 45 OR id_subject = 46  ORDER BY creation_date DESC
+05-23-2022 22:24:18 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 61
+05-23-2022 22:24:18 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:24:18 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 60
+05-23-2022 22:24:18 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:24:18 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 59
+05-23-2022 22:24:18 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:24:20 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:24:20 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:24:20 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45 OR id_subject = 46
+05-23-2022 22:24:41 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:24:41 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:24:41 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45 OR id_subject = 46
+05-23-2022 22:24:41 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("Soirée étudiante 6 décembre !","data:image/png;base64,iVBORw0KGgoAAAANSUhE...
+05-23-2022 22:24:41 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:24:41 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:24:41 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45 OR id_subject = 46
+05-23-2022 22:24:41 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 45 OR id_subject = 46  ORDER BY creation_date DESC
+05-23-2022 22:24:42 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 62
+05-23-2022 22:24:42 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:24:42 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 61
+05-23-2022 22:24:42 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:24:42 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 60
+05-23-2022 22:24:42 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:24:42 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 59
+05-23-2022 22:24:42 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:24:55 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:24:55 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:24:55 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 22:24:55 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 62
+05-23-2022 22:24:55 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:24:55 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 61
+05-23-2022 22:24:55 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:24:55 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:24:55 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:24:55 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=46
+05-23-2022 22:24:55 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 46
+05-23-2022 22:24:59 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:24:59 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:24:59 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:24:59 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:24:59 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 22:24:59 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 62
+05-23-2022 22:24:59 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:24:59 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 61
+05-23-2022 22:24:59 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:24:59 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:24:59 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:24:59 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=46
+05-23-2022 22:24:59 	QUERRY	executeQuery	UPDATE subjects SET can_create_post=false WHERE id_subject=46
+05-23-2022 22:24:59 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 46
+05-23-2022 22:24:59 	ERROR /!\		write tcp 127.0.0.1:80->127.0.0.1:14655: wsasend: An established connection was aborted by the software in your host machine.
+05-23-2022 22:24:59 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:24:59 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:24:59 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 22:24:59 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 62
+05-23-2022 22:24:59 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:24:59 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 61
+05-23-2022 22:24:59 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:24:59 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:24:59 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:24:59 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=46
+05-23-2022 22:24:59 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 46
+05-23-2022 22:25:09 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:25:09 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =37
+05-23-2022 22:25:09 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45 OR id_subject = 46
+05-23-2022 22:25:09 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 45 OR id_subject = 46  ORDER BY creation_date DESC
+05-23-2022 22:25:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 62
+05-23-2022 22:25:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:25:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 61
+05-23-2022 22:25:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:25:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 60
+05-23-2022 22:25:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 59
+05-23-2022 22:25:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:12 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:25:12 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 22:25:12 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 45 ORDER BY creation_date DESC
+05-23-2022 22:25:12 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 60
+05-23-2022 22:25:12 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:12 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 59
+05-23-2022 22:25:12 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:12 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 22:25:12 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:25:12 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=45
+05-23-2022 22:25:12 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 45
+05-23-2022 22:25:16 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:25:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 22:25:16 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:25:16 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:25:16 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 45 ORDER BY creation_date DESC
+05-23-2022 22:25:16 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 60
+05-23-2022 22:25:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:16 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 59
+05-23-2022 22:25:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:16 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 22:25:16 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:25:16 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=45
+05-23-2022 22:25:16 	QUERRY	executeQuery	UPDATE subjects SET can_create_post=false WHERE id_subject=45
+05-23-2022 22:25:16 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 45
+05-23-2022 22:25:16 	ERROR /!\		write tcp 127.0.0.1:80->127.0.0.1:14669: wsasend: An established connection was aborted by the software in your host machine.
+05-23-2022 22:25:16 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 37
+05-23-2022 22:25:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 22:25:16 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 45 ORDER BY creation_date DESC
+05-23-2022 22:25:16 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 60
+05-23-2022 22:25:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:16 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 37 AND id_post = 59
+05-23-2022 22:25:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:16 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 22:25:16 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:25:16 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=45
+05-23-2022 22:25:17 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 37 AND id_subject = 45
+05-23-2022 22:25:34 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:25:34 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:25:37 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:25:37 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:25:43 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name = 'Nimajjj'
+05-23-2022 22:25:43 	DEBUG		New token : 9353495e30e8cb51c88d
+05-23-2022 22:25:43 	QUERRY	executeQuery	INSERT INTO sessions (id_session, id_account, creation_date) VALUES ('9353495e30e8cb51c88d', 38, '2022-05-23 22:25:43')
+05-23-2022 22:25:43 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:25:43 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:25:43 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 47 OR id_subject = 48
+05-23-2022 22:25:43 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 47 OR id_subject = 48  ORDER BY creation_date DESC
+05-23-2022 22:25:45 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:25:45 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:25:45 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 47 OR id_subject = 48
+05-23-2022 22:25:50 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:25:50 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name LIKE "%an%"
+05-23-2022 22:25:50 	QUERRY	GetNumberOfSubscriber	SELECT * FROM subscribe_to_subject WHERE id_subject=42
+05-23-2022 22:25:50 	QUERRY	GetNumberOfSubscriber	SELECT * FROM subscribe_to_subject WHERE id_subject=47
+05-23-2022 22:25:51 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:25:51 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 22:25:51 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 47 ORDER BY creation_date DESC
+05-23-2022 22:25:51 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=47
+05-23-2022 22:25:51 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=38 
+05-23-2022 22:25:51 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=47
+05-23-2022 22:25:51 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 47
+05-23-2022 22:26:14 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:26:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 22:26:14 	QUERRY	UpdateSubtidder	UPDATE subjects SET profile_picture='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZcAAAGXCAYAAAB/Zh0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAMleSURBVHhe7X0H2DVXVfWbAOkJLUAgEFoSQoD0...
+05-23-2022 22:26:14 	QUERRY	executeQuery	UPDATE subjects SET profile_picture='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZcAAAGXCAYAAAB/Zh0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAMleSURBVHhe7X0H2DVXVfWbAOkJLUAgEFoSQoD0Sk1...
+05-23-2022 22:26:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 22:26:14 	QUERRY	UpdateSubtidder	UPDATE subjects SET banner='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAewAAADECAYAAABdohKPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHheJJ11XFbbuv2959zfvfecs8/ZHW73trsLDFJau...
+05-23-2022 22:26:14 	QUERRY	executeQuery	UPDATE subjects SET banner='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAewAAADECAYAAABdohKPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHheJJ11XFbbuv2959zfvfecs8/ZHW73trsLDFJauku6...
+05-23-2022 22:26:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 22:26:14 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 47 ORDER BY creation_date DESC
+05-23-2022 22:26:14 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=47
+05-23-2022 22:26:14 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=38 
+05-23-2022 22:26:14 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=47
+05-23-2022 22:26:14 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 47
+05-23-2022 22:26:22 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:26:22 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:26:22 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 47 OR id_subject = 48
+05-23-2022 22:27:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:27:01 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:27:01 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 47 OR id_subject = 48
+05-23-2022 22:27:01 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("Canapé à vendre","data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAA...
+05-23-2022 22:27:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:27:01 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:27:01 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 47 OR id_subject = 48
+05-23-2022 22:27:01 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 47 OR id_subject = 48  ORDER BY creation_date DESC
+05-23-2022 22:27:01 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 63
+05-23-2022 22:27:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:27:05 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:27:05 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:27:05 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 47 OR id_subject = 48
+05-23-2022 22:28:04 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:28:04 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:28:04 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 47 OR id_subject = 48
+05-23-2022 22:28:04 	QUERRY	executeQuery	INSERT INTO posts (title, media_url, content, creation_date, upvotes, downvotes, nsfw, redacted, pinned, id_subject, id_author) VALUES ("Donne table","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATcAAAF2CAYAAAALJ...
+05-23-2022 22:28:04 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:28:04 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:28:04 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 47 OR id_subject = 48
+05-23-2022 22:28:04 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 47 OR id_subject = 48  ORDER BY creation_date DESC
+05-23-2022 22:28:04 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 64
+05-23-2022 22:28:04 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:28:04 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 63
+05-23-2022 22:28:04 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:28:13 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:28:13 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:28:13 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 47 OR id_subject = 48
+05-23-2022 22:28:25 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:28:25 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:28:25 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 47 OR id_subject = 48
+05-23-2022 22:28:25 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 47 OR id_subject = 48  ORDER BY creation_date DESC
+05-23-2022 22:28:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 64
+05-23-2022 22:28:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:28:25 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 63
+05-23-2022 22:28:25 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:28:46 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:28:46 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name LIKE "%bde%"
+05-23-2022 22:28:46 	QUERRY	GetNumberOfSubscriber	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:28:49 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:28:49 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:28:49 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 22:28:49 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:28:49 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:28:49 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 61
+05-23-2022 22:28:49 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:28:49 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:28:49 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:28:49 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=46
+05-23-2022 22:28:49 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 46
+05-23-2022 22:28:50 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:28:50 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:28:51 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:28:51 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:28:51 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 22:28:51 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:28:51 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:28:51 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 61
+05-23-2022 22:28:51 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:28:51 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:28:51 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:28:51 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=46
+05-23-2022 22:28:51 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 46
+05-23-2022 22:28:51 	QUERRY	executeQuery	INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES (38,46)
+05-23-2022 22:28:51 	DEBUG		User id 38 subscribed to subject id 46
+05-23-2022 22:28:51 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 46
+05-23-2022 22:28:55 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:28:55 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name LIKE "%admin%"
+05-23-2022 22:28:55 	QUERRY	GetNumberOfSubscriber	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 22:28:56 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:28:56 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 22:28:56 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 45 ORDER BY creation_date DESC
+05-23-2022 22:28:56 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 60
+05-23-2022 22:28:56 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:28:56 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 59
+05-23-2022 22:28:56 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:28:56 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 22:28:56 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:28:56 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=45
+05-23-2022 22:28:56 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 45
+05-23-2022 22:28:57 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:28:57 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="AdministrationYnovCampus"
+05-23-2022 22:28:57 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:28:57 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:28:57 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 45 ORDER BY creation_date DESC
+05-23-2022 22:28:57 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 60
+05-23-2022 22:28:57 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:28:57 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 59
+05-23-2022 22:28:57 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:28:57 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=45
+05-23-2022 22:28:57 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 
+05-23-2022 22:28:57 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=45
+05-23-2022 22:28:57 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 45
+05-23-2022 22:28:57 	QUERRY	executeQuery	INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES (38,45)
+05-23-2022 22:28:57 	DEBUG		User id 38 subscribed to subject id 45
+05-23-2022 22:28:57 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 45
+05-23-2022 22:29:00 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:29:00 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:29:00 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45 OR id_subject = 46 OR id_subject = 47 OR id_subject = 48
+05-23-2022 22:29:02 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:29:02 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:29:02 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 45 OR id_subject = 46 OR id_subject = 47 OR id_subject = 48
+05-23-2022 22:29:02 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 45 OR id_subject = 46 OR id_subject = 47 OR id_subject = 48  ORDER BY creation_date DESC
+05-23-2022 22:29:02 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 64
+05-23-2022 22:29:02 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:29:02 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 63
+05-23-2022 22:29:02 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:29:02 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:29:02 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:29:02 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 61
+05-23-2022 22:29:02 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:29:02 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 60
+05-23-2022 22:29:02 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:29:02 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 59
+05-23-2022 22:29:02 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:29:11 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:29:11 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name LIKE "%B1%"
+05-23-2022 22:29:11 	QUERRY	GetNumberOfSubscriber	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 22:29:12 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:29:12 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 22:29:12 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 41 ORDER BY creation_date DESC
+05-23-2022 22:29:12 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 52
+05-23-2022 22:29:12 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:29:12 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 51
+05-23-2022 22:29:12 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:29:12 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 50
+05-23-2022 22:29:12 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:29:12 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 22:29:12 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 22:29:12 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=41
+05-23-2022 22:29:12 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 41
+05-23-2022 22:29:13 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:29:13 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="B1-Ynov-21-22"
+05-23-2022 22:29:13 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:29:13 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:29:13 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 41 ORDER BY creation_date DESC
+05-23-2022 22:29:13 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 52
+05-23-2022 22:29:13 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:29:13 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 51
+05-23-2022 22:29:13 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:29:13 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 50
+05-23-2022 22:29:13 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:29:13 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=41
+05-23-2022 22:29:13 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=35 
+05-23-2022 22:29:13 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=41
+05-23-2022 22:29:13 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 41
+05-23-2022 22:29:13 	QUERRY	executeQuery	INSERT INTO subscribe_to_subject (id_account, id_subject) VALUES (38,41)
+05-23-2022 22:29:13 	DEBUG		User id 38 subscribed to subject id 41
+05-23-2022 22:29:13 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 41
+05-23-2022 22:29:14 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:29:14 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:29:14 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 45 OR id_subject = 46 OR id_subject = 47 OR id_subject = 48
+05-23-2022 22:29:14 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 45 OR id_subject = 46 OR id_subject = 47 OR id_subject = 48  ORDER BY creation_date DESC
+05-23-2022 22:29:14 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 64
+05-23-2022 22:29:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:29:14 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 63
+05-23-2022 22:29:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:29:14 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:29:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:29:14 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 61
+05-23-2022 22:29:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:29:14 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 60
+05-23-2022 22:29:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:29:14 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 59
+05-23-2022 22:29:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:29:14 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 52
+05-23-2022 22:29:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:29:14 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 51
+05-23-2022 22:29:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:29:14 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 50
+05-23-2022 22:29:14 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:42:08 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:42:08 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:42:56 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=64
+05-23-2022 22:42:56 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:42:56 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=47
+05-23-2022 22:43:28 	QUERRY	GetPosts	SELECT * FROM posts  ORDER BY creation_date DESC
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 44
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 43
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 42
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:43:28 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:43:56 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=64
+05-23-2022 22:43:56 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:43:56 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=47
+05-23-2022 22:43:58 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 22:43:58 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 47 ORDER BY creation_date DESC
+05-23-2022 22:43:58 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:43:58 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:43:58 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=47
+05-23-2022 22:43:58 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=38 
+05-23-2022 22:43:58 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=47
+05-23-2022 22:43:58 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = -1 AND id_subject = 47
+05-23-2022 22:44:22 	QUERRY	GetAccount	SELECT * FROM accounts WHERE name = 'Nimajjj'
+05-23-2022 22:44:22 	DEBUG		New token : 633edcf288eb6ac4cf23
+05-23-2022 22:44:22 	QUERRY	executeQuery	INSERT INTO sessions (id_session, id_account, creation_date) VALUES ('633edcf288eb6ac4cf23', 38, '2022-05-23 22:44:22')
+05-23-2022 22:44:22 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:44:22 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:44:22 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 45 OR id_subject = 46 OR id_subject = 47 OR id_subject = 48
+05-23-2022 22:44:22 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 45 OR id_subject = 46 OR id_subject = 47 OR id_subject = 48  ORDER BY creation_date DESC
+05-23-2022 22:44:22 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 64
+05-23-2022 22:44:22 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:44:22 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 63
+05-23-2022 22:44:22 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:44:22 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:44:22 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:44:22 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 61
+05-23-2022 22:44:22 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:44:22 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 60
+05-23-2022 22:44:22 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:44:22 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 59
+05-23-2022 22:44:22 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:44:22 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 52
+05-23-2022 22:44:22 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:44:22 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 51
+05-23-2022 22:44:22 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:44:22 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 50
+05-23-2022 22:44:22 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:45:01 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:45:01 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 22:45:01 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:01 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 61
+05-23-2022 22:45:01 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:01 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:45:01 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 OR id_account=38 
+05-23-2022 22:45:01 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=46
+05-23-2022 22:45:01 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 46
+05-23-2022 22:45:13 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:13 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=62
+05-23-2022 22:45:13 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:13 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:13 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=46
+05-23-2022 22:45:15 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:15 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=62
+05-23-2022 22:45:15 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:15 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:15 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=46
+05-23-2022 22:45:15 	DEBUG		Vote received: 62 1
+05-23-2022 22:45:15 	QUERRY	executeQuery	UPDATE tidder.posts SET upvotes = upvotes + 1 WHERE id_post = 62
+05-23-2022 22:45:15 	QUERRY	executeQuery	INSERT INTO vote_to (id_post, id_account, vote) VALUES (62, 38, 1)
+05-23-2022 22:45:16 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:16 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=62
+05-23-2022 22:45:16 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:16 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=46
+05-23-2022 22:45:16 	DEBUG		Vote received: 62 -2
+05-23-2022 22:45:16 	QUERRY	executeQuery	UPDATE tidder.posts SET downvotes = downvotes + 2 WHERE id_post = 62
+05-23-2022 22:45:16 	QUERRY	executeQuery	UPDATE vote_to SET vote = -1 WHERE id_post = 62 AND id_account = 38
+05-23-2022 22:45:17 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:17 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=62
+05-23-2022 22:45:17 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:17 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:17 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=46
+05-23-2022 22:45:17 	DEBUG		Vote received: 62 2
+05-23-2022 22:45:17 	QUERRY	executeQuery	UPDATE tidder.posts SET upvotes = upvotes + 2 WHERE id_post = 62
+05-23-2022 22:45:17 	QUERRY	executeQuery	UPDATE vote_to SET vote = 1 WHERE id_post = 62 AND id_account = 38
+05-23-2022 22:45:18 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:18 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=62
+05-23-2022 22:45:18 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:18 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:18 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=46
+05-23-2022 22:45:18 	DEBUG		Vote received: 62 -2
+05-23-2022 22:45:18 	QUERRY	executeQuery	UPDATE tidder.posts SET downvotes = downvotes + 2 WHERE id_post = 62
+05-23-2022 22:45:18 	QUERRY	executeQuery	UPDATE vote_to SET vote = -1 WHERE id_post = 62 AND id_account = 38
+05-23-2022 22:45:27 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:27 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=62
+05-23-2022 22:45:27 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:27 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:27 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=46
+05-23-2022 22:45:27 	QUERRY	executeQuery	INSERT INTO comments (content, creation_date, id_author, id_post, response_to_id) VALUES ('je ne suis pas content', '2022-05-23 22:45:27', 38, '62', -1)
+05-23-2022 22:45:27 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:27 	ERROR /!\		write tcp 127.0.0.1:80->127.0.0.1:7602: wsasend: An established connection was aborted by the software in your host machine.
+05-23-2022 22:45:27 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=62
+05-23-2022 22:45:27 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:27 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:27 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=46
+05-23-2022 22:45:27 	QUERRY	MakeDisplayableComments	SELECT * FROM vote_comment_to WHERE id_account = 38 AND id_comment = 77
+05-23-2022 22:45:27 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:33 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:33 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=62
+05-23-2022 22:45:33 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:33 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:33 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=46
+05-23-2022 22:45:33 	QUERRY	MakeDisplayableComments	SELECT * FROM vote_comment_to WHERE id_account = 38 AND id_comment = 77
+05-23-2022 22:45:33 	QUERRY	executeQuery	INSERT INTO comments (content, creation_date, id_author, id_post, response_to_id) VALUES ('pourquoi ca ', '2022-05-23 22:45:33', 38, '62', 77)
+05-23-2022 22:45:33 	ERROR /!\		write tcp 127.0.0.1:80->127.0.0.1:7665: wsasend: An established connection was aborted by the software in your host machine.
+05-23-2022 22:45:33 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:33 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=62
+05-23-2022 22:45:33 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:33 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:33 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=46
+05-23-2022 22:45:33 	QUERRY	MakeDisplayableComments	SELECT * FROM vote_comment_to WHERE id_account = 38 AND id_comment = 77
+05-23-2022 22:45:33 	QUERRY	MakeDisplayableComments	SELECT * FROM vote_comment_to WHERE id_account = 38 AND id_comment = 78
+05-23-2022 22:45:33 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:35 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:35 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_post=62
+05-23-2022 22:45:35 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:35 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:35 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject=46
+05-23-2022 22:45:35 	QUERRY	MakeDisplayableComments	SELECT * FROM vote_comment_to WHERE id_account = 38 AND id_comment = 77
+05-23-2022 22:45:35 	QUERRY	MakeDisplayableComments	SELECT * FROM vote_comment_to WHERE id_account = 38 AND id_comment = 78
+05-23-2022 22:45:35 	DEBUG		Vote for comment received: 77 -1
+05-23-2022 22:45:35 	QUERRY	executeQuery	UPDATE tidder.comments SET downvotes = downvotes + 1 WHERE id_comment = 77
+05-23-2022 22:45:35 	QUERRY	executeQuery	INSERT INTO vote_comment_to (id_comment, id_account, vote) VALUES (77, 38, -1)
+05-23-2022 22:45:43 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:43 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="BDE-Ynov-Campus"
+05-23-2022 22:45:43 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 46 ORDER BY creation_date DESC
+05-23-2022 22:45:43 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:45:43 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:43 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 61
+05-23-2022 22:45:43 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:45:43 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=46
+05-23-2022 22:45:43 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=37 OR id_account=38 
+05-23-2022 22:45:43 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=46
+05-23-2022 22:45:43 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 46
+05-23-2022 22:45:49 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:45:49 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:45:49 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 45 OR id_subject = 46 OR id_subject = 47 OR id_subject = 48
+05-23-2022 22:46:09 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:46:09 	QUERRY	GetSubtiddersSubscribed	SELECT id_subject FROM tidder.subscribe_to_subject WHERE id_account =38
+05-23-2022 22:46:09 	QUERRY	GetSubtiddersSubscribed	SELECT * FROM tidder.subjects WHERE id_subject = 41 OR id_subject = 45 OR id_subject = 46 OR id_subject = 47 OR id_subject = 48
+05-23-2022 22:46:09 	QUERRY	GetPosts	SELECT * FROM posts WHERE id_subject = 41 OR id_subject = 45 OR id_subject = 46 OR id_subject = 47 OR id_subject = 48  ORDER BY creation_date DESC
+05-23-2022 22:46:09 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 64
+05-23-2022 22:46:09 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:46:09 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 63
+05-23-2022 22:46:09 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:46:09 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 62
+05-23-2022 22:46:09 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:46:09 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 61
+05-23-2022 22:46:09 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 46
+05-23-2022 22:46:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 60
+05-23-2022 22:46:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:46:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 59
+05-23-2022 22:46:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 45
+05-23-2022 22:46:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 52
+05-23-2022 22:46:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:46:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 51
+05-23-2022 22:46:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:46:10 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 50
+05-23-2022 22:46:10 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 41
+05-23-2022 22:46:12 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:46:12 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 22:46:12 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 47 ORDER BY creation_date DESC
+05-23-2022 22:46:12 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 64
+05-23-2022 22:46:12 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:46:12 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 63
+05-23-2022 22:46:12 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:46:12 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=47
+05-23-2022 22:46:12 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=38 
+05-23-2022 22:46:12 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=47
+05-23-2022 22:46:12 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 47
+05-23-2022 22:47:05 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:47:05 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 22:47:05 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:47:05 	ERROR /!\		request Content-Type isn't multipart/form-data
+05-23-2022 22:47:05 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 47 ORDER BY creation_date DESC
+05-23-2022 22:47:05 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 64
+05-23-2022 22:47:05 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:47:05 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 63
+05-23-2022 22:47:05 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:47:05 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=47
+05-23-2022 22:47:05 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=38 
+05-23-2022 22:47:05 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=47
+05-23-2022 22:47:05 	QUERRY	executeQuery	INSERT INTO subject_access (create_post, pin_post, manage_post, ban_user, manage_role, manage_subtidder) VALUES (true, true, true, true, true, true)
+05-23-2022 22:47:05 	QUERRY	executeQuery	INSERT INTO subject_roles (name, id_subject, id_subject_access) VALUES ('moderateur', 47, 42)
+05-23-2022 22:47:05 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 47
+05-23-2022 22:47:05 	ERROR /!\		write tcp 127.0.0.1:80->127.0.0.1:7685: wsasend: An established connection was aborted by the software in your host machine.
+05-23-2022 22:47:05 	QUERRY	GetAccount	SELECT * FROM accounts WHERE id_account = 38
+05-23-2022 22:47:05 	QUERRY	GetSubs	SELECT * FROM subjects WHERE name="PetitesAnnoncesYnovAix"
+05-23-2022 22:47:05 	QUERRY	GetPosts	SELECT * FROM posts WHERE  id_subject = 47 ORDER BY creation_date DESC
+05-23-2022 22:47:05 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 64
+05-23-2022 22:47:05 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:47:05 	QUERRY	MakeDisplayablePost	SELECT * FROM vote_to WHERE id_account = 38 AND id_post = 63
+05-23-2022 22:47:05 	QUERRY	GetSubs	SELECT * FROM subjects WHERE id_subject = 47
+05-23-2022 22:47:05 	QUERRY	GenerateBannedAccountList	SELECT * FROM subscribe_to_subject WHERE id_subject=47
+05-23-2022 22:47:05 	QUERRY	GenerateBannedAccountList	SELECT * FROM accounts WHERE id_account=38 
+05-23-2022 22:47:05 	QUERRY	GenerateBannedAccountList	SELECT * FROM is_ban WHERE id_subject=47
+05-23-2022 22:47:05 	QUERRY	IsSubscribeTo	SELECT * FROM subscribe_to_subject WHERE id_account = 38 AND id_subject = 47
