@@ -1,0 +1,24 @@
+Bonjour, ici nous allons vous expliquez comment installé facilement le forum Tidder.
+
+Tout d'abord, en tant que logiciel prérequis, nous allons avoir besoin de GO en version 1.18.1 ou en version supérieur et MySQL en version 8.0.28 ou version supérieure.
+
+Ensuite vous pouvez soit utilisez WampServeur ou MySQL Workbench.
+
+1.Créer la base de donnée grâce au script trouvable dans l'annexe.
+
+2.Extraire tous les fichiers sources du site web dans un répertoire adéquat.
+
+3.Vous avez désormais deux lignes de code à modifier dans le code source : 
+
+- /go/sql/sql_serveur.go 77:26 -> placez ici le port que vous souhaitez utiliser pour accéder au site.
+
+- /go/sql/sql_serveur.go 42:42 -> ici vous devez remplacer ce qui est écrit par les informations de connections de votre base de donnée : 
+
+exemple : 
+
+"account_name:password@tcp(ip_serveur_sql)/nom_connection"
+"root:Tidder123reddit@tcp(127.0.0.1)/tidder"
+
+4. Ouvrez un terminal dans le répertoire source
+5. Commande "go run ."
+
