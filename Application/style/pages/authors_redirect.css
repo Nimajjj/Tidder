@@ -16,14 +16,15 @@
     top:4%
 }
 
-#link_to_authorsimg{
-    text-align: center;
-}
+
 
 .list{
     font-size:3vh;
     padding-bottom:5vh;
     padding-top:5vh;
+    display:flex;
+    position:relative;
+    left:22vw
 }
 
 .icone_link {
@@ -46,4 +47,22 @@
     position:absolute;
     left:30%;
     top:5%
+}
+
+#laurie_right{
+    position: relative;
+    left:1vw;
+    bottom:0.7vh
+}
+
+#ben_right{
+    position: relative;
+    left:1vw;
+    bottom:0.7vh
+}
+
+#maxime_right{
+    position: relative;
+    left:1vw;
+    bottom:0.7vh
 }
