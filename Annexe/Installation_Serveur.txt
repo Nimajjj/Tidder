@@ -4,7 +4,7 @@ Tout d'abord, en tant que logiciel prérequis, nous allons avoir besoin de GO en
 
 Ensuite vous pouvez soit utilisez WampServeur ou MySQL Workbench.
 
-1.Créer la base de donnée grâce au script trouvable dans l'annexe.
+1.Créer la base de donnée grâce au script trouvable dans l'annexe : /Annexe/setup_db_structure.sql
 
 2.Extraire tous les fichiers sources du site web dans un répertoire adéquat.
 
